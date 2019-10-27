@@ -4,70 +4,152 @@ import android.util.Pair;
 
 import java.util.ArrayList;
 
+/** Represents the maze of the game. */
 public class Maze {
+  private Cell[][] grid;
+  private int width;
+  private int height;
 
-        int [][] MazeItems;
-        /**
-         *
-         * @param width width of maze
-         * @param height height of maze
-         * @param complexity the difficulty of the maze
-         * @param density the number of "islands" in the maze
-         */
-        Maze(float width, float height, int complexity, int density){
+  /**
+   * @param width: width of maze has to be geq 7 has to be odd; number of cells in x direction;
+   *     columns
+   * @param height: height of maze has to be geq 7 has to be odd; number of cells in y direction;
+   *     rows
+   */
+  public Maze(int width, int height) {
+    this.width = width;
+    this.height = height;
+    grid = new Cell[height][width];
+    generateMaze();
+  }
 
-            // Build
-            int shapeHeight = (int)((height/2)*2 + 1);
-            int shapeWidth = (int)((width/2)*2 + 1);
-            MazeItems = new int[shapeHeight][shapeWidth];
-            // Adjust complexity and density relative to map size
-            complexity = (int) (complexity * (5 * (shapeWidth + shapeHeight)));
-            density = (int) (density * (shapeWidth/2) * (shapeHeight/2));
-            // Fill borders
-            for(int i = 0; i < MazeItems[0].length; i++){
-                MazeItems[0][i] = 1;
-            }
-            for(int i = 0; i < MazeItems[(int)height - 1].length; i ++){
-                MazeItems[(int)height - 1][i] = 1;
-            }
-            for(int i = 0; i < MazeItems.length; i ++){
-                MazeItems[i][0] = 1;
-                MazeItems[i][((int)width) - 1] = 1;
-            }
+  void generateMaze() {
+    initNodes();
+    mst();
+  }
 
-            // Make Aisles
-            for(int i = 0; i < density; i ++){
-                int x = (int) (Math.random() * (int)shapeWidth/2) * 2;
-                int y = (int) (Math.random() * (int)shapeHeight/2) * 2;
-                MazeItems[y][x] = 1;
-                for(int j = 0; j < complexity; j ++){
-                    ArrayList<Pair<Integer, Integer>> neighbours = new ArrayList<>();
-                    if(x > 1){
-                        neighbours.add(new Pair<>(x -2, y));
-                    }
-                    if(x < width -2){
-                        neighbours.add(new Pair<>(x + 2, y));
-                    }
-                    if(y > 1){
-                        neighbours.add(new Pair<>(x, y - 2));
-                    }
-                    if(y < height - 2){
-                        neighbours.add(new Pair<>(x, y + 2));
-                    }
-                    if (!neighbours.isEmpty()){
-                        int x_ = neighbours.get((int) (Math.random() * (neighbours.size() - 1))).first;
-                        int y_ = neighbours.get((int) (Math.random() * (neighbours.size() - 1))).second;
-                        if (MazeItems[y_][x_] == 0){
-                            MazeItems[y_][x_] = 1;
-                            MazeItems[y_+ (y - y_)/2][x_ + (x - x_)/2] = 1;
-                            x = x_;
-                            y = y_;
-                        }
-                    }
-                }
-
-            }
-
-
+  @Override
+  public String toString() {
+    StringBuilder s = new StringBuilder();
+    for (int i = 0; i < height; i++) {
+      for (int j = 0; j < width; j++) {
+        if (grid[i][j] == Cell.WALL) {
+          s.append("| ");
+        } else if (grid[i][j] == Cell.FLOOR) {
+          s.append("* ");
         }
+      }
+      s.append("\n");
+    }
+
+    return s.toString();
+  }
+
+  // initialize the floor and wall "nodes" of the maze
+  private void initNodes() {
+    for (int row = 0; row < width; row++) {
+      for (int col = 0; col < height; col++) {
+        if (row % 2 == 1 && col % 2 == 1) {
+          grid[row][col] = Cell.FLOOR;
+        } else {
+          grid[row][col] = Cell.WALL;
+        }
+      }
+    }
+  }
+
+  // prim's algorithm for MST(minimum spanning tree)
+  private void mst() {
+    // pick a random point on the map that is Cell.FLOOR
+    int row = ((((int) (Math.random() * (height - 2))) / 2) * 2) + 1;
+    int col = ((((int) (Math.random() * (width - 2))) / 2) * 2) + 1;
+    Pair<Integer, Integer> randomCell = new Pair<>(row, col);
+
+    // Find the neighbours of this cell; this store coordinates as keys
+    ArrayList<Pair<Integer, Integer>> neighboursUnprocessed = new ArrayList<>();
+    ArrayList<Pair<Integer, Integer>> processed = new ArrayList<>();
+    processed.add(randomCell);
+    addNeighbours(randomCell, neighboursUnprocessed, processed);
+
+    while (!neighboursUnprocessed.isEmpty()) {
+      int randomNeighbourIndex = (int) (Math.random() * (neighboursUnprocessed.size() - 1));
+      // Pick a random neighbour that has not been processed
+      Pair<Integer, Integer> randomNeighbourUnprocessed =
+          neighboursUnprocessed.get(randomNeighbourIndex);
+      // get the neighbours of random neighbour that have been processed
+      ArrayList<Pair<Integer, Integer>> pickedNodes =
+          getPickedNodes(randomNeighbourUnprocessed, processed);
+      int randomProcessedNodeIndex = (int) (Math.random() * (pickedNodes.size() - 1));
+      // pick a random neighbour that has been processed
+      Pair<Integer, Integer> randomProcessedNode = pickedNodes.get(randomProcessedNodeIndex);
+      // Make the cell between these two nodes a floor
+      int randomProcessedNodeRow = randomProcessedNode.first;
+      int randomProcessedNodeCol = randomProcessedNode.second;
+      int randomNeighbourUnprocessedRow = randomNeighbourUnprocessed.first;
+      int randomNeighbourUnprocessedCol = randomNeighbourUnprocessed.second;
+
+      grid[(randomProcessedNodeRow + randomNeighbourUnprocessedRow) / 2][
+              (randomProcessedNodeCol + randomNeighbourUnprocessedCol) / 2] =
+          Cell.FLOOR;
+
+      // Add the random neighbour we picked into processed and remove it from neighboursUnprocessed
+      processed.add(randomNeighbourUnprocessed);
+      neighboursUnprocessed.remove(randomNeighbourUnprocessed);
+      addNeighbours(randomNeighbourUnprocessed, neighboursUnprocessed, processed);
+    }
+  }
+
+  private ArrayList<Pair<Integer, Integer>> getPickedNodes(
+      Pair<Integer, Integer> neighbourNode, ArrayList<Pair<Integer, Integer>> processed) {
+    ArrayList<Pair<Integer, Integer>> neighbours = getValidNeighbours(neighbourNode);
+    ArrayList<Pair<Integer, Integer>> picked = new ArrayList<>();
+    for (Pair<Integer, Integer> neighbour : neighbours) {
+      if (processed.contains(neighbour)) {
+        picked.add(neighbour);
+      }
+    }
+
+    return picked;
+  }
+
+  private void addNeighbours(
+      Pair<Integer, Integer> cellCoordinate,
+      ArrayList<Pair<Integer, Integer>> neighboursUnprocessed,
+      ArrayList<Pair<Integer, Integer>> processed) {
+    ArrayList<Pair<Integer, Integer>> neighbours = getValidNeighbours(cellCoordinate);
+
+    for (Pair<Integer, Integer> neighbour : neighbours) {
+      if (!neighboursUnprocessed.contains(neighbour) && !processed.contains(neighbour)) {
+        neighboursUnprocessed.add(neighbour);
+      }
+    }
+  }
+
+  private ArrayList<Pair<Integer, Integer>> getValidNeighbours(
+      Pair<Integer, Integer> cellCoordinate) {
+    int row = cellCoordinate.first;
+    int col = cellCoordinate.second;
+    Pair<Integer, Integer> leftCellCoordinate,
+        rightCellCoordinate,
+        topCellCoordinate,
+        bottomCellCoordinate;
+    ArrayList<Pair<Integer, Integer>> validNeighbours = new ArrayList<>();
+    if (col - 2 > 0) {
+      leftCellCoordinate = new Pair<>(row, col - 2);
+      validNeighbours.add(leftCellCoordinate);
+    }
+    if (col + 2 < width) {
+      rightCellCoordinate = new Pair<>(row, col + 2);
+      validNeighbours.add(rightCellCoordinate);
+    }
+    if (row - 2 > 0) {
+      topCellCoordinate = new Pair<>(row - 2, col);
+      validNeighbours.add(topCellCoordinate);
+    }
+    if (row + 2 < height) {
+      bottomCellCoordinate = new Pair<>(row + 2, col);
+      validNeighbours.add(bottomCellCoordinate);
+    }
+    return validNeighbours;
+  }
 }
