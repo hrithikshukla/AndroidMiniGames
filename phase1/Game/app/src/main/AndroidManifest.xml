@@ -22,7 +22,8 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        <activity android:name=".MazeGame.MazeGameActivity">
+        </activity>
+        <activity android:name=".MazeGame.MazeGameActivity"/>
     </application>
 
 </manifest>
