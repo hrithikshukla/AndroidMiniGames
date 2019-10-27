@@ -47,8 +47,8 @@ public class Maze {
 
   // initialize the floor and wall "nodes" of the maze
   private void initNodes() {
-    for (int row = 0; row < width; row++) {
-      for (int col = 0; col < height; col++) {
+    for (int row = 0; row < height; row++) {
+      for (int col = 0; col < width; col++) {
         if (row % 2 == 1 && col % 2 == 1) {
           grid[row][col] = Cell.FLOOR;
         } else {
@@ -75,10 +75,10 @@ public class Maze {
       int randomNeighbourIndex = (int) (Math.random() * (neighboursUnprocessed.size() - 1));
       // Pick a random neighbour that has not been processed
       Pair<Integer, Integer> randomNeighbourUnprocessed =
-          neighboursUnprocessed.get(randomNeighbourIndex);
+              neighboursUnprocessed.get(randomNeighbourIndex);
       // get the neighbours of random neighbour that have been processed
       ArrayList<Pair<Integer, Integer>> pickedNodes =
-          getPickedNodes(randomNeighbourUnprocessed, processed);
+              getPickedNodes(randomNeighbourUnprocessed, processed);
       int randomProcessedNodeIndex = (int) (Math.random() * (pickedNodes.size() - 1));
       // pick a random neighbour that has been processed
       Pair<Integer, Integer> randomProcessedNode = pickedNodes.get(randomProcessedNodeIndex);
@@ -90,7 +90,7 @@ public class Maze {
 
       grid[(randomProcessedNodeRow + randomNeighbourUnprocessedRow) / 2][
               (randomProcessedNodeCol + randomNeighbourUnprocessedCol) / 2] =
-          Cell.FLOOR;
+              Cell.FLOOR;
 
       // Add the random neighbour we picked into processed and remove it from neighboursUnprocessed
       processed.add(randomNeighbourUnprocessed);
@@ -100,7 +100,7 @@ public class Maze {
   }
 
   private ArrayList<Pair<Integer, Integer>> getPickedNodes(
-      Pair<Integer, Integer> neighbourNode, ArrayList<Pair<Integer, Integer>> processed) {
+          Pair<Integer, Integer> neighbourNode, ArrayList<Pair<Integer, Integer>> processed) {
     ArrayList<Pair<Integer, Integer>> neighbours = getValidNeighbours(neighbourNode);
     ArrayList<Pair<Integer, Integer>> picked = new ArrayList<>();
     for (Pair<Integer, Integer> neighbour : neighbours) {
@@ -113,9 +113,9 @@ public class Maze {
   }
 
   private void addNeighbours(
-      Pair<Integer, Integer> cellCoordinate,
-      ArrayList<Pair<Integer, Integer>> neighboursUnprocessed,
-      ArrayList<Pair<Integer, Integer>> processed) {
+          Pair<Integer, Integer> cellCoordinate,
+          ArrayList<Pair<Integer, Integer>> neighboursUnprocessed,
+          ArrayList<Pair<Integer, Integer>> processed) {
     ArrayList<Pair<Integer, Integer>> neighbours = getValidNeighbours(cellCoordinate);
 
     for (Pair<Integer, Integer> neighbour : neighbours) {
@@ -126,13 +126,13 @@ public class Maze {
   }
 
   private ArrayList<Pair<Integer, Integer>> getValidNeighbours(
-      Pair<Integer, Integer> cellCoordinate) {
+          Pair<Integer, Integer> cellCoordinate) {
     int row = cellCoordinate.first;
     int col = cellCoordinate.second;
     Pair<Integer, Integer> leftCellCoordinate,
-        rightCellCoordinate,
-        topCellCoordinate,
-        bottomCellCoordinate;
+            rightCellCoordinate,
+            topCellCoordinate,
+            bottomCellCoordinate;
     ArrayList<Pair<Integer, Integer>> validNeighbours = new ArrayList<>();
     if (col - 2 > 0) {
       leftCellCoordinate = new Pair<>(row, col - 2);
@@ -152,4 +152,5 @@ public class Maze {
     }
     return validNeighbours;
   }
+
 }
