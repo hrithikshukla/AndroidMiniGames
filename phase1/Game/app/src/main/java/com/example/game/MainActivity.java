@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.game.TapiocaLauncher.GameActivity;
+//import com.example.game.MazeGame.GameActivity;
 
 public class MainActivity extends Activity {
 

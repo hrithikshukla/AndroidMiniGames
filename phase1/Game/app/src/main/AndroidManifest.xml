@@ -13,6 +13,9 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.noActionBar"
             />
+        <activity android:name=".MazeGame.GameActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.noActionBar"/>
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait"
@@ -23,7 +26,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MazeGame.MazeGameActivity"/>
     </application>
 
 </manifest>

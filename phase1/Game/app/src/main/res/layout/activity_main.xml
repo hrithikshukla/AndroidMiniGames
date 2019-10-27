@@ -49,4 +49,30 @@
         android:id="@+id/volumeCtrl"
         android:src="@drawable/ic_volume_up_black_24dp" />
 
+<!--    Maze Game activity_main xml-->
+
+<!--    <ImageView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:src="@drawable/background"-->
+<!--        android:scaleType="centerCrop"/>-->
+
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:textSize="48sp"-->
+<!--        android:text="Maze Game"-->
+<!--        android:textColor="#ffffff"-->
+<!--        android:layout_above="@id/play"-->
+<!--        android:layout_centerHorizontal="true"/>-->
+
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Play"-->
+<!--        android:textSize="64sp"-->
+<!--        android:layout_centerInParent="true"-->
+<!--        android:textColor="#ffffff"-->
+<!--        android:id="@+id/play"/>-->
+
 </RelativeLayout>
