@@ -45,6 +45,23 @@ public class Maze {
     return s.toString();
   }
 
+  /**
+   * Returns an integer array representation of the maze.
+   */
+  int[][] getMaze(){
+    int[][] tmp = new int[height][width];
+    for (int i = 0; i < height; i++) {
+      for (int j = 0; j < width; j++) {
+        if (grid[i][j] == Cell.WALL) {
+          tmp[i][j] = 1;
+        } else if (grid[i][j] == Cell.FLOOR) {
+          tmp[i][j] = 0;
+        }
+      }
+    }
+    return tmp;
+  }
+
   // initialize the floor and wall "nodes" of the maze
   private void initNodes() {
     for (int row = 0; row < height; row++) {
