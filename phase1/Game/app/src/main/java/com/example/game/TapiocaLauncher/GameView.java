@@ -5,11 +5,14 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceView;
 import android.view.View;
 
 import java.util.List;
+@SuppressWarnings("ClickableViewAccessibility")
+
 
 public class GameView extends SurfaceView implements Runnable{
 
@@ -23,6 +26,9 @@ public class GameView extends SurfaceView implements Runnable{
     private Arrow arrow;
     public static float screenRatioX, screenRatioY;
     private Paint paint;
+    private double startX =0, startY=0, endX=0, endY = 0;
+    private boolean ballClicked;
+
 
     public GameView(Context context, int screenX, int screenY) {
 
@@ -55,6 +61,7 @@ public class GameView extends SurfaceView implements Runnable{
     }
 
     void update (){
+        launcher.update();
     }
 
     private void draw (){
@@ -109,5 +116,35 @@ public class GameView extends SurfaceView implements Runnable{
         matrix.postRotate(degrees);
         matrix.postTranslate(src.x, src.y);
         canvas.drawBitmap(src.arrow, matrix, paint);
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        if (launcher.isReadyToLaunch()) {
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                if (( event.getX() >= launcher.getX() && event.getX() <= (launcher.getX() + launcher.getHeight()) )&&
+                        (event.getY() >= launcher.getY() && event.getY() <= (launcher.getY() + launcher.getWidth()))) {
+                    startX = event.getX();
+                    startY = event.getY();
+                    ballClicked = true;
+                    //Log.d("", "onTouchEvent: Motion Down  x-val: " + startX);
+                    //Log.d("", "onTouchEvent: Motion Down  y-val: " + startY);
+                }
+            }
+//            if (event.getAction() == MotionEvent.ACTION_MOVE) {
+//                //Log.d("", "onTouchEvent: Move" + event.getX());
+//            }
+            if (event.getAction() == MotionEvent.ACTION_UP) {
+                if (ballClicked) {
+                    endX = event.getX();
+                    endY = event.getY();
+                    // Log.d("", "onTouchEvent: Motion Up  x-val: " + endX);
+                    // Log.d("", "onTouchEvent: Motion Up  y-val: " + endY);
+                    launcher.moveBall(startX, startY, endX, endY);
+                    ballClicked = false;
+                }
+            }
+        }
+        return true;
     }
 }

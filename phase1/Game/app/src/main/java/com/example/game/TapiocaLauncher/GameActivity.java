@@ -1,20 +1,19 @@
 package com.example.game.TapiocaLauncher;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.graphics.Point;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.Window;
 import android.view.WindowManager;
-
 public class GameActivity extends AppCompatActivity {
 
     // Views
     private GameView gameView;
 
     // Vars
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +25,6 @@ public class GameActivity extends AppCompatActivity {
         getWindowManager().getDefaultDisplay().getSize(point);
 
         gameView = new GameView(this, point.x, point.y);
-
         setContentView(gameView);
     }
 
@@ -40,10 +38,5 @@ public class GameActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         gameView.resume();
-    }
-
-    @Override
-    public boolean onTouchEvent(MotionEvent event){
-        return true;
     }
 }
