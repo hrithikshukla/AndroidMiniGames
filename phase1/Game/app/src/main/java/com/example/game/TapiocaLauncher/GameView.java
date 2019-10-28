@@ -69,6 +69,9 @@ public class GameView extends SurfaceView implements Runnable{
             Canvas canvas = getHolder().lockCanvas();
             canvas.drawBitmap(background.background, background.x, background.y, paint);
 
+            if (layout.size() == 0 && launcher.readyToLaunch) {
+                layout = boardManager.fillBoard(1);
+            }
             for (Ball ball: layout) {
                 canvas.drawBitmap(ball.getBall(), ball.x, ball.y, paint);
             }
