@@ -118,6 +118,11 @@ class Launcher {
       y = 1850;
       x = screenX / 2;
       readyToLaunch = true;
+      for (int i = 0; i < balls.size(); i++) {
+        if(balls.get(i).isHit()) {
+          balls.get(i).setHit(false);
+        }
+      }
     }
   }
 
@@ -170,13 +175,18 @@ class Launcher {
   private void detectCollisions(List<Ball> balls) {
     // Check for collisions
     for (int i = 0; i < balls.size(); i++) {
-      if (Math.hypot(getCentreX() - balls.get(i).centreX,
-              getCentreY() - balls.get(i).centreY) <= 2 * radius) {
-        balls.remove(i);
-        i--;
-        score++;
+      if (Math.hypot(getCentreX() - balls.get(i).centreX, getCentreY() - balls.get(i).centreY) <= 2 * radius) {
+        if (!balls.get(i).isHit()) {
+          balls.get(i).setHp(balls.get(i).getHp() - 1);
+          Log.d("", balls.get(i).getHp() + " ");
+          balls.get(i).setHit(true);
+          if (balls.get(i).getHp() == 0) {
+            balls.remove(i);
+            i--;
+            score++;
+          }
+        }
       }
     }
   }
 }
-

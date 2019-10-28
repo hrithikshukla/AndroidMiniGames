@@ -29,6 +29,7 @@ public class GameView extends SurfaceView implements Runnable{
     private Paint paint;
     private double startX =0, startY=0, endX=0, endY = 0;
     private boolean ballClicked;
+    private int level = 1;
     static int score = 0;
     private SharedPreferences prefs;
 
@@ -45,12 +46,11 @@ public class GameView extends SurfaceView implements Runnable{
         background = new Background(screenX, screenY, getResources());
         launcher = new Launcher(screenX, screenY, getResources());
         boardManager = new BoardManager(screenX, screenY, context);
-        layout = boardManager.fillBoard(1);
+        layout = boardManager.fillBoard(level);
+        level++;
         paint = new Paint();
         paint.setTextSize(64);
         paint.setColor(Color.BLACK);
-
-
     }
 
     @Override
@@ -78,7 +78,8 @@ public class GameView extends SurfaceView implements Runnable{
             canvas.drawBitmap(background.background, background.x, background.y, paint);
 
             if (layout.size() == 0 && launcher.readyToLaunch) {
-                layout = boardManager.fillBoard(1);
+                layout = boardManager.fillBoard(level);
+                level++;
             }
             for (Ball ball: layout) {
                 canvas.drawBitmap(ball.getBall(), ball.x, ball.y, paint);

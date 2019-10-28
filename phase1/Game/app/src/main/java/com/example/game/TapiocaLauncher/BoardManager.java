@@ -26,12 +26,20 @@ class BoardManager extends ClassLoader {
 
     List<Ball> fillBoard(int layout) {
         if (layout == 1) {
-          for (int j = 0; j < 6; j++) {
-            for (int i = 0; i < 6; i++) {
-              Ball b = new Ball(50 + (170 * i), 50 + (140 * j), context.getResources());
-              bubbles.add(b);
+            for (int j = 0; j < 6; j++) {
+                for (int i = 0; i < 6; i++) {
+                    Ball b = new Ball(50 + (170 * i), 50 + (140 * j), context.getResources(), 1);
+                    bubbles.add(b);
+                }
             }
-          }
+        }
+        if (layout >= 2) {
+            for (int j = 0; j < 6; j++) {
+                for (int i = 0; i < 6; i++) {
+                    Ball b = new Ball(50 + (170 * i), 50 + (140 * j), context.getResources(), 2);
+                    bubbles.add(b);
+                }
+            }
         }
         return bubbles;
     }
