@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">Game</string>
-    <string name="button_maze">MAZE</string>
-    <string name="button_tapioca_launcher">TAPIOCA LAUNCHER</string>
-    <string name="button_tiles">TILES</string>
-    <string name="select_game">SELECT YOUR GAME</string>
+    <string name="button_maze">Maze</string>
+    <string name="button_tapioca_launcher">Tapioca Launcher</string>
+    <string name="button_tiles">Tiles</string>
+    <string name="select_game">Select Your Game</string>
+    <string name="title_tiles">Tiles!</string>
+    <string name="buttonPlay">Play</string>
 </resources>

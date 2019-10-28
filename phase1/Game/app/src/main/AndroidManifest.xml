@@ -10,8 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".TapiocaGameLauncher"></activity>
+        <activity android:name=".TilesGameLauncher"></activity>
+        <activity android:name=".MazeGameLauncher"></activity>
         <activity
             android:name=".TapiocaLauncher.GameActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.noActionBar" />
+        <activity
+            android:name=".TilesGame.GameActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.noActionBar" />
         <activity
