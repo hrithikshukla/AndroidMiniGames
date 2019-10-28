@@ -1,6 +1,9 @@
 package com.example.game.TilesGame;
 
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Typeface;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -22,6 +25,9 @@ class BoardManager extends ClassLoader {
   /** A list of all tiles on this board. */
   private ArrayList<ArrayList<Tile>> tileBoard = new ArrayList<>();
 
+  /** The score of this game. */
+  private Integer score = 0;
+
   /** A boolean representing whether the game has started. */
   private boolean gameStart = false;
 
@@ -37,6 +43,10 @@ class BoardManager extends ClassLoader {
 
   public int getBoardHeight() {
     return boardHeight;
+  }
+
+  public int getScore() {
+    return score;
   }
 
   public boolean isGameStart() {
@@ -90,10 +100,11 @@ class BoardManager extends ClassLoader {
         gameEnd = true;
         return;
       }
-      // Move all the tiles on this board.
+      // Move all the tiles on this board, incrementing the speed by 50 every 15 points.
+      Integer increment = Math.floorDiv(score, 15);
       for (ArrayList<Tile> tileRow : tileBoard) {
         for (Tile tile : tileRow) {
-          tile.move(100);
+          tile.move(100 + (increment * 50));
         }
       }
       // Populate top of board with new tiles and remove tiles that have passed bottom of board.
@@ -103,11 +114,18 @@ class BoardManager extends ClassLoader {
 
   /** Draw the items in a board. */
   void draw(Canvas canvas) {
+    // Draw tiles.
     for (ArrayList<Tile> tileRow : tileBoard) {
       for (Tile tile : tileRow) {
         tile.draw(canvas);
       }
     }
+    // Draw score.
+    Paint paint = new Paint();
+    paint.setTypeface(Typeface.DEFAULT_BOLD);
+    paint.setTextSize(80);
+    paint.setColor(Color.MAGENTA);
+    canvas.drawText(score.toString(), (2 * tileWidth - 35), 150, paint);
   }
 
   /**
@@ -120,7 +138,11 @@ class BoardManager extends ClassLoader {
     for (ArrayList<Tile> tileRow : tileBoard) {
       for (Tile tile : tileRow) {
         if ((tile.getX() <= x && x <= (tile.getX() + tileWidth))
-            && (tile.getY() <= y && y <= (tile.getY() + tileHeight))) tile.setTouch(true);
+            && (tile.getY() <= y && y <= (tile.getY() + tileHeight))) // If this tile was touched
+        if (!tile.isTouch()) { // If tile has not already been touched.
+            tile.setTouch(true);
+            score++; // Increment score by one.
+          }
       }
     }
   }
