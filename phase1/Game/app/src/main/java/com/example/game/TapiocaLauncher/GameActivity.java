@@ -26,6 +26,8 @@ public class GameActivity extends AppCompatActivity {
 
         gameView = new GameView(this, point.x, point.y);
         setContentView(gameView);
+
+
     }
 
     @Override

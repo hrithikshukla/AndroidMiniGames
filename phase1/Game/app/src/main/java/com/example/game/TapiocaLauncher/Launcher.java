@@ -10,6 +10,8 @@ import com.example.game.R;
 
 import java.util.List;
 
+import static com.example.game.TapiocaLauncher.GameView.score;
+
 class Launcher {
 
   boolean isMoving = false;
@@ -172,6 +174,7 @@ class Launcher {
               getCentreY() - balls.get(i).centreY) <= 2 * radius) {
         balls.remove(i);
         i--;
+        score++;
       }
     }
   }

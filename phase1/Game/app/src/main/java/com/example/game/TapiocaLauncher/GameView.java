@@ -1,8 +1,10 @@
 package com.example.game.TapiocaLauncher;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.util.Log;
@@ -27,11 +29,14 @@ public class GameView extends SurfaceView implements Runnable{
     private Paint paint;
     private double startX =0, startY=0, endX=0, endY = 0;
     private boolean ballClicked;
+    static int score = 0;
+    private SharedPreferences prefs;
 
 
     public GameView(Context context, int screenX, int screenY) {
 
         super(context);
+        prefs = context.getSharedPreferences("game", Context.MODE_PRIVATE);
         this.screenX = screenX;
         this.screenY = screenY;
         screenRatioX = 1920f / screenX;
@@ -42,6 +47,9 @@ public class GameView extends SurfaceView implements Runnable{
         boardManager = new BoardManager(screenX, screenY, context);
         layout = boardManager.fillBoard(1);
         paint = new Paint();
+        paint.setTextSize(64);
+        paint.setColor(Color.BLACK);
+
 
     }
 
@@ -76,10 +84,20 @@ public class GameView extends SurfaceView implements Runnable{
                 canvas.drawBitmap(ball.getBall(), ball.x, ball.y, paint);
             }
             canvas.drawBitmap(launcher.getLauncher(), launcher.x, launcher.y, paint);
+            canvas.drawText("Score: " + score + "", 5, screenY - 30, paint);
+            saveIfHighScore();
 
             getHolder().unlockCanvasAndPost(canvas);
         }
 
+    }
+
+    private void saveIfHighScore() {
+        if (prefs.getInt("highscore", 0) < score) {
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putInt("highscore", score);
+            editor.apply();
+        }
     }
 
     private void sleep () {

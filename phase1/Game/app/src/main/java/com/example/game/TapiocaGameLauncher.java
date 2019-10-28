@@ -2,10 +2,12 @@ package com.example.game;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 public class TapiocaGameLauncher extends AppCompatActivity {
 
@@ -27,6 +29,11 @@ public class TapiocaGameLauncher extends AppCompatActivity {
                 startActivity(intent);
               }
             });
+
+      TextView highScoretxt = findViewById(R.id.highScoreText);
+
+      SharedPreferences prefs = getSharedPreferences("game", MODE_PRIVATE);
+      highScoretxt.setText("High score: " + prefs.getInt("highscore", 0));
   }
   /*
    */
