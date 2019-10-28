@@ -68,6 +68,15 @@ abstract class Tile {
     this.y = y;
   }
 
+  /**
+   * Move the tile speed units in the y-direction.
+   *
+   * @param speed: the speed at which the tile moves.
+   */
+  void move(int speed) {
+    y += speed;
+  }
+
   void draw(Canvas canvas) {
     // Draw border of tile.
     paintRect.setStyle(Paint.Style.STROKE);
