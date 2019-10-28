@@ -9,13 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TapiocaLauncher.GameActivity"
+        <activity android:name=".TapiocaGameLauncher"></activity>
+        <activity
+            android:name=".TapiocaLauncher.GameActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.noActionBar"
-            />
-        <activity android:name=".MazeGame.GameActivity"
+            android:theme="@style/AppTheme.noActionBar" />
+        <activity
+            android:name=".MazeGame.GameActivity"
             android:screenOrientation="landscape"
-            android:theme="@style/AppTheme.noActionBar"/>
+            android:theme="@style/AppTheme.noActionBar" />
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait"

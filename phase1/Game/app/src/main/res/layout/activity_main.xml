@@ -1,78 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/milktea" />
+
+    <Button
+        android:id="@+id/buttonTapiocaLauncher"
+        android:layout_width="203dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="104dp"
+        android:layout_marginEnd="104dp"
+        android:layout_marginBottom="75dp"
+        android:onClick="goToTapiocaLauncher"
+        android:text="@string/button_tapioca_launcher"
+        app:layout_constraintBottom_toTopOf="@+id/tiles"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonMaze" />
+
+    <Button
+        android:id="@+id/buttonMaze"
+        android:layout_width="203dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="104dp"
+        android:layout_marginEnd="104dp"
+        android:layout_marginBottom="75dp"
+        android:text="@string/button_maze"
+        app:layout_constraintBottom_toTopOf="@+id/buttonTapiocaLauncher"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <Button
+        android:id="@+id/tiles"
+        android:layout_width="203dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="104dp"
+        android:layout_marginEnd="104dp"
+        android:layout_marginBottom="150dp"
+        android:text="@string/button_tiles"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonTapiocaLauncher" />
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tapioca Launcher"
-        android:textColor="#000000"
-        android:textSize="44sp"
-        android:layout_below="@+id/play"
-        android:layout_centerHorizontal="true"/>
+        android:layout_height="0dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="100dp"
+        android:text="@string/select_game"
+        android:textAlignment="center"
+        android:textSize="15pt"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/buttonMaze"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Play"
-        android:textColor="#000000"
-        android:textSize="64sp"
-        android:id="@+id/play"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:textColor="#000000"
-        android:text="High Score: "
-        android:id="@+id/highScoreText"
-        android:layout_margin="16dp"
-        android:layout_alignParentBottom="true"/>
-
-    <ImageView
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_margin = "16dp"
-        android:id="@+id/volumeCtrl"
-        android:src="@drawable/ic_volume_up_black_24dp" />
-
-<!--    Maze Game activity_main xml-->
-
-<!--    <ImageView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:src="@drawable/background"-->
-<!--        android:scaleType="centerCrop"/>-->
-
-<!--    <TextView-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:textSize="48sp"-->
-<!--        android:text="Maze Game"-->
-<!--        android:textColor="#ffffff"-->
-<!--        android:layout_above="@id/play"-->
-<!--        android:layout_centerHorizontal="true"/>-->
-
-<!--    <TextView-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Play"-->
-<!--        android:textSize="64sp"-->
-<!--        android:layout_centerInParent="true"-->
-<!--        android:textColor="#ffffff"-->
-<!--        android:id="@+id/play"/>-->
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
