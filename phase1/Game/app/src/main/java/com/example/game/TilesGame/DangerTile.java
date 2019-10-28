@@ -4,9 +4,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 
-/**
- * A dangerous tile.
- */
+/** A dangerous tile. */
 class DangerTile extends Tile {
 
   /**
@@ -21,10 +19,15 @@ class DangerTile extends Tile {
 
   @Override
   void draw(Canvas canvas) {
+    // Fill tile.
     paintRect.setStyle(Paint.Style.FILL);
-    paintRect.setColor(Color.WHITE);
+    if (!touch) {
+      paintRect.setColor(Color.WHITE);
+    } else {
+      paintRect.setColor(Color.RED);
+    }
     canvas.drawRect(x, y, x + width, y + height, paintRect);
 
-    super.draw(canvas);
+    super.draw(canvas); // Draw border of tile.
   }
 }

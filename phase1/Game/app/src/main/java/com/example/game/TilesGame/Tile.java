@@ -5,30 +5,23 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 
-/**
- * A tile.
- */
+/** A tile. */
 abstract class Tile {
 
-  /**
-   * The width of a tile.
-   */
+  /** The width of a tile. */
   static int width = Resources.getSystem().getDisplayMetrics().widthPixels / 4;
 
-  /**
-   * The height of a tile.
-   */
+  /** The height of a tile. */
   static int height = Resources.getSystem().getDisplayMetrics().heightPixels / 4;
 
-  /**
-   * The x-coordinate of this tile.
-   */
+  /** The x-coordinate of this tile. */
   int x;
 
-  /**
-   * The y-coordinate of this tile.
-   */
+  /** The y-coordinate of this tile. */
   int y;
+
+  /** A boolean representing whether this tile has been touched. */
+  boolean touch = false;
 
   Paint paintRect = new Paint();
 
@@ -66,6 +59,14 @@ abstract class Tile {
 
   public void setY(int y) {
     this.y = y;
+  }
+
+  public boolean isTouch() {
+    return touch;
+  }
+
+  void setTouch(boolean touch) {
+    this.touch = touch;
   }
 
   /**

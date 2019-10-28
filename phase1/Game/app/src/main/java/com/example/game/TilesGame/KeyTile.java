@@ -4,9 +4,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 
-/**
- * A key tile.
- */
+/** A key tile. */
 class KeyTile extends Tile {
 
   /**
@@ -21,10 +19,15 @@ class KeyTile extends Tile {
 
   @Override
   void draw(Canvas canvas) {
+    // Fill tile.
     paintRect.setStyle(Paint.Style.FILL);
-    paintRect.setColor(Color.BLACK);
+    if (!touch) {
+      paintRect.setColor(Color.BLACK);
+    } else {
+      paintRect.setColor(Color.rgb(200, 200, 200));
+    }
     canvas.drawRect(x, y, x + width, y + height, paintRect);
 
-    super.draw(canvas);
+    super.draw(canvas); // Draw border of tile.
   }
 }
