@@ -96,7 +96,13 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     float x = event.getX();
     float y = event.getY();
 
-    if (event.getAction() == MotionEvent.ACTION_DOWN) boardManager.touchTile(x, y);
+    if (event.getAction() == MotionEvent.ACTION_DOWN) {
+      boardManager.touchTile(x, y);
+
+      if (!boardManager.isGameStart()) {
+        boardManager.setGameStart(true);
+      }
+    }
     return true;
   }
 }

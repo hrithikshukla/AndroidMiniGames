@@ -22,6 +22,9 @@ class BoardManager extends ClassLoader {
   /** A list of all tiles on this board. */
   private ArrayList<ArrayList<Tile>> tileBoard = new ArrayList<>();
 
+  /** A boolean representing whether the game has started. */
+  private boolean gameStart = false;
+
   /**
    * Construct a board manager with board dimensions width and height.
    *
@@ -41,6 +44,14 @@ class BoardManager extends ClassLoader {
     return boardHeight;
   }
 
+  public boolean isGameStart() {
+    return gameStart;
+  }
+
+  public void setGameStart(boolean gameStart) {
+    this.gameStart = gameStart;
+  }
+
   /** Create the starting items in a board. */
   void createBoardItems() {
     // Add five arrays to tileBoard to represent the five onscreen rows of tiles.
@@ -52,7 +63,8 @@ class BoardManager extends ClassLoader {
 
     Random ran = new Random(); // Use a random variable to randomize the key tile in each row.
 
-    for (int i = 0; i < 5; i++) {
+    // Fill first four rows with both danger tiles and key tiles.
+    for (int i = 0; i < 4; i++) {
       ArrayList<Tile> tileRow = tileBoard.get(i);
       Integer keyTileIndex = ran.nextInt(4);
       for (int j = 0; j < 4; j++) {
@@ -63,13 +75,20 @@ class BoardManager extends ClassLoader {
         }
       }
     }
+    // Fill last row with danger tiles.
+    ArrayList<Tile> tileRow = tileBoard.get(4);
+    for (int j = 0; j < 4; j++) {
+      tileRow.add(new DangerTile(j * tileWidth, 3 * tileHeight));
+    }
   }
 
   /** Update the items in a board. */
   void update() {
-    for (ArrayList<Tile> tileRow : tileBoard) {
-      for (Tile tile : tileRow) {
-        tile.move(30);
+    if (gameStart) {
+      for (ArrayList<Tile> tileRow : tileBoard) {
+        for (Tile tile : tileRow) {
+          tile.move(100);
+        }
       }
     }
   }
