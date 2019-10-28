@@ -86,6 +86,7 @@ public class GameView extends SurfaceView implements Runnable{
             }
             canvas.drawBitmap(launcher.getLauncher(), launcher.x, launcher.y, paint);
             canvas.drawText("Score: " + score + "", 5, screenY - 30, paint);
+            canvas.drawText("Level: " + (level-1) + "", 5, screenY - 100, paint);
             saveIfHighScore();
 
             getHolder().unlockCanvasAndPost(canvas);
