@@ -139,9 +139,9 @@ class BoardManager extends ClassLoader {
       for (Tile tile : tileRow) {
         if ((tile.getX() <= x && x <= (tile.getX() + tileWidth))
             && (tile.getY() <= y && y <= (tile.getY() + tileHeight))) // If this tile was touched
-        if (!tile.isTouch()) { // If tile has not already been touched.
+        if (!tile.isTouch() && tile instanceof KeyTile) { // If tile has not already been touched.
             tile.setTouch(true);
-            score++; // Increment score by one.
+            score++; // Increment score by one (only of tile is a KeyTile).
           }
       }
     }
