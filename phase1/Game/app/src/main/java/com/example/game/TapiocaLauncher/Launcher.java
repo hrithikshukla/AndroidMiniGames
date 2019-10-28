@@ -22,6 +22,7 @@ class Launcher {
   Bitmap orientation1, orientation2, orientation3, orientation4;
   int screenX, screenY;
   double gravity, speedX, speedY;
+  double gravityX, gravityY;
 
   Launcher(int screenX, int screenY, Resources res) {
     orientation1 = BitmapFactory.decodeResource(res, R.drawable.tapioca1);
@@ -70,14 +71,14 @@ class Launcher {
   private void move(List<Ball> balls) {
     x += speedX;
     y += speedY;
-    detectCollisions(balls);
+
 
     if(x < 0) {
       x = 0;
       speedX = -speedX;
     } else if(x +width > screenX) {
-        x = screenX - width;
-        speedX = -speedX;
+      x = screenX - width;
+      speedX = -speedX;
     }
     if(y < 0) {
       y = 0;
@@ -86,7 +87,7 @@ class Launcher {
       y = screenY - height;
       speedY = - speedY;
     }
-
+    detectCollisions(balls);
   }
 
   void moveBall(double startX, double startY, double endX, double endY) {
@@ -94,13 +95,15 @@ class Launcher {
     readyToLaunch = false;
     speedX =  Math.cos(Math.atan2(endY-startY, endX-startX))*300;
     speedY =  Math.sin(Math.atan2(endY-startY, endX-startX))*300;
+    gravityX = Math.abs(speedX)/50;
+    gravityY = Math.abs(speedY)/50;
   }
 
   void update(List<Ball> balls) {
     if(isMoving) {
       move(balls);
-      speedX = decrement(speedX);
-      speedY = decrement(speedY);
+      speedX = decrement(speedX, gravityX);
+      speedY = decrement(speedY, gravityY);
       if(speedX == 0 && speedY == 0) {
         isMoving = false;
       }
@@ -116,7 +119,7 @@ class Launcher {
     }
   }
 
-  private double decrement(double speed) { //reduces speed by gravity amount
+  private double decrement(double speed, double gravity) { //reduces speed by gravity amount
     //Log.d("", "decremented " + speed);
     if (speed >= 0 ) {
       speed -= gravity;
