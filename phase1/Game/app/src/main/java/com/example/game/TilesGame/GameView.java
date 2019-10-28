@@ -38,18 +38,8 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
   @Override
   public void surfaceCreated(SurfaceHolder holder) {
 
-    // Figure out the size of a letter.
-    Paint paintText = new Paint();
-    paintText.setTextSize(36);
-    paintText.setTypeface(Typeface.DEFAULT_BOLD);
-    charWidth = paintText.measureText("W");
-    charHeight = -paintText.ascent() + paintText.descent();
-
     // Use the letter size and screen height to determine the size of the tile board.
-    boardManager =
-        new BoardManager(
-            (int) (screenHeight / charHeight),
-            (int) (screenWidth / charWidth)); // Instantiate new BoardManager.
+    boardManager = new BoardManager(); // Instantiate new BoardManager.
     boardManager.createBoardItems();
 
     thread.setRunning(true);
@@ -77,6 +67,9 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
   /** Update the board. */
   public void update() {
     boardManager.update();
+    if (boardManager.isGameEnd()) {
+      thread.setRunning(false);
+    }
   }
 
   /** Draw the board on canvas. */
