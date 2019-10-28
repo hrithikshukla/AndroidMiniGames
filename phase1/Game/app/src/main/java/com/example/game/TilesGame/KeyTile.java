@@ -7,6 +7,9 @@ import android.graphics.Paint;
 /** A key tile. */
 class KeyTile extends Tile {
 
+  /** A boolean to represent whether this tile has been missed on a board. */
+  private boolean missed = false;
+
   /**
    * Construct a key tile at location (x, y).
    *
@@ -17,11 +20,17 @@ class KeyTile extends Tile {
     super(x, y);
   }
 
+  public void setMissed(boolean missed) {
+    this.missed = missed;
+  }
+
   @Override
   void draw(Canvas canvas) {
     // Fill tile.
     paintRect.setStyle(Paint.Style.FILL);
-    if (!touch) {
+    if (missed) {
+      paintRect.setColor(Color.RED);
+    } else if (!touch) {
       paintRect.setColor(Color.BLACK);
     } else {
       paintRect.setColor(Color.rgb(200, 200, 200));

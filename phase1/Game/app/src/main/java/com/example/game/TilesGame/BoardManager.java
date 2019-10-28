@@ -86,10 +86,10 @@ class BoardManager extends ClassLoader {
   void update() {
     if (gameStart) {
       // Check if the game will end this turn.
-      //  if (doesGameEnd()) {
-      //    gameEnd = true;
-      //    return;
-      //  }
+      if (doesGameEnd()) {
+        gameEnd = true;
+        return;
+      }
       // Move all the tiles on this board.
       for (ArrayList<Tile> tileRow : tileBoard) {
         for (Tile tile : tileRow) {
@@ -123,6 +123,21 @@ class BoardManager extends ClassLoader {
             && (tile.getY() <= y && y <= (tile.getY() + tileHeight))) tile.setTouch(true);
       }
     }
+  }
+
+  /** Check if the game is going to end. * */
+  private boolean doesGameEnd() {
+    for (ArrayList<Tile> tileRow : tileBoard) {
+      for (Tile tile : tileRow) {
+        if (tile instanceof DangerTile && tile.touch) { // Check if a danger tile has been touched.
+          return true;
+        } else if (tile instanceof KeyTile && !tile.touch && tile.getY() >= boardHeight - 50) {
+          ((KeyTile) tile).setMissed(true);
+          return true;
+        }
+      }
+    }
+    return false;
   }
 
   /**
