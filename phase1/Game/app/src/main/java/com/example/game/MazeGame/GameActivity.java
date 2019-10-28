@@ -6,6 +6,7 @@ import android.graphics.Point;
 import android.os.Bundle;
 import android.view.WindowManager;
 
+
 public class GameActivity extends AppCompatActivity {
 
     private GameView gameView;
@@ -17,7 +18,8 @@ public class GameActivity extends AppCompatActivity {
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        Point point = new Point();
+        // Get maximum x and y coordinate of phone screen
+        Point point = new Point(); // point object stores it
         getWindowManager().getDefaultDisplay().getSize(point);
 
         this.maze = new Maze(41, 21);

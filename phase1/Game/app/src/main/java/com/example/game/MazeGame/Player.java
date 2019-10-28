@@ -1,11 +1,12 @@
 package com.example.game.MazeGame;
 
 import java.util.ArrayList;
+import java.util.Observable;
 
 /**
  * Represents the player in a maze.
  */
-public class Player {
+public class Player{
 
     /**
      * Position of the player.
@@ -77,6 +78,12 @@ public class Player {
         posY = newY;
     }
 
+    void displace(int x, int y){
+        posX += x;
+        posY += y;
+    }
+
+    void afk(){}
     /**
      * Returns the current position of the player.
      */

@@ -1,9 +1,9 @@
 package com.example.game.MazeGame;
 
 import android.util.Pair;
-
 import java.util.ArrayList;
 
+//TODO: fix get cell method, code smells looks awkward
 /** Represents the maze of the game. */
 public class Maze {
   private Cell[][] grid;
@@ -23,13 +23,30 @@ public class Maze {
     generateMaze();
   }
 
+  public int getWidth() {
+    return width;
+  }
+
+  public int getHeight() {
+    return height;
+  }
+
+  Cell getCell(int y, int x){
+    try{
+      return grid[y][x];
+    }catch(IndexOutOfBoundsException e){
+      e.printStackTrace();
+    }
+    return grid[y][x];
+  }
+
   void generateMaze() {
     initNodes();
     mst();
   }
 
   @Override
-  public String toString() {
+  public String toString(){
     StringBuilder s = new StringBuilder();
     for (int i = 0; i < height; i++) {
       for (int j = 0; j < width; j++) {
@@ -60,6 +77,10 @@ public class Maze {
       }
     }
     return tmp;
+  }
+
+  Cell[][] getGrid() {
+    return grid;
   }
 
   // initialize the floor and wall "nodes" of the maze
