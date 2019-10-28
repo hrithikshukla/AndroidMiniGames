@@ -23,7 +23,6 @@ public class GameView extends SurfaceView implements Runnable{
     private List<Ball> layout;
     private int screenX, screenY;
     public static Launcher launcher;
-    private Arrow arrow;
     public static float screenRatioX, screenRatioY;
     private Paint paint;
     private double startX =0, startY=0, endX=0, endY = 0;
@@ -40,7 +39,6 @@ public class GameView extends SurfaceView implements Runnable{
 
         background = new Background(screenX, screenY, getResources());
         launcher = new Launcher(screenX, screenY, getResources());
-        arrow = new Arrow(launcher.x, launcher.y, getResources());
         boardManager = new BoardManager(screenX, screenY, context);
         layout = boardManager.fillBoard(1);
         paint = new Paint();
@@ -61,7 +59,7 @@ public class GameView extends SurfaceView implements Runnable{
     }
 
     void update (){
-        launcher.update();
+        launcher.update(layout);
     }
 
     private void draw (){
@@ -75,8 +73,6 @@ public class GameView extends SurfaceView implements Runnable{
                 canvas.drawBitmap(ball.getBall(), ball.x, ball.y, paint);
             }
             canvas.drawBitmap(launcher.getLauncher(), launcher.x, launcher.y, paint);
-            // canvas.drawBitmap(arrow.getArrow(), arrow.x, arrow.y, paint);
-            rotateArrow(arrow, 45, canvas);
 
             getHolder().unlockCanvasAndPost(canvas);
         }
@@ -106,16 +102,6 @@ public class GameView extends SurfaceView implements Runnable{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-    }
-
-    private void rotateArrow(Arrow src, int degrees, Canvas canvas) {
-        Matrix matrix = new Matrix();
-        matrix.reset();
-        Paint paint = new Paint();
-        matrix.postTranslate(-src.arrow.getWidth() /2, -10);
-        matrix.postRotate(degrees);
-        matrix.postTranslate(src.x, src.y);
-        canvas.drawBitmap(src.arrow, matrix, paint);
     }
 
     @Override

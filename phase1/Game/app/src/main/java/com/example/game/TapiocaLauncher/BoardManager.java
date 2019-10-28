@@ -14,7 +14,7 @@ class BoardManager extends ClassLoader {
     private Context context;
 
     BoardManager(int screenX, int screenY, Context context) {
-        bubbles = new ArrayList();
+        bubbles = new ArrayList<>();
         this.screenX = screenX;
         this.screenY = screenY;
         this.context = context;
@@ -36,16 +36,15 @@ class BoardManager extends ClassLoader {
         return bubbles;
     }
 
-    static boolean intersects(Launcher launcher, Ball ball) {
-        boolean intersects = false;
-        if (distance(launcher.centreX, ball.centreX, launcher.centreY, ball.centreY) <= 2 * launcher.radius) {
-            intersects = true;
-        }
-        return intersects;
-    }
-
-    private static float distance(int x1, int x2, int y1, int y2) {
-        return (float) Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
-    }
-
+//    static boolean intersects(Launcher launcher, Ball ball) {
+//        boolean intersects = false;
+//        if (distance(launcher.centreX, ball.centreX, launcher.centreY, ball.centreY) <= 2 * launcher.radius) {
+//            intersects = true;
+//        }
+//        return intersects;
+//    }
+//
+//    private static float distance(int x1, int x2, int y1, int y2) {
+//        return (float) Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+//    }
 }

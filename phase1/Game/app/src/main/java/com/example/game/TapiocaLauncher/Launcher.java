@@ -8,13 +8,14 @@ import android.view.MotionEvent;
 
 import com.example.game.R;
 
+import java.util.List;
+
 class Launcher {
 
   boolean isMoving = false;
   boolean readyToLaunch = true;
   int x, y, width, height, turnCounter = 0;
   int radius;
-  int centreX, centreY;
   int count = 0;
 
 
@@ -41,8 +42,6 @@ class Launcher {
     this.screenX = screenX;
     this.screenY = screenY;
     radius = width / 2;
-    centreX = this.x + radius;
-    centreY = this.y + radius;
     gravity = 5;
   }
 
@@ -68,37 +67,10 @@ class Launcher {
     } else return orientation1;
   }
 
-//  void moveX() {
-//    if (isMoving) {
-//      if (x + width > screenX - 1) {
-//        x = screenX - width;
-//        speedX = -speedX;
-//      }
-//      else if (x < 1) {
-//        x = 1;
-//        speedX = -speedX;
-//      }
-//        x += speedX;
-//    }
-//  }
-//
-//  void moveY() {
-//    if (isMoving) {
-//      if (y + height > screenY - 1) {
-//        y = screenY - height;
-//        speedY = -speedY;
-//      }
-//      else if (y < 1) {
-//        y = 1;
-//        speedY = -speedY;
-//      }
-//        y += speedY;
-//    }
-//  }
-
-  void move() {
+  private void move(List<Ball> balls) {
     x += speedX;
     y += speedY;
+    detectCollisions(balls);
 
     if(x < 0) {
       x = 0;
@@ -124,9 +96,9 @@ class Launcher {
     speedY =  Math.sin(Math.atan2(endY-startY, endX-startX))*300;
   }
 
-  void update() {
+  void update(List<Ball> balls) {
     if(isMoving) {
-      move();
+      move(balls);
       speedX = decrement(speedX);
       speedY = decrement(speedY);
       if(speedX == 0 && speedY == 0) {
@@ -144,7 +116,7 @@ class Launcher {
     }
   }
 
-  double decrement(double speed) { //reduces speed by gravity amount
+  private double decrement(double speed) { //reduces speed by gravity amount
     //Log.d("", "decremented " + speed);
     if (speed >= 0 ) {
       speed -= gravity;
@@ -178,8 +150,27 @@ class Launcher {
     return height;
   }
 
-  public boolean isReadyToLaunch() {
+  boolean isReadyToLaunch() {
     return readyToLaunch;
+  }
+
+  private int getCentreX () {
+    return this.x + radius;
+  }
+
+  private int getCentreY () {
+    return this.y + radius;
+  }
+
+  private void detectCollisions(List<Ball> balls) {
+    // Check for collisions
+    for (int i = 0; i < balls.size(); i++) {
+      if (Math.hypot(getCentreX() - balls.get(i).centreX,
+              getCentreY() - balls.get(i).centreY) <= 2 * radius) {
+        balls.remove(i);
+        i--;
+      }
+    }
   }
 }
 
