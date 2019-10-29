@@ -38,15 +38,23 @@ public class GameFacade extends Observable {
     setChanged();
     // Need to supply an updated representation of the new Maze and score to be drawn.
     NewGameState newGameState =
-        new NewGameState(getCellrepresentation(), player.getScore(), player.getNumSteps());
+        new NewGameState(getCellRepresentation(), player.getScore(), player.getNumSteps());
     notifyObservers(newGameState);
   }
 
-  private Cell[][] getCellrepresentation() {
+  private Cell[][] getCellRepresentation() {
     // Must use a deep copy to prevent aliasing when replacing a Cell Tile with a
     // Player Cell Tile.
     Cell[][] representation = maze.getGridDeepCopy();
-    representation[player.getPos()[1]][player.getPos()[0]] = Cell.PLAYER;
+
+    // Insert Player Tile into the Maze. Two cases: when Player is at the exit and when they aren't.
+    int[] exit = getMaze().getExit();
+    if (getPlayer().isAt(exit[0], exit[1])) {
+      representation[player.getPos()[1]][player.getPos()[0]] = Cell.PLAYER_AT_EXIT;
+    } else {
+      representation[player.getPos()[1]][player.getPos()[0]] = Cell.PLAYER;
+    }
+
     return representation;
   }
 }
