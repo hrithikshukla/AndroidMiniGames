@@ -2,7 +2,6 @@ package com.example.game.MazeGame;
 
 import android.util.Pair;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Observable;
@@ -38,13 +37,15 @@ public class GameFacade extends Observable {
 
         setChanged();
         // Need to put a 2d array of Cells into notifyObservers parameters
-        notifyObservers(getCellRepresentation());
+        notifyObservers(getCellrepresentation());
 
 
     }
 
-    private Cell [][] getCellRepresentation(){
-        Cell [][] representation = maze.getGrid();
+    private Cell [][] getCellrepresentation(){
+        // Must use a deep copy to prevent aliasing when replacing a Cell Tile with a
+        // Player Cell Tile.
+        Cell [][] representation = maze.getGridDeepCopy();
         representation[player.getPos()[1]][player.getPos()[0]] = Cell.PLAYER;
         return representation;
     }
