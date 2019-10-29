@@ -1,130 +1,86 @@
 package com.example.game.MazeGame;
 
 import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Paint;
+import android.view.MotionEvent;
 import android.view.SurfaceView;
 
-/**
- * Class responsible for drawing the UI of the game.
- */
+/** View component of the game. Handles the drawing of the screen and user inputs (touches). */
 public class GameView extends SurfaceView implements Runnable {
 
-    private Thread thread;
-    private boolean isPlaying;
+  private Thread thread;
+  private boolean isPlaying;
 
-    // Maximum x and y positions of the screen.
-    private int screenX, screenY;
+  private InputView inputView; // View subcomponent dealing with user input.
+  private VisualView visualView; // View subcomponent dealing with drawing the screen.
 
-    private Paint paint;
-    private Tile tile;
-    private Background background;
-    private int[][] maze;
+  public GameView(Context context, int maxScreenX, int maxScreenY) {
+    super(context);
+    this.inputView = new InputView(maxScreenX, maxScreenY);
+    this.visualView = new VisualView(maxScreenX, maxScreenY, getResources(), getHolder());
+  }
 
-    public GameView(Context context, int screenX, int screenY, int[][] maze) {
-        super(context);
-        this.screenX = screenX;
-        this.screenY = screenY;
-        this.maze = maze;
+  /** Runs the game. */
+  @Override
+  public void run() {
 
-        this.tile = new Tile(getResources());
-        this.background = new Background(screenX, screenY, getResources());
+    while (isPlaying) {
 
-        this.paint = new Paint();
+      visualView.draw(); // Draw maze
+      sleep(); // Sleep to avoid constantly redrawing the maze
     }
+  }
+
+  /** Updates the screen roughly 60 times a second. */
+  private void sleep() {
+    try {
+      Thread.sleep(17);
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
+  }
+
+  /** Resumes the game from a paused state. */
+  public void resume() {
+    isPlaying = true;
+    thread = new Thread(this);
+    thread.start();
+  }
+
+  /** Pauses the game. */
+  public void pause() {
+
+    try {
+      isPlaying = false;
+      thread.join();
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
+  }
+
+  /**
+   * Registers a touch event by the user and passes it to inputView.
+   *
+   * @param event - user input event
+   */
+  @Override
+  public boolean onTouchEvent(MotionEvent event) {
+    if (event.getAction() == MotionEvent.ACTION_DOWN) {
+      inputView.setNewTouch(event.getX(), event.getY());
+    }
+    return true;
+  }
 
     /**
-     * Runs the game when the maze window is active.
+     * Getter for inputView.
      */
-    @Override
-    public void run() {
-
-        while (isPlaying) {
-
-            update();
-            draw();
-            sleep();
-
-        }
-
-    }
+  InputView getInputView() {
+    return inputView;
+  }
 
     /**
-     * Updates the state of the game given user inputs.
+     * Getter for visualView.
      */
-    private void update() {
-
-    }
-
-    /**
-     * Draws the tiles of the maze.
-     */
-    private void draw() {
-
-        if (getHolder().getSurface().isValid()) {
-
-            Canvas canvas = getHolder().lockCanvas();
-
-            // Draw the background first.
-            canvas.drawBitmap(background.getBackground(), background.getX(), background.getY(), paint);
-
-            // Maze is drawn so that it is centered on the screen.
-
-            // Following two lines represents the x and y position of the first tile of the maze,
-            // i.e. maze[0][0].
-            int topLeftTileX = (this.screenX - maze[0].length * tile.getSideLength()) / 2;
-            int topLeftTileY = (this.screenY - maze.length * tile.getSideLength()) / 2;
-
-            // Draw every tile of the maze. An offset of a tile's side length ensures that each
-            // tile is drawn right next to each other.
-            for (int i = 0; i < maze.length; i++) {
-                for (int j = 0; j < maze[i].length; j++) {
-                    canvas.drawBitmap(tile.getTile(maze[i][j]),
-                            topLeftTileX + (j * tile.getSideLength()),
-                            topLeftTileY + (i * tile.getSideLength()),
-                            paint);
-                }
-            }
-
-            getHolder().unlockCanvasAndPost(canvas);
-
-        }
-
-    }
-
-    /**
-     * Updates the screen roughly 60 times a second.
-     */
-    private void sleep() {
-        try {
-            Thread.sleep(17);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-    /**
-     * Resumes the game from a paused state.
-     */
-    public void resume() {
-        isPlaying = true;
-        thread = new Thread(this);
-        thread.start();
-    }
-
-    /**
-     * Pauses the game.
-     */
-    public void pause() {
-
-        try {
-            isPlaying = false;
-            thread.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-    }
-
+  VisualView getVisualView() {
+    return visualView;
+  }
 }
