@@ -13,10 +13,11 @@ import android.view.SurfaceView;
 import android.view.View;
 
 import java.util.List;
+
 @SuppressWarnings("ClickableViewAccessibility")
 
 
-public class GameView extends SurfaceView implements Runnable{
+public class GameView extends SurfaceView implements Runnable {
 
     private Thread thread;
     private boolean isPlaying;
@@ -27,7 +28,7 @@ public class GameView extends SurfaceView implements Runnable{
     public static Launcher launcher;
     public static float screenRatioX, screenRatioY;
     private Paint paint;
-    private double startX =0, startY=0, endX=0, endY = 0;
+    private double startX = 0, startY = 0, endX = 0, endY = 0;
     private boolean ballClicked;
     private int level = 1;
     static int score = 0;
@@ -41,7 +42,7 @@ public class GameView extends SurfaceView implements Runnable{
         this.screenX = screenX;
         this.screenY = screenY;
         screenRatioX = 1920f / screenX;
-        screenRatioY = 1080f /screenY;
+        screenRatioY = 1080f / screenY;
 
         background = new Background(screenX, screenY, getResources());
         launcher = new Launcher(screenX, screenY, getResources());
@@ -66,27 +67,27 @@ public class GameView extends SurfaceView implements Runnable{
 
     }
 
-    void update (){
+    void update() {
         launcher.update(layout);
     }
 
-    private void draw (){
+    private void draw() {
 
         if (getHolder().getSurface().isValid()) {
 
             Canvas canvas = getHolder().lockCanvas();
-            canvas.drawBitmap(background.background, background.x, background.y, paint);
+            canvas.drawBitmap(background.getBackground(), background.getX(), background.getY(), paint);
 
-            if (layout.size() == 0 && launcher.readyToLaunch) {
+            if (layout.size() == 0 && launcher.isReadyToLaunch()) {
                 layout = boardManager.fillBoard(level);
                 level++;
             }
-            for (Ball ball: layout) {
-                canvas.drawBitmap(ball.getBall(), ball.x, ball.y, paint);
+            for (Ball ball : layout) {
+                canvas.drawBitmap(ball.getBall(), ball.getX(), ball.getY(), paint);
             }
-            canvas.drawBitmap(launcher.getLauncher(), launcher.x, launcher.y, paint);
+            canvas.drawBitmap(launcher.getLauncher(), launcher.getX(), launcher.getY(), paint);
             canvas.drawText("Score: " + score + "", 5, screenY - 30, paint);
-            canvas.drawText("Level: " + (level-1) + "", 5, screenY - 100, paint);
+            canvas.drawText("Level: " + (level - 1) + "", 5, screenY - 100, paint);
             saveIfHighScore();
 
             getHolder().unlockCanvasAndPost(canvas);
@@ -102,7 +103,7 @@ public class GameView extends SurfaceView implements Runnable{
         }
     }
 
-    private void sleep () {
+    private void sleep() {
         try {
             Thread.sleep(17);
         } catch (InterruptedException e) {
@@ -110,14 +111,14 @@ public class GameView extends SurfaceView implements Runnable{
         }
     }
 
-    public void resume () {
+    public void resume() {
 
         isPlaying = true;
         thread = new Thread(this);
         thread.start();
     }
 
-    public void pause () {
+    public void pause() {
 
         try {
             isPlaying = false;
@@ -131,7 +132,7 @@ public class GameView extends SurfaceView implements Runnable{
     public boolean onTouchEvent(MotionEvent event) {
         if (launcher.isReadyToLaunch()) {
             if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                if (( event.getX() >= launcher.getX() && event.getX() <= (launcher.getX() + launcher.getHeight()) )&&
+                if ((event.getX() >= launcher.getX() && event.getX() <= (launcher.getX() + launcher.getHeight())) &&
                         (event.getY() >= launcher.getY() && event.getY() <= (launcher.getY() + launcher.getWidth()))) {
                     startX = event.getX();
                     startY = event.getY();
@@ -147,8 +148,6 @@ public class GameView extends SurfaceView implements Runnable{
                 if (ballClicked) {
                     endX = event.getX();
                     endY = event.getY();
-                    // Log.d("", "onTouchEvent: Motion Up  x-val: " + endX);
-                    // Log.d("", "onTouchEvent: Motion Up  y-val: " + endY);
                     launcher.moveBall(startX, startY, endX, endY);
                     ballClicked = false;
                 }

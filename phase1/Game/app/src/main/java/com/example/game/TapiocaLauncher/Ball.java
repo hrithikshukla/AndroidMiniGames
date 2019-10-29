@@ -6,7 +6,7 @@ import android.graphics.BitmapFactory;
 
 import com.example.game.R;
 
-class Ball{
+class Ball {
 
     int x, y, width, height, radius;
     int centreX, centreY;
@@ -15,7 +15,7 @@ class Ball{
     boolean hit = false;
     int hp;
 
-    Ball (int x, int y, Resources res, int hp){
+    Ball(int x, int y, Resources res, int hp) {
         if (hp == 1) {
             orientation1 = BitmapFactory.decodeResource(res, R.drawable.brown);
         } else if (hp == 2) {
@@ -34,7 +34,7 @@ class Ball{
         this.res = res;
     }
 
-    Bitmap getBall(){
+    Bitmap getBall() {
         return orientation1;
     }
 
@@ -66,6 +66,13 @@ class Ball{
 
     public void setHit(boolean hit) {
         this.hit = hit;
+    }
 
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
     }
 }
