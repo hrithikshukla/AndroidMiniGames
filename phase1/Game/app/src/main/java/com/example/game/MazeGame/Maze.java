@@ -2,13 +2,17 @@ package com.example.game.MazeGame;
 
 import android.util.Pair;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
-//TODO: fix get cell method, code smells looks awkward
+// TODO: fix get cell method, code smells looks awkward
 /** Represents the maze of the game. */
 public class Maze {
   private Cell[][] grid;
   private int width;
   private int height;
+
+  private int[] exit;
 
   /**
    * @param width: width of maze has to be geq 7 has to be odd; number of cells in x direction;
@@ -31,10 +35,10 @@ public class Maze {
     return height;
   }
 
-  Cell getCell(int y, int x){
-    try{
+  Cell getCell(int y, int x) {
+    try {
       return grid[y][x];
-    }catch(IndexOutOfBoundsException e){
+    } catch (IndexOutOfBoundsException e) {
       e.printStackTrace();
     }
     return grid[y][x];
@@ -43,10 +47,11 @@ public class Maze {
   void generateMaze() {
     initNodes();
     mst();
+    generateExit();
   }
 
   @Override
-  public String toString(){
+  public String toString() {
     StringBuilder s = new StringBuilder();
     for (int i = 0; i < height; i++) {
       for (int j = 0; j < width; j++) {
@@ -80,10 +85,8 @@ public class Maze {
     }
   }
 
-  /**
-   * Returns a deep copy of the grid representing the maze.
-   */
-  Cell[][] getGridDeepCopy(){
+  /** Returns a deep copy of the grid representing the maze. */
+  Cell[][] getGridDeepCopy() {
     Cell[][] tmp = new Cell[height][width];
     for (int i = 0; i < height; i++) {
       for (int j = 0; j < width; j++) {
@@ -110,10 +113,10 @@ public class Maze {
       int randomNeighbourIndex = (int) (Math.random() * (neighboursUnprocessed.size() - 1));
       // Pick a random neighbour that has not been processed
       Pair<Integer, Integer> randomNeighbourUnprocessed =
-              neighboursUnprocessed.get(randomNeighbourIndex);
+          neighboursUnprocessed.get(randomNeighbourIndex);
       // get the neighbours of random neighbour that have been processed
       ArrayList<Pair<Integer, Integer>> pickedNodes =
-              getPickedNodes(randomNeighbourUnprocessed, processed);
+          getPickedNodes(randomNeighbourUnprocessed, processed);
       int randomProcessedNodeIndex = (int) (Math.random() * (pickedNodes.size() - 1));
       // pick a random neighbour that has been processed
       Pair<Integer, Integer> randomProcessedNode = pickedNodes.get(randomProcessedNodeIndex);
@@ -125,7 +128,7 @@ public class Maze {
 
       grid[(randomProcessedNodeRow + randomNeighbourUnprocessedRow) / 2][
               (randomProcessedNodeCol + randomNeighbourUnprocessedCol) / 2] =
-              Cell.FLOOR;
+          Cell.FLOOR;
 
       // Add the random neighbour we picked into processed and remove it from neighboursUnprocessed
       processed.add(randomNeighbourUnprocessed);
@@ -135,7 +138,7 @@ public class Maze {
   }
 
   private ArrayList<Pair<Integer, Integer>> getPickedNodes(
-          Pair<Integer, Integer> neighbourNode, ArrayList<Pair<Integer, Integer>> processed) {
+      Pair<Integer, Integer> neighbourNode, ArrayList<Pair<Integer, Integer>> processed) {
     ArrayList<Pair<Integer, Integer>> neighbours = getValidNeighbours(neighbourNode);
     ArrayList<Pair<Integer, Integer>> picked = new ArrayList<>();
     for (Pair<Integer, Integer> neighbour : neighbours) {
@@ -148,9 +151,9 @@ public class Maze {
   }
 
   private void addNeighbours(
-          Pair<Integer, Integer> cellCoordinate,
-          ArrayList<Pair<Integer, Integer>> neighboursUnprocessed,
-          ArrayList<Pair<Integer, Integer>> processed) {
+      Pair<Integer, Integer> cellCoordinate,
+      ArrayList<Pair<Integer, Integer>> neighboursUnprocessed,
+      ArrayList<Pair<Integer, Integer>> processed) {
     ArrayList<Pair<Integer, Integer>> neighbours = getValidNeighbours(cellCoordinate);
 
     for (Pair<Integer, Integer> neighbour : neighbours) {
@@ -161,13 +164,13 @@ public class Maze {
   }
 
   private ArrayList<Pair<Integer, Integer>> getValidNeighbours(
-          Pair<Integer, Integer> cellCoordinate) {
+      Pair<Integer, Integer> cellCoordinate) {
     int row = cellCoordinate.first;
     int col = cellCoordinate.second;
     Pair<Integer, Integer> leftCellCoordinate,
-            rightCellCoordinate,
-            topCellCoordinate,
-            bottomCellCoordinate;
+        rightCellCoordinate,
+        topCellCoordinate,
+        bottomCellCoordinate;
     ArrayList<Pair<Integer, Integer>> validNeighbours = new ArrayList<>();
     if (col - 2 > 0) {
       leftCellCoordinate = new Pair<>(row, col - 2);
@@ -188,4 +191,30 @@ public class Maze {
     return validNeighbours;
   }
 
+  /** Generates an exit in the top left corner, top right corner, or bottom right corner. */
+  private void generateExit() {
+    String[] choices = new String[] {"topLeftCorner", "topRightCorner", "bottomRightCorner"};
+    // Pick a random corner.
+    Collections.shuffle(Arrays.asList(choices));
+    String exit = choices[0];
+    switch (exit) {
+      case "topLeftCorner":
+        grid[0][1] = Cell.EXIT;
+        this.exit = new int[] {1, 0};
+        break;
+      case "topRightCorner":
+        grid[0][grid[0].length - 2] = Cell.EXIT;
+        this.exit = new int[] {grid.length - 2, 0};
+        break;
+      case "bottomRightCorner":
+        grid[grid.length - 1][grid[0].length - 2] = Cell.EXIT;
+        this.exit = new int[] {grid.length - 2, grid.length - 1};
+        break;
+    }
+  }
+
+  /** Getter for exit. */
+  int[] getExit() {
+    return exit;
+  }
 }

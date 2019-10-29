@@ -94,4 +94,14 @@ public class Player {
   int getNumSteps() {
     return numSteps;
   }
+
+  /**
+   * Return whether Player is at the given coordinates.
+   *
+   * @param x - x coordinate in question
+   * @param y - y coordinate in question
+   */
+  boolean isAt(int x, int y) {
+    return (posX == x) && (posY == y);
+  }
 }
