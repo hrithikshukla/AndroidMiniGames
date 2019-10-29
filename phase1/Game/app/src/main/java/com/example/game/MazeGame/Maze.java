@@ -203,12 +203,12 @@ public class Maze {
         this.exit = new int[] {1, 0};
         break;
       case "topRightCorner":
-        grid[0][grid[0].length - 2] = Cell.EXIT;
-        this.exit = new int[] {grid.length - 2, 0};
+        grid[0][width - 2] = Cell.EXIT;
+        this.exit = new int[] {width - 2, 0};
         break;
       case "bottomRightCorner":
-        grid[grid.length - 1][grid[0].length - 2] = Cell.EXIT;
-        this.exit = new int[] {grid.length - 2, grid.length - 1};
+        grid[height - 1][width- 2] = Cell.EXIT;
+        this.exit = new int[] {width - 2, height - 1};
         break;
     }
   }
