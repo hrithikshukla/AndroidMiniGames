@@ -19,7 +19,6 @@ public class GameController implements Observer {
 
   public void updateModel(Movement mov) {
     Pair<Integer, Integer> movement_vector = movementMap.get(mov);
-    gameFacade.update(movement_vector);
     if (boundaryCheck(movement_vector)) {
       gameFacade.update(movement_vector);
     }
