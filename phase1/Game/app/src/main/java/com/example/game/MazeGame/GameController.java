@@ -43,7 +43,7 @@ public class GameController implements Observer {
 
     boolean is_wall = false;
     if (xCoord && yCoord) {
-      Cell c = gameFacade.getMaze().getCell(yNew, xNew);
+      Cell c = gameFacade.getMaze().getCell(xNew, yNew);
       is_wall = (c == Cell.WALL);
     }
 

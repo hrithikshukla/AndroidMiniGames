@@ -35,7 +35,7 @@ public class Maze {
     return height;
   }
 
-  Cell getCell(int y, int x) {
+  Cell getCell(int x, int y) {
     try {
       return grid[y][x];
     } catch (IndexOutOfBoundsException e) {

@@ -49,7 +49,7 @@ public class GameFacade extends Observable {
 
     // Insert Player Tile into the Maze. Two cases: when Player is at the exit and when they aren't.
     int[] exit = getMaze().getExit();
-    if (getPlayer().isAt(exit[0], exit[1])) {
+    if (getPlayer().isAt(exit[1], exit[0])) {
       representation[player.getPos()[1]][player.getPos()[0]] = Cell.PLAYER_AT_EXIT;
     } else {
       representation[player.getPos()[1]][player.getPos()[0]] = Cell.PLAYER;
