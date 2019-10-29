@@ -28,9 +28,16 @@ public class GameActivity extends AppCompatActivity {
     Point point = new Point();
     getWindowManager().getDefaultDisplay().getSize(point);
 
+    int mazeWidth = 41;
+    int mazeHeight = 21;
+
+    // Player starts at bottom left corner.
+    int startX = 1;
+    int startY = mazeHeight - 2;
+
     // Create MVC components.
-    // Player starts at (1,1) for the meantime.
-    this.gameFacade = new GameFacade(new Player(1, 1, new Score(0)), new Maze(41, 21));
+    this.gameFacade =
+        new GameFacade(new Player(startX, startY, new Score(0)), new Maze(mazeWidth, mazeHeight));
     this.gameController = new GameController(gameFacade);
     this.gameView = new GameView(this, point.x, point.y);
 
