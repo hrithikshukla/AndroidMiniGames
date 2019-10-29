@@ -7,11 +7,11 @@ import android.graphics.BitmapFactory;
 import com.example.game.R;
 
 /**
- * Class representing the tiles of the maze. A tile is a wall, a floor, or a character.
+ * Class representing the tiles of the maze. A tile is a wall, a floor, or a player.
  */
 public class Tile {
 
-    private Bitmap wall, floor, character;
+    private Bitmap wall, floor, player;
 
     // Side length of any Tile bitmap.
     private int sideLength;
@@ -33,22 +33,22 @@ public class Tile {
         // Rescale the wall and floor bitmaps to fit on the phone screen.
         this.wall = Bitmap.createScaledBitmap(tmpWall, sideLength, sideLength, false);
         this.floor = Bitmap.createScaledBitmap(tmpfloor, sideLength, sideLength, false);
-        this.character = Bitmap.createScaledBitmap(tmpCharacter, sideLength, sideLength, false);
+        this.player = Bitmap.createScaledBitmap(tmpCharacter, sideLength, sideLength, false);
     }
 
     /**
      * @param tile - integer representing the tile to be returned
      */
-    Bitmap getTile(int tile) {
+    Bitmap getTile(Cell tile) {
         switch (tile) {
-            case 0:
+            case FLOOR:
                 return floor;
 
-            case 1:
+            case WALL:
                 return wall;
 
-            case 2:
-                return character;
+            case PLAYER:
+                return player;
 
             default:
                 return wall;
