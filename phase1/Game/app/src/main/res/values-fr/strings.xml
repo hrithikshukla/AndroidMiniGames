@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Jeu</string>
+    <string name="button_maze">Labyrinthe</string>
+    <string name="button_tapioca_launcher">Lanceur de Tapioca</string>
+    <string name="button_tiles">Carrelage</string>
+    <string name="select_game">Choisir le jeu</string>
+    <string name="title_tiles">Carrelage!</string>
+    <string name="buttonPlay">Jouer</string>
+    <string name="signUp">S\'inscrire</string>
+    <string name="signIn">S\'identifier</string>
+    <string name="changeLang">Langue</string>
+</resources>

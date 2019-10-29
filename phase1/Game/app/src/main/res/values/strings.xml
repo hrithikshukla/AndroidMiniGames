@@ -6,4 +6,7 @@
     <string name="select_game">Select Your Game</string>
     <string name="title_tiles">Tiles!</string>
     <string name="buttonPlay">Play</string>
+    <string name="signUp">Sign Up</string>
+    <string name="signIn">Sign In</string>
+    <string name="changeLang">Language</string>
 </resources>
