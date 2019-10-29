@@ -62,28 +62,12 @@ public class Maze {
     return s.toString();
   }
 
-  /**
-   * Returns an integer array representation of the maze.
-   */
-  int[][] getMaze(){
-    int[][] tmp = new int[height][width];
-    for (int i = 0; i < height; i++) {
-      for (int j = 0; j < width; j++) {
-        if (grid[i][j] == Cell.WALL) {
-          tmp[i][j] = 1;
-        } else if (grid[i][j] == Cell.FLOOR) {
-          tmp[i][j] = 0;
-        }
-      }
-    }
-    return tmp;
-  }
-
   Cell[][] getGrid() {
     return grid;
   }
 
   // initialize the floor and wall "nodes" of the maze
+
   private void initNodes() {
     for (int row = 0; row < height; row++) {
       for (int col = 0; col < width; col++) {
@@ -94,6 +78,19 @@ public class Maze {
         }
       }
     }
+  }
+
+  /**
+   * Returns a deep copy of the grid representing the maze.
+   */
+  Cell[][] getGridDeepCopy(){
+    Cell[][] tmp = new Cell[height][width];
+    for (int i = 0; i < height; i++) {
+      for (int j = 0; j < width; j++) {
+        tmp[i][j] = grid[i][j];
+      }
+    }
+    return tmp;
   }
 
   // prim's algorithm for MST(minimum spanning tree)
