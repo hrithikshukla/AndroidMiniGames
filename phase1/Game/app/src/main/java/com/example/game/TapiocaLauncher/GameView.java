@@ -12,6 +12,8 @@ import android.view.MotionEvent;
 import android.view.SurfaceView;
 import android.view.View;
 
+import com.example.game.R;
+
 import java.util.List;
 
 @SuppressWarnings("ClickableViewAccessibility")
@@ -86,8 +88,15 @@ public class GameView extends SurfaceView implements Runnable {
                 canvas.drawBitmap(ball.getBall(), ball.getX(), ball.getY(), paint);
             }
             canvas.drawBitmap(launcher.getLauncher(), launcher.getX(), launcher.getY(), paint);
-            canvas.drawText("Score: " + score + "", 5, screenY - 30, paint);
-            canvas.drawText("Level: " + (level - 1) + "", 5, screenY - 100, paint);
+
+            String scoreString = getResources().getString(R.string.score);
+            String levelString = getResources().getString(R.string.level);
+
+            canvas.drawText(scoreString + ": " + score + "", 5, screenY - 30, paint);
+            canvas.drawText(levelString + ": " + (level - 1) + "", 5, screenY - 100, paint);
+
+            //canvas.drawText("Score: " + score + "", 5, screenY - 30, paint);
+            //canvas.drawText("Level: " + (level - 1) + "", 5, screenY - 100, paint);
             saveIfHighScore();
 
             getHolder().unlockCanvasAndPost(canvas);

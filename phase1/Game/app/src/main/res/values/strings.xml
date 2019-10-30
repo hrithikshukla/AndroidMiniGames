@@ -9,4 +9,7 @@
     <string name="signUp">Sign Up</string>
     <string name="signIn">Sign In</string>
     <string name="changeLang">Language</string>
+    <string name="level">Level</string>
+    <string name="score">Score</string>
+    <string name="highScore">High Score</string>
 </resources>

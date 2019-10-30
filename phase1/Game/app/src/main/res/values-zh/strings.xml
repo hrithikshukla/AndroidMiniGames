@@ -10,4 +10,7 @@
     <string name="signUp">註冊</string>
     <string name="signIn">登入</string>
     <string name="changeLang">語言</string>
+    <string name="level">水平</string>
+    <string name="score">得分</string>
+    <string name="highScore">高分</string>
 </resources>
