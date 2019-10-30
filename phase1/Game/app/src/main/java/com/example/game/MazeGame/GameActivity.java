@@ -34,10 +34,12 @@ public class GameActivity extends AppCompatActivity {
     // Player starts at bottom left corner.
     int startX = 1;
     int startY = mazeHeight - 2;
+    int startingScore = 100;
 
     // Create MVC components.
     this.gameFacade =
-        new GameFacade(new Player(startX, startY, new Score(0)), new Maze(mazeWidth, mazeHeight));
+        new GameFacade(
+            new Player(startX, startY, new Score(startingScore)), new Maze(mazeWidth, mazeHeight));
     this.gameController = new GameController(gameFacade);
     this.gameView = new GameView(this, point.x, point.y);
 

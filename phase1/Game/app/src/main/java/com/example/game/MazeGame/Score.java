@@ -2,20 +2,20 @@ package com.example.game.MazeGame;
 
 /**
  * Class representing the player's current score. Score is currently calculated based on the number
- * of steps the player has taken.
+ * of steps the player has taken. A higher step count corresponds to a lower score.
  */
 public class Score {
 
   // Current score.
-  int score = 0;
+  int score;
 
-  public Score(int score) {
-    this.score = score;
+  public Score(int startingScore) {
+    this.score = startingScore;
   }
 
-  /** Increment current score. */
-  void incrementScore() {
-    score += 1;
+  /** Decrement current score. */
+  void decrementScore() {
+    score -= 1;
   }
 
   /**

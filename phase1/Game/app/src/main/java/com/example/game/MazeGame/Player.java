@@ -77,7 +77,7 @@ public class Player {
   /** Increments the player's numbers of steps by 1. */
   private void incrementStep() {
     numSteps += 1;
-    score.incrementScore();
+    score.decrementScore();
   }
 
   /** Returns the current position of the player. */
