@@ -9,7 +9,7 @@ import android.widget.EditText;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-class RegisterActivity extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity {
 
     EditText username;
     EditText password;
