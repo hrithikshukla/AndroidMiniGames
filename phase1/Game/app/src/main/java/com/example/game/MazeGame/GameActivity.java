@@ -47,8 +47,7 @@ public class GameActivity extends AppCompatActivity {
     gameView.getInputView().addObserver(gameController);
     gameFacade.addObserver(gameView.getVisualView());
 
-    // Must update model initially so that our view has a representation of our maze to draw.
-    gameController.updateModel(Movement.AFK);
+    gameFacade.update();
 
     setContentView(gameView);
   }

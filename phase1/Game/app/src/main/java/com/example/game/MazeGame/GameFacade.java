@@ -35,7 +35,10 @@ public class GameFacade extends Observable {
     int xDisplacement = movement_vector.first;
     int yDisplacement = movement_vector.second;
     player.displace(xDisplacement, yDisplacement);
+    update();
+  }
 
+  void update() {
     setChanged();
     // Need to supply an updated representation of the new Maze and score to be drawn.
     NewGameState newGameState =
