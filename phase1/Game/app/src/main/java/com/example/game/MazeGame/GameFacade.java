@@ -2,6 +2,7 @@ package com.example.game.MazeGame;
 
 import android.util.Pair;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Observable;
@@ -48,13 +49,20 @@ public class GameFacade extends Observable {
     Cell[][] representation = maze.getGridDeepCopy();
 
     // Insert Player Tile into the Maze. Two cases: when Player is at the exit and when they aren't.
-    int[] exit = getMaze().getExit();
-    if (getPlayer().isAt(exit[0], exit[1])) {
+    if (hasPlayerEscaped()) {
       representation[player.getPos()[1]][player.getPos()[0]] = Cell.PLAYER_AT_EXIT;
     } else {
       representation[player.getPos()[1]][player.getPos()[0]] = Cell.PLAYER;
     }
 
     return representation;
+  }
+
+  /**
+   * Return whether the player is at the Maze exit.
+   */
+  boolean hasPlayerEscaped() {
+    int[] exit = maze.getExit();
+    return getPlayer().isAt(exit[0], exit[1]);
   }
 }
