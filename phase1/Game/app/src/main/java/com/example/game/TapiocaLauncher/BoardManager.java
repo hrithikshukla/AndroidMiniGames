@@ -1,6 +1,7 @@
 package com.example.game.TapiocaLauncher;
 
 import android.content.Context;
+import android.content.res.Resources;
 
 import com.example.game.TapiocaLauncher.Ball;
 
@@ -11,10 +12,10 @@ import java.util.List;
 class BoardManager extends ClassLoader {
 
   private List<Ball> bubbles;
-  private Context context;
+  private Resources resources;
 
-  BoardManager(Context context) {
-    this.context = context;
+  BoardManager(Resources res) {
+    this.resources = res;
     bubbles = new ArrayList<>();
   }
 
@@ -27,7 +28,7 @@ class BoardManager extends ClassLoader {
     if (layout == 1) { // 6 rows and 6 columns of tapioca with 1 HP
       for (int j = 0; j < 6; j++) {
         for (int i = 0; i < 6; i++) {
-          Ball b = new Ball(50 + (170 * i), 50 + (140 * j), context.getResources(), 1);
+          Ball b = new Ball(50 + (170 * i), 50 + (140 * j), resources, 1);
           bubbles.add(b);
         }
       }
@@ -35,7 +36,7 @@ class BoardManager extends ClassLoader {
     if (layout >= 2) { // 6 rows and 6 columns of tapioca with 2 HP
       for (int j = 0; j < 6; j++) {
         for (int i = 0; i < 6; i++) {
-          Ball b = new Ball(50 + (170 * i), 50 + (140 * j), context.getResources(), 2);
+          Ball b = new Ball(50 + (170 * i), 50 + (140 * j), resources, 2);
           bubbles.add(b);
         }
       }
