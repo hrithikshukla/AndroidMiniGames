@@ -10,9 +10,9 @@
     <string name="signUp">Anmelden</string>
     <string name="signIn">Einloggen</string>
     <string name="changeLang">Sprache</string>
-    <string name="level">Niveau</string>
-    <string name="score">Punktzahl</string>
-    <string name="highScore">Hohe Punktzahl:</string>
+    <string name="level">"Level "</string>
+    <string name="score">"Punktzahl: "</string>
+    <string name="highScore">"Hohe Punktzahl: "</string>
     <string name="create_account">" Registrieren"</string>
     <string name="register_button">" Registrieren"</string>
     <string name="login_button">" Anmeldung"</string>

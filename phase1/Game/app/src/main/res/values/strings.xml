@@ -9,9 +9,9 @@
     <string name="signUp">Sign Up</string>
     <string name="signIn">Sign In</string>
     <string name="changeLang">Language</string>
-    <string name="level">Level</string>
-    <string name="score">Score</string>
-    <string name="highScore">High Score:</string>
+    <string name="level">"Level "</string>
+    <string name="score">"Score: "</string>
+    <string name="highScore">"High Score: "</string>
     <string name="title_activity_login">Sign in</string>
     <string name="username">Enter your username</string>
     <string name="password">Enter your password</string>
@@ -20,4 +20,5 @@
     <string name="create_account">create</string>
     <string name="username2">Enter your username</string>
     <string name="password2">Enter your password</string>
+
 </resources>

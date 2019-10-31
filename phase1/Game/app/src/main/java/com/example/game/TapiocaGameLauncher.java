@@ -5,8 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-
-import android.os.Bundle;
 import android.widget.TextView;
 
 public class TapiocaGameLauncher extends AppCompatActivity {
@@ -30,10 +28,10 @@ public class TapiocaGameLauncher extends AppCompatActivity {
               }
             });
 
-      TextView highScoretxt = findViewById(R.id.highScoreText);
+    TextView highScoretxt = findViewById(R.id.highScoreText);
 
-      SharedPreferences prefs = getSharedPreferences("game", MODE_PRIVATE);
-      highScoretxt.setText(getString(R.string.highScore) + prefs.getInt("highscore", 0));
+    SharedPreferences prefs = getSharedPreferences("game", MODE_PRIVATE);
+    highScoretxt.setText(getString(R.string.highScore) + prefs.getInt("highscore", 0));
   }
   /*
    */

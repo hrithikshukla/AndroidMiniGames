@@ -6,25 +6,31 @@ import android.graphics.BitmapFactory;
 
 import com.example.game.R;
 
-public class Background {
+// The background to be drawn in the tapioca game
+class Background {
 
-    private int x = 0, y = 0;
-    private Bitmap background;
+  // Coordinates to represent the top left of the background
+  private int x, y;
 
-    Background(int screenX, int screenY, Resources res) {
-        background = BitmapFactory.decodeResource(res, R.drawable.milktea);
-        background = Bitmap.createScaledBitmap(background, screenX, screenY, false);
-    }
+  // The bitmap image of the background
+  private Bitmap background;
 
-    public int getX() {
-        return x;
-    }
+  Background(int screenX, int screenY, Resources res) {
+    x = 0;
+    y = 0;
+    background = BitmapFactory.decodeResource(res, R.drawable.milktea);
+    background = Bitmap.createScaledBitmap(background, screenX, screenY, false);
+  }
 
-    public int getY() {
-        return y;
-    }
+  public int getX() {
+    return x;
+  }
 
-    public Bitmap getBackground() {
-        return background;
-    }
+  public int getY() {
+    return y;
+  }
+
+  Bitmap getBackground() {
+    return background;
+  }
 }
