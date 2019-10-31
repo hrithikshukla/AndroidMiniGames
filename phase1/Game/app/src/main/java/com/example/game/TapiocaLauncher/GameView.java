@@ -2,22 +2,20 @@ package com.example.game.TapiocaLauncher;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Matrix;
 import android.graphics.Paint;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceView;
-import android.view.View;
+
+import com.example.game.ScoreManager;
 
 import java.util.List;
 
 @SuppressWarnings("ClickableViewAccessibility")
 
 
-public class GameView extends SurfaceView implements Runnable {
+public class GameView extends SurfaceView implements Runnable{
 
     private Thread thread;
     private boolean isPlaying;
@@ -31,21 +29,21 @@ public class GameView extends SurfaceView implements Runnable {
     private double startX = 0, startY = 0, endX = 0, endY = 0;
     private boolean ballClicked;
     private int level = 1;
-    static int score = 0;
-    private SharedPreferences prefs;
+    private ScoreManager scoreManager;
 
 
     public GameView(Context context, int screenX, int screenY) {
 
         super(context);
-        prefs = context.getSharedPreferences("game", Context.MODE_PRIVATE);
+        SharedPreferences prefs = context.getSharedPreferences("game", Context.MODE_PRIVATE);
+        scoreManager = new ScoreManager(prefs);
         this.screenX = screenX;
         this.screenY = screenY;
         screenRatioX = 1920f / screenX;
         screenRatioY = 1080f / screenY;
 
         background = new Background(screenX, screenY, getResources());
-        launcher = new Launcher(screenX, screenY, getResources());
+        launcher = new Launcher(screenX, screenY, getResources(), scoreManager);
         boardManager = new BoardManager(screenX, screenY, context);
         layout = boardManager.fillBoard(level);
         level++;
@@ -86,21 +84,12 @@ public class GameView extends SurfaceView implements Runnable {
                 canvas.drawBitmap(ball.getBall(), ball.getX(), ball.getY(), paint);
             }
             canvas.drawBitmap(launcher.getLauncher(), launcher.getX(), launcher.getY(), paint);
-            canvas.drawText("Score: " + score + "", 5, screenY - 30, paint);
+            canvas.drawText("Score: " + scoreManager.getScore() + "", 5, screenY - 30, paint);
             canvas.drawText("Level: " + (level - 1) + "", 5, screenY - 100, paint);
-            saveIfHighScore();
 
             getHolder().unlockCanvasAndPost(canvas);
         }
 
-    }
-
-    private void saveIfHighScore() {
-        if (prefs.getInt("highscore", 0) < score) {
-            SharedPreferences.Editor editor = prefs.edit();
-            editor.putInt("highscore", score);
-            editor.apply();
-        }
     }
 
     private void sleep() {

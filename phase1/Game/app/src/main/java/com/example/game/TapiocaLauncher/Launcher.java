@@ -4,29 +4,29 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Log;
-import android.view.MotionEvent;
 
 import com.example.game.R;
+import com.example.game.ScoreManager;
 
 import java.util.List;
 
-import static com.example.game.TapiocaLauncher.GameView.score;
-
 class Launcher {
 
-    boolean isMoving = false;
-    boolean readyToLaunch = true;
-    int x, y, width, height, turnCounter = 0;
-    int radius;
-    int count = 0;
+    private boolean isMoving = false;
+    private boolean readyToLaunch = true;
+    private int x, y, width, height, turnCounter = 0;
+    private int radius;
+    private int count = 0;
+    private ScoreManager scoreManager;
 
 
-    Bitmap orientation1, orientation2, orientation3, orientation4;
-    int screenX, screenY;
-    double gravity, speedX, speedY;
-    double gravityX, gravityY;
+    private Bitmap orientation1, orientation2, orientation3, orientation4;
+    private int screenX, screenY;
+    private double gravity, speedX, speedY;
+    private double gravityX, gravityY;
 
-    Launcher(int screenX, int screenY, Resources res) {
+    Launcher(int screenX, int screenY, Resources res, ScoreManager scoreManager) {
+        this.scoreManager = scoreManager;
         orientation1 = BitmapFactory.decodeResource(res, R.drawable.tapioca1);
         orientation2 = BitmapFactory.decodeResource(res, R.drawable.tapioca2);
         orientation3 = BitmapFactory.decodeResource(res, R.drawable.tapioca3);
@@ -183,7 +183,7 @@ class Launcher {
                     if (balls.get(i).getHp() == 0) {
                         balls.remove(i);
                         i--;
-                        score++;
+                        scoreManager.addScore();
                     }
                 }
             }
