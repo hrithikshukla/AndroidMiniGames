@@ -1,7 +1,9 @@
 package com.example.game.Save;
 
+import java.io.Serializable;
+
 /** Class that stores a User's information about our game e.g. high scores. */
-class UserData {
+class UserData implements Serializable {
 
   private int mazeHighScore;
   private int tapiocaHighScore;

@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.game.Save.User;
+
 import java.util.Locale;
 
 import static java.util.Locale.setDefault;
@@ -23,6 +25,7 @@ public class MainActivity extends Activity {
     super.onCreate(savedInstanceState);
     loadLocale();
     setContentView(R.layout.activity_main);
+    User usr = (User) getIntent().getSerializableExtra("UserObject");
 
     Button changeLang = findViewById(R.id.changeMyLang);
     changeLang.setOnClickListener(

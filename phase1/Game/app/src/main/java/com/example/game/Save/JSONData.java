@@ -9,13 +9,16 @@ import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.util.HashMap;
 
 /** Class that can read/save User information to a JSON file. */
-public class JSONData implements Data {
+public class JSONData implements Data, Serializable {
 
   /** JSON file to save to. */
   private File saveFile;
+
+  public JSONData() {}
 
   public JSONData(File fileName) {
     this.saveFile = fileName;

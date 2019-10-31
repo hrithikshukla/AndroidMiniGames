@@ -9,31 +9,34 @@ import android.widget.EditText;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.game.Save.AccountsManager;
+
 public class RegisterActivity extends AppCompatActivity {
 
-    EditText username;
-    EditText password;
-    Button registerButton;
+  EditText username;
+  EditText password;
+  Button registerButton;
+  AccountsManager accountsManager;
 
+  @Override
+  protected void onCreate(@Nullable Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_register);
 
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+    username = (EditText) findViewById(R.id.username);
+    password = (EditText) findViewById(R.id.password);
+    registerButton = (Button) findViewById(R.id.button2);
+    this.accountsManager = (AccountsManager) getIntent().getSerializableExtra("AccountsManager");
+    System.out.println("m");
+  }
 
-        username = (EditText) findViewById(R.id.username);
-        password = (EditText) findViewById(R.id.password);
-        registerButton = (Button) findViewById(R.id.registerButton);
-        registerButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent loginIntent = new Intent(RegisterActivity.this,
-                                            com.example.game.LoginActivity.class);
-                startActivity(loginIntent);
-            }
-        });
-
-
-
+  public void register(View view) {
+    username = (EditText) findViewById(R.id.username);
+    password = (EditText) findViewById(R.id.password);
+    if (accountsManager.createUser(
+        username.getText().toString().trim(), password.getText().toString().trim())) {
+      Intent loginIntent = new Intent(RegisterActivity.this, com.example.game.LoginActivity.class);
+      startActivity(loginIntent);
     }
+  }
 }
