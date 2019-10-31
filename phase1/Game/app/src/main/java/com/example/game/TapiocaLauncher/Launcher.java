@@ -31,10 +31,18 @@ class Launcher {
   // The screen length and width to calculate if ball is out of bounds
   private int screenX, screenY;
   private double gravity, speedX, speedY;
+
+  public void setGravityX(double gravityX) {
+    this.gravityX = gravityX;
+  }
+
+  public void setGravityY(double gravityY) {
+    this.gravityY = gravityY;
+  }
+
   private double gravityX, gravityY;
 
   Launcher(int screenX, int screenY, Resources res, ScoreManager scoreManager) {
-    this.scoreManager = scoreManager;
     orientation1 = BitmapFactory.decodeResource(res, R.drawable.tapioca1);
     orientation2 = BitmapFactory.decodeResource(res, R.drawable.tapioca2);
     orientation3 = BitmapFactory.decodeResource(res, R.drawable.tapioca3);
@@ -55,7 +63,6 @@ class Launcher {
     this.screenX = screenX;
     this.screenY = screenY;
     radius = width / 2;
-    gravity = 5;
   }
 
   // Returns the bitmap of this tapioca, whether it is spinning or not
@@ -81,7 +88,7 @@ class Launcher {
     } else return orientation1;
   }
 
-  private void move(List<Ball> balls) {
+   void move() {
     x += speedX;
     y += speedY;
 
@@ -99,43 +106,37 @@ class Launcher {
       y = screenY - height;
       speedY = -speedY;
     }
-    detectCollisions(balls);
+
+   speedX = decrement(speedX, gravityX);
+   speedY = decrement(speedY, gravityY);
   }
 
-  void moveBall(double startX, double startY, double endX, double endY) {
-    isMoving = true;
-    readyToLaunch = false;
-    speedX = Math.cos(Math.atan2(endY - startY, endX - startX)) * 300;
-    speedY = Math.sin(Math.atan2(endY - startY, endX - startX)) * 300;
-    gravityX = Math.abs(speedX) / 50;
-    gravityY = Math.abs(speedY) / 50;
-  }
 
-  void update(List<Ball> balls) {
-    if (isMoving) {
-      move(balls);
-      speedX = decrement(speedX, gravityX);
-      speedY = decrement(speedY, gravityY);
-      if (speedX == 0 && speedY == 0) {
-        isMoving = false;
-      }
-    }
-    if (!isMoving
-        && count != 60) { // resets ball after 1 second of non-movement by counting 60 frames
-      count++;
-    }
-    if (count == 60) {
-      count = 0;
-      y = 1850;
-      x = screenX / 2;
-      readyToLaunch = true;
-      for (int i = 0; i < balls.size(); i++) {
-        if (balls.get(i).isHit()) {
-          balls.get(i).setHit(false);
-        }
-      }
-    }
-  }
+//  void update(List<Ball> balls) {
+//    if (isMoving) {
+//      move();
+//      speedX = decrement(speedX, gravityX);
+//      speedY = decrement(speedY, gravityY);
+//      if (speedX == 0 && speedY == 0) {
+//        isMoving = false;
+//      }
+//    }
+//    if (!isMoving
+//        && count != 60) { // resets ball after 1 second of non-movement by counting 60 frames
+//      count++;
+//    }
+//    if (count == 60) {
+//      count = 0;
+//      y = 1850;
+//      x = screenX / 2;
+//      readyToLaunch = true;
+//      for (int i = 0; i < balls.size(); i++) {
+//        if (balls.get(i).isHit()) {
+//          balls.get(i).setHit(false);
+//        }
+//      }
+//    }
+//  }
 
   private double decrement(double speed, double gravity) { // reduces speed by gravity amount
     // Log.d("", "decremented " + speed);
@@ -161,6 +162,14 @@ class Launcher {
     return y;
   }
 
+  public void setX(int x) {
+    this.x = x;
+  }
+
+  public void setY(int y) {
+    this.y = y;
+  }
+
   public int getWidth() {
     return width;
   }
@@ -169,35 +178,31 @@ class Launcher {
     return height;
   }
 
-  boolean isReadyToLaunch() {
-    return readyToLaunch;
-  }
-
-  private int getCentreX() {
+  int getCentreX() {
     return this.x + radius;
   }
 
-  private int getCentreY() {
+  int getCentreY() {
     return this.y + radius;
   }
 
-  // Checks for collisions between this and other tapioca, also adds points in scoreManager.
-  private void detectCollisions(List<Ball> balls) {
+  public int getRadius() {
+    return radius;
+  }
 
-    for (int i = 0; i < balls.size(); i++) {
-      if (Math.hypot(getCentreX() - balls.get(i).centreX, getCentreY() - balls.get(i).centreY)
-          <= 2 * radius) {
-        if (!balls.get(i).isHit()) {
-          balls.get(i).setHp(balls.get(i).getHp() - 1);
-          Log.d("", balls.get(i).getHp() + " ");
-          balls.get(i).setHit(true);
-          if (balls.get(i).getHp() == 0) {
-            balls.remove(i);
-            i--;
-            scoreManager.addScore();
-          }
-        }
-      }
-    }
+  public double getSpeedX() {
+    return speedX;
+  }
+
+  public void setSpeedX(double speedX) {
+    this.speedX = speedX;
+  }
+
+  public double getSpeedY() {
+    return speedY;
+  }
+
+  public void setSpeedY(double speedY) {
+    this.speedY = speedY;
   }
 }

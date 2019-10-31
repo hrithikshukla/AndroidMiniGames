@@ -22,7 +22,7 @@ class VisualView {
   // Dimensions of the screen
   private int screenX, screenY;
   // The launcher tapioca that the user interacts with
-  static Launcher launcher;
+  static LauncherManager launcherMan;
   // Used for resizing and display on different devices
   static float screenRatioX, screenRatioY;
   private Paint paint;
@@ -52,7 +52,7 @@ class VisualView {
     screenRatioY = 1080f / screenY;
 
     background = new Background(screenX, screenY, res);
-    launcher = new Launcher(screenX, screenY, res, scoreManager);
+    launcherMan = new LauncherManager(screenX, screenY, res, scoreManager);
     boardManager = new BoardManager(res);
     layout = boardManager.fillBoard(level);
     level++;
@@ -70,7 +70,7 @@ class VisualView {
       canvas.drawBitmap(background.getBackground(), background.getX(), background.getY(), paint);
 
       // Check if board is empty and ball is not moving, then generates new layout
-      if (layout.size() == 0 && launcher.isReadyToLaunch()) {
+      if (layout.size() == 0 && launcherMan.isReadyToLaunch()) {
         layout = boardManager.fillBoard(level);
         level++;
       }
@@ -79,7 +79,7 @@ class VisualView {
         canvas.drawBitmap(ball.getBall(), ball.getX(), ball.getY(), paint);
       }
       // Draw launcher
-      canvas.drawBitmap(launcher.getLauncher(), launcher.getX(), launcher.getY(), paint);
+      canvas.drawBitmap(launcherMan.getLauncher(), launcherMan.getX(), launcherMan.getY(), paint);
       // Draw the level and score
       canvas.drawText(
           context.getString(R.string.score) + scoreManager.getScore() + "", 5, screenY - 30, paint);
@@ -91,6 +91,6 @@ class VisualView {
   }
 
   void update() {
-    launcher.update(layout);
+    launcherMan.update(layout);
   }
 }
