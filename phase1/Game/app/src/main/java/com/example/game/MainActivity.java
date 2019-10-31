@@ -48,19 +48,27 @@ public class MainActivity extends Activity {
             if (which == 0) {
               // French
               setLocale("fr");
-              recreate();
+              startActivity(getIntent());
+              finish();
+              overridePendingTransition(0, 0);
             } else if (which == 1) {
               // Chinese
               setLocale("zh");
-              recreate();
+              startActivity(getIntent());
+              finish();
+              overridePendingTransition(0, 0);
             } else if (which == 2) {
               // German
               setLocale("de");
-              recreate();
+              startActivity(getIntent());
+              finish();
+              overridePendingTransition(0, 0);
             } else if (which == 3) {
               // English
               setLocale("en");
-              recreate();
+              startActivity(getIntent());
+              finish();
+              overridePendingTransition(0, 0);
             }
 
             dialog.dismiss();

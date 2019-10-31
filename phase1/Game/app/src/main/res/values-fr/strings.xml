@@ -12,5 +12,13 @@
     <string name="changeLang">Langue</string>
     <string name="level">Niveau</string>
     <string name="score">Score</string>
-    <string name="highScore">Score élevé</string>
+    <string name="highScore">Score élevé:</string>
+    <string name="create_account">S\'inscrire</string>
+    <string name="register_button">S\'inscrire</string>
+    <string name="password">Mot de passe</string>
+    <string name="password2">Mot de passe</string>
+    <string name="login_button">S\'identifier</string>
+    <string name="title_activity_login">S\'identifier</string>
+    <string name="username">" Nom d'utilisateur"</string>
+    <string name="username2">" Nom d'utilisateur"</string>
 </resources>

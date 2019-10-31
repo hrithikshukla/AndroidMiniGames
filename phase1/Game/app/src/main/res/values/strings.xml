@@ -11,7 +11,7 @@
     <string name="changeLang">Language</string>
     <string name="level">Level</string>
     <string name="score">Score</string>
-    <string name="highScore">High Score</string>
+    <string name="highScore">High Score:</string>
     <string name="title_activity_login">Sign in</string>
     <string name="username">Enter your username</string>
     <string name="password">Enter your password</string>

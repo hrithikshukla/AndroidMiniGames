@@ -12,5 +12,13 @@
     <string name="changeLang">語言</string>
     <string name="level">水平</string>
     <string name="score">得分</string>
-    <string name="highScore">高分</string>
+    <string name="highScore">高分:</string>
+    <string name="username2">" 用戶名"</string>
+    <string name="username">" 用戶名"</string>
+    <string name="title_activity_login">登入</string>
+    <string name="register_button">註冊</string>
+    <string name="login_button">登入</string>
+    <string name="password">" 密碼"</string>
+    <string name="password2">" 密碼"</string>
+    <string name="create_account">註冊</string>
 </resources>
