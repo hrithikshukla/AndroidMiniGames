@@ -65,4 +65,10 @@ public class AccountsManager extends AbstractAccountsManager {
     }
     return null;
   }
+
+  @Override
+  void updateUserData() {
+    this.data.write(users.values().toArray(new User[users.size()]));
+  }
+
 }

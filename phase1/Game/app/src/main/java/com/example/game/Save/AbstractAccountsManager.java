@@ -38,4 +38,9 @@ public abstract class AbstractAccountsManager {
    * @return
    */
   abstract User login(String username, String password);
+
+  /*
+  * Updates user data(any statistics) we're tracking in our jsonData object
+  * */
+  abstract void updateUserData();
 }
