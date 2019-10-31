@@ -1,10 +1,11 @@
 package com.example.game.TapiocaLauncher;
 
+import android.util.Log;
 import android.view.MotionEvent;
 
 import com.example.game.ScoreManager;
 
-import static com.example.game.TapiocaLauncher.VisualView.launcher;
+import static com.example.game.TapiocaLauncher.VisualView.launcherMan;
 
 class InputView {
 
@@ -18,15 +19,15 @@ class InputView {
   }
 
   void setDownAction(MotionEvent event) {
-    if ((event.getX() >= launcher.getX()
-            && event.getX() <= (launcher.getX() + launcher.getHeight()))
-        && (event.getY() >= launcher.getY()
-            && event.getY() <= (launcher.getY() + launcher.getWidth()))) {
+    if ((event.getX() >= launcherMan.getX()
+            && event.getX() <= (launcherMan.getX() + launcherMan.getHeight()))
+        && (event.getY() >= launcherMan.getY()
+            && event.getY() <= (launcherMan.getY() + launcherMan.getWidth()))) {
       startX = event.getX();
       startY = event.getY();
       ballClicked = true;
-      // Log.d("", "onTouchEvent: Motion Down  x-val: " + startX);
-      // Log.d("", "onTouchEvent: Motion Down  y-val: " + startY);
+      Log.d("", "onTouchEvent: Motion Down  x-val: " + startX);
+      Log.d("", "onTouchEvent: Motion Down  y-val: " + startY);
     }
   }
 
@@ -34,8 +35,9 @@ class InputView {
     if (ballClicked) {
       endX = event.getX();
       endY = event.getY();
-      launcher.moveBall(startX, startY, endX, endY);
+      launcherMan.moveBall(startX, startY, endX, endY);
       ballClicked = false;
+      Log.d("", "setUpAction: inputview");
     }
   }
 }
