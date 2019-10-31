@@ -21,8 +21,8 @@ public class GameActivity extends AppCompatActivity {
 
     // Set fullscreen mode.
     getWindow()
-        .setFlags(
-            WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+            .setFlags(
+                    WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
     // Get maximum x and y coordinate of phone screen and store it in the Point object.
     Point point = new Point();
@@ -34,10 +34,12 @@ public class GameActivity extends AppCompatActivity {
     // Player starts at bottom left corner.
     int startX = 1;
     int startY = mazeHeight - 2;
+    int startingScore = 100;
 
     // Create MVC components.
     this.gameFacade =
-        new GameFacade(new Player(startX, startY, new Score(0)), new Maze(mazeWidth, mazeHeight));
+            new GameFacade(
+                    new Player(startX, startY, new Score(startingScore)), new Maze(mazeWidth, mazeHeight));
     this.gameController = new GameController(gameFacade);
     this.gameView = new GameView(this, point.x, point.y);
 
@@ -45,8 +47,7 @@ public class GameActivity extends AppCompatActivity {
     gameView.getInputView().addObserver(gameController);
     gameFacade.addObserver(gameView.getVisualView());
 
-    // Must update model initially so that our view has a representation of our maze to draw.
-    gameController.updateModel(Movement.AFK);
+    gameFacade.update();
 
     setContentView(gameView);
   }

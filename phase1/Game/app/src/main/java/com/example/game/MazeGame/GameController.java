@@ -18,9 +18,12 @@ public class GameController implements Observer {
   }
 
   public void updateModel(Movement mov) {
-    Pair<Integer, Integer> movement_vector = movementMap.get(mov);
-    if (boundaryCheck(movement_vector)) {
-      gameFacade.update(movement_vector);
+    // Only update the model if the game isn't over i.e. the player hasn't escaped.
+    if (!gameFacade.hasPlayerEscaped()){
+      Pair<Integer, Integer> movement_vector = movementMap.get(mov);
+      if (boundaryCheck(movement_vector)) {
+        gameFacade.update(movement_vector);
+      }
     }
   }
 
@@ -58,10 +61,10 @@ public class GameController implements Observer {
     movementMap.put(Movement.RIGHT, new Pair<>(1, 0));
   }
 
-    /**
-     *
-     * @param o - direction of movement corresponding with the user input.
-     */
+  /**
+   *
+   * @param o - direction of movement corresponding with the user input.
+   */
   @Override
   public void update(Observable observable, Object o) {
     updateModel((Movement) o);

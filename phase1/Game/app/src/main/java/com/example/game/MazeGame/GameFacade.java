@@ -34,11 +34,14 @@ public class GameFacade extends Observable {
     int xDisplacement = movement_vector.first;
     int yDisplacement = movement_vector.second;
     player.displace(xDisplacement, yDisplacement);
+    update();
+  }
 
+  void update() {
     setChanged();
     // Need to supply an updated representation of the new Maze and score to be drawn.
     NewGameState newGameState =
-        new NewGameState(getCellRepresentation(), player.getScore(), player.getNumSteps());
+            new NewGameState(getCellRepresentation(), player.getScore(), player.getNumSteps());
     notifyObservers(newGameState);
   }
 
@@ -48,13 +51,20 @@ public class GameFacade extends Observable {
     Cell[][] representation = maze.getGridDeepCopy();
 
     // Insert Player Tile into the Maze. Two cases: when Player is at the exit and when they aren't.
-    int[] exit = getMaze().getExit();
-    if (getPlayer().isAt(exit[1], exit[0])) {
+    if (hasPlayerEscaped()) {
       representation[player.getPos()[1]][player.getPos()[0]] = Cell.PLAYER_AT_EXIT;
     } else {
       representation[player.getPos()[1]][player.getPos()[0]] = Cell.PLAYER;
     }
 
     return representation;
+  }
+
+  /**
+   * Return whether the player is at the Maze exit.
+   */
+  boolean hasPlayerEscaped() {
+    int[] exit = maze.getExit();
+    return getPlayer().isAt(exit[0], exit[1]);
   }
 }
