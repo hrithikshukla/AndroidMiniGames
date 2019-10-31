@@ -7,15 +7,15 @@ package com.example.game.MazeGame;
 public class Score {
 
   // Current score.
-  int score = 0;
+  int score;
 
-  public Score(int score) {
-    this.score = score;
+  public Score(int startingScore) {
+    this.score = startingScore;
   }
 
-  /** Increment current score. */
-  void incrementScore() {
-    score += 1;
+  /** Decrement current score. */
+  void decrementScore() {
+    score -= 1;
   }
 
   /**

@@ -1,7 +1,6 @@
 package com.example.game.MazeGame;
 
 import java.util.ArrayList;
-import java.util.Observable;
 
 /** Represents the player in a maze. */
 public class Player {
@@ -77,7 +76,7 @@ public class Player {
   /** Increments the player's numbers of steps by 1. */
   private void incrementStep() {
     numSteps += 1;
-    score.incrementScore();
+    score.decrementScore();
   }
 
   /** Returns the current position of the player. */
