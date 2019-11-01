@@ -27,7 +27,8 @@ public class TapiocaGameLauncher extends AppCompatActivity {
                 Intent intent =
                     new Intent(
                         TapiocaGameLauncher.this,
-                        com.example.game.TapiocaLauncher.GameActivity.class);
+                        com.example.game.TapiocaLauncher.TapiocaGameActivity.class);
+                intent.putExtra("TapiocaGameLauncher", usr);
                 startActivity(intent);
               }
             });
@@ -36,7 +37,6 @@ public class TapiocaGameLauncher extends AppCompatActivity {
 
     SharedPreferences prefs = getSharedPreferences("highScores", MODE_PRIVATE);
     highScoretxt.setText(getString(R.string.highScore) + prefs.getInt("tapiocahighscore", 0));
-
   }
   /*
    */

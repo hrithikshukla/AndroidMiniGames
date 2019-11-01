@@ -44,7 +44,7 @@ public class GameFinish extends AppCompatActivity {
 
   /** Called when the user taps the 'TRY AGAIN' button */
   public void restartTilesGame(View view) {
-    Intent intent = new Intent(this, com.example.game.TilesGame.GameActivity.class);
+    Intent intent = new Intent(this, com.example.game.TilesGame.TileGameActivity.class);
     startActivity(intent);
   }
 }

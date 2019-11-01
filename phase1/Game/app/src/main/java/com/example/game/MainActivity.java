@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 
@@ -18,6 +19,7 @@ import static java.util.Locale.setDefault;
 
 @SuppressWarnings("deprecation")
 public class MainActivity extends Activity {
+
   User usr;
 
   @Override
@@ -29,13 +31,13 @@ public class MainActivity extends Activity {
 
     Button changeLang = findViewById(R.id.changeMyLang);
     changeLang.setOnClickListener(
-        new View.OnClickListener() {
-          @Override
-          public void onClick(View v) {
-            // Show alert dialog to display languages
-            showChangeLanguageDialog();
-          }
-        });
+            new View.OnClickListener() {
+              @Override
+              public void onClick(View v) {
+                // Show alert dialog to display languages
+                showChangeLanguageDialog();
+              }
+            });
   }
 
   private void showChangeLanguageDialog() {
@@ -43,40 +45,40 @@ public class MainActivity extends Activity {
     AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
     mBuilder.setTitle("Choose Language...");
     mBuilder.setSingleChoiceItems(
-        languages,
-        -1,
-        new DialogInterface.OnClickListener() {
-          @Override
-          public void onClick(DialogInterface dialog, int which) {
-            if (which == 0) {
-              // French
-              setLocale("fr");
-              startActivity(getIntent());
-              finish();
-              overridePendingTransition(0, 0);
-            } else if (which == 1) {
-              // Chinese
-              setLocale("zh");
-              startActivity(getIntent());
-              finish();
-              overridePendingTransition(0, 0);
-            } else if (which == 2) {
-              // German
-              setLocale("de");
-              startActivity(getIntent());
-              finish();
-              overridePendingTransition(0, 0);
-            } else if (which == 3) {
-              // English
-              setLocale("en");
-              startActivity(getIntent());
-              finish();
-              overridePendingTransition(0, 0);
-            }
+            languages,
+            -1,
+            new DialogInterface.OnClickListener() {
+              @Override
+              public void onClick(DialogInterface dialog, int which) {
+                if (which == 0) {
+                  // French
+                  setLocale("fr");
+                  startActivity(getIntent());
+                  finish();
+                  overridePendingTransition(0, 0);
+                } else if (which == 1) {
+                  // Chinese
+                  setLocale("zh");
+                  startActivity(getIntent());
+                  finish();
+                  overridePendingTransition(0, 0);
+                } else if (which == 2) {
+                  // German
+                  setLocale("de");
+                  startActivity(getIntent());
+                  finish();
+                  overridePendingTransition(0, 0);
+                } else if (which == 3) {
+                  // English
+                  setLocale("en");
+                  startActivity(getIntent());
+                  finish();
+                  overridePendingTransition(0, 0);
+                }
 
-            dialog.dismiss();
-          }
-        });
+                dialog.dismiss();
+              }
+            });
     AlertDialog mDialog = mBuilder.create();
     // Show alert dialog
     mDialog.show();
@@ -88,10 +90,10 @@ public class MainActivity extends Activity {
     Configuration config = new Configuration();
     config.setLocale(locale);
     getBaseContext()
-        .getResources()
-        .updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+            .getResources()
+            .updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
     // Save data to preferences
-    SharedPreferences sharedPreferences = getSharedPreferences("language", MODE_PRIVATE);
+    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
     SharedPreferences.Editor editor = sharedPreferences.edit();
     editor.putString("language", language);
     editor.apply();
@@ -99,14 +101,13 @@ public class MainActivity extends Activity {
 
   // Load language saved in shared preferences
   public void loadLocale() {
-    SharedPreferences sharedPreferences = getSharedPreferences("language", MODE_PRIVATE);
+    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
     String language = sharedPreferences.getString("language", "");
     setLocale(language);
   }
 
   /** Called when the user taps the 'MAZE' button */
   public void goToMazeGame(View view) {
-    usr.getUserData().setPrefs(null);
     Intent intent = new Intent(this, com.example.game.MazeGameLauncher.class);
     intent.putExtra("UserObject", usr);
     startActivity(intent);
@@ -114,19 +115,15 @@ public class MainActivity extends Activity {
 
   /** Called when the user taps the 'TAPIOCA LAUNCHER' button */
   public void goToTapiocaLauncher(View view) {
-    usr.getUserData().setPrefs(null);
     Intent intent = new Intent(this, com.example.game.TapiocaGameLauncher.class);
     intent.putExtra("UserObject", usr);
     startActivity(intent);
-    usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
   }
 
   /** Called when the user taps the 'TILES' button */
   public void goToTilesGame(View view) {
-    usr.getUserData().setPrefs(null);
     Intent intent = new Intent(this, com.example.game.TilesGameLauncher.class);
     intent.putExtra("UserObject", usr);
     startActivity(intent);
-    usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
   }
 }

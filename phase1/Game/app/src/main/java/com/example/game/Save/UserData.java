@@ -1,13 +1,16 @@
 package com.example.game.Save;
 
+import android.content.SharedPreferences;
+
 import java.io.Serializable;
 
 /** Class that stores a User's information about our game e.g. high scores. */
-class UserData implements Serializable {
+public class UserData implements Serializable {
 
   private int mazeHighScore;
   private int tapiocaHighScore;
   private int tilesHighScore;
+  private SharedPreferences sharedPreferences;
 
   /** Initalize UserData as a clean slate. */
   public UserData() {
@@ -27,8 +30,8 @@ class UserData implements Serializable {
   }
 
   /** Setter for the high score of the Maze game. */
-  public void setMazeHighScore(int mazeHighScore) {
-    this.mazeHighScore = mazeHighScore;
+  public void setMazeHighScore() {
+    mazeHighScore = sharedPreferences.getInt("maze", 0);
   }
 
   /** Getter for the high score of the Tapioca Launcher game. */
@@ -37,8 +40,8 @@ class UserData implements Serializable {
   }
 
   /** Setter for the high score of the Tapioca Launcher game. */
-  public void setTapiocaHighScore(int tapiocaHighScore) {
-    this.tapiocaHighScore = tapiocaHighScore;
+  public void setTapiocaHighScore() {
+    this.tapiocaHighScore = sharedPreferences.getInt("tapioca", 0);
   }
 
   /** Getter for the high score of the Tiles game. */
@@ -47,7 +50,11 @@ class UserData implements Serializable {
   }
 
   /** Setter for the high score of the Tiles game. */
-  public void setTilesHighScore(int tilesHighScore) {
-    this.tilesHighScore = tilesHighScore;
+  public void setTilesHighScore() {
+    this.tilesHighScore = sharedPreferences.getInt("tiles", 0);
+  }
+
+  public void setPrefs(SharedPreferences prefs) {
+    this.sharedPreferences = prefs;
   }
 }

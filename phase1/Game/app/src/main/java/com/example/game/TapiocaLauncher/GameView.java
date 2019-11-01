@@ -12,7 +12,7 @@ public class GameView extends SurfaceView implements Runnable {
 
   private Thread thread;
   private boolean isPlaying;
-  private GameActivity gameActivity;
+  private TapiocaGameActivity gameActivity;
 
   private VisualView visualView;
   private InputView inputView;
@@ -74,7 +74,7 @@ public class GameView extends SurfaceView implements Runnable {
     }
     return true;
   }
-  void setGameActivity(GameActivity activity) {
+  void setGameActivity(TapiocaGameActivity activity) {
     this.gameActivity = activity;
   }
 

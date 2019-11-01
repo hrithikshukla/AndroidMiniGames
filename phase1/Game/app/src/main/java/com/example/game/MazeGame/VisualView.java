@@ -112,4 +112,6 @@ public class VisualView implements Observer, Gameover {
   public boolean isGameOver() {
     return gameOver;
   }
+
+
 }

@@ -14,15 +14,15 @@
         <activity android:name=".MazeGameLauncher" />
         <activity android:name=".TilesGame.GameFinish" />
         <activity
-            android:name=".TapiocaLauncher.GameActivity"
+            android:name=".TapiocaLauncher.TapiocaGameActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.noActionBar" />
         <activity
-            android:name=".TilesGame.GameActivity"
+            android:name=".TilesGame.TileGameActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.noActionBar" />
         <activity
-            android:name=".MazeGame.GameActivity"
+            android:name=".MazeGame.MazeGameActivity"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.noActionBar" />
         <activity
@@ -48,6 +48,11 @@
 
         <activity
             android:name=".RegisterActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.noActionBar"></activity>
+
+        <activity
+            android:name=".GameOverActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.noActionBar"></activity>
     </application>

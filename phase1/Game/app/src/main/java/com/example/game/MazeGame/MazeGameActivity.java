@@ -6,19 +6,25 @@ import android.graphics.Point;
 import android.os.Bundle;
 import android.view.WindowManager;
 
+import com.example.game.GameActivity;
+import com.example.game.Save.User;
+
+import java.util.Observable;
+import java.util.Observer;
+
 /** * Class that initializes all three components of the MVC model. */
-public class GameActivity extends AppCompatActivity {
+public class MazeGameActivity extends GameActivity implements Observer {
 
   private GameFacade gameFacade; // Model of the game.
   private GameView gameView; // View of the game. Displays the UI and registers user input.
   // Controller of the game. Processes user input using game state logic to possibly change the
   // model.
   private GameController gameController;
-
+  User usr;
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-
+    usr = (User) getIntent().getSerializableExtra("MazeGameLauncher");
     // Set fullscreen mode.
     getWindow()
             .setFlags(
@@ -47,6 +53,7 @@ public class GameActivity extends AppCompatActivity {
     gameView.getInputView().addObserver(gameController);
     gameFacade.addObserver(gameView.getVisualView());
     gameFacade.addObserver(gameView.getInputView());
+    gameFacade.addObserver(this);
 
     gameFacade.update();
 
@@ -63,5 +70,17 @@ public class GameActivity extends AppCompatActivity {
   protected void onResume() {
     super.onResume();
     gameView.resume();
+  }
+
+  @Override
+  public void update(Observable o, Object arg) {
+    // PsuedoCode : If game is over; User object records score and
+    // pass it over to gameover activity
+    if(((NewGameState) arg).isGameOver()){
+      // Set new high score if applicable
+      // usr.getUserData().
+      switchToGameOverActivity(this);
+    }
+
   }
 }
