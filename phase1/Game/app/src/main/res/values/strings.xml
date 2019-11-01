@@ -22,5 +22,35 @@
     <string name="password2">Enter your password</string>
     <string name="button_exit">Exit</string>
     <string name="button_retry">Try Again</string>
+    <string name="steps">Steps:</string>
+    <string name="change_theme">Theme</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="TapiocaScore">Tapioca Launcher High Score:</string>
+    <string name="MazeScore">Maze High Score:</string>
+    <string name="TileScore">Tiles High Score:</string>
+    <string name="TapiocaTime">Time Spent Playing Tapioca:</string>
+    <string name="MazeTime">Time Spent Playing Maze:</string>
+    <string name="TileTime">Time Spent Playing Tiles:</string>
+    <string name="Reset">uWu Reset Statistics uWu</string>
+    <string name="Statistics">Your Statistics</string>
+    <string name="instructions_tiles">Don\'t touch the white tiles! Tap the black tiles to gain points. You lose if you tap a white tile or when an untapped black tile leaves the board.</string>
+    <string name="text_game_over">Game Over</string>
+    <string name="text_swipe_right">Swipe Right!</string>
+    <string name="text_swipe_left">Swipe Left!</string>
 
 </resources>

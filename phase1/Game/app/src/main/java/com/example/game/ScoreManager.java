@@ -15,25 +15,25 @@ public class ScoreManager{
         score = 0;
     }
 
-    private void saveIfHighScore() {
-        if (prefs.getInt("highscore", 0) < score) {
+    private void saveIfHighScore(String game) {
+        if (prefs.getInt(game + "highscore", 0) < score) {
             SharedPreferences.Editor editor = prefs.edit();
-            editor.putInt("highscore", score);
+            editor.putInt(game + "highscore", score);
             editor.apply();
         }
     }
 
-    public void setScore(int score) {
+    public void setScore(int score, String game) {
         this.score = score;
-        saveIfHighScore();
+        saveIfHighScore(game);
     }
 
     public int getScore() {
         return score;
     }
 
-    public void addScore() {
+    public void addScore(String game) {
         score++;
-        saveIfHighScore();
+        saveIfHighScore(game);
     }
 }

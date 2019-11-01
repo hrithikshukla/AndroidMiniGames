@@ -49,7 +49,9 @@ public class JSONData implements Data, Serializable {
       }
 
     } catch (IOException e) {
-      e.printStackTrace();
+      User[] users = new User[0];
+      write(users);
+      read();
     }
     return tmp;
   }

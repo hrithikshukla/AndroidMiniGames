@@ -4,18 +4,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="?android:attr/colorBackground">
 
     <Button
         android:id="@+id/buttonPlayMaze"
+        style="?buttonPrimary"
         android:layout_width="165dp"
         android:layout_height="67dp"
         android:layout_marginStart="123dp"
-        android:layout_marginTop="332dp"
+        android:layout_marginTop="200dp"
         android:layout_marginEnd="123dp"
         android:onClick="startMazeGame"
         android:text="@string/buttonPlay"
+        app:layout_constraintBottom_toTopOf="@+id/buttonExitMaze"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonExitMaze"
+        style="?buttonSecondary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="150dp"
+        android:onClick="exitMazeGame"
+        android:text="@string/button_exit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonPlayMaze" />
 </androidx.constraintlayout.widget.ConstraintLayout>

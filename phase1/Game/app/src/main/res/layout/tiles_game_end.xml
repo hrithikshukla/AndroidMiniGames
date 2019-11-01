@@ -5,18 +5,18 @@
     android:id="@+id/linearLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000"
+    android:background="?android:attr/colorSecondary"
     android:orientation="vertical">
 
     <TextView
         android:id="@+id/tilesGameScore"
-        android:layout_width="392dp"
-        android:layout_height="154dp"
+        android:layout_width="389dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="250dp"
         android:text="0"
         android:textAlignment="center"
         android:textAllCaps="true"
-        android:textColor="#ffffff"
+        android:textColor="?android:attr/colorAccent"
         android:textSize="75dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,6 +25,7 @@
 
     <Button
         android:id="@+id/buttonExitTiles"
+        style="?buttonSecondary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="180dp"
@@ -37,6 +38,7 @@
 
     <Button
         android:id="@+id/buttonRetry"
+        style="?buttonSecondary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="180dp"
@@ -46,4 +48,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/buttonExitTiles" />
+
+    <TextView
+        android:id="@+id/highScoreText"
+        android:layout_width="185dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="28dp"
+        android:text="@string/highScore"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="?android:attr/colorAccent"
+        android:textSize="9pt"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tilesGameScore"
+        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

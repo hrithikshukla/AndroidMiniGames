@@ -22,7 +22,7 @@ public class User implements Serializable {
   }
 
   /** Getter for userdata. */
-  UserData getUserData() {
+  public UserData getUserData() {
     return userData;
   }
 

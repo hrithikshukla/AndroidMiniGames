@@ -16,7 +16,7 @@ public class GameView extends SurfaceView implements Runnable, Gameover {
   public GameView(Context context, int maxScreenX, int maxScreenY) {
     super(context);
     this.inputView = new InputView(maxScreenX, maxScreenY);
-    this.visualView = new VisualView(maxScreenX, maxScreenY, getResources(), getHolder());
+    this.visualView = new VisualView(maxScreenX, maxScreenY, context, getHolder());
   }
 
   /** Runs the game. */
