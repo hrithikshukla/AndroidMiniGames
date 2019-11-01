@@ -2,12 +2,16 @@ package com.example.game.TapiocaLauncher;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.Window;
 import android.view.WindowManager;
+
+import com.example.game.Save.User;
+import com.example.game.TapiocaGameLauncher;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,10 +24,12 @@ public class TapiocaGameActivity extends AppCompatActivity {
 
   private GameFacade gameFacade;
   private GameController gameController;
+  User usr;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+    usr = (User) getIntent().getSerializableExtra("UserObject");
 
     getWindow()
         .setFlags(
@@ -60,5 +66,11 @@ public class TapiocaGameActivity extends AppCompatActivity {
   protected void onResume() {
     super.onResume();
     gameView.resume();
+  }
+
+  public void endGame() {
+    Intent intent = new Intent(this, TapiocaGameLauncher.class);
+    intent.putExtra("UserObject", usr);
+    startActivity(intent);
   }
 }
