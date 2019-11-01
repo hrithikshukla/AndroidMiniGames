@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
 
-public class GameController implements Observer {
+public class GameController implements Observer, Gameover {
   private GameFacade gameFacade;
 
   private Map<Movement, Pair<Integer, Integer>> movementMap = new HashMap<>();

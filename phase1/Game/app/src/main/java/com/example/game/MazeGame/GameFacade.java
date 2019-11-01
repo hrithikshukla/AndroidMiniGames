@@ -8,7 +8,7 @@ import java.util.Observable;
 
 // TODO: return a Cell 2d array representation of game; method name getGrid()
 
-public class GameFacade extends Observable {
+public class GameFacade extends Observable implements Gameover{
 
   private Player player;
   private Maze maze;
