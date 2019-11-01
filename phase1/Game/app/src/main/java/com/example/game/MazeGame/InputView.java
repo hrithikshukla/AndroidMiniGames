@@ -7,7 +7,7 @@ import java.util.Observable;
 /**
  * Viewe responsible for handling the inputs to the screen.
  */
-public class InputView extends Observable implements Gameover{
+public class InputView extends Observable{
 
     /**
      * Rectangles represent regions of the screen where if the touch was registered in moveX Rect,

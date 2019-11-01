@@ -83,4 +83,9 @@ public class GameView extends SurfaceView implements Runnable, Gameover {
   VisualView getVisualView() {
     return visualView;
   }
+
+  @Override
+  public boolean isGameOver() {
+    return visualView.isGameOver();
+  }
 }
