@@ -44,7 +44,7 @@ public class TapiocaGameActivity extends GameActivity implements Observer {
     gameView = new GameView(this, point.x, point.y);
     setContentView(gameView);
 
-    int launcherRadius = 99/2;
+    int launcherRadius = 136 / 2;
     int launcherX = point.x / 2 - launcherRadius;
     int launcherY = point.y - 3 * launcherRadius;
     // Create MVC components.

@@ -3,6 +3,8 @@ package com.example.game;
 import android.app.Activity;
 import android.content.Intent;
 
+import com.example.game.Save.User;
+
 /** A theme manager to handle the changing of themes in the user interface. */
 public class ThemeManager {
   static final int THEME_DEFAULT = 0;
@@ -11,7 +13,7 @@ public class ThemeManager {
   static final int THEME_BP = 3;
 
   /** Set the theme of the Activity, and restart it by creating a new Activity of the same type. */
-  static void changeToTheme(Activity activity, int theme) {
+  static void changeToTheme(Activity activity, int theme, User usr) {
     switch (theme) {
       default:
       case THEME_DEFAULT:
@@ -27,8 +29,11 @@ public class ThemeManager {
         activity.setTheme(R.style.LightBPTheme);
         break;
     }
+    usr.getUserData().setPrefs(null);
+    Intent intent = new Intent(activity, activity.getClass());
+    intent.putExtra("UserObject", usr);
     activity.finish();
-    activity.startActivity(new Intent(activity, activity.getClass()));
+    activity.startActivity(intent);
   }
   /**
    * Set the theme of the activity, according to the configuration.

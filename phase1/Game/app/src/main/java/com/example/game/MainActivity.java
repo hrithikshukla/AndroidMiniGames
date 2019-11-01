@@ -151,7 +151,7 @@ public class MainActivity extends Activity {
           public void onClick(DialogInterface dialog, int which) {
             if (which == 0) {
               // Default
-              ThemeManager.changeToTheme(MainActivity.this, ThemeManager.THEME_DEFAULT);
+              ThemeManager.changeToTheme(MainActivity.this, ThemeManager.THEME_DEFAULT, usr);
               // Add the theme's int to SharedPreferences
               editor.putInt("theme", ThemeManager.THEME_DEFAULT);
               // Apply the save
@@ -159,7 +159,7 @@ public class MainActivity extends Activity {
               overridePendingTransition(0, 0);
             } else if (which == 1) {
               // Green/Purple
-              ThemeManager.changeToTheme(MainActivity.this, ThemeManager.THEME_GP);
+              ThemeManager.changeToTheme(MainActivity.this, ThemeManager.THEME_GP, usr);
               // Add the theme's int to SharedPreferences
               editor.putInt("theme", ThemeManager.THEME_GP);
               // Apply the save
@@ -167,7 +167,7 @@ public class MainActivity extends Activity {
               overridePendingTransition(0, 0);
             } else if (which == 2) {
               // Orange/Teal
-              ThemeManager.changeToTheme(MainActivity.this, ThemeManager.THEME_OT);
+              ThemeManager.changeToTheme(MainActivity.this, ThemeManager.THEME_OT, usr);
               // Add the theme's int to SharedPreferences
               editor.putInt("theme", ThemeManager.THEME_OT);
               // Apply the save
@@ -175,7 +175,7 @@ public class MainActivity extends Activity {
               overridePendingTransition(0, 0);
             } else if (which == 3) {
               // Orange/Teal
-              ThemeManager.changeToTheme(MainActivity.this, ThemeManager.THEME_BP);
+              ThemeManager.changeToTheme(MainActivity.this, ThemeManager.THEME_BP, usr);
               // Add the theme's int to SharedPreferences
               editor.putInt("theme", ThemeManager.THEME_BP);
               // Apply the save
