@@ -2,6 +2,7 @@ package com.example.game.TapiocaLauncher;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceView;
 
@@ -12,7 +13,6 @@ public class GameView extends SurfaceView implements Runnable {
 
   private Thread thread;
   private boolean isPlaying;
-  private TapiocaGameActivity gameActivity;
 
   private VisualView visualView;
   private InputView inputView;
@@ -20,7 +20,7 @@ public class GameView extends SurfaceView implements Runnable {
   public GameView(Context context, int screenX, int screenY) {
 
     super(context);
-    SharedPreferences prefs = context.getSharedPreferences("highScores", Context.MODE_PRIVATE);
+    SharedPreferences prefs = context.getSharedPreferences("game", Context.MODE_PRIVATE);
     ScoreManager scoreManager = new ScoreManager(prefs);
     visualView =
         new VisualView(screenX, screenY, getResources(), getHolder(), context, scoreManager);
@@ -29,14 +29,13 @@ public class GameView extends SurfaceView implements Runnable {
 
   @Override
   public void run() {
-    while (isPlaying) {
 
-      visualView.update();
-      checkEndGame();
+    while (isPlaying) {
+      //visualView.update();
+      inputView.update();
       visualView.draw();
       sleep();
     }
-    gameActivity.endGame();
   }
 
   private void sleep() {
@@ -66,20 +65,17 @@ public class GameView extends SurfaceView implements Runnable {
 
   @Override
   public boolean onTouchEvent(MotionEvent event) {
-    if (event.getAction() == MotionEvent.ACTION_DOWN) {
-        inputView.setDownAction(event);
+    if (event.getAction() == MotionEvent.ACTION_DOWN || event.getAction() == MotionEvent.ACTION_UP) {
+        inputView.screenTouched(event);
       }
-    if (event.getAction() == MotionEvent.ACTION_UP) {
-      inputView.setUpAction(event);
-    }
     return true;
   }
-  void setGameActivity(TapiocaGameActivity activity) {
-    this.gameActivity = activity;
+
+  public VisualView getVisualView() {
+    return visualView;
   }
 
-  void checkEndGame() {
-    if (visualView.checkScore())
-    isPlaying = false;
+  public InputView getInputView() {
+    return inputView;
   }
 }
