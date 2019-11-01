@@ -9,7 +9,8 @@ public class GameFacade extends Observable {
     private List<Ball> balls;
 
     private int score;
-    private int level = 1;
+    private int level = 2;
+    private boolean gameOver = false;
 
     public GameFacade(Launcher launcher, List<Ball> balls){
 
@@ -42,8 +43,17 @@ public class GameFacade extends Observable {
         this.score = score;
     }
 
+    public boolean isGameOver() {
+        return gameOver;
+    }
+
+    public void setGameOver(boolean gameOver) {
+        this.gameOver = gameOver;
+    }
+
     void update() {
         setChanged();
         notifyObservers(this);
     }
+
 }

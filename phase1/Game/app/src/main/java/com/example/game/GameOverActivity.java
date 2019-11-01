@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.game.Save.User;
 
 public class GameOverActivity extends AppCompatActivity {
-    User usr;
+    public User usr;
     Button goToHomePage;
 
     @Override
@@ -27,7 +27,7 @@ public class GameOverActivity extends AppCompatActivity {
     }
 
     public void goToHomePage(View view){
-        Intent intent = new Intent(this, MazeGameLauncher.class);
+        Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("UserObject", usr);
         startActivity(intent);
     }

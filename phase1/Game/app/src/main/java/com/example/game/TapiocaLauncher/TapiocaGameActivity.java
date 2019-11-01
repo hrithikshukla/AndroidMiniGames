@@ -10,21 +10,24 @@ import android.view.MotionEvent;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.example.game.GameActivity;
 import com.example.game.Save.User;
 import com.example.game.TapiocaGameLauncher;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observer;
+import java.util.Observable;
 
 //
-public class TapiocaGameActivity extends AppCompatActivity {
+public class TapiocaGameActivity extends GameActivity implements Observer {
 
   // Views
   private GameView gameView;
 
   private GameFacade gameFacade;
   private GameController gameController;
-  User usr;
+
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +55,7 @@ public class TapiocaGameActivity extends AppCompatActivity {
     // Add observors to our MVC components.
     gameView.getInputView().addObserver(gameController);
     gameFacade.addObserver(gameView.getVisualView());
+    gameFacade.addObserver(this);
     gameFacade.update();
     setContentView(gameView);
   }
@@ -67,10 +71,16 @@ public class TapiocaGameActivity extends AppCompatActivity {
     super.onResume();
     gameView.resume();
   }
-
+  //Method to change
   public void endGame() {
-    Intent intent = new Intent(this, TapiocaGameLauncher.class);
-    intent.putExtra("UserObject", usr);
-    startActivity(intent);
+    switchToGameOverActivity(this);
+  }
+
+  @Override
+  public void update(Observable o, Object arg) {
+    gameFacade = (GameFacade) arg;
+    if(gameFacade.isGameOver()) {
+      endGame();
+    }
   }
 }

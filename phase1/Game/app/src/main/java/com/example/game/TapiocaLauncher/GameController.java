@@ -203,6 +203,10 @@ public class GameController implements Observer {
             generateLevel2();
             gameFacade.setLevel(3);
         }
+        else if(gameFacade.getLevel() == 3) {
+           gameFacade.setGameOver(true);
+           gameFacade.update();
+        }
     }
 
     void generateLevel1() {
