@@ -47,7 +47,7 @@ public class MainActivity extends Activity {
       public void onSwipeLeft() {
         //your actions
         Intent intent = new Intent(MainActivity.this, StatsActivity.class);
-        intent.putExtra("UserObject", usr);
+        putUser(intent);
         startActivity(intent);
       }
       });

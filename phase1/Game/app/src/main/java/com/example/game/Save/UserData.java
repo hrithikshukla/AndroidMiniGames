@@ -24,6 +24,12 @@ public class UserData implements Serializable {
     this.tilesHighScore = tilesHighScore;
   }
 
+  public void updateScores() {
+    setMazeHighScore();
+    setTapiocaHighScore();
+    setTilesHighScore();
+  }
+
   /** Getter for the high score of the Maze game. */
   public int getMazeHighScore() {
     return mazeHighScore;
@@ -31,7 +37,7 @@ public class UserData implements Serializable {
 
   /** Setter for the high score of the Maze game. */
   public void setMazeHighScore() {
-    mazeHighScore = sharedPreferences.getInt("maze", 0);
+    mazeHighScore = sharedPreferences.getInt("mazehighscore", 0);
   }
 
   /** Getter for the high score of the Tapioca Launcher game. */
@@ -41,7 +47,7 @@ public class UserData implements Serializable {
 
   /** Setter for the high score of the Tapioca Launcher game. */
   public void setTapiocaHighScore() {
-    this.tapiocaHighScore = sharedPreferences.getInt("tapioca", 0);
+    this.tapiocaHighScore = sharedPreferences.getInt("tapiocahighscore", 0);
   }
 
   /** Getter for the high score of the Tiles game. */
@@ -51,7 +57,7 @@ public class UserData implements Serializable {
 
   /** Setter for the high score of the Tiles game. */
   public void setTilesHighScore() {
-    this.tilesHighScore = sharedPreferences.getInt("tiles", 0);
+    this.tilesHighScore = sharedPreferences.getInt("tileshighscore", 0);
   }
 
   public void setPrefs(SharedPreferences prefs) {

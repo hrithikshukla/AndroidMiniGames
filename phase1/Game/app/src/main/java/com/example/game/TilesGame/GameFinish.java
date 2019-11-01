@@ -11,12 +11,15 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.R;
+import com.example.game.Save.User;
 
 public class GameFinish extends AppCompatActivity {
+  User usr;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+    usr = (User) getIntent().getSerializableExtra("UserObject");
     requestWindowFeature(Window.FEATURE_NO_TITLE);
     getWindow()
         .setFlags(
@@ -39,12 +42,16 @@ public class GameFinish extends AppCompatActivity {
   /** Called when the user taps the 'EXIT' button */
   public void exitToMenu(View view) {
     Intent intent = new Intent(this, com.example.game.TilesGameLauncher.class);
+    usr.getUserData().setPrefs(null);
+    intent.putExtra("UserObject", usr);
     startActivity(intent);
   }
 
   /** Called when the user taps the 'TRY AGAIN' button */
   public void restartTilesGame(View view) {
     Intent intent = new Intent(this, com.example.game.TilesGame.TileGameActivity.class);
+    usr.getUserData().setPrefs(null);
+    intent.putExtra("UserObject", usr);
     startActivity(intent);
   }
 }
