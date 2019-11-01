@@ -4,10 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/constrainLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="?android:attr/colorBackground">
 
     <Button
         android:id="@+id/loginButton"
+        style="?buttonPrimary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
@@ -19,12 +21,17 @@
 
     <EditText
         android:id="@+id/username"
+        style="?login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:foregroundGravity="center_vertical"
-        android:inputType="textPersonName"
         android:hint="@string/username"
+        android:inputType="textPersonName"
+        android:textColor="?android:attr/colorPrimaryDark"
+        android:textColorHighlight="?android:attr/colorPrimary"
+        android:textColorHint="?android:attr/colorSecondary"
+        android:textColorLink="?android:attr/colorSecondary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -36,18 +43,20 @@
 
     <EditText
         android:id="@+id/password"
+        style="?login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="@string/password"
+        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/username" />
 
     <Button
         android:id="@+id/registerButton"
+        style="?buttonPrimary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"

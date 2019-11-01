@@ -24,6 +24,7 @@
     <string name="button_retry">Versuch es noch einmal</string>
     <string name="button_exit">Verlassen</string>
     <string name="steps">"Schritte: "</string>
+    <string name="change_theme">Thema</string>\
     <string name="TapiocaScore">"Tapioka-Trägerrakete Hohe Punktzahl: "</string>
     <string name="MazeScore">"Matze Hohe Punktzahl: "</string>
     <string name="TileScore">"Fliesen Hohe Punktzahl: "</string>
@@ -32,4 +33,13 @@
     <string name="TileTime">Zeit zum Spielen Fliesen:</string>
     <string name="Reset">" Statistik Zurücksetzen xD"</string>
     <string name="Statistics">" Ihre Statistiken"</string>
+    <string name="attachment_summary_off">Laden Sie Anhänge nur herunter, wenn Sie manuell dazu aufgefordert werden</string>
+    <string name="attachment_summary_on">Laden Sie Anhänge für eingehende E-Mails automatisch herunter</string>
+    <string name="attachment_title">Laden Sie eingehende Anhänge herunter</string>
+    <string name="messages_header">Mitteilungen</string>
+    <string name="signature_title">Ihre Unterschrift</string>
+    <string name="reply_title">Standardantwortaktion</string>
+    <string name="sync_header">Synchronisieren</string>
+    <string name="sync_title">Synchronisieren Sie Ihre E-Mails regelmäßig</string>
+    <string name="title_activity_settings">die Einstellungen</string>
 </resources>

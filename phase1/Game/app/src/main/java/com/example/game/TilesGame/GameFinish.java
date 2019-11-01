@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.R;
+import com.example.game.ThemeManager;
 import com.example.game.Save.User;
 
 public class GameFinish extends AppCompatActivity {
@@ -18,6 +19,10 @@ public class GameFinish extends AppCompatActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
+    // Set the theme.
+    SharedPreferences mSettings = this.getSharedPreferences("Settings", MODE_PRIVATE);
+    ThemeManager.setTheme(GameFinish.this, mSettings.getInt("theme", -1));
+
     super.onCreate(savedInstanceState);
     usr = (User) getIntent().getSerializableExtra("UserObject");
     requestWindowFeature(Window.FEATURE_NO_TITLE);

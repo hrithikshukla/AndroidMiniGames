@@ -51,6 +51,7 @@
 
     <Button
         android:id="@+id/buttonExitTiles"
+        style="?buttonSecondary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -62,9 +63,8 @@
         android:layout_toEndOf="@+id/highScoreText"
         android:onClick="exitToMenu"
         android:text="@string/button_exit"
-        app:layout_constraintTop_toBottomOf= "@id/title"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
-
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title" />
 </RelativeLayout>

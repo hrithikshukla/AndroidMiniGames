@@ -4,19 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?android:attr/colorBackground"
     tools:context=".MainActivity">
 
 
     <Button
         android:id="@+id/buttonTapiocaLauncher"
+        style="?buttonPrimary"
         android:layout_width="203dp"
-        android:layout_height="54dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="104dp"
         android:layout_marginTop="72dp"
         android:layout_marginEnd="104dp"
+        android:layout_marginBottom="50dp"
         android:onClick="goToTapiocaLauncher"
         android:text="@string/button_tapioca_launcher"
         android:textAllCaps="true"
+        android:textColor="?android:attr/colorPrimaryDark"
+        app:layout_constraintBottom_toTopOf="@+id/buttonTiles"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,55 +29,97 @@
 
     <Button
         android:id="@+id/buttonMaze"
+        style="?buttonPrimary"
         android:layout_width="203dp"
-        android:layout_height="54dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="104dp"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="200dp"
         android:layout_marginEnd="104dp"
+        android:layout_marginBottom="50dp"
         android:onClick="goToMazeGame"
         android:text="@string/button_maze"
         android:textAllCaps="true"
+        android:textColor="?android:attr/colorPrimaryDark"
+        app:layout_constraintBottom_toTopOf="@+id/buttonTapiocaLauncher"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.6" />
 
     <Button
         android:id="@+id/buttonTiles"
+        style="?buttonPrimary"
         android:layout_width="203dp"
-        android:layout_height="54dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="104dp"
         android:layout_marginTop="72dp"
         android:layout_marginEnd="104dp"
+        android:layout_marginBottom="180dp"
         android:onClick="goToTilesGame"
         android:text="@string/button_tiles"
         android:textAllCaps="true"
+        android:textColor="?android:attr/colorPrimaryDark"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonTapiocaLauncher" />
 
-    <Button
-        android:id="@+id/changeMyLang"
+    <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="676dp"
-        android:text="@string/changeLang"
+        android:layout_marginTop="65dp"
+        android:layout_marginBottom="50dp"
+        android:text="@string/select_game"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="?android:attr/colorPrimaryDark"
+        android:textSize="16pt"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/buttonMaze"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/changeMyLang"
+        style="?buttonSecondary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/changeLang"
+        android:textAllCaps="true"
+        android:textColor="?android:attr/colorAccent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/changeMyTheme"
+        style="?buttonSecondary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="35dp"
+        android:onClick="showChangeThemeDialog"
+        android:text="@string/change_theme"
+        android:textColor="?android:attr/colorAccent"
+        app:layout_constraintBaseline_toBaselineOf="@+id/changeMyLang"
+        app:layout_constraintEnd_toStartOf="@+id/ArrowRight"
+        app:layout_constraintStart_toEndOf="@+id/changeMyLang" />
+
     <ImageView
         android:id="@+id/ArrowRight"
-        android:layout_width="273dp"
-        android:layout_height="111dp"
-        android:layout_marginTop="49dp"
+        android:layout_width="148dp"
+        android:layout_height="64dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
         android:src="@drawable/arrow"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonTiles"
-        app:layout_constraintVertical_bias="0.2" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

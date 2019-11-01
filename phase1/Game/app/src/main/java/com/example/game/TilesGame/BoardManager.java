@@ -168,7 +168,8 @@ class BoardManager extends ClassLoader {
       for (Tile tile : tileRow) {
         if (tile instanceof DangerTile && tile.touch) { // Check if a danger tile has been touched.
           return true;
-        } else if (tile instanceof KeyTile && !tile.touch && tile.getY() >= boardHeight - 50) {
+        }
+        if (tile instanceof KeyTile && !tile.touch && tile.getY() >= boardHeight - 80) {
           ((KeyTile) tile).setMissed(true);
           return true;
         }

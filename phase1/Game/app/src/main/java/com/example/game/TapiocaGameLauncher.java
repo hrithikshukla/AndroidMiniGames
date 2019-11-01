@@ -14,6 +14,10 @@ public class TapiocaGameLauncher extends AppCompatActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
+    // Set the theme.
+    SharedPreferences mSettings = this.getSharedPreferences("Settings", MODE_PRIVATE);
+    ThemeManager.setTheme(TapiocaGameLauncher.this, mSettings.getInt("theme", -1));
+
     super.onCreate(savedInstanceState);
     this.usr = (User) getIntent().getSerializableExtra("UserObject");
 
