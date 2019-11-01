@@ -19,4 +19,10 @@ public class TilesGameLauncher extends AppCompatActivity {
     Intent intent = new Intent(this, com.example.game.TilesGame.GameActivity.class);
     startActivity(intent);
   }
+
+  /** Called when the user taps the 'EXIT' button */
+  public void exitTilesGame(View view) {
+    Intent intent = new Intent(this, com.example.game.MainActivity.class);
+    startActivity(intent);
+  }
 }

@@ -16,23 +16,18 @@ public class LauncherManager {
     private boolean isMoving = false;
     private boolean readyToLaunch = true;
     // Used to animate the ball
-    private int turnCounter = 0;
     // Used to reset the ball after a turn
     private int count = 0;
     // Keeps track of scores
     // The screen length and width to calculate if ball is out of bounds
     private int screenX, screenY;
-    private double gravity, speedX, speedY;
-    private double gravityX, gravityY;
     private Launcher launcher;
 
     LauncherManager(int screenX, int screenY, Resources res, ScoreManager scoreManager) {
         this.scoreManager = scoreManager;
         this.screenX = screenX;
         this.screenY = screenY;
-
         launcher = new Launcher(screenX, screenY, res, scoreManager);
-
     }
 
     void moveBall(double startX, double startY, double endX, double endY) {
@@ -43,14 +38,11 @@ public class LauncherManager {
         launcher.setGravityX(Math.abs(launcher.getSpeedX()) / 50);
         launcher.setGravityY(Math.abs(launcher.getSpeedY()) / 50);
         Log.d("", "setUpAction: moveBall");
-
     }
 
     void update(List<Ball> balls) {
         if (isMoving) {
             launcher.move();
-            //launcher.setSpeedX = decrement(launcher.getspeedX(), launcher.getgravityX());
-            //launcher.setSpeedY = decrement(launcher.getspeedY(), launcher.getgravityY());
             detectCollisions(balls);
             if (launcher.getSpeedX() == 0 && launcher.getSpeedY() == 0) {
                 isMoving = false;
@@ -62,7 +54,7 @@ public class LauncherManager {
         if (count == 60) {
             count = 0;
             launcher.setY(1850);
-            launcher.setX(screenX / 2);
+            launcher.setX(screenX / 2 - launcher.getWidth()/2);
             readyToLaunch = true;
             for (int i = 0; i < balls.size(); i++) {
                 if (balls.get(i).isHit()) {

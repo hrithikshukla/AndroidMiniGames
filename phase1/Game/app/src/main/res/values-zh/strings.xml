@@ -21,4 +21,6 @@
     <string name="password">" 密碼"</string>
     <string name="password2">" 密碼"</string>
     <string name="create_account">註冊</string>
+    <string name="button_exit">离开</string>
+    <string name="button_retry">再来</string>
 </resources>
