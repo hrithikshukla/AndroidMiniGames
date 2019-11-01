@@ -5,7 +5,7 @@ import android.view.MotionEvent;
 import android.view.SurfaceView;
 
 /** View component of the game. Handles the drawing of the screen and user inputs (touches). */
-public class GameView extends SurfaceView implements Runnable {
+public class GameView extends SurfaceView implements Runnable, Gameover {
 
   private Thread thread;
   private boolean isPlaying;
@@ -82,5 +82,10 @@ public class GameView extends SurfaceView implements Runnable {
      */
   VisualView getVisualView() {
     return visualView;
+  }
+
+  @Override
+  public boolean isGameOver() {
+    return visualView.isGameOver();
   }
 }

@@ -10,7 +10,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 /** View responsible for drawing the game on the screen. */
-public class VisualView implements Observer {
+public class VisualView implements Observer, Gameover {
 
   private Cell[][] grid; // Representation of the Maze grid object.
   private Paint backgroundPaint, textPaint;
@@ -23,6 +23,8 @@ public class VisualView implements Observer {
 
   private int score;
   private int numSteps;
+
+  private boolean gameOver;
 
   /**
    * @param maxScreenX - maximum x position of the screen
@@ -98,5 +100,11 @@ public class VisualView implements Observer {
     grid = newGameState.getGrid();
     score = newGameState.getScore();
     numSteps = newGameState.getNumSteps();
+    gameOver = newGameState.isGameOver();
+  }
+
+  @Override
+  public boolean isGameOver() {
+    return gameOver;
   }
 }

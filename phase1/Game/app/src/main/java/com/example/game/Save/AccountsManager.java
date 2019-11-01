@@ -1,5 +1,6 @@
 package com.example.game.Save;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 /**
@@ -14,6 +15,8 @@ public class AccountsManager extends AbstractAccountsManager {
    */
   private HashMap<String, User> users;
 
+  public AccountsManager() {}
+
   public AccountsManager(Data data) {
     super(data);
     this.users = data.read();
@@ -25,7 +28,7 @@ public class AccountsManager extends AbstractAccountsManager {
    *
    * @param username - username to check.
    */
-  boolean isExistingUser(String username) {
+  public boolean isExistingUser(String username) {
     return users.containsKey(username);
   }
 
@@ -37,7 +40,7 @@ public class AccountsManager extends AbstractAccountsManager {
    * @param username - username of the new User
    * @param password - password of the new User
    */
-  boolean createUser(String username, String password) {
+  public boolean createUser(String username, String password) {
     // Can't create if there's an existing User with that username.
     if (!isExistingUser(username)) {
       // Create a new user with no recorded UserData.
@@ -59,7 +62,7 @@ public class AccountsManager extends AbstractAccountsManager {
    * @param password - input password
    * @return
    */
-  User login(String username, String password) {
+  public User login(String username, String password) {
     if (isExistingUser(username) && users.get(username).checkPassword(password)) {
       return users.get(username);
     }
@@ -67,8 +70,7 @@ public class AccountsManager extends AbstractAccountsManager {
   }
 
   @Override
-  void updateUserData() {
+  public void updateUserData() {
     this.data.write(users.values().toArray(new User[users.size()]));
   }
-
 }

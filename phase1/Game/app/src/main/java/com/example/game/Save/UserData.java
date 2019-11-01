@@ -1,76 +1,53 @@
 package com.example.game.Save;
 
-import java.util.HashMap;
+import java.io.Serializable;
 
-/**
- * Class that stores a User's information about our game e.g. high scores.
- */
-class UserData {
+/** Class that stores a User's information about our game e.g. high scores. */
+class UserData implements Serializable {
 
-    private HashMap<Games, Stats> gameStats;
+  private int mazeHighScore;
+  private int tapiocaHighScore;
+  private int tilesHighScore;
 
-    /**
-     * Initalize UserData as a clean slate.
-     */
-    public UserData() {
-        this(new MazeStats(), new TapiocaStats(), new TileStats());
-    }
+  /** Initalize UserData as a clean slate. */
+  public UserData() {
+    this(0, 0, 0);
+  }
 
-    /**
-     * Initalize UserData with given stats of each game.
-     */
-    public UserData(MazeStats mazeStats, TapiocaStats tapiocaStats, TileStats tileStats) {
-        this.gameStats = new HashMap<>();
-        gameStats.put(Games.MAZE, mazeStats);
-        gameStats.put(Games.TAPIOCA, tapiocaStats);
-        gameStats.put(Games.TILES, tileStats);
-    }
+  /** Initalize UserData with given values. */
+  public UserData(int mazeHighScore, int tapiocaHighScore, int tilesHighScore) {
+    this.mazeHighScore = mazeHighScore;
+    this.tapiocaHighScore = tapiocaHighScore;
+    this.tilesHighScore = tilesHighScore;
+  }
 
-    /**
-     * Get the high score of the specified game.
-     *
-     * @param game - name of one of our games
-     */
-    int getHighScore(Games game) {
-        return gameStats.get(game).getHighScore();
-    }
+  /** Getter for the high score of the Maze game. */
+  public int getMazeHighScore() {
+    return mazeHighScore;
+  }
 
-    /**
-     * Attempts to set the high score of the specified game with the input score if the latter is
-     * higher.
-     *
-     * @param game  - name of one of our games
-     * @param score - input score
-     */
-    void setHighScore(Games game, int score) {
-        if (score > gameStats.get(game).getHighScore()) {
-            gameStats.get(game).setHighScore(score);
-        }
-    }
+  /** Setter for the high score of the Maze game. */
+  public void setMazeHighScore(int mazeHighScore) {
+    this.mazeHighScore = mazeHighScore;
+  }
 
-    /**
-     * Returns the total games played for the specified game.
-     * @param game - name of one of our games
-     */
-    int getTotalGames(Games game) {
-        return gameStats.get(game).getTotalGamesPlayed();
-    }
+  /** Getter for the high score of the Tapioca Launcher game. */
+  public int getTapiocaHighScore() {
+    return tapiocaHighScore;
+  }
 
-    /**
-     * Increment the total amount of games played for the specified game by one.
-     * @param game - name of one of our games
-     */
-    void incrementTotalGames(Games game) {
-        gameStats.get(game).incrementGamesPlayed();
-    }
+  /** Setter for the high score of the Tapioca Launcher game. */
+  public void setTapiocaHighScore(int tapiocaHighScore) {
+    this.tapiocaHighScore = tapiocaHighScore;
+  }
 
-    /**
-     * Return the unique stat of the specified game.
-     * @param game - name of one of our games
-     */
-    int getUniqueStat(Games game){
-        return gameStats.get(game).getUniqueStat();
-    }
+  /** Getter for the high score of the Tiles game. */
+  public int getTilesHighScore() {
+    return tilesHighScore;
+  }
 
-
+  /** Setter for the high score of the Tiles game. */
+  public void setTilesHighScore(int tilesHighScore) {
+    this.tilesHighScore = tilesHighScore;
+  }
 }

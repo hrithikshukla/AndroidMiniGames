@@ -1,7 +1,9 @@
 package com.example.game.Save;
 
+import java.io.Serializable;
+
 /** Class representing a User. */
-class User {
+public class User implements Serializable {
 
   private String username;
   private String password;
