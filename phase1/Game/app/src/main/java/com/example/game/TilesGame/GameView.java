@@ -18,8 +18,11 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
   /** The part of the program that manages time. */
   private GameThread thread;
 
+  private Context context;
+
   public GameView(Context context) {
     super(context);
+    this.context = context;
     getHolder().addCallback(this);
     thread = new GameThread(getHolder(), this); // Instantiate new GameThread.
     setFocusable(true);
@@ -35,7 +38,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
   @Override
   public void surfaceCreated(SurfaceHolder holder) {
-    boardManager = new BoardManager(); // Instantiate new BoardManager.
+    boardManager = new BoardManager(context); // Instantiate new BoardManager.
     boardManager.createBoardItems();
 
     thread.setRunning(true);

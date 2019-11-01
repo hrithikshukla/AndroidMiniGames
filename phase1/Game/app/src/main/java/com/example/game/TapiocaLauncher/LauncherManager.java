@@ -76,7 +76,7 @@ public class LauncherManager {
                     if (balls.get(i).getHp() == 0) {
                         balls.remove(i);
                         i--;
-                        scoreManager.addScore();
+                        scoreManager.addScore("tapioca");
                     }
                 }
             }

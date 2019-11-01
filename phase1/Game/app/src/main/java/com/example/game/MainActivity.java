@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 
@@ -92,15 +93,16 @@ public class MainActivity extends Activity {
             .getResources()
             .updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
     // Save data to preferences
-    SharedPreferences.Editor editor = getSharedPreferences("Settings", MODE_PRIVATE).edit();
+    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+    SharedPreferences.Editor editor = sharedPreferences.edit();
     editor.putString("language", language);
     editor.apply();
   }
 
   // Load language saved in shared preferences
   public void loadLocale() {
-    SharedPreferences prefs = getSharedPreferences("Settings", Activity.MODE_PRIVATE);
-    String language = prefs.getString("language", "");
+    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+    String language = sharedPreferences.getString("language", "");
     setLocale(language);
   }
 
