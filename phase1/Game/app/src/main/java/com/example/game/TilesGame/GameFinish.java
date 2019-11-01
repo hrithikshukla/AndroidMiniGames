@@ -1,6 +1,7 @@
 package com.example.game.TilesGame;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -29,6 +30,10 @@ public class GameFinish extends AppCompatActivity {
     // Capture the layout's TextView that displays the game score and set the score as its text.
     TextView textView = findViewById(R.id.tilesGameScore);
     textView.setText(gameScore);
+
+    TextView highScoretxt = findViewById(R.id.highScoreText);
+    SharedPreferences prefs = getSharedPreferences("tiles", MODE_PRIVATE);
+    highScoretxt.setText(getString(R.string.highScore) + prefs.getInt("tileshighscore", 0));
   }
 
   /** Called when the user taps the 'EXIT' button */
