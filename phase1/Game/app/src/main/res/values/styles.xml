@@ -38,8 +38,35 @@
         <item name="colorAccent">@color/gpAccent</item>
         <item name="buttonPrimary">@style/button_prim_gp</item>
         <item name="buttonSecondary">@style/button_sec_gp</item>
-        <item name="login">@style/login_gp</item>
         <item name="android:textColor">@color/gpPrimaryDark</item>
+    </style>
+
+    <!-- Orange/Teal (OT) Light application theme. -->
+    <style name="LightOTTheme" parent="LightTheme">
+        <item name="android:colorPrimary">@color/otPrimary</item>
+        <item name="colorPrimary">@color/otPrimary</item>
+        <item name="android:colorPrimaryDark">@color/otPrimaryDark</item>
+        <item name="colorPrimaryDark">@color/otPrimaryDark</item>
+        <item name="android:colorSecondary">@color/otSecondary</item>
+        <item name="android:colorAccent">@color/otAccent</item>
+        <item name="colorAccent">@color/otAccent</item>
+        <item name="buttonPrimary">@style/button_prim_ot</item>
+        <item name="buttonSecondary">@style/button_sec_ot</item>
+        <item name="android:textColor">@color/otPrimaryDark</item>
+    </style>
+
+    <!-- Blue/Pink (BP) Light application theme. -->
+    <style name="LightBPTheme" parent="LightTheme">
+        <item name="android:colorPrimary">@color/bpPrimary</item>
+        <item name="colorPrimary">@color/bpPrimary</item>
+        <item name="android:colorPrimaryDark">@color/bpPrimaryDark</item>
+        <item name="colorPrimaryDark">@color/bpPrimaryDark</item>
+        <item name="android:colorSecondary">@color/bpSecondary</item>
+        <item name="android:colorAccent">@color/bpAccent</item>
+        <item name="colorAccent">@color/bpAccent</item>
+        <item name="buttonPrimary">@style/button_prim_bp</item>
+        <item name="buttonSecondary">@style/button_sec_bp</item>
+        <item name="android:textColor">@color/bpPrimaryDark</item>
     </style>
 
     <!-- =============================================================== -->
@@ -77,11 +104,32 @@
         <item name="android:textColor">@color/gpAccent</item>
     </style>
 
-    <style name="login_gp">
-        <item name="android:textColor">@color/gpPrimaryDark</item>
-        <item name="android:textColorHighlight">@color/gpPrimary</item>
-        <item name="android:textColorHint">@color/gpSecondary</item>
-        <item name="android:textColorLink">@color/gpSecondary</item>
+    <!-- =============================================================== -->
+    <!-- Orange/Teal (OT) styles -->
+    <!-- =============================================================== -->
+
+    <style name="button_prim_ot">
+        <item name="android:background">@drawable/button_primary_ot</item>
+        <item name="android:textColor">@color/otPrimaryDark</item>
+    </style>
+
+    <style name="button_sec_ot">
+        <item name="android:background">@drawable/button_secondary_ot</item>
+        <item name="android:textColor">@color/otAccent</item>
+    </style>
+
+    <!-- =============================================================== -->
+    <!-- Blue/Pink (BP) styles -->
+    <!-- =============================================================== -->
+
+    <style name="button_prim_bp">
+        <item name="android:background">@drawable/button_primary_bp</item>
+        <item name="android:textColor">@color/bpPrimaryDark</item>
+    </style>
+
+    <style name="button_sec_bp">
+        <item name="android:background">@drawable/button_secondary_bp</item>
+        <item name="android:textColor">@color/bpAccent</item>
     </style>
 
 </resources>

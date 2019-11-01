@@ -38,24 +38,24 @@ public class MainActivity extends Activity {
 
     Button changeLang = findViewById(R.id.changeMyLang);
     changeLang.setOnClickListener(
-            new View.OnClickListener() {
-              @Override
-              public void onClick(View v) {
-                // Show alert dialog to display languages
-                showChangeLanguageDialog();
-              }
-            });
+        new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+            // Show alert dialog to display languages
+            showChangeLanguageDialog();
+          }
+        });
     ImageView arrow = findViewById(R.id.ArrowRight);
-    arrow.setOnTouchListener(new OnSwipeTouchListener(MainActivity.this) {
-      @Override
-      public void onSwipeLeft() {
-        //your actions
-        Intent intent = new Intent(MainActivity.this, StatsActivity.class);
-        putUser(intent);
-        startActivity(intent);
-      }
-      });
-
+    arrow.setOnTouchListener(
+        new OnSwipeTouchListener(MainActivity.this) {
+          @Override
+          public void onSwipeLeft() {
+            // your actions
+            Intent intent = new Intent(MainActivity.this, StatsActivity.class);
+            putUser(intent);
+            startActivity(intent);
+          }
+        });
   }
 
   private void showChangeLanguageDialog() {
@@ -63,52 +63,52 @@ public class MainActivity extends Activity {
     AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
     mBuilder.setTitle("Choose Language...");
     mBuilder.setSingleChoiceItems(
-            languages,
-            -1,
-            new DialogInterface.OnClickListener() {
-              @Override
-              public void onClick(DialogInterface dialog, int which) {
-                if (which == 0) {
-                  // French
-                  setLocale("fr");
-                  Intent intent = getIntent();
-                  putUser(intent);
-                  startActivity(intent);
-                  usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
-                  finish();
-                  overridePendingTransition(0, 0);
-                } else if (which == 1) {
-                  // Chinese
-                  setLocale("zh");
-                  Intent intent = getIntent();
-                  putUser(intent);
-                  startActivity(intent);
-                  usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
-                  finish();
-                  overridePendingTransition(0, 0);
-                } else if (which == 2) {
-                  // German
-                  setLocale("de");
-                  Intent intent = getIntent();
-                  putUser(intent);
-                  startActivity(intent);
-                  usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
-                  finish();
-                  overridePendingTransition(0, 0);
-                } else if (which == 3) {
-                  // English
-                  setLocale("en");
-                  Intent intent = getIntent();
-                  putUser(intent);
-                  startActivity(intent);
-                  usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
-                  finish();
-                  overridePendingTransition(0, 0);
-                }
+        languages,
+        -1,
+        new DialogInterface.OnClickListener() {
+          @Override
+          public void onClick(DialogInterface dialog, int which) {
+            if (which == 0) {
+              // French
+              setLocale("fr");
+              Intent intent = getIntent();
+              putUser(intent);
+              startActivity(intent);
+              usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
+              finish();
+              overridePendingTransition(0, 0);
+            } else if (which == 1) {
+              // Chinese
+              setLocale("zh");
+              Intent intent = getIntent();
+              putUser(intent);
+              startActivity(intent);
+              usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
+              finish();
+              overridePendingTransition(0, 0);
+            } else if (which == 2) {
+              // German
+              setLocale("de");
+              Intent intent = getIntent();
+              putUser(intent);
+              startActivity(intent);
+              usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
+              finish();
+              overridePendingTransition(0, 0);
+            } else if (which == 3) {
+              // English
+              setLocale("en");
+              Intent intent = getIntent();
+              putUser(intent);
+              startActivity(intent);
+              usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
+              finish();
+              overridePendingTransition(0, 0);
+            }
 
-                dialog.dismiss();
-              }
-            });
+            dialog.dismiss();
+          }
+        });
     AlertDialog mDialog = mBuilder.create();
     // Show alert dialog
     mDialog.show();
@@ -120,8 +120,8 @@ public class MainActivity extends Activity {
     Configuration config = new Configuration();
     config.setLocale(locale);
     getBaseContext()
-            .getResources()
-            .updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+        .getResources()
+        .updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
     // Save data to preferences
     SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
     SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -140,7 +140,7 @@ public class MainActivity extends Activity {
     // Setup the SharedPreferences
     final SharedPreferences.Editor editor = getSharedPreferences("Settings", MODE_PRIVATE).edit();
 
-    final String[] themes = {"Default", "Green/Purple"};
+    final String[] themes = {"Default", "Green/Purple", "Orange/Teal", "Blue/Pink"};
     AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
     mBuilder.setTitle("Choose Theme...");
     mBuilder.setSingleChoiceItems(
@@ -162,6 +162,22 @@ public class MainActivity extends Activity {
               ThemeManager.changeToTheme(MainActivity.this, ThemeManager.THEME_GP);
               // Add the theme's int to SharedPreferences
               editor.putInt("theme", ThemeManager.THEME_GP);
+              // Apply the save
+              editor.apply();
+              overridePendingTransition(0, 0);
+            } else if (which == 2) {
+              // Orange/Teal
+              ThemeManager.changeToTheme(MainActivity.this, ThemeManager.THEME_OT);
+              // Add the theme's int to SharedPreferences
+              editor.putInt("theme", ThemeManager.THEME_OT);
+              // Apply the save
+              editor.apply();
+              overridePendingTransition(0, 0);
+            } else if (which == 3) {
+              // Orange/Teal
+              ThemeManager.changeToTheme(MainActivity.this, ThemeManager.THEME_BP);
+              // Add the theme's int to SharedPreferences
+              editor.putInt("theme", ThemeManager.THEME_BP);
               // Apply the save
               editor.apply();
               overridePendingTransition(0, 0);
@@ -203,6 +219,5 @@ public class MainActivity extends Activity {
   private void putUser(Intent intent) {
     usr.getUserData().setPrefs(null);
     intent.putExtra("UserObject", usr);
-
   }
 }

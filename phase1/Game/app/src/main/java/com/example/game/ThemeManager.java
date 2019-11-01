@@ -7,6 +7,8 @@ import android.content.Intent;
 public class ThemeManager {
   static final int THEME_DEFAULT = 0;
   static final int THEME_GP = 1;
+  static final int THEME_OT = 2;
+  static final int THEME_BP = 3;
 
   /** Set the theme of the Activity, and restart it by creating a new Activity of the same type. */
   static void changeToTheme(Activity activity, int theme) {
@@ -17,6 +19,12 @@ public class ThemeManager {
         break;
       case THEME_GP:
         activity.setTheme(R.style.LightGPTheme);
+        break;
+      case THEME_OT:
+        activity.setTheme(R.style.LightOTTheme);
+        break;
+      case THEME_BP:
+        activity.setTheme(R.style.LightBPTheme);
         break;
     }
     activity.finish();
@@ -35,6 +43,12 @@ public class ThemeManager {
         break;
       case THEME_GP:
         activity.setTheme(R.style.LightGPTheme);
+        break;
+      case THEME_OT:
+        activity.setTheme(R.style.LightOTTheme);
+        break;
+      case THEME_BP:
+        activity.setTheme(R.style.LightBPTheme);
         break;
     }
   }

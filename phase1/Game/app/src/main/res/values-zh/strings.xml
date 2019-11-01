@@ -10,7 +10,7 @@
     <string name="signUp">註冊</string>
     <string name="signIn">登入</string>
     <string name="changeLang">語言</string>
-    <string name="level">"水平 "</string>
+    <string name="level">" 级"</string>
     <string name="score">"得分: "</string>
     <string name="highScore">"高分: "</string>
     <string name="username2">" 用戶名"</string>
@@ -42,4 +42,5 @@
     <string name="sync_header">同步</string>
     <string name="sync_title">定期同步电子邮件</string>
     <string name="title_activity_settings">设定值</string>
+    <string name="instructions_tiles">" 请勿触摸白色瓷砖！点击黑色瓷砖以获取积分。如果您敲击白色瓷砖或未开发的黑色瓷砖离开电路板，则您会输。"</string>
 </resources>

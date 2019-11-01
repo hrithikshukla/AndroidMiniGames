@@ -84,7 +84,8 @@
 
     <Button
         android:id="@+id/Reset"
-        android:layout_width="wrap_content"
+        style="?buttonPrimary"
+        android:layout_width="215dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="43dp"
         android:layout_marginBottom="36dp"

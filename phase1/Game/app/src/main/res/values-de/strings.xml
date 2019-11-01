@@ -42,4 +42,5 @@
     <string name="sync_header">Synchronisieren</string>
     <string name="sync_title">Synchronisieren Sie Ihre E-Mails regelmäßig</string>
     <string name="title_activity_settings">die Einstellungen</string>
+    <string name="instructions_tiles">Ne touchez pas les carreaux blancs! Appuyez sur les carreaux noirs pour gagner des points. Vous perdez si vous appuyez sur une tuile blanche ou quand une tuile noire inexploitée quitte le tableau.</string>
 </resources>
