@@ -13,7 +13,7 @@ public class GameThread extends Thread {
   /** Whether the thread is running. */
   private boolean isRunning;
   /** The canvas on which to draw the tile board. */
-  public static Canvas canvas;
+  private static Canvas canvas;
 
   /**
    * Construct the thread.
@@ -21,7 +21,7 @@ public class GameThread extends Thread {
    * @param surfaceHolder the canvas container.
    * @param view where the tile board items are drawn.
    */
-  public GameThread(SurfaceHolder surfaceHolder, GameView view) {
+  GameThread(SurfaceHolder surfaceHolder, GameView view) {
     this.surfaceHolder = surfaceHolder;
     this.gameView = view;
   }

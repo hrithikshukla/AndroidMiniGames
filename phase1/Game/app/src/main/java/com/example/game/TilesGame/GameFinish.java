@@ -36,12 +36,15 @@ public class GameFinish extends AppCompatActivity {
     String gameScore = intent.getStringExtra("GAME_SCORE");
 
     // Capture the layout's TextView that displays the game score and set the score as its text.
-    TextView textView = findViewById(R.id.tilesGameScore);
-    textView.setText(gameScore);
+    TextView textViewScore = findViewById(R.id.tilesGameScore);
+    textViewScore.setText(gameScore);
 
-    TextView highScoretxt = findViewById(R.id.highScoreText);
+    // Capture the layout's TextView that displays the high score and set the high score from
+    // saved in SharedPreferences as its text.
+    TextView textViewHighScore = findViewById(R.id.highScoreText);
     SharedPreferences prefs = getSharedPreferences("tiles", MODE_PRIVATE);
-    highScoretxt.setText(getString(R.string.highScore) + prefs.getInt("tileshighscore", 0));
+    String highScoreText = getString(R.string.highScore) + prefs.getInt("tileshighscore", 0);
+    textViewHighScore.setText(highScoreText);
   }
 
   /** Called when the user taps the 'EXIT' button */
