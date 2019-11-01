@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 //
-public class GameActivity extends AppCompatActivity {
+public class TapiocaGameActivity extends AppCompatActivity {
 
   // Views
   private GameView gameView;
