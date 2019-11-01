@@ -5,6 +5,7 @@
     <string name="button_tiles">Tiles</string>
     <string name="select_game">Select Your Game</string>
     <string name="title_tiles">Tiles!</string>
+    <string name="title_maze">Maze</string>
     <string name="buttonPlay">Play</string>
     <string name="signUp">Sign Up</string>
     <string name="signIn">Sign In</string>
@@ -52,5 +53,6 @@
     <string name="text_game_over">Game Over</string>
     <string name="text_swipe_right">Swipe Right!</string>
     <string name="text_swipe_left">Swipe Left!</string>
+    <string name="instructions_maze">Escape the maze! The fewer steps you take the higher your score. Move your character by tapping the corresponding direction e.g. top of the screen for up.</string>
 
 </resources>
