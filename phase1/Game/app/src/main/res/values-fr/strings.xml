@@ -23,4 +23,5 @@
     <string name="username2">" Nom d'utilisateur"</string>
     <string name="button_exit">Partir</string>
     <string name="button_retry">Réessayer</string>
+    <string name="steps">"Pas: "</string>
 </resources>

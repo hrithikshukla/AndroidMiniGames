@@ -1,10 +1,13 @@
 package com.example.game.MazeGame;
 
+import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.view.SurfaceHolder;
+
+import com.example.game.R;
 
 import java.util.Observable;
 import java.util.Observer;
@@ -17,6 +20,7 @@ public class VisualView implements Observer, Gameover {
   private Tile tile;
   private Background background;
   private SurfaceHolder surfaceHolder;
+  private Context context;
 
   // Maximum x and y positions of the screen.
   private int maxScreenX, maxscreenY;
@@ -31,12 +35,13 @@ public class VisualView implements Observer, Gameover {
    * @param maxScreenY - maximum y position of the screen
    */
   public VisualView(
-      int maxScreenX, int maxScreenY, Resources resources, SurfaceHolder surfaceHolder) {
+          int maxScreenX, int maxScreenY, Context context, SurfaceHolder surfaceHolder) {
     this.maxScreenX = maxScreenX;
     this.maxscreenY = maxScreenY;
 
-    this.tile = new Tile(resources);
-    this.background = new Background(maxScreenX, maxScreenY, resources);
+    this.context = context;
+    this.tile = new Tile(context.getResources());
+    this.background = new Background(maxScreenX, maxScreenY, context.getResources());
 
     this.surfaceHolder = surfaceHolder;
 
@@ -67,8 +72,8 @@ public class VisualView implements Observer, Gameover {
 
   /** Draws the text of the Maze. */
   private void drawText(Canvas canvas) {
-    canvas.drawText(String.format("Score: %d", score), maxScreenX - 250, 50, textPaint);
-    canvas.drawText(String.format("Steps: %d", numSteps), 115, 50, textPaint);
+    canvas.drawText(context.getString(R.string.score) + score, maxScreenX - 250, 50, textPaint);
+    canvas.drawText(context.getString(R.string.steps) + numSteps, 115, 50, textPaint);
   }
 
   /** Draws the Tiles of the Maze. */
