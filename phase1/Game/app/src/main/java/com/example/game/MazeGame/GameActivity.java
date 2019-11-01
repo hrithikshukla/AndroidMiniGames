@@ -6,6 +6,8 @@ import android.graphics.Point;
 import android.os.Bundle;
 import android.view.WindowManager;
 
+import com.example.game.Save.User;
+
 /** * Class that initializes all three components of the MVC model. */
 public class GameActivity extends AppCompatActivity {
 
@@ -14,11 +16,11 @@ public class GameActivity extends AppCompatActivity {
   // Controller of the game. Processes user input using game state logic to possibly change the
   // model.
   private GameController gameController;
-
+  User usr;
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-
+    usr = (User) getIntent().getSerializableExtra("MazeGameLauncher");
     // Set fullscreen mode.
     getWindow()
             .setFlags(

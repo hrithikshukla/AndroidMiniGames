@@ -20,22 +20,24 @@ import static java.util.Locale.setDefault;
 @SuppressWarnings("deprecation")
 public class MainActivity extends Activity {
 
+  User usr;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     loadLocale();
     setContentView(R.layout.activity_main);
-    User usr = (User) getIntent().getSerializableExtra("UserObject");
+    usr = (User) getIntent().getSerializableExtra("UserObject");
 
     Button changeLang = findViewById(R.id.changeMyLang);
     changeLang.setOnClickListener(
-        new View.OnClickListener() {
-          @Override
-          public void onClick(View v) {
-            // Show alert dialog to display languages
-            showChangeLanguageDialog();
-          }
-        });
+            new View.OnClickListener() {
+              @Override
+              public void onClick(View v) {
+                // Show alert dialog to display languages
+                showChangeLanguageDialog();
+              }
+            });
   }
 
   private void showChangeLanguageDialog() {
@@ -43,40 +45,40 @@ public class MainActivity extends Activity {
     AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
     mBuilder.setTitle("Choose Language...");
     mBuilder.setSingleChoiceItems(
-        languages,
-        -1,
-        new DialogInterface.OnClickListener() {
-          @Override
-          public void onClick(DialogInterface dialog, int which) {
-            if (which == 0) {
-              // French
-              setLocale("fr");
-              startActivity(getIntent());
-              finish();
-              overridePendingTransition(0, 0);
-            } else if (which == 1) {
-              // Chinese
-              setLocale("zh");
-              startActivity(getIntent());
-              finish();
-              overridePendingTransition(0, 0);
-            } else if (which == 2) {
-              // German
-              setLocale("de");
-              startActivity(getIntent());
-              finish();
-              overridePendingTransition(0, 0);
-            } else if (which == 3) {
-              // English
-              setLocale("en");
-              startActivity(getIntent());
-              finish();
-              overridePendingTransition(0, 0);
-            }
+            languages,
+            -1,
+            new DialogInterface.OnClickListener() {
+              @Override
+              public void onClick(DialogInterface dialog, int which) {
+                if (which == 0) {
+                  // French
+                  setLocale("fr");
+                  startActivity(getIntent());
+                  finish();
+                  overridePendingTransition(0, 0);
+                } else if (which == 1) {
+                  // Chinese
+                  setLocale("zh");
+                  startActivity(getIntent());
+                  finish();
+                  overridePendingTransition(0, 0);
+                } else if (which == 2) {
+                  // German
+                  setLocale("de");
+                  startActivity(getIntent());
+                  finish();
+                  overridePendingTransition(0, 0);
+                } else if (which == 3) {
+                  // English
+                  setLocale("en");
+                  startActivity(getIntent());
+                  finish();
+                  overridePendingTransition(0, 0);
+                }
 
-            dialog.dismiss();
-          }
-        });
+                dialog.dismiss();
+              }
+            });
     AlertDialog mDialog = mBuilder.create();
     // Show alert dialog
     mDialog.show();
@@ -88,8 +90,8 @@ public class MainActivity extends Activity {
     Configuration config = new Configuration();
     config.setLocale(locale);
     getBaseContext()
-        .getResources()
-        .updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+            .getResources()
+            .updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
     // Save data to preferences
     SharedPreferences.Editor editor = getSharedPreferences("Settings", MODE_PRIVATE).edit();
     editor.putString("language", language);
@@ -106,18 +108,21 @@ public class MainActivity extends Activity {
   /** Called when the user taps the 'MAZE' button */
   public void goToMazeGame(View view) {
     Intent intent = new Intent(this, com.example.game.MazeGameLauncher.class);
+    intent.putExtra("MainActivity", usr);
     startActivity(intent);
   }
 
   /** Called when the user taps the 'TAPIOCA LAUNCHER' button */
   public void goToTapiocaLauncher(View view) {
     Intent intent = new Intent(this, com.example.game.TapiocaGameLauncher.class);
+    intent.putExtra("MainActivity", usr);
     startActivity(intent);
   }
 
   /** Called when the user taps the 'TILES' button */
   public void goToTilesGame(View view) {
     Intent intent = new Intent(this, com.example.game.TilesGameLauncher.class);
+    intent.putExtra("MainActivity", usr);
     startActivity(intent);
   }
 }

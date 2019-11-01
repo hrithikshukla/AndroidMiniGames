@@ -8,15 +8,20 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.Window;
 import android.view.WindowManager;
+
+import com.example.game.Save.User;
+
 //
 public class GameActivity extends AppCompatActivity {
 
   // Views
   private GameView gameView;
+  User usr;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+    usr = (User) getIntent().getSerializableExtra("TapiocaGaeLauncher");
 
     getWindow()
         .setFlags(

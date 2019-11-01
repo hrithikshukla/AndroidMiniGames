@@ -7,15 +7,21 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.game.Save.User;
+
 public class TapiocaGameLauncher extends AppCompatActivity {
 
-  @Override
+    User usr;
+
+    @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
     setContentView(R.layout.tapioca_game_launch);
 
-    findViewById(R.id.play)
+    usr = (User) getIntent().getSerializableExtra("MainActivity");
+
+        findViewById(R.id.play)
         .setOnClickListener(
             new View.OnClickListener() {
               @Override
@@ -24,7 +30,8 @@ public class TapiocaGameLauncher extends AppCompatActivity {
                     new Intent(
                         TapiocaGameLauncher.this,
                         com.example.game.TapiocaLauncher.GameActivity.class);
-                startActivity(intent);
+                  intent.putExtra("TapiiocaGameLauncher", usr);
+                  startActivity(intent);
               }
             });
 
