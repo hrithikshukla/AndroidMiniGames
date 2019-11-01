@@ -2,12 +2,14 @@ package com.example.game.TapiocaLauncher;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.MotionEvent;
-import android.view.Window;
+import android.view.View;
 import android.view.WindowManager;
+
+import com.example.game.TapiocaGameLauncher;
+
 //
 public class GameActivity extends AppCompatActivity {
 
@@ -26,6 +28,7 @@ public class GameActivity extends AppCompatActivity {
     getWindowManager().getDefaultDisplay().getSize(point);
 
     gameView = new GameView(this, point.x, point.y);
+    gameView.setGameActivity(this);
     setContentView(gameView);
   }
 
@@ -39,5 +42,10 @@ public class GameActivity extends AppCompatActivity {
   protected void onResume() {
     super.onResume();
     gameView.resume();
+  }
+
+  public void endGame() {
+    Intent intent = new Intent(this, TapiocaGameLauncher.class);
+    startActivity(intent);
   }
 }

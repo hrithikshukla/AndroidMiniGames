@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 
@@ -19,13 +18,14 @@ import static java.util.Locale.setDefault;
 
 @SuppressWarnings("deprecation")
 public class MainActivity extends Activity {
+  User usr;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     loadLocale();
     setContentView(R.layout.activity_main);
-    User usr = (User) getIntent().getSerializableExtra("UserObject");
+    usr = (User) getIntent().getSerializableExtra("UserObject");
 
     Button changeLang = findViewById(R.id.changeMyLang);
     changeLang.setOnClickListener(
@@ -91,7 +91,7 @@ public class MainActivity extends Activity {
         .getResources()
         .updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
     // Save data to preferences
-    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+    SharedPreferences sharedPreferences = getSharedPreferences("language", MODE_PRIVATE);
     SharedPreferences.Editor editor = sharedPreferences.edit();
     editor.putString("language", language);
     editor.apply();
@@ -99,26 +99,34 @@ public class MainActivity extends Activity {
 
   // Load language saved in shared preferences
   public void loadLocale() {
-    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+    SharedPreferences sharedPreferences = getSharedPreferences("language", MODE_PRIVATE);
     String language = sharedPreferences.getString("language", "");
     setLocale(language);
   }
 
   /** Called when the user taps the 'MAZE' button */
   public void goToMazeGame(View view) {
+    usr.getUserData().setPrefs(null);
     Intent intent = new Intent(this, com.example.game.MazeGameLauncher.class);
+    intent.putExtra("UserObject", usr);
     startActivity(intent);
   }
 
   /** Called when the user taps the 'TAPIOCA LAUNCHER' button */
   public void goToTapiocaLauncher(View view) {
+    usr.getUserData().setPrefs(null);
     Intent intent = new Intent(this, com.example.game.TapiocaGameLauncher.class);
+    intent.putExtra("UserObject", usr);
     startActivity(intent);
+    usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
   }
 
   /** Called when the user taps the 'TILES' button */
   public void goToTilesGame(View view) {
+    usr.getUserData().setPrefs(null);
     Intent intent = new Intent(this, com.example.game.TilesGameLauncher.class);
+    intent.putExtra("UserObject", usr);
     startActivity(intent);
+    usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
   }
 }

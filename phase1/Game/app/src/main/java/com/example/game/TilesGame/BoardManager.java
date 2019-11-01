@@ -15,6 +15,8 @@ import com.example.game.ScoreManager;
 import java.util.ArrayList;
 import java.util.Random;
 
+import static android.content.Context.MODE_PRIVATE;
+
 class BoardManager extends ClassLoader {
 
   /** The width of a tile. */
@@ -45,7 +47,7 @@ class BoardManager extends ClassLoader {
 
   /** Construct a board manager. */
   BoardManager(Context context) {
-    scoreManager = new ScoreManager(context.getSharedPreferences("tiles", Context.MODE_PRIVATE));
+    scoreManager = new ScoreManager(context.getSharedPreferences("highScores", MODE_PRIVATE));
   }
 
   public int getBoardWidth() {

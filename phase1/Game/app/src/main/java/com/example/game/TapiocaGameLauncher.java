@@ -7,11 +7,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.game.Save.User;
+
 public class TapiocaGameLauncher extends AppCompatActivity {
+  User usr;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+    this.usr = (User) getIntent().getSerializableExtra("UserObject");
 
     setContentView(R.layout.tapioca_game_launch);
 
@@ -30,9 +34,9 @@ public class TapiocaGameLauncher extends AppCompatActivity {
 
     TextView highScoretxt = findViewById(R.id.highScoreText);
 
-
-    SharedPreferences prefs = getSharedPreferences("game", MODE_PRIVATE);
+    SharedPreferences prefs = getSharedPreferences("highScores", MODE_PRIVATE);
     highScoretxt.setText(getString(R.string.highScore) + prefs.getInt("tapiocahighscore", 0));
+
   }
   /*
    */
@@ -42,4 +46,12 @@ public class TapiocaGameLauncher extends AppCompatActivity {
       Intent intent = new Intent(this, com.example.game.TapiocaLauncher.GameActivity.class);
       startActivity(intent);
   }*/
+
+  /** Called when the user taps the 'EXIT' button */
+  public void exitToMenu(View view) {
+    Intent intent = new Intent(this, com.example.game.MainActivity.class);
+    intent.putExtra("UserObject", usr);
+    usr.getUserData().setPrefs(null);
+    startActivity(intent);
+  }
 }

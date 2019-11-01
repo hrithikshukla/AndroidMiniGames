@@ -49,8 +49,8 @@ public class LoginActivity extends AppCompatActivity {
   }
 
   public void goToMainActivity(View view) {
-    username = (EditText) findViewById(R.id.username);
-    password = (EditText) findViewById(R.id.password);
+    username = findViewById(R.id.username);
+    password = findViewById(R.id.password);
     System.out.println("random String");
     System.out.println(username.getText().toString().trim());
     System.out.println(password.getText().toString().trim());
@@ -60,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
     if (usr != null) {
       Intent mainActivityIntent =
           new Intent(LoginActivity.this, com.example.game.MainActivity.class);
-      mainActivityIntent.putExtra("UserObjecet", usr);
+      mainActivityIntent.putExtra("UserObject", usr);
       startActivity(mainActivityIntent);
     }
   };
