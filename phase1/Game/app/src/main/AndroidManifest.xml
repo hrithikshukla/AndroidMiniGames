@@ -7,49 +7,27 @@
         android:icon="@mipmap/ic_launcher"
         android:label="Tapioca Launcher"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:screenOrientation="portrait"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/LightDefaultTheme">
         <activity android:name=".TapiocaGameLauncher" />
         <activity android:name=".TilesGameLauncher" />
         <activity android:name=".MazeGameLauncher" />
         <activity android:name=".TilesGame.GameFinish" />
-        <activity
-            android:name=".TapiocaLauncher.GameActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.noActionBar" />
-        <activity
-            android:name=".TilesGame.GameActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.noActionBar" />
+        <activity android:name=".TapiocaLauncher.GameActivity" />
+        <activity android:name=".TilesGame.GameActivity" />
         <activity
             android:name=".MazeGame.GameActivity"
-            android:screenOrientation="landscape"
-            android:theme="@style/AppTheme.noActionBar" />
-        <activity
-            android:name=".MainActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.noActionBar">
-            <!--            <intent-filter>-->
-            <!--                <action android:name="android.intent.action.MAIN" />-->
-
-            <!--                <category android:name="android.intent.category.LAUNCHER" />-->
-            <!--            </intent-filter>-->
-        </activity>
-        <activity
-            android:name=".LoginActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.noActionBar">
+            android:screenOrientation="landscape" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity
-            android:name=".RegisterActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.noActionBar"></activity>
+        <activity android:name=".RegisterActivity" />
     </application>
 
 </manifest>

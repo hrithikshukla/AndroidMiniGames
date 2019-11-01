@@ -24,4 +24,5 @@
     <string name="button_exit">Partir</string>
     <string name="button_retry">Réessayer</string>
     <string name="steps">"Pas: "</string>
+    <string name="change_theme">Thème</string>
 </resources>

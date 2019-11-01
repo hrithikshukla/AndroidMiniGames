@@ -11,6 +11,10 @@ public class TapiocaGameLauncher extends AppCompatActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
+    // Set the theme.
+    SharedPreferences mSettings = this.getSharedPreferences("Settings", MODE_PRIVATE);
+    ThemeManager.setTheme(TapiocaGameLauncher.this, mSettings.getInt("theme", -1));
+
     super.onCreate(savedInstanceState);
 
     setContentView(R.layout.tapioca_game_launch);
@@ -33,12 +37,10 @@ public class TapiocaGameLauncher extends AppCompatActivity {
     SharedPreferences prefs = getSharedPreferences("game", MODE_PRIVATE);
     highScoretxt.setText(getString(R.string.highScore) + prefs.getInt("highscore", 0));
   }
-  /*
-   */
-  /** Called when the user taps the 'PLAY' button */
-  /*
-  public void startTapiocaLauncher(View view) {
-      Intent intent = new Intent(this, com.example.game.TapiocaLauncher.GameActivity.class);
-      startActivity(intent);
-  }*/
+
+  /** Called when the user taps the 'EXIT' button */
+  public void exitTapiocaGame(View view) {
+    Intent intent = new Intent(this, com.example.game.MainActivity.class);
+    startActivity(intent);
+  }
 }

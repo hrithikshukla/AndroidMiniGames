@@ -1,6 +1,7 @@
 package com.example.game;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 
@@ -10,6 +11,10 @@ public class TilesGameLauncher extends AppCompatActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
+    // Set the theme.
+    SharedPreferences mSettings = this.getSharedPreferences("Settings", MODE_PRIVATE);
+    ThemeManager.setTheme(TilesGameLauncher.this, mSettings.getInt("theme", -1));
+
     super.onCreate(savedInstanceState);
     setContentView(R.layout.tiles_game_launch);
   }

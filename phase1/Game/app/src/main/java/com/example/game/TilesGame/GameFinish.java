@@ -1,6 +1,7 @@
 package com.example.game.TilesGame;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -10,11 +11,16 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.R;
+import com.example.game.ThemeManager;
 
 public class GameFinish extends AppCompatActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
+    // Set the theme.
+    SharedPreferences mSettings = this.getSharedPreferences("Settings", MODE_PRIVATE);
+    ThemeManager.setTheme(GameFinish.this, mSettings.getInt("theme", -1));
+
     super.onCreate(savedInstanceState);
     requestWindowFeature(Window.FEATURE_NO_TITLE);
     getWindow()

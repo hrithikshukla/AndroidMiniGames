@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <!--  LIGHT THEME  -->
+    <color name="lightBackground">#F0F0F0</color>
+
+    <!--  DEFAULT  -->
+    <color name="defaultPrimary">#D7D7D7</color>
+    <color name="defaultPrimaryDark">#737373</color>
+    <color name="defaultSecondary">#646464</color>
+    <color name="defaultAccent">#DCDCDC</color>
+
+    <!--  GREEN/PURPLE  -->
+    <color name="gpPrimary">#ECE2A9</color>
+    <color name="gpPrimaryDark">#9DA16D</color>
+    <color name="gpSecondary">#7875AD</color>
+    <color name="gpAccent">#A8B2EB</color>
 </resources>

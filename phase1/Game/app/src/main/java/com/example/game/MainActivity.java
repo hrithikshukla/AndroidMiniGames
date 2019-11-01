@@ -21,6 +21,10 @@ public class MainActivity extends Activity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
+    // Set the theme.
+    SharedPreferences mSettings = this.getSharedPreferences("Settings", MODE_PRIVATE);
+    ThemeManager.setTheme(MainActivity.this, mSettings.getInt("theme", -1));
+
     super.onCreate(savedInstanceState);
     loadLocale();
     setContentView(R.layout.activity_main);
@@ -100,6 +104,45 @@ public class MainActivity extends Activity {
     SharedPreferences prefs = getSharedPreferences("Settings", Activity.MODE_PRIVATE);
     String language = prefs.getString("language", "");
     setLocale(language);
+  }
+
+  public void showChangeThemeDialog(View view) {
+    // Setup the SharedPreferences
+    final SharedPreferences.Editor editor = getSharedPreferences("Settings", MODE_PRIVATE).edit();
+
+    final String[] themes = {"Default", "Green/Purple"};
+    AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
+    mBuilder.setTitle("Choose Theme...");
+    mBuilder.setSingleChoiceItems(
+        themes,
+        -1,
+        new DialogInterface.OnClickListener() {
+          @Override
+          public void onClick(DialogInterface dialog, int which) {
+            if (which == 0) {
+              // Default
+              ThemeManager.changeToTheme(MainActivity.this, ThemeManager.THEME_DEFAULT);
+              // Add the theme's int to SharedPreferences
+              editor.putInt("theme", ThemeManager.THEME_DEFAULT);
+              // Apply the save
+              editor.apply();
+              overridePendingTransition(0, 0);
+            } else if (which == 1) {
+              // Green/Purple
+              ThemeManager.changeToTheme(MainActivity.this, ThemeManager.THEME_GP);
+              // Add the theme's int to SharedPreferences
+              editor.putInt("theme", ThemeManager.THEME_GP);
+              // Apply the save
+              editor.apply();
+              overridePendingTransition(0, 0);
+            }
+
+            dialog.dismiss();
+          }
+        });
+    AlertDialog mDialog = mBuilder.create();
+    // Show alert dialog
+    mDialog.show();
   }
 
   /** Called when the user taps the 'MAZE' button */
