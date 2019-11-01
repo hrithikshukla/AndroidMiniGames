@@ -50,7 +50,7 @@ public class TileGameActivity extends AppCompatActivity {
 
   /** Update the high score for Tiles game for usr. */
   public void updateHighScore(int newScore) {
-    SharedPreferences sharedPreferences = getSharedPreferences("tiles", MODE_PRIVATE);
+    SharedPreferences sharedPreferences = getSharedPreferences("highScores", MODE_PRIVATE);
     SharedPreferences.Editor editor = sharedPreferences.edit();
     int currentHighScore = sharedPreferences.getInt("tileshighscore", 0);
     if (currentHighScore < newScore) {
