@@ -9,7 +9,7 @@ public class GameFacade extends Observable {
     private List<Ball> balls;
 
     private int score;
-    private int level = 2;
+    private int level = 1;
     private boolean gameOver = false;
 
     public GameFacade(Launcher launcher, List<Ball> balls){
