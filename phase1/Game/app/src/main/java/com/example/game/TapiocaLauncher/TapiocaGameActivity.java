@@ -12,7 +12,7 @@ import android.view.WindowManager;
 import com.example.game.Save.User;
 
 //
-public class GameActivity extends AppCompatActivity {
+public class TapiocaGameActivity extends AppCompatActivity {
 
   // Views
   private GameView gameView;

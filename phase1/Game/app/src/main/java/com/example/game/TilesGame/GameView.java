@@ -10,7 +10,7 @@ import android.view.MotionEvent;
 public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
   /** The activity class of the Tiles game. */
-  private static GameActivity gameActivity;
+  private static TileGameActivity gameActivity;
 
   /** The tile board contents. */
   private BoardManager boardManager;
@@ -25,11 +25,11 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     setFocusable(true);
   }
 
-  public static GameActivity getGameActivity() {
+  public static TileGameActivity getGameActivity() {
     return gameActivity;
   }
 
-  public static void setGameActivity(GameActivity gameActivity) {
+  public static void setGameActivity(TileGameActivity gameActivity) {
     GameView.gameActivity = gameActivity;
   }
 

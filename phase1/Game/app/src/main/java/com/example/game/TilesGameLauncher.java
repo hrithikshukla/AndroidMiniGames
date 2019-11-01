@@ -21,7 +21,7 @@ public class TilesGameLauncher extends AppCompatActivity {
 
   /** Called when the user taps the 'PLAY' button */
   public void startTilesGame(View view) {
-    Intent intent = new Intent(this, com.example.game.TilesGame.GameActivity.class);
+    Intent intent = new Intent(this, com.example.game.TilesGame.TileGameActivity.class);
     intent.putExtra("TilesGameLauncher", usr);
     startActivity(intent);
   }

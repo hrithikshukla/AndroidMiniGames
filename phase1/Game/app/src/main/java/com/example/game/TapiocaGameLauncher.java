@@ -29,7 +29,7 @@ public class TapiocaGameLauncher extends AppCompatActivity {
                 Intent intent =
                     new Intent(
                         TapiocaGameLauncher.this,
-                        com.example.game.TapiocaLauncher.GameActivity.class);
+                        com.example.game.TapiocaLauncher.TapiocaGameActivity.class);
                   intent.putExtra("TapiiocaGameLauncher", usr);
                   startActivity(intent);
               }
