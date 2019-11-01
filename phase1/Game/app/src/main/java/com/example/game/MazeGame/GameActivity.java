@@ -46,6 +46,7 @@ public class GameActivity extends AppCompatActivity {
     // Add observors to our MVC components.
     gameView.getInputView().addObserver(gameController);
     gameFacade.addObserver(gameView.getVisualView());
+    gameFacade.addObserver(gameView.getInputView());
 
     gameFacade.update();
 
