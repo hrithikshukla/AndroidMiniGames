@@ -72,15 +72,15 @@ public class TapiocaGameActivity extends GameActivity implements Observer {
     gameView.resume();
   }
   //Method to change
-  public void endGame() {
-    switchToGameOverActivity(this);
-  }
+//  public void endGame() {
+//    switchToGameOverActivity(this);
+//  }
 
   @Override
-  public void update(Observable o, Object arg) {
+  public synchronized void update(Observable o, Object arg) {
     gameFacade = (GameFacade) arg;
     if(gameFacade.isGameOver()) {
-      endGame();
+      switchToGameOverActivity(this);
     }
   }
 }

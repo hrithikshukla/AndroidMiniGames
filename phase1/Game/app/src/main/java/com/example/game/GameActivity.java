@@ -12,6 +12,7 @@ public abstract class GameActivity extends AppCompatActivity {
 
     protected void switchToGameOverActivity(Context context){
         Intent intent = new Intent(context, GameOverActivity.class);
+        usr.getUserData().setPrefs(null);
         intent.putExtra("UserObject", usr);
         startActivity(intent);
     }
