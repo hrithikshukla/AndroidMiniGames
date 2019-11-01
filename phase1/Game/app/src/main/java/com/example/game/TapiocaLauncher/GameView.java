@@ -8,8 +8,6 @@ import android.view.SurfaceView;
 
 import com.example.game.ScoreManager;
 
-import static com.example.game.TapiocaLauncher.VisualView.launcherMan;
-
 @SuppressWarnings("ClickableViewAccessibility")
 public class GameView extends SurfaceView implements Runnable {
 
@@ -67,18 +65,11 @@ public class GameView extends SurfaceView implements Runnable {
 
   @Override
   public boolean onTouchEvent(MotionEvent event) {
-    Log.d("", "onTouchevent, gameView");
-    if (launcherMan.isReadyToLaunch()) {
-      if (event.getAction() == MotionEvent.ACTION_DOWN) {
+    if (event.getAction() == MotionEvent.ACTION_DOWN) {
         inputView.setDownAction(event);
-        Log.d("", "onTouchevent, gameView DOWN");
-
       }
-    }
     if (event.getAction() == MotionEvent.ACTION_UP) {
       inputView.setUpAction(event);
-      Log.d("", "onTouchevent, gameView UP");
-
     }
     return true;
   }

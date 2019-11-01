@@ -15,31 +15,17 @@ class Launcher {
 
   // Used to animate the ball and move it
   private boolean isMoving = false;
-  private boolean readyToLaunch = true;
   // The top left coordinates of the ball
   private int x, y;
   // The width, height, radius of the ball
   private int width, height, radius;
   // Used to animate the ball
   private int turnCounter = 0;
-  // Used to reset the ball after a turn
-  private int count = 0;
-  // Keeps track of scores
-  private ScoreManager scoreManager;
   // The bitmaps of the ball to animate the ball's spinning
   private Bitmap orientation1, orientation2, orientation3, orientation4;
   // The screen length and width to calculate if ball is out of bounds
   private int screenX, screenY;
-  private double gravity, speedX, speedY;
-
-  public void setGravityX(double gravityX) {
-    this.gravityX = gravityX;
-  }
-
-  public void setGravityY(double gravityY) {
-    this.gravityY = gravityY;
-  }
-
+  private double speedX, speedY;
   private double gravityX, gravityY;
 
   Launcher(int screenX, int screenY, Resources res, ScoreManager scoreManager) {
@@ -59,7 +45,7 @@ class Launcher {
 
     // Start the ball halfway horizontally in the screen further down
     y = 1850;
-    x = screenX / 2;
+    x = screenX / 2 - width/2;
     this.screenX = screenX;
     this.screenY = screenY;
     radius = width / 2;
@@ -204,5 +190,13 @@ class Launcher {
 
   public void setSpeedY(double speedY) {
     this.speedY = speedY;
+  }
+
+  public void setGravityX(double gravityX) {
+    this.gravityX = gravityX;
+  }
+
+  public void setGravityY(double gravityY) {
+    this.gravityY = gravityY;
   }
 }

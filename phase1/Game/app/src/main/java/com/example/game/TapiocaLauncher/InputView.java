@@ -5,7 +5,7 @@ import android.view.MotionEvent;
 
 import com.example.game.ScoreManager;
 
-import static com.example.game.TapiocaLauncher.VisualView.launcherMan;
+import static com.example.game.TapiocaLauncher.VisualView.gameMan;
 
 class InputView {
 
@@ -19,10 +19,10 @@ class InputView {
   }
 
   void setDownAction(MotionEvent event) {
-    if ((event.getX() >= launcherMan.getX()
-            && event.getX() <= (launcherMan.getX() + launcherMan.getHeight()))
-        && (event.getY() >= launcherMan.getY()
-            && event.getY() <= (launcherMan.getY() + launcherMan.getWidth()))) {
+    if ((event.getX() >= gameMan.getLauncherMan().getX()
+            && event.getX() <= (gameMan.getLauncherMan().getX() + gameMan.getLauncherMan().getHeight()))
+        && (event.getY() >= gameMan.getLauncherMan().getY()
+            && event.getY() <= (gameMan.getLauncherMan().getY() + gameMan.getLauncherMan().getWidth()))) {
       startX = event.getX();
       startY = event.getY();
       ballClicked = true;
@@ -35,7 +35,7 @@ class InputView {
     if (ballClicked) {
       endX = event.getX();
       endY = event.getY();
-      launcherMan.moveBall(startX, startY, endX, endY);
+      gameMan.getLauncherMan().moveBall(startX, startY, endX, endY);
       ballClicked = false;
       Log.d("", "setUpAction: inputview");
     }

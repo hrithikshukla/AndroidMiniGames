@@ -16,13 +16,13 @@ class VisualView {
 
   private Background background;
   // Generates layouts for the game
-  private BoardManager boardManager;
+//  private BoardManager boardManager;
   // List of balls to display on the screen
-  private List<Ball> layout;
+//  private List<Ball> layout;
   // Dimensions of the screen
   private int screenX, screenY;
   // The launcher tapioca that the user interacts with
-  static LauncherManager launcherMan;
+//  static LauncherManager launcherMan;
   // Used for resizing and display on different devices
   static float screenRatioX, screenRatioY;
   private Paint paint;
@@ -32,6 +32,8 @@ class VisualView {
   // Keeps track of scores, observer
   private ScoreManager scoreManager;
   private Context context;
+
+  static GameManager gameMan;
 
   VisualView(
       int screenX,
@@ -50,36 +52,35 @@ class VisualView {
     // Create screen ratio
     screenRatioX = 1920f / screenX;
     screenRatioY = 1080f / screenY;
-
+//
     background = new Background(screenX, screenY, res);
-    launcherMan = new LauncherManager(screenX, screenY, res, scoreManager);
-    boardManager = new BoardManager(res);
-    layout = boardManager.fillBoard(level);
-    level++;
+//    launcherMan = new LauncherManager(screenX, screenY, res, scoreManager);
+//    boardManager = new BoardManager(res);
+//    layout = boardManager.fillBoard(level);
+//    level++;
 
     paint = new Paint();
     paint.setTextSize(64);
     paint.setColor(Color.BLACK);
+    gameMan = new GameManager(screenX, screenY, res, scoreManager);
+
   }
 
   void draw() {
 
     if (surfaceHolder.getSurface().isValid()) {
 
+
       Canvas canvas = surfaceHolder.lockCanvas();
       canvas.drawBitmap(background.getBackground(), background.getX(), background.getY(), paint);
 
-      // Check if board is empty and ball is not moving, then generates new layout
-      if (layout.size() == 0 && launcherMan.isReadyToLaunch()) {
-        layout = boardManager.fillBoard(level);
-        level++;
-      }
       // Draws the balls that can be destroyed
-      for (Ball ball : layout) {
+
+      for (Ball ball : gameMan.getBalls()) {
         canvas.drawBitmap(ball.getBall(), ball.getX(), ball.getY(), paint);
       }
       // Draw launcher
-      canvas.drawBitmap(launcherMan.getLauncher(), launcherMan.getX(), launcherMan.getY(), paint);
+      canvas.drawBitmap(gameMan.getLauncherMan().getLauncher(), gameMan.getLauncherMan().getX(), gameMan.getLauncherMan().getY(), paint);
       // Draw the level and score
       canvas.drawText(
           context.getString(R.string.score) + scoreManager.getScore() + "", 5, screenY - 30, paint);
@@ -91,6 +92,6 @@ class VisualView {
   }
 
   void update() {
-    launcherMan.update(layout);
+    gameMan.update();
   }
 }
