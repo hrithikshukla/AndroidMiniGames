@@ -21,7 +21,7 @@ public class TilesGameLauncher extends AppCompatActivity {
   /** Called when the user taps the 'PLAY' button */
   public void startTilesGame(View view) {
     Intent intent = new Intent(this, com.example.game.TilesGame.TileGameActivity.class);
-    intent.putExtra("TilesGameLauncher", usr);
+    intent.putExtra("UserObject", usr);
     startActivity(intent);
   }
 
@@ -29,7 +29,6 @@ public class TilesGameLauncher extends AppCompatActivity {
   public void exitTilesGame(View view) {
     Intent intent = new Intent(this, com.example.game.MainActivity.class);
     intent.putExtra("UserObject", usr);
-    usr.getUserData().setPrefs(null);
     startActivity(intent);
   }
 }

@@ -24,4 +24,12 @@
     <string name="button_exit">离开</string>
     <string name="button_retry">再来</string>
     <string name="steps">" 腳步："</string>
+    <string name="TapiocaScore">"木薯粉發射器高分: "</string>
+    <string name="MazeScore">"迷宮高分: "</string>
+    <string name="TileScore">"瓷磚高分: "</string>
+    <string name="TapiocaTime">"花時間玩木薯粉發射器: "</string>
+    <string name="MazeTime">"花時間玩迷宮: "</string>
+    <string name="TileTime">花時間玩瓷磚:</string>
+    <string name="Reset">" 重置統計信息 o3o"</string>
+    <string name="Statistics">" 您的統計數據"</string>
 </resources>

@@ -1,5 +1,6 @@
 package com.example.game;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -10,6 +11,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.example.game.Save.User;
 
@@ -22,6 +24,7 @@ public class MainActivity extends Activity {
 
   User usr;
 
+  @SuppressLint("ClickableViewAccessibility")
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -38,6 +41,17 @@ public class MainActivity extends Activity {
                 showChangeLanguageDialog();
               }
             });
+    ImageView arrow = findViewById(R.id.ArrowRight);
+    arrow.setOnTouchListener(new OnSwipeTouchListener(MainActivity.this) {
+      @Override
+      public void onSwipeLeft() {
+        //your actions
+        Intent intent = new Intent(MainActivity.this, StatsActivity.class);
+        intent.putExtra("UserObject", usr);
+        startActivity(intent);
+      }
+      });
+
   }
 
   private void showChangeLanguageDialog() {
@@ -53,25 +67,37 @@ public class MainActivity extends Activity {
                 if (which == 0) {
                   // French
                   setLocale("fr");
-                  startActivity(getIntent());
+                  Intent intent = getIntent();
+                  putUser(intent);
+                  startActivity(intent);
+                  usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
                   finish();
                   overridePendingTransition(0, 0);
                 } else if (which == 1) {
                   // Chinese
                   setLocale("zh");
-                  startActivity(getIntent());
+                  Intent intent = getIntent();
+                  putUser(intent);
+                  startActivity(intent);
+                  usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
                   finish();
                   overridePendingTransition(0, 0);
                 } else if (which == 2) {
                   // German
                   setLocale("de");
-                  startActivity(getIntent());
+                  Intent intent = getIntent();
+                  putUser(intent);
+                  startActivity(intent);
+                  usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
                   finish();
                   overridePendingTransition(0, 0);
                 } else if (which == 3) {
                   // English
                   setLocale("en");
-                  startActivity(getIntent());
+                  Intent intent = getIntent();
+                  putUser(intent);
+                  startActivity(intent);
+                  usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
                   finish();
                   overridePendingTransition(0, 0);
                 }
@@ -109,21 +135,31 @@ public class MainActivity extends Activity {
   /** Called when the user taps the 'MAZE' button */
   public void goToMazeGame(View view) {
     Intent intent = new Intent(this, com.example.game.MazeGameLauncher.class);
-    intent.putExtra("UserObject", usr);
+    putUser(intent);
     startActivity(intent);
+    usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
   }
 
   /** Called when the user taps the 'TAPIOCA LAUNCHER' button */
   public void goToTapiocaLauncher(View view) {
     Intent intent = new Intent(this, com.example.game.TapiocaGameLauncher.class);
-    intent.putExtra("UserObject", usr);
+    putUser(intent);
     startActivity(intent);
+    usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
   }
 
   /** Called when the user taps the 'TILES' button */
   public void goToTilesGame(View view) {
     Intent intent = new Intent(this, com.example.game.TilesGameLauncher.class);
     intent.putExtra("UserObject", usr);
+    putUser(intent);
     startActivity(intent);
+    usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
+  }
+
+  private void putUser(Intent intent) {
+    usr.getUserData().setPrefs(null);
+    intent.putExtra("UserObject", usr);
+
   }
 }

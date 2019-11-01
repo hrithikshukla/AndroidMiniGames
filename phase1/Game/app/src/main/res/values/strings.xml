@@ -23,5 +23,13 @@
     <string name="button_exit">Exit</string>
     <string name="button_retry">Try Again</string>
     <string name="steps">Steps:</string>
+    <string name="TapiocaScore">Tapioca Launcher High Score:</string>
+    <string name="MazeScore">Maze High Score:</string>
+    <string name="TileScore">Tiles High Score:</string>
+    <string name="TapiocaTime">Time Spent Playing Tapioca:</string>
+    <string name="MazeTime">Time Spent Playing Maze:</string>
+    <string name="TileTime">Time Spent Playing Tiles:</string>
+    <string name="Reset">uWu Reset Statistics uWu</string>
+    <string name="Statistics">Your Statistics</string>
 
 </resources>

@@ -24,4 +24,12 @@
     <string name="button_exit">Partir</string>
     <string name="button_retry">Réessayer</string>
     <string name="steps">"Pas: "</string>
+    <string name="TapiocaScore">"Lanceur de Tapioca Score élevé: "</string>
+    <string name="MazeScore">"Labyrinthe Score élevé: "</string>
+    <string name="TileScore">"Carrelage Score élevé: "</string>
+    <string name="TapiocaTime">Temps passé à jouer Lanceur de Tapioca:</string>
+    <string name="MazeTime">"Temps passé à jouer Lanceur de Tapioca: "</string>
+    <string name="TileTime">Temps passé à jouer Carrelage:</string>
+    <string name="Reset">" Réinitialiser les statistiques oWo"</string>
+    <string name="Statistics">" Vos statistiques"</string>
 </resources>

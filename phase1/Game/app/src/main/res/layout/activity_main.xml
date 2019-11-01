@@ -12,13 +12,13 @@
         android:layout_width="203dp"
         android:layout_height="54dp"
         android:layout_marginStart="104dp"
+        android:layout_marginTop="72dp"
         android:layout_marginEnd="104dp"
-        android:layout_marginBottom="75dp"
         android:onClick="goToTapiocaLauncher"
         android:text="@string/button_tapioca_launcher"
         android:textAllCaps="true"
-        app:layout_constraintBottom_toTopOf="@+id/buttonTiles"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonMaze" />
 
@@ -27,48 +27,30 @@
         android:layout_width="203dp"
         android:layout_height="54dp"
         android:layout_marginStart="104dp"
+        android:layout_marginTop="160dp"
         android:layout_marginEnd="104dp"
-        android:layout_marginBottom="75dp"
         android:onClick="goToMazeGame"
         android:text="@string/button_maze"
         android:textAllCaps="true"
-        app:layout_constraintBottom_toTopOf="@+id/buttonTapiocaLauncher"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/buttonTiles"
         android:layout_width="203dp"
         android:layout_height="54dp"
         android:layout_marginStart="104dp"
+        android:layout_marginTop="72dp"
         android:layout_marginEnd="104dp"
-        android:layout_marginBottom="150dp"
         android:onClick="goToTilesGame"
         android:text="@string/button_tiles"
         android:textAllCaps="true"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonTapiocaLauncher" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="100dp"
-        android:text="@string/select_game"
-        android:textAlignment="center"
-        android:textAllCaps="true"
-        android:textSize="15pt"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/buttonMaze"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/changeMyLang"
@@ -80,5 +62,17 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ArrowRight"
+        android:layout_width="273dp"
+        android:layout_height="111dp"
+        android:layout_marginTop="49dp"
+        android:src="@drawable/arrow"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonTiles"
+        app:layout_constraintVertical_bias="0.2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -24,4 +24,12 @@
     <string name="button_retry">Versuch es noch einmal</string>
     <string name="button_exit">Verlassen</string>
     <string name="steps">"Schritte: "</string>
+    <string name="TapiocaScore">"Tapioka-Trägerrakete Hohe Punktzahl: "</string>
+    <string name="MazeScore">"Matze Hohe Punktzahl: "</string>
+    <string name="TileScore">"Fliesen Hohe Punktzahl: "</string>
+    <string name="TapiocaTime">"Zeit zum Spielen Tapioka-Trägerrakete: "</string>
+    <string name="MazeTime">"Zeit zum Spielen Matze: "</string>
+    <string name="TileTime">Zeit zum Spielen Fliesen:</string>
+    <string name="Reset">" Statistik Zurücksetzen xD"</string>
+    <string name="Statistics">" Ihre Statistiken"</string>
 </resources>
