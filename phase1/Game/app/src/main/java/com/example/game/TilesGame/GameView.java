@@ -2,25 +2,15 @@ package com.example.game.TilesGame;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Typeface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.MotionEvent;
 
 public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
-  /** Screen width. */
-  private int screenWidth = Resources.getSystem().getDisplayMetrics().widthPixels;
-  /** Screen height. */
-  private int screenHeight = Resources.getSystem().getDisplayMetrics().heightPixels;
-
-  /** The width of a character. */
-  public static float charWidth;
-  /** The height of a character. */
-  public static float charHeight;
+  /** The activity class of the Tiles game. */
+  private static GameActivity gameActivity;
 
   /** The tile board contents. */
   private BoardManager boardManager;
@@ -35,10 +25,16 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     setFocusable(true);
   }
 
+  public static GameActivity getGameActivity() {
+    return gameActivity;
+  }
+
+  public static void setGameActivity(GameActivity gameActivity) {
+    GameView.gameActivity = gameActivity;
+  }
+
   @Override
   public void surfaceCreated(SurfaceHolder holder) {
-
-    // Use the letter size and screen height to determine the size of the tile board.
     boardManager = new BoardManager(); // Instantiate new BoardManager.
     boardManager.createBoardItems();
 
@@ -62,6 +58,10 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
       }
       retry = false;
     }
+  }
+
+  public BoardManager getBoardManager() {
+    return boardManager;
   }
 
   /** Update the board. */
