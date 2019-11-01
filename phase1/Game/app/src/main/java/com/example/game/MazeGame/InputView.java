@@ -3,11 +3,14 @@ package com.example.game.MazeGame;
 import android.graphics.Rect;
 
 import java.util.Observable;
+import java.util.Observer;
 
 /**
  * Viewe responsible for handling the inputs to the screen.
  */
-public class InputView extends Observable implements Gameover{
+public class InputView extends Observable implements Observer, Gameover {
+
+    private boolean gameOver;
 
     /**
      * Rectangles represent regions of the screen where if the touch was registered in moveX Rect,
@@ -56,4 +59,14 @@ public class InputView extends Observable implements Gameover{
         return Movement.AFK;
     }
 
+    @Override
+    public void update(Observable observable, Object o) {
+        NewGameState newGameState = (NewGameState) o ;
+        this.gameOver = gameOver;
+    }
+
+    @Override
+    public boolean isGameOver() {
+        return gameOver;
+    }
 }

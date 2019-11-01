@@ -20,5 +20,8 @@
     <string name="create_account">create</string>
     <string name="username2">Enter your username</string>
     <string name="password2">Enter your password</string>
+    <string name="button_exit">Exit</string>
+    <string name="button_retry">Try Again</string>
+    <string name="steps">Steps:</string>
 
 </resources>

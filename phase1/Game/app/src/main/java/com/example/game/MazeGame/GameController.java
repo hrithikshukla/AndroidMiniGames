@@ -19,7 +19,7 @@ public class GameController implements Observer, Gameover {
 
   public void updateModel(Movement mov) {
     // Only update the model if the game isn't over i.e. the player hasn't escaped.
-    if (!gameFacade.hasPlayerEscaped()){
+    if (!isGameOver()){
       Pair<Integer, Integer> movement_vector = movementMap.get(mov);
       if (boundaryCheck(movement_vector)) {
         gameFacade.update(movement_vector);
@@ -68,5 +68,10 @@ public class GameController implements Observer, Gameover {
   @Override
   public void update(Observable observable, Object o) {
     updateModel((Movement) o);
+  }
+
+  @Override
+  public boolean isGameOver() {
+    return gameFacade.isGameOver();
   }
 }

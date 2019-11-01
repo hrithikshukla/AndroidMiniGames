@@ -49,15 +49,15 @@ class BoardManager extends ClassLoader {
     return score;
   }
 
-  public boolean isGameStart() {
+  boolean isGameStart() {
     return gameStart;
   }
 
-  public void setGameStart(boolean gameStart) {
+  void setGameStart(boolean gameStart) {
     this.gameStart = gameStart;
   }
 
-  public boolean isGameEnd() {
+  boolean isGameEnd() {
     return gameEnd;
   }
 
@@ -101,7 +101,7 @@ class BoardManager extends ClassLoader {
         return;
       }
       // Move all the tiles on this board, incrementing the speed by 50 every 15 points.
-      Integer increment = Math.floorDiv(score, 15);
+      int increment = Math.floorDiv(score, 15);
       for (ArrayList<Tile> tileRow : tileBoard) {
         for (Tile tile : tileRow) {
           tile.move(100 + (increment * 50));
@@ -139,9 +139,11 @@ class BoardManager extends ClassLoader {
       for (Tile tile : tileRow) {
         if ((tile.getX() <= x && x <= (tile.getX() + tileWidth))
             && (tile.getY() <= y && y <= (tile.getY() + tileHeight))) // If this tile was touched
-        if (!tile.isTouch() && tile instanceof KeyTile) { // If tile has not already been touched.
+        if (!tile.isTouch()) { // If tile has not already been touched.
             tile.setTouch(true);
-            score++; // Increment score by one (only of tile is a KeyTile).
+            if (tile instanceof KeyTile) {
+              score++; // Increment score by one (only of tile is a KeyTile).
+            }
           }
       }
     }
