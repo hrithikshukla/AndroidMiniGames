@@ -15,7 +15,7 @@ public class Score {
 
   /** Decrement current score. */
   void decrementScore() {
-    score -= 1;
+    score = Math.max(0, score - 1);
   }
 
   /**
