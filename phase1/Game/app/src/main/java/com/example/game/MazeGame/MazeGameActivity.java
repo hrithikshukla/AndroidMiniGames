@@ -2,6 +2,7 @@ package com.example.game.MazeGame;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.util.Log;
@@ -76,9 +77,14 @@ public class MazeGameActivity extends GameActivity implements Observer {
   public synchronized void update(Observable o, Object arg) {
     // PsuedoCode : If game is over; User object records score and
     // pass it over to gameover activity
-    if(((NewGameState) arg).isGameOver()){
-      // Set new high score if applicable
-      // usr.getUserData().
+    NewGameState newGameState = (NewGameState) arg;
+    SharedPreferences sharedPreferences = getSharedPreferences("highScores", MODE_PRIVATE);
+    if (newGameState.isGameOver()){
+      if (usr.getUserData().getMazeHighScore() < newGameState.getScore()) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("mazehighscore", newGameState.getScore());
+        editor.apply();
+      }
       switchToGameOverActivity(this);
     }
 
