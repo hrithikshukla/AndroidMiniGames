@@ -10,16 +10,18 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/LightDefaultTheme">
+        <activity android:name=".StatsActivity" />
         <activity android:name=".TapiocaGameLauncher" />
         <activity android:name=".TilesGameLauncher" />
         <activity android:name=".MazeGameLauncher" />
         <activity android:name=".TilesGame.GameFinish" />
-        <activity android:name=".TapiocaLauncher.GameActivity" />
-        <activity android:name=".TilesGame.GameActivity" />
-        <activity
-            android:name=".MazeGame.GameActivity"
-            android:screenOrientation="landscape" />
         <activity android:name=".MainActivity" />
+        <activity android:name=".TapiocaLauncher.TapiocaGameActivity" />
+        <activity android:name=".TilesGame.TileGameActivity" />
+        <activity
+            android:name=".MazeGame.MazeGameActivity"
+            android:screenOrientation="landscape" />
+
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,6 +30,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".RegisterActivity" />
+        <activity android:name=".GameOverActivity" />
     </application>
 
 </manifest>

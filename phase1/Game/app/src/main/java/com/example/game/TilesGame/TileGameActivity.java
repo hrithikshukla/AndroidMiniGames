@@ -7,11 +7,15 @@ import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class GameActivity extends AppCompatActivity {
+import com.example.game.Save.User;
+
+public class TileGameActivity extends AppCompatActivity {
+  User usr;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+    usr = (User) getIntent().getSerializableExtra("UserObject");
     requestWindowFeature(Window.FEATURE_NO_TITLE);
     getWindow()
         .setFlags(
@@ -30,6 +34,8 @@ public class GameActivity extends AppCompatActivity {
     // Send the score of the game to be displayed.
     String message = gameScore.toString();
     intent.putExtra("GAME_SCORE", message);
+    usr.getUserData().setPrefs(null);
+    intent.putExtra("UserObject", usr);
     startActivity(intent);
   }
 }

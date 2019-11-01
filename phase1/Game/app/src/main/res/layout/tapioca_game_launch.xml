@@ -13,6 +13,7 @@
         android:src="@drawable/milktea" />
 
     <TextView
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/play"
@@ -49,15 +50,21 @@
         android:src="@drawable/ic_volume_up_black_24dp" />
 
     <Button
-        android:id="@+id/buttonExitMaze"
+        android:id="@+id/buttonExitTiles"
         style="?buttonSecondary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="300dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="150dp"
-        android:onClick="exitTapiocaGame"
-        android:text="@string/button_exit" />
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="265dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_toEndOf="@+id/highScoreText"
+        android:onClick="exitToMenu"
+        android:text="@string/button_exit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title" />
 </RelativeLayout>

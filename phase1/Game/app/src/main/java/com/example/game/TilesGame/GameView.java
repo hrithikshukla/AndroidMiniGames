@@ -10,7 +10,7 @@ import android.view.MotionEvent;
 public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
   /** The activity class of the Tiles game. */
-  private static GameActivity gameActivity;
+  private static TileGameActivity gameActivity;
 
   /** The tile board contents. */
   private BoardManager boardManager;
@@ -18,24 +18,27 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
   /** The part of the program that manages time. */
   private GameThread thread;
 
+  private Context context;
+
   public GameView(Context context) {
     super(context);
+    this.context = context;
     getHolder().addCallback(this);
     thread = new GameThread(getHolder(), this); // Instantiate new GameThread.
     setFocusable(true);
   }
 
-  public static GameActivity getGameActivity() {
+  public static TileGameActivity getGameActivity() {
     return gameActivity;
   }
 
-  public static void setGameActivity(GameActivity gameActivity) {
+  public static void setGameActivity(TileGameActivity gameActivity) {
     GameView.gameActivity = gameActivity;
   }
 
   @Override
   public void surfaceCreated(SurfaceHolder holder) {
-    boardManager = new BoardManager(); // Instantiate new BoardManager.
+    boardManager = new BoardManager(context); // Instantiate new BoardManager.
     boardManager.createBoardItems();
 
     thread.setRunning(true);

@@ -25,4 +25,21 @@
     <string name="button_retry">Réessayer</string>
     <string name="steps">"Pas: "</string>
     <string name="change_theme">Thème</string>
+    <string name="TapiocaScore">"Lanceur de Tapioca Score élevé: "</string>
+    <string name="MazeScore">"Labyrinthe Score élevé: "</string>
+    <string name="TileScore">"Carrelage Score élevé: "</string>
+    <string name="TapiocaTime">Temps passé à jouer Lanceur de Tapioca:</string>
+    <string name="MazeTime">"Temps passé à jouer Lanceur de Tapioca: "</string>
+    <string name="TileTime">Temps passé à jouer Carrelage:</string>
+    <string name="Reset">" Réinitialiser les statistiques oWo"</string>
+    <string name="Statistics">" Vos statistiques"</string>
+    <string name="attachment_title">Télécharger les pièces jointes entrantes</string>
+    <string name="attachment_summary_on">Télécharger automatiquement les pièces jointes pour les emails entrants</string>
+    <string name="attachment_summary_off">Télécharger uniquement les pièces jointes sur demande manuelle</string>
+    <string name="title_activity_settings">Paramètres</string>
+    <string name="sync_header">Sync</string>
+    <string name="sync_title">Synchroniser les emails périodiquement</string>
+    <string name="signature_title">Votre signature</string>
+    <string name="reply_title">Action de réponse par défaut</string>
+    <string name="messages_header">Messages</string>
 </resources>

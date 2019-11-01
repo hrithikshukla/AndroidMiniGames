@@ -35,6 +35,10 @@ public class GameFinish extends AppCompatActivity {
     // Capture the layout's TextView that displays the game score and set the score as its text.
     TextView textView = findViewById(R.id.tilesGameScore);
     textView.setText(gameScore);
+
+    TextView highScoretxt = findViewById(R.id.highScoreText);
+    SharedPreferences prefs = getSharedPreferences("tiles", MODE_PRIVATE);
+    highScoretxt.setText(getString(R.string.highScore) + prefs.getInt("tileshighscore", 0));
   }
 
   /** Called when the user taps the 'EXIT' button */
@@ -45,7 +49,7 @@ public class GameFinish extends AppCompatActivity {
 
   /** Called when the user taps the 'TRY AGAIN' button */
   public void restartTilesGame(View view) {
-    Intent intent = new Intent(this, com.example.game.TilesGame.GameActivity.class);
+    Intent intent = new Intent(this, com.example.game.TilesGame.TileGameActivity.class);
     startActivity(intent);
   }
 }

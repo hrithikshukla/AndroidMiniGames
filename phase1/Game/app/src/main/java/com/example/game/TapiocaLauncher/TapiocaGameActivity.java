@@ -2,21 +2,28 @@ package com.example.game.TapiocaLauncher;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.Window;
 import android.view.WindowManager;
+
+import com.example.game.Save.User;
+import com.example.game.TapiocaGameLauncher;
+
 //
-public class GameActivity extends AppCompatActivity {
+public class TapiocaGameActivity extends AppCompatActivity {
 
   // Views
   private GameView gameView;
+  User usr;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+    usr = (User) getIntent().getSerializableExtra("TapiocaGaeLauncher");
 
     getWindow()
         .setFlags(
@@ -39,5 +46,10 @@ public class GameActivity extends AppCompatActivity {
   protected void onResume() {
     super.onResume();
     gameView.resume();
+  }
+
+  public void endGame() {
+    Intent intent = new Intent(this, TapiocaGameLauncher.class);
+    startActivity(intent);
   }
 }

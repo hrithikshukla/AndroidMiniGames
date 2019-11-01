@@ -90,6 +90,9 @@ class VisualView {
       surfaceHolder.unlockCanvasAndPost(canvas);
     }
   }
+  boolean checkScore () {
+    return scoreManager.getScore() >= 69 && gameMan.getLauncherMan().isReadyToLaunch();
+  }
 
   void update() {
     gameMan.update();
