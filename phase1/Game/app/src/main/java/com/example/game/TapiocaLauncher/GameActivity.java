@@ -8,11 +8,18 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.Window;
 import android.view.WindowManager;
+
+import java.util.ArrayList;
+import java.util.List;
+
 //
 public class GameActivity extends AppCompatActivity {
 
   // Views
   private GameView gameView;
+
+  private GameFacade gameFacade;
+  private GameController gameController;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +33,20 @@ public class GameActivity extends AppCompatActivity {
     getWindowManager().getDefaultDisplay().getSize(point);
 
     gameView = new GameView(this, point.x, point.y);
+    setContentView(gameView);
+
+    int launcherRadius = 99/2;
+    int launcherX = point.x / 2 - launcherRadius;
+    int launcherY = point.y - 3 * launcherRadius;
+    // Create MVC components.
+    this.gameFacade = new GameFacade(new Launcher(launcherX, launcherY, launcherRadius), new ArrayList<Ball>());
+    this.gameController = new GameController(gameFacade, point.x, point.y);
+    this.gameView = new GameView(this, point.x, point.y);
+
+    // Add observors to our MVC components.
+    gameView.getInputView().addObserver(gameController);
+    gameFacade.addObserver(gameView.getVisualView());
+    gameFacade.update();
     setContentView(gameView);
   }
 

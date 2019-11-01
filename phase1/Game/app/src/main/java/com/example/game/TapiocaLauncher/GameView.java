@@ -31,8 +31,8 @@ public class GameView extends SurfaceView implements Runnable {
   public void run() {
 
     while (isPlaying) {
-
-      visualView.update();
+      //visualView.update();
+      inputView.update();
       visualView.draw();
       sleep();
     }
@@ -65,12 +65,17 @@ public class GameView extends SurfaceView implements Runnable {
 
   @Override
   public boolean onTouchEvent(MotionEvent event) {
-    if (event.getAction() == MotionEvent.ACTION_DOWN) {
-        inputView.setDownAction(event);
+    if (event.getAction() == MotionEvent.ACTION_DOWN || event.getAction() == MotionEvent.ACTION_UP) {
+        inputView.screenTouched(event);
       }
-    if (event.getAction() == MotionEvent.ACTION_UP) {
-      inputView.setUpAction(event);
-    }
     return true;
+  }
+
+  public VisualView getVisualView() {
+    return visualView;
+  }
+
+  public InputView getInputView() {
+    return inputView;
   }
 }
