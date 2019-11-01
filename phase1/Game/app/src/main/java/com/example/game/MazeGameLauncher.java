@@ -27,13 +27,14 @@ public class MazeGameLauncher extends AppCompatActivity {
   /** Called when the user taps the 'PLAY' button */
   public void startMazeGame(View view) {
     Intent intent = new Intent(this, com.example.game.MazeGame.MazeGameActivity.class);
-    intent.putExtra("MazeGameLauncher", usr);
+    intent.putExtra("UserObject", usr);
     startActivity(intent);
   }
 
   /** Called when the user taps the 'EXIT' button */
   public void exitMazeGame(View view) {
-    Intent intent = new Intent(this, com.example.game.MainActivity.class);
+    Intent intent = new Intent(this, MainActivity.class);
+    intent.putExtra("UserObject", usr);
     startActivity(intent);
   }
 }

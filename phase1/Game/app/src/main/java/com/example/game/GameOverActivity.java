@@ -27,7 +27,7 @@ public class GameOverActivity extends AppCompatActivity {
     }
 
     public void goToHomePage(View view){
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, MazeGameLauncher.class);
         intent.putExtra("UserObject", usr);
         startActivity(intent);
     }

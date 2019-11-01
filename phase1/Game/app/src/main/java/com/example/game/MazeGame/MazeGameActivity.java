@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Point;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.WindowManager;
 
 import com.example.game.GameActivity;
@@ -20,11 +21,10 @@ public class MazeGameActivity extends GameActivity implements Observer {
   // Controller of the game. Processes user input using game state logic to possibly change the
   // model.
   private GameController gameController;
-  User usr;
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    usr = (User) getIntent().getSerializableExtra("MazeGameLauncher");
+    usr = (User) getIntent().getSerializableExtra("UserObject");
     // Set fullscreen mode.
     getWindow()
             .setFlags(
@@ -73,7 +73,7 @@ public class MazeGameActivity extends GameActivity implements Observer {
   }
 
   @Override
-  public void update(Observable o, Object arg) {
+  public synchronized void update(Observable o, Object arg) {
     // PsuedoCode : If game is over; User object records score and
     // pass it over to gameover activity
     if(((NewGameState) arg).isGameOver()){

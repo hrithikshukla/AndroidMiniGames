@@ -23,7 +23,7 @@ public class TapiocaGameActivity extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    usr = (User) getIntent().getSerializableExtra("TapiocaGaeLauncher");
+    usr = (User) getIntent().getSerializableExtra("UserObject");
 
     getWindow()
         .setFlags(
@@ -50,6 +50,7 @@ public class TapiocaGameActivity extends AppCompatActivity {
 
   public void endGame() {
     Intent intent = new Intent(this, TapiocaGameLauncher.class);
+    intent.putExtra("UserObject", usr);
     startActivity(intent);
   }
 }

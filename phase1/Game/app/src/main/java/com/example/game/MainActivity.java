@@ -210,7 +210,7 @@ public class MainActivity extends Activity {
   /** Called when the user taps the 'TILES' button */
   public void goToTilesGame(View view) {
     Intent intent = new Intent(this, com.example.game.TilesGameLauncher.class);
-    intent.putExtra("UserObject", usr);
+//    intent.putExtra("UserObject", usr);
     putUser(intent);
     startActivity(intent);
     usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));

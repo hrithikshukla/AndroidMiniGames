@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.game.Save.User;
 
 public abstract class GameActivity extends AppCompatActivity {
-    User usr;
+    public User usr;
 
     protected void switchToGameOverActivity(Context context){
         Intent intent = new Intent(context, GameOverActivity.class);

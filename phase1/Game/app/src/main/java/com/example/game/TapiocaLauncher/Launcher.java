@@ -37,7 +37,6 @@ class Launcher {
     // Scales the bitmap down
     width = orientation1.getWidth() / 2;
     height = orientation1.getHeight() / 2;
-
     orientation1 = Bitmap.createScaledBitmap(orientation1, width, height, false);
     orientation2 = Bitmap.createScaledBitmap(orientation2, width, height, false);
     orientation3 = Bitmap.createScaledBitmap(orientation3, width, height, false);

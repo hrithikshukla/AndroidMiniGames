@@ -28,6 +28,7 @@ public class GameView extends SurfaceView implements Runnable, Gameover {
       visualView.draw(); // Draw maze
       sleep(); // Sleep to avoid constantly redrawing the maze
     }
+
   }
 
   /** Updates the screen roughly 60 times a second. */
