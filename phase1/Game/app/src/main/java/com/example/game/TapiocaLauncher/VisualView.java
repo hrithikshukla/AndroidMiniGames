@@ -146,9 +146,6 @@ class VisualView implements Observer{
       drawBall(ball, canvas);
     }
   }
-  boolean checkScore () {
-    return scoreManager.getScore() >= 69 && gameMan.getLauncherMan().isReadyToLaunch();
-  }
 
   private void drawBall(Ball ball, Canvas canvas) {
     Bitmap orientation1;

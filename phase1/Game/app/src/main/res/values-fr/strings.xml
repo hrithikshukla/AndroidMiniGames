@@ -43,7 +43,9 @@
     <string name="reply_title">Action de réponse par défaut</string>
     <string name="messages_header">Messages</string>
     <string name="instructions_tiles">Ne touchez pas les carreaux blancs! Appuyez sur les carreaux noirs pour gagner des points. Vous perdez si vous appuyez sur une tuile blanche ou quand une tuile noire inexploitée quitte le tableau.</string>
+    <string name="instructions_maze">Échapper au labyrinthe! Moins vous faites d’étapes, plus votre score est élevé. Déplacez votre personnage en appuyant sur la direction correspondante, par exemple. haut de l\'écran pour up.</string>
     <string name="text_game_over">Jeu terminé</string>
     <string name="text_swipe_left">Glissez à gauche!</string>
     <string name="text_swipe_right">Glisser à droite!</string>
+    <string name="title_maze">Labyrinthe</string>
 </resources>
