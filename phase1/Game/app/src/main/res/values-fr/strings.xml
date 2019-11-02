@@ -50,4 +50,5 @@
     <string name="text_swipe_right">Glisser à droite!</string>
     <string name="title_maze">Labyrinthe</string>
     <string name="NotAvailable">Pas encore disponible :(</string>
+    <string name="scoreTotal">Total des meilleurs scores:</string>
 </resources>

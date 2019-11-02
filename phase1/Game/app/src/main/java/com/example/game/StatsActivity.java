@@ -51,17 +51,25 @@ public class StatsActivity extends AppCompatActivity {
                 finish();
                 overridePendingTransition(0, 0);
 
-            }
-        }
+    }
+}
         );
+
 
         TextView tapiocaScore = findViewById(R.id.TapiocaScore);
         TextView mazeScore = findViewById(R.id.MazeScore);
         TextView tileScore = findViewById(R.id.TileScore);
+        TextView totalScore = findViewById(R.id.scoreTotal);
         usr.getUserData().updateScores();
+        int highScore = usr.getUserData().getTapiocaHighScore()
+                + usr.getUserData().getMazeHighScore()
+                + usr.getUserData().getTilesHighScore();
+
+        totalScore.setText(getString(R.string.scoreTotal) + highScore);
         tapiocaScore.setText(getString(R.string.TapiocaScore) + usr.getUserData().getTapiocaHighScore());
-        mazeScore.setText(getString(R.string.MazeScore) +  usr.getUserData().getMazeHighScore());
+        mazeScore.setText(getString(R.string.MazeScore) + usr.getUserData().getMazeHighScore());
         tileScore.setText(getString(R.string.TileScore) + usr.getUserData().getTilesHighScore());
+
 
         TextView tapiocaTime = findViewById(R.id.TapiocaTime);
         TextView mazeTime = findViewById(R.id.MazeTime);

@@ -22,14 +22,14 @@
         android:id="@+id/Statistics"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="75dp"
+        android:layout_marginTop="36dp"
         android:text="@string/Statistics"
         android:textAllCaps="true"
         android:textColor="?android:attr/colorSecondary"
         android:textSize="17pt"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -37,7 +37,7 @@
         android:id="@+id/TapiocaScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="72dp"
         android:text="@string/TapiocaScore"
         android:textAllCaps="true"
         android:textColor="?android:attr/colorPrimaryDark"
@@ -45,7 +45,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.253"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Statistics" />
+        app:layout_constraintTop_toTopOf="@+id/scoreTotal" />
 
     <TextView
         android:id="@+id/TapiocaTime"
@@ -122,7 +122,7 @@
         style="?buttonPrimary"
         android:layout_width="215dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="78dp"
         android:layout_marginBottom="25dp"
         android:text="@string/Reset"
         app:layout_constraintBottom_toTopOf="@+id/ArrowLeft"
@@ -138,5 +138,17 @@
         app:layout_constraintBottom_toTopOf="@+id/textSwipeLeft"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/arrow2" />
+        app:srcCompat="@drawable/arrow2"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/scoreTotal"
+        android:layout_width="364dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/scoreTotal"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Statistics" />
 </androidx.constraintlayout.widget.ConstraintLayout>
