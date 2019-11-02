@@ -154,26 +154,28 @@ public class GameController implements Observer {
         if (arg instanceof  MotionEvent) {
             MotionEvent event = (MotionEvent) arg;
             Launcher launcher = gameFacade.getLauncher();
-            if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                if ((event.getX() >= launcher.getX()
-                        && event.getX() <= (launcher.getX() + 2 * launcher.getRadius()))
-                        && (event.getY() >= launcher.getY()
-                        && event.getY() <= (launcher.getY() + 2 * launcher.getRadius()))) {
-                    startX = event.getX();
-                    startY = event.getY();
-                    ballClicked = true;
-                    Log.d("", "gameController: Motion Down  x-val: " + startX);
-                    Log.d("", "gameController: Motion Down  y-val: " + startY);
+            if (readyToLaunch) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    if ((event.getX() >= launcher.getX()
+                            && event.getX() <= (launcher.getX() + 2 * launcher.getRadius()))
+                            && (event.getY() >= launcher.getY()
+                            && event.getY() <= (launcher.getY() + 2 * launcher.getRadius()))) {
+                        startX = event.getX();
+                        startY = event.getY();
+                        ballClicked = true;
+                        Log.d("", "gameController: Motion Down  x-val: " + startX);
+                        Log.d("", "gameController: Motion Down  y-val: " + startY);
+                    }
                 }
-            }
-            if (event.getAction() == MotionEvent.ACTION_UP) {
-                if (ballClicked) {
-                    endX = event.getX();
-                    endY = event.getY();
-                    moveBall(startX, startY, endX, endY);
-                    isMoving = true;
-                    ballClicked = false;
-                    Log.d("", "motion Up");
+                if (event.getAction() == MotionEvent.ACTION_UP) {
+                    if (ballClicked) {
+                        endX = event.getX();
+                        endY = event.getY();
+                        moveBall(startX, startY, endX, endY);
+                        isMoving = true;
+                        ballClicked = false;
+                        Log.d("", "motion Up");
+                    }
                 }
             }
         }

@@ -83,7 +83,7 @@ public class MazeGameActivity extends GameActivity implements Observer {
     if (newGameState.isGameOver()) {
       if (usr.getUserData().getMazeHighScore() < newGameState.getScore()) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt("mazehighscore", newGameState.getScore());
+        editor.putInt(usr.getUsername() + "mazehighscore", newGameState.getScore());
         editor.apply();
       }
       switchToGameOverActivity(this);

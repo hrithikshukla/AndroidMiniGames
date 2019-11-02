@@ -52,13 +52,12 @@ public class TileGameActivity extends AppCompatActivity {
   public void updateHighScore(int newScore) {
     SharedPreferences sharedPreferences = getSharedPreferences("highScores", MODE_PRIVATE);
     SharedPreferences.Editor editor = sharedPreferences.edit();
-    int currentHighScore = sharedPreferences.getInt("tileshighscore", 0);
+    int currentHighScore = sharedPreferences.getInt(usr.getUsername() + "tileshighscore", 0);
     if (currentHighScore < newScore) {
       // Add the high score to SharedPreferences
-      editor.putInt("tileshighscore", newScore);
+      editor.putInt(usr.getUsername() + "tileshighscore", newScore);
       // Apply the save
       editor.apply();
-      usr.getUserData().updateScores();
     }
   }
 }

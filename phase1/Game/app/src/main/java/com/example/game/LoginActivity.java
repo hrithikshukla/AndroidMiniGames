@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -64,5 +65,9 @@ public class LoginActivity extends AppCompatActivity {
       mainActivityIntent.putExtra("UserObject", usr);
       startActivity(mainActivityIntent);
     }
+    else {
+      Toast.makeText(getApplicationContext(), "Invalid Login", Toast.LENGTH_LONG).show();
+    }
+
   };
 }
