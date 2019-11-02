@@ -3,11 +3,10 @@ package com.example.game.TapiocaLauncher;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MotionEvent;
-import android.view.Window;
 import android.view.WindowManager;
 
 import com.example.game.GameActivity;
@@ -28,7 +27,6 @@ public class TapiocaGameActivity extends GameActivity implements Observer {
   private GameFacade gameFacade;
   private GameController gameController;
 
-
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -48,7 +46,8 @@ public class TapiocaGameActivity extends GameActivity implements Observer {
     int launcherX = point.x / 2 - launcherRadius;
     int launcherY = point.y - 3 * launcherRadius;
     // Create MVC components.
-    this.gameFacade = new GameFacade(new Launcher(launcherX, launcherY, launcherRadius), new ArrayList<Ball>());
+    this.gameFacade =
+        new GameFacade(new Launcher(launcherX, launcherY, launcherRadius), new ArrayList<Ball>());
     this.gameController = new GameController(gameFacade, point.x, point.y);
     this.gameView = new GameView(this, point.x, point.y);
 
@@ -71,16 +70,22 @@ public class TapiocaGameActivity extends GameActivity implements Observer {
     super.onResume();
     gameView.resume();
   }
-  //Method to change
-//  public void endGame() {
-//    switchToGameOverActivity(this);
-//  }
+  // Method to change
+  //  public void endGame() {
+  //    switchToGameOverActivity(this);
+  //  }
 
   @Override
   public synchronized void update(Observable o, Object arg) {
     gameFacade = (GameFacade) arg;
-    if(gameFacade.isGameOver()) {
-      switchToGameOverActivity(this);
+    if (gameFacade.isGameOver()) {
+      SharedPreferences sharedPreferences = getSharedPreferences("highScores", MODE_PRIVATE);
+      if (usr.getUserData().getTapiocaHighScore() < gameFacade.getScore()) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt(usr.getUsername() + "tapiocahighscore", gameFacade.getScore());
+        editor.apply();
+        switchToGameOverActivity(this);
+      }
     }
   }
 }

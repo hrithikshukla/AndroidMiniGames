@@ -43,7 +43,8 @@ public class GameFinish extends AppCompatActivity {
     // saved in SharedPreferences as its text.
     TextView textViewHighScore = findViewById(R.id.highScoreText);
     SharedPreferences prefs = getSharedPreferences("highScores", MODE_PRIVATE);
-    String highScoreText = getString(R.string.highScore) + prefs.getInt("tileshighscore", 0);
+    String highScoreText = getString(R.string.highScore) +
+            prefs.getInt(usr.getUsername()+ "tileshighscore", 0);
     textViewHighScore.setText(highScoreText);
   }
 
