@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -38,6 +39,9 @@ public class RegisterActivity extends AppCompatActivity {
         username.getText().toString().trim(), password.getText().toString().trim())) {
       Intent loginIntent = new Intent(RegisterActivity.this, com.example.game.LoginActivity.class);
       startActivity(loginIntent);
+    }
+    else {
+      Toast.makeText(getApplicationContext(), "Invalid Registration", Toast.LENGTH_LONG).show();
     }
   }
 }
