@@ -16,8 +16,10 @@ public class MazeGameLauncher extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     // Set the theme.
+    usr = (User) getIntent().getSerializableExtra("UserObject");
+    String username = usr.getUsername();
     SharedPreferences mSettings = this.getSharedPreferences("Settings", MODE_PRIVATE);
-    ThemeManager.setTheme(MazeGameLauncher.this, mSettings.getInt("theme", -1));
+    ThemeManager.setTheme(MazeGameLauncher.this, mSettings.getInt(username + "theme", 0));
 
     super.onCreate(savedInstanceState);
     setContentView(R.layout.maze_game_launch);

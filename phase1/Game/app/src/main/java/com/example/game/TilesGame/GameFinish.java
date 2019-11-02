@@ -20,11 +20,12 @@ public class GameFinish extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     // Set the theme.
+    usr = (User) getIntent().getSerializableExtra("UserObject");
+    String username = usr.getUsername();
     SharedPreferences mSettings = this.getSharedPreferences("Settings", MODE_PRIVATE);
-    ThemeManager.setTheme(GameFinish.this, mSettings.getInt("theme", -1));
+    ThemeManager.setTheme(GameFinish.this, mSettings.getInt(username + "theme", 0));
 
     super.onCreate(savedInstanceState);
-    usr = (User) getIntent().getSerializableExtra("UserObject");
     requestWindowFeature(Window.FEATURE_NO_TITLE);
     getWindow()
         .setFlags(
@@ -43,8 +44,8 @@ public class GameFinish extends AppCompatActivity {
     // saved in SharedPreferences as its text.
     TextView textViewHighScore = findViewById(R.id.highScoreText);
     SharedPreferences prefs = getSharedPreferences("highScores", MODE_PRIVATE);
-    String highScoreText = getString(R.string.highScore) +
-            prefs.getInt(usr.getUsername()+ "tileshighscore", 0);
+    String highScoreText =
+        getString(R.string.highScore) + prefs.getInt(usr.getUsername() + "tileshighscore", 0);
     textViewHighScore.setText(highScoreText);
   }
 

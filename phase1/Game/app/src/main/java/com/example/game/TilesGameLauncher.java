@@ -15,12 +15,13 @@ public class TilesGameLauncher extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     // Set the theme.
+    usr = (User) getIntent().getSerializableExtra("UserObject");
+    String username = usr.getUsername();
     SharedPreferences mSettings = this.getSharedPreferences("Settings", MODE_PRIVATE);
-    ThemeManager.setTheme(TilesGameLauncher.this, mSettings.getInt("theme", -1));
+    ThemeManager.setTheme(TilesGameLauncher.this, mSettings.getInt(username + "theme", 0));
 
     super.onCreate(savedInstanceState);
     setContentView(R.layout.tiles_game_launch);
-    usr = (User) getIntent().getSerializableExtra("UserObject");
   }
 
   /** Called when the user taps the 'PLAY' button */
