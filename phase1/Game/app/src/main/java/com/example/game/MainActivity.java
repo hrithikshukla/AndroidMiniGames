@@ -28,13 +28,14 @@ public class MainActivity extends Activity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     // Set the theme.
+    usr = (User) getIntent().getSerializableExtra("UserObject");
+    String username = usr.getUsername();
     SharedPreferences mSettings = this.getSharedPreferences("Settings", MODE_PRIVATE);
-    ThemeManager.setTheme(MainActivity.this, mSettings.getInt("theme", -1));
+    ThemeManager.setTheme(MainActivity.this, mSettings.getInt(username + "theme", 0));
 
     super.onCreate(savedInstanceState);
     loadLocale();
     setContentView(R.layout.activity_main);
-    usr = (User) getIntent().getSerializableExtra("UserObject");
 
     Button changeLang = findViewById(R.id.changeMyLang);
     changeLang.setOnClickListener(
@@ -62,7 +63,9 @@ public class MainActivity extends Activity {
 
   // Code based on https://www.youtube.com/watch?v=zILw5eV9QBQ. I liked the video so I can use it.
   private void showChangeLanguageDialog() {
-    final String[] languages = {"Français", "中文", "Deutsche", "عربى", "עברי", "Sign Language", "English"};
+    final String[] languages = {
+      "Français", "中文", "Deutsche", "عربى", "עברי", "Sign Language", "English"
+    };
     AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
     mBuilder.setTitle("Choose Language...");
     mBuilder.setSingleChoiceItems(
@@ -169,6 +172,7 @@ public class MainActivity extends Activity {
   public void showChangeThemeDialog(View view) {
     // Setup the SharedPreferences
     final SharedPreferences.Editor editor = getSharedPreferences("Settings", MODE_PRIVATE).edit();
+    final String username = usr.getUsername();
 
     final String[] themes = {"Default", "Green/Purple", "Orange/Teal", "Blue/Pink"};
     AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
@@ -183,7 +187,7 @@ public class MainActivity extends Activity {
               // Default
               ThemeManager.changeToTheme(MainActivity.this, ThemeManager.THEME_DEFAULT, usr);
               // Add the theme's int to SharedPreferences
-              editor.putInt("theme", ThemeManager.THEME_DEFAULT);
+              editor.putInt(username + "theme", ThemeManager.THEME_DEFAULT);
               // Apply the save
               editor.apply();
               overridePendingTransition(0, 0);
@@ -191,7 +195,7 @@ public class MainActivity extends Activity {
               // Green/Purple
               ThemeManager.changeToTheme(MainActivity.this, ThemeManager.THEME_GP, usr);
               // Add the theme's int to SharedPreferences
-              editor.putInt("theme", ThemeManager.THEME_GP);
+              editor.putInt(username + "theme", ThemeManager.THEME_GP);
               // Apply the save
               editor.apply();
               overridePendingTransition(0, 0);
@@ -199,7 +203,7 @@ public class MainActivity extends Activity {
               // Orange/Teal
               ThemeManager.changeToTheme(MainActivity.this, ThemeManager.THEME_OT, usr);
               // Add the theme's int to SharedPreferences
-              editor.putInt("theme", ThemeManager.THEME_OT);
+              editor.putInt(username + "theme", ThemeManager.THEME_OT);
               // Apply the save
               editor.apply();
               overridePendingTransition(0, 0);
@@ -207,7 +211,7 @@ public class MainActivity extends Activity {
               // Orange/Teal
               ThemeManager.changeToTheme(MainActivity.this, ThemeManager.THEME_BP, usr);
               // Add the theme's int to SharedPreferences
-              editor.putInt("theme", ThemeManager.THEME_BP);
+              editor.putInt(username + "theme", ThemeManager.THEME_BP);
               // Apply the save
               editor.apply();
               overridePendingTransition(0, 0);
@@ -240,7 +244,7 @@ public class MainActivity extends Activity {
   /** Called when the user taps the 'TILES' button */
   public void goToTilesGame(View view) {
     Intent intent = new Intent(this, com.example.game.TilesGameLauncher.class);
-//    intent.putExtra("UserObject", usr);
+    //    intent.putExtra("UserObject", usr);
     putUser(intent);
     startActivity(intent);
     usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));

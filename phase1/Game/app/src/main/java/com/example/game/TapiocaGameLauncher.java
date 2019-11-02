@@ -15,12 +15,12 @@ public class TapiocaGameLauncher extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     // Set the theme.
+    usr = (User) getIntent().getSerializableExtra("UserObject");
+    String username = usr.getUsername();
     SharedPreferences mSettings = this.getSharedPreferences("Settings", MODE_PRIVATE);
-    ThemeManager.setTheme(TapiocaGameLauncher.this, mSettings.getInt("theme", -1));
+    ThemeManager.setTheme(TapiocaGameLauncher.this, mSettings.getInt(username + "theme", 0));
 
     super.onCreate(savedInstanceState);
-    this.usr = (User) getIntent().getSerializableExtra("UserObject");
-
     setContentView(R.layout.tapioca_game_launch);
 
     findViewById(R.id.play)
@@ -40,7 +40,8 @@ public class TapiocaGameLauncher extends AppCompatActivity {
     TextView highScoretxt = findViewById(R.id.highScoreText);
 
     SharedPreferences prefs = getSharedPreferences("highScores", MODE_PRIVATE);
-    highScoretxt.setText(getString(R.string.highScore) + prefs.getInt(usr.getUsername() + "tapiocahighscore", 0));
+    highScoretxt.setText(
+        getString(R.string.highScore) + prefs.getInt(usr.getUsername() + "tapiocahighscore", 0));
   }
   /*
    */
