@@ -65,8 +65,8 @@ public class StatsActivity extends AppCompatActivity {
         TextView tapiocaTime = findViewById(R.id.TapiocaTime);
         TextView mazeTime = findViewById(R.id.MazeTime);
         TextView tileTIme = findViewById(R.id.TileTime);
-        tapiocaTime.setText("69");
-        mazeTime.setText("420");
-        tileTIme.setText("42069");
+        tapiocaTime.setText(getString(R.string.TapiocaTime) + getString(R.string.NotAvailable));
+        mazeTime.setText(getString(R.string.MazeTime) + getString(R.string.NotAvailable));
+        tileTIme.setText(getString(R.string.TileTime) + getString(R.string.NotAvailable));
     }
 }

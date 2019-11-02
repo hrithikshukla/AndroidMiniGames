@@ -10,7 +10,7 @@
     <string name="signUp">S\'inscrire</string>
     <string name="signIn">S\'identifier</string>
     <string name="changeLang">Langue</string>
-    <string name="level">"Niveau "</string>
+    <string name="level">"Niveau: "</string>
     <string name="score">"Score: "</string>
     <string name="highScore">"Score élevé: "</string>
     <string name="create_account">S\'inscrire</string>
@@ -29,7 +29,7 @@
     <string name="MazeScore">"Labyrinthe Score élevé: "</string>
     <string name="TileScore">"Carrelage Score élevé: "</string>
     <string name="TapiocaTime">Temps passé à jouer Lanceur de Tapioca:</string>
-    <string name="MazeTime">"Temps passé à jouer Lanceur de Tapioca: "</string>
+    <string name="MazeTime">"Temps passé à jouer Labyrinthe: "</string>
     <string name="TileTime">Temps passé à jouer Carrelage:</string>
     <string name="Reset">" Réinitialiser les statistiques oWo"</string>
     <string name="Statistics">" Vos statistiques"</string>
@@ -48,4 +48,5 @@
     <string name="text_swipe_left">Glissez à gauche!</string>
     <string name="text_swipe_right">Glisser à droite!</string>
     <string name="title_maze">Labyrinthe</string>
+    <string name="NotAvailable">Pas encore disponible :(</string>
 </resources>

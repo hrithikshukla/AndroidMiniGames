@@ -10,7 +10,7 @@
     <string name="signUp">Sign Up</string>
     <string name="signIn">Sign In</string>
     <string name="changeLang">Language</string>
-    <string name="level">"Level "</string>
+    <string name="level">"Level: "</string>
     <string name="score">"Score: "</string>
     <string name="highScore">"High Score: "</string>
     <string name="title_activity_login">Sign in</string>
@@ -38,8 +38,7 @@
     <!-- Sync Preferences -->
     <string name="sync_title">Sync email periodically</string>
     <string name="attachment_title">Download incoming attachments</string>
-    <string name="attachment_summary_on">Automatically download attachments for incoming emails
-    </string>
+    <string name="attachment_summary_on">"Automatically download attachments for incoming emails     "</string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string name="TapiocaScore">Tapioca Launcher High Score:</string>
     <string name="MazeScore">Maze High Score:</string>
@@ -54,5 +53,6 @@
     <string name="text_swipe_right">Swipe Right!</string>
     <string name="text_swipe_left">Swipe Left!</string>
     <string name="instructions_maze">Escape the maze! The fewer steps you take the higher your score. Move your character by tapping the corresponding direction e.g. top of the screen for up.</string>
+    <string name="NotAvailable">Not Available Yet :(</string>
 
 </resources>
