@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Translations courtesty of https://lingojam.com/EOSL%3AEmoji-OrientedSignLanguage -->
+<resources>
+    <string name="MazeScore">👆✌️🙏🤙 🖐🤞🤛🖐 🖖🤘👌☝️🤙:</string>
+    <string name="MazeTime">👋🤞👆🤙 🖖👎🤙👇👋 👎👍✌️👏🤞👇🤛 👆✌️🙏🤙:</string>
+    <string name="NotAvailable">👇👌👋 ✌️🤜✌️🤞👍✌️👈👍🤙 👏🤙👋 :(</string>
+    <string name="Reset">🙌👐🙌 ☝️🤙🖖🤙👋 🖖👋✌️👋🤞🖖👋🤞🤘🖖 🙌👐🙌</string>
+    <string name="Statistics">👏👌🙌☝️ 🖖👋✌️👋🤞🖖👋🤞🤘🖖</string>
+    <string name="TapiocaScore">👋✌️👎🤞👌🤘✌️ 👍✌️🙌👇🤘🖐🤙☝️ 🖐🤞🤛🖐 🖖🤘👌☝️🤙:</string>
+    <string name="TapiocaTime">👋🤞👆🤙 🖖👎🤙👇👋 👎👍✌️👏🤞👇🤛 👋✌️👎🤞👌🤘✌️:</string>
+    <string name="TileScore">👋🤞👍🤙🖖 🖐🤞🤛🖐 🖖🤘👌☝️🤙:</string>
+    <string name="TileTime">👋🤞👆🤙 🖖👎🤙👇👋 👎👍✌️👏🤞👇🤛 👋🤞👍🤙🖖:</string>
+    <string name="attachment_summary_off">👌👇👍👏 🤚👌👐👇👍👌✌️🤚 ✌️👋👋✌️🤘🖐👆🤙👇👋🖖 👐🖐🤙👇 👆✌️👇🙌✌️👍👍👏 ☝️🤙🤝🙌🤙🖖👋🤙🤚</string>
+    <string name="attachment_summary_on">✌️🙌👋👌👆✌️👋🤞🤘✌️👍👍👏 🤚👌👐👇👍👌✌️🤚 ✌️👋👋✌️🤘🖐👆🤙👇👋🖖 ✋👌☝️ 🤞👇🤘👌👆🤞👇🤛 🤙👆✌️🤞👍🖖</string>
+    <string name="attachment_title">🤚👌👐👇👍👌✌️🤚 🤞👇🤘👌👆🤞👇🤛 ✌️👋👋✌️🤘🖐👆🤙👇👋🖖</string>
+    <string name="buttonPlay">👎👍✌️👏</string>
+    <string name="button_exit">🤙👉🤞👋</string>
+    <string name="button_maze">👆✌️🙏🤙</string>
+    <string name="button_retry">👋☝️👏 ✌️🤛✌️🤞👇</string>
+    <string name="button_tapioca_launcher">👉👌👉👌👉👌👉👌👉👌</string>
+    <string name="button_tiles">👋🤞👍🤙🖖</string>
+    <string name="changeLang">👍✌️👇🤛🙌✌️🤛🤙</string>
+    <string name="change_theme">👋🖐🤙👆🤙</string>
+    <string name="create_account">🤘☝️🤙✌️👋🤙</string>
+    <string name="highScore">🖐🤞🤛🖐 🖖🤘👌☝️🤙:</string>
+    <string name="instructions_maze">🤙🖖🤘✌️👎🤙 👋🖐🤙 👆✌️🙏🤙! 👋🖐🤙 ✋🤙👐🤙☝️ 🖖👋🤙👎🖖 👏👌🙌 👋✌️👊🤙 👋🖐🤙 🖐🤞🤛🖐🤙☝️ 👏👌🙌☝️ 🖖🤘👌☝️🤙. 👆👌🤜🤙 👏👌🙌☝️ 🤘🖐✌️☝️✌️🤘👋🤙☝️ 👈👏 👋✌️👎👎🤞👇🤛 👋🖐🤙 🤘👌☝️☝️🤙🖖👎👌👇🤚🤞👇🤛 🤚🤞☝️🤙🤘👋🤞👌👇 🤙.🤛. 👋👌👎 👌✋ 👋🖐🤙 🖖🤘☝️🤙🤙👇 ✋👌☝️ 🙌👎.</string>
+    <string name="instructions_tiles">🤚👌👇\'👋 👋👌🙌🤘🖐 👋🖐🤙 👐🖐🤞👋🤙 👋🤞👍🤙🖖! 👋✌️👎 👋🖐🤙 👈👍✌️🤘👊 👋🤞👍🤙🖖 👋👌 🤛✌️🤞👇 👎👌🤞👇👋🖖. 👏👌🙌 👍👌🖖🤙 🤞✋ 👏👌🙌 👋✌️👎 ✌️ 👐🖐🤞👋🤙 👋🤞👍🤙 👌☝️ 👐🖐🤙👇 ✌️👇 🙌👇👋✌️👎👎🤙🤚 👈👍✌️🤘👊 👋🤞👍🤙 👍🤙✌️🤜🤙🖖 👋🖐🤙 👈👌✌️☝️🤚.</string>
+    <string name="level">👍🤙🤜🤙👍:</string>
+    <string name="login_button">👍👌🤛🤞👇</string>
+    <string name="messages_header">👆🤙🖖🖖✌️🤛🤙🖖</string>
+    <string name="password">🤙👇👋🤙☝️ 👏👌🙌☝️ 👎✌️🖖🖖👐👌☝️🤚</string>
+    <string name="password2">🤙👇👋🤙☝️ 👏👌🙌☝️ 👎✌️🖖🖖👐👌☝️🤚</string>
+    <string name="register_button">☝️🤙🤛🤞🖖👋🤙☝️</string>
+    <string name="reply_title">🤚🤙✋✌️🙌👍👋 ☝️🤙👎👍👏 ✌️🤘👋🤞👌👇</string>
+    <string name="score">🖖🤘👌☝️🤙:</string>
+    <string name="select_game">🖖🤙👍🤙🤘👋 👏👌🙌☝️ 🤛✌️👆🤙</string>
+    <string name="signIn">🖖🤞🤛👇 🤞👇</string>
+    <string name="signUp">🖖🤞🤛👇 🙌👎</string>
+    <string name="signature_title">👏👌🙌☝️ 🖖🤞🤛👇✌️👋🙌☝️🤙</string>
+    <string name="steps">🖖👋🤙👎🖖:</string>
+    <string name="sync_header">🖖👏👇🤘</string>
+    <string name="sync_title">🖖👏👇🤘 🤙👆✌️🤞👍 👎🤙☝️🤞👌🤚🤞🤘✌️👍👍👏</string>
+    <string name="text_game_over">🤛✌️👆🤙 👌🤜🤙☝️</string>
+    <string name="text_swipe_left">🖖👐🤞👎🤙 👍🤙✋👋!</string>
+    <string name="text_swipe_right">🖖👐🤞👎🤙 ☝️🤞🤛🖐👋!</string>
+    <string name="title_activity_login">🖖🤞🤛👇 🤞👇</string>
+    <string name="title_activity_settings">🖖🤙👋👋🤞👇🤛🖖</string>
+    <string name="title_maze">👆✌️🙏🤙</string>
+    <string name="title_tiles">👋🤞👍🤙🖖!</string>
+    <string name="username">🤙👇👋🤙☝️ 👏👌🙌☝️ 🙌🖖🤙☝️👇✌️👆🤙</string>
+    <string name="username2">🤙👇👋🤙☝️ 👏👌🙌☝️ 🙌🖖🤙☝️👇✌️👆🤙</string>
+</resources>

@@ -59,7 +59,7 @@ public class MainActivity extends Activity {
   }
 
   private void showChangeLanguageDialog() {
-    final String[] languages = {"Français", "中文", "Deutsche", "عربى", "עברי","English"};
+    final String[] languages = {"Français", "中文", "Deutsche", "عربى", "עברי", "Sign Language", "English"};
     AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
     mBuilder.setTitle("Choose Language...");
     mBuilder.setSingleChoiceItems(
@@ -114,6 +114,15 @@ public class MainActivity extends Activity {
               finish();
               overridePendingTransition(0, 0);
             } else if (which == 5) {
+              // Hebrew
+              setLocale("sgn");
+              Intent intent = getIntent();
+              putUser(intent);
+              startActivity(intent);
+              usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
+              finish();
+              overridePendingTransition(0, 0);
+            } else if (which == 6) {
               // English
               setLocale("en");
               Intent intent = getIntent();
