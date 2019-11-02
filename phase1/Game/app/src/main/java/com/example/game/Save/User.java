@@ -14,10 +14,11 @@ public class User implements Serializable {
     this.username = username;
     this.password = password;
     this.userData = userData;
+    userData.setUserName(username);
   }
 
   /** Getter for username. */
-  String getUsername() {
+  public String getUsername() {
     return username;
   }
 

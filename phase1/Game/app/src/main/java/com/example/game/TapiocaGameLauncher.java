@@ -40,7 +40,7 @@ public class TapiocaGameLauncher extends AppCompatActivity {
     TextView highScoretxt = findViewById(R.id.highScoreText);
 
     SharedPreferences prefs = getSharedPreferences("highScores", MODE_PRIVATE);
-    highScoretxt.setText(getString(R.string.highScore) + prefs.getInt("tapiocahighscore", 0));
+    highScoretxt.setText(getString(R.string.highScore) + prefs.getInt(usr.getUsername() + "tapiocahighscore", 0));
   }
   /*
    */
