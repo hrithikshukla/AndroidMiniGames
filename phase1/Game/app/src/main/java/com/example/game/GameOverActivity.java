@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.game.Save.User;
 
 public class GameOverActivity extends AppCompatActivity {
-    public User usr;
+    User usr;
     Button goToHomePage;
 
     @Override
