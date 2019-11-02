@@ -1,5 +1,6 @@
 package com.example.game;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
@@ -9,14 +10,14 @@ import android.view.View.OnTouchListener;
 
 public class OnSwipeTouchListener implements OnTouchListener {
 
-
+    // Code based on https://stackoverflow.com/a/24256106/10322608
 
     private final GestureDetector gestureDetector;
-    private Context context;
 
     /* (non-Javadoc)
      * @see android.view.View.OnTouchListener#onTouch(android.view.View, android.view.MotionEvent)
      */
+    @SuppressLint("ClickableViewAccessibility")
     public boolean onTouch(final View view, final MotionEvent motionEvent) {
         return gestureDetector.onTouchEvent(motionEvent);
     }
@@ -36,9 +37,8 @@ public class OnSwipeTouchListener implements OnTouchListener {
      * @param context
      *            the context
      */
-    public OnSwipeTouchListener(Context context) {
+    OnSwipeTouchListener(Context context) {
         super();
-        this.context = context;
         gestureDetector = new GestureDetector(context, new GestureListener());
     }
 
@@ -83,7 +83,7 @@ public class OnSwipeTouchListener implements OnTouchListener {
                     }
                 }
             } catch (Exception e) {
-
+                System.out.println("uWu");
             }
             return result;
         }
@@ -104,12 +104,12 @@ public class OnSwipeTouchListener implements OnTouchListener {
     /**
      * On swipe top.
      */
-    void onSwipeTop() {
+    private void onSwipeTop() {
     }
 
     /**
      * On swipe bottom.
      */
-    void onSwipeBottom() {
+    private void onSwipeBottom() {
     }
 }

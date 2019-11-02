@@ -46,6 +46,8 @@ public class MainActivity extends Activity {
           }
         });
     ImageView arrow = findViewById(R.id.ArrowRight);
+
+    // Code based on https://stackoverflow.com/a/24256106/10322608
     arrow.setOnTouchListener(
         new OnSwipeTouchListener(MainActivity.this) {
           @Override
@@ -58,6 +60,7 @@ public class MainActivity extends Activity {
         });
   }
 
+  // Code based on https://www.youtube.com/watch?v=zILw5eV9QBQ. I liked the video so I can use it.
   private void showChangeLanguageDialog() {
     final String[] languages = {"Français", "中文", "Deutsche", "عربى", "עברי", "Sign Language", "English"};
     AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);

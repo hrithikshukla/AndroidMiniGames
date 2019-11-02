@@ -27,6 +27,7 @@ public class StatsActivity extends AppCompatActivity {
         }
 
         ImageView arrow = findViewById(R.id.ArrowLeft);
+        // Code based on https://stackoverflow.com/a/24256106/10322608
         arrow.setOnTouchListener(new OnSwipeTouchListener(StatsActivity.this) {
             @Override
             public void onSwipeRight() {
