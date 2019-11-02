@@ -1,15 +1,11 @@
 package com.example.game.TilesGame;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
-import android.preference.PreferenceManager;
 
-import com.example.game.MainActivity;
-import com.example.game.MazeGame.Score;
 import com.example.game.ScoreManager;
 
 import java.util.ArrayList;
