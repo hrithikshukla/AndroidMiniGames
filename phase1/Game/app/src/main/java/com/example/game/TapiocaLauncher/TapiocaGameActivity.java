@@ -1,91 +1,86 @@
 package com.example.game.TapiocaLauncher;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Point;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.WindowManager;
 
 import com.example.game.GameActivity;
 import com.example.game.Save.User;
-import com.example.game.TapiocaGameLauncher;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Observer;
 import java.util.Observable;
 
-//
+//Creates the MVC design within the TapiocaLauncher
 public class TapiocaGameActivity extends GameActivity implements Observer {
 
-  // Views
-  private GameView gameView;
+    // View
+    private GameView gameView;
 
-  private GameFacade gameFacade;
-  private GameController gameController;
+    //Model
+    private GameFacade gameFacade;
 
-  @Override
-  protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    usr = (User) getIntent().getSerializableExtra("UserObject");
+    //Controller
+    private GameController gameController;
 
-    getWindow()
-        .setFlags(
-            WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        usr = (User) getIntent().getSerializableExtra("UserObject"); //Gets the
 
-    Point point = new Point();
-    getWindowManager().getDefaultDisplay().getSize(point);
+        getWindow()
+                .setFlags(
+                        WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-    gameView = new GameView(this, point.x, point.y);
-    setContentView(gameView);
+        Point point = new Point();
+        getWindowManager().getDefaultDisplay().getSize(point);
 
-    int launcherRadius = 136 / 2;
-    int launcherX = point.x / 2 - launcherRadius;
-    int launcherY = point.y - 3 * launcherRadius;
-    // Create MVC components.
-    this.gameFacade =
-        new GameFacade(new Launcher(launcherX, launcherY, launcherRadius), new ArrayList<Ball>());
-    this.gameController = new GameController(gameFacade, point.x, point.y);
-    this.gameView = new GameView(this, point.x, point.y);
+        gameView = new GameView(this, point.x, point.y);
+        setContentView(gameView);
 
-    // Add observors to our MVC components.
-    gameView.getInputView().addObserver(gameController);
-    gameFacade.addObserver(gameView.getVisualView());
-    gameFacade.addObserver(this);
-    gameFacade.update();
-    setContentView(gameView);
-  }
+        int launcherRadius = 136 / 2; //Radius of the launcher
+        int launcherX = point.x / 2 - launcherRadius; //Launchers inital x
+        int launcherY = point.y - 3 * launcherRadius; //Launchers inital y
 
-  @Override
-  protected void onPause() {
-    super.onPause();
-    gameView.pause();
-  }
+        // Create MVC components.
+        this.gameFacade = new GameFacade(new Launcher(launcherX, launcherY, launcherRadius), new ArrayList<Ball>());
+        this.gameController = new GameController(gameFacade, point.x, point.y);
+        this.gameView = new GameView(this, point.x, point.y);
 
-  @Override
-  protected void onResume() {
-    super.onResume();
-    gameView.resume();
-  }
-  // Method to change
-  //  public void endGame() {
-  //    switchToGameOverActivity(this);
-  //  }
-
-  @Override
-  public synchronized void update(Observable o, Object arg) {
-    gameFacade = (GameFacade) arg;
-    if (gameFacade.isGameOver()) {
-      SharedPreferences sharedPreferences = getSharedPreferences("highScores", MODE_PRIVATE);
-      if (usr.getUserData().getTapiocaHighScore() < gameFacade.getScore()) {
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt(usr.getUsername() + "tapiocahighscore", gameFacade.getScore());
-        editor.apply();
-        switchToGameOverActivity(this);
-      }
+        // Add observers to our MVC components.
+        gameView.getInputView().addObserver(gameController);
+        gameFacade.addObserver(gameView.getVisualView());
+        gameFacade.addObserver(this);
+        gameFacade.update();
+        setContentView(gameView);
     }
-  }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        gameView.pause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        gameView.resume();
+    }
+
+
+    //Observes the GameFacade to see if the game is over, and if so goes to the exit screen and updates the statistics
+    @Override
+    public synchronized void update(Observable o, Object arg) {
+        gameFacade = (GameFacade) arg;
+        if (gameFacade.isGameOver()) {
+            SharedPreferences sharedPreferences = getSharedPreferences("highScores", MODE_PRIVATE);
+            if (usr.getUserData().getTapiocaHighScore() < gameFacade.getScore()) {
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putInt(usr.getUsername() + "tapiocahighscore", gameFacade.getScore());
+                editor.apply();
+                switchToGameOverActivity(this);
+            }
+        }
+    }
 }
