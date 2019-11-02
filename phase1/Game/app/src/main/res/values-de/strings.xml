@@ -10,7 +10,7 @@
     <string name="signUp">Anmelden</string>
     <string name="signIn">Einloggen</string>
     <string name="changeLang">Sprache</string>
-    <string name="level">"Level "</string>
+    <string name="level">"Level: "</string>
     <string name="score">"Punktzahl: "</string>
     <string name="highScore">"Hohe Punktzahl: "</string>
     <string name="create_account">" Registrieren"</string>
@@ -31,7 +31,7 @@
     <string name="TapiocaTime">"Zeit zum Spielen Tapioka-Trägerrakete: "</string>
     <string name="MazeTime">"Zeit zum Spielen Matze: "</string>
     <string name="TileTime">Zeit zum Spielen Fliesen:</string>
-    <string name="Reset">" Statistik Zurücksetzen xD"</string>
+    <string name="Reset">uWu Statistik zurücksetzen uWu</string>
     <string name="Statistics">" Ihre Statistiken"</string>
     <string name="attachment_summary_off">Laden Sie Anhänge nur herunter, wenn Sie manuell dazu aufgefordert werden</string>
     <string name="attachment_summary_on">Laden Sie Anhänge für eingehende E-Mails automatisch herunter</string>
@@ -48,4 +48,5 @@
     <string name="text_swipe_right">Wische nach rechts!</string>
     <string name="text_swipe_left">Nach links wischen!</string>
     <string name="title_maze">Matze</string>
+    <string name="NotAvailable">" Zurzeit nicht verfügbar :("</string>
 </resources>
