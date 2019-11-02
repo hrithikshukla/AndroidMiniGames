@@ -1,14 +1,15 @@
 package com.example.game.MazeGame;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.SharedPreferences;
 import android.graphics.Point;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.WindowManager;
 
 import com.example.game.GameActivity;
+import com.example.game.MazeGame.DataStructures.Maze;
+import com.example.game.MazeGame.DataStructures.NewGameState;
+import com.example.game.MazeGame.DataStructures.Player;
+import com.example.game.MazeGame.DataStructures.Score;
 import com.example.game.Save.User;
 
 import java.util.Observable;
@@ -22,14 +23,15 @@ public class MazeGameActivity extends GameActivity implements Observer {
   // Controller of the game. Processes user input using game state logic to possibly change the
   // model.
   private GameController gameController;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     usr = (User) getIntent().getSerializableExtra("UserObject");
     // Set fullscreen mode.
     getWindow()
-            .setFlags(
-                    WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        .setFlags(
+            WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
     // Get maximum x and y coordinate of phone screen and store it in the Point object.
     Point point = new Point();
@@ -45,8 +47,8 @@ public class MazeGameActivity extends GameActivity implements Observer {
 
     // Create MVC components.
     this.gameFacade =
-            new GameFacade(
-                    new Player(startX, startY, new Score(startingScore)), new Maze(mazeWidth, mazeHeight));
+        new GameFacade(
+            new Player(startX, startY, new Score(startingScore)), new Maze(mazeWidth, mazeHeight));
     this.gameController = new GameController(gameFacade);
     this.gameView = new GameView(this, point.x, point.y);
 
@@ -75,11 +77,10 @@ public class MazeGameActivity extends GameActivity implements Observer {
 
   @Override
   public synchronized void update(Observable o, Object arg) {
-    // PsuedoCode : If game is over; User object records score and
-    // pass it over to gameover activity
+    // Set users high score if applicable when game ends and send it to gameOverActivity
     NewGameState newGameState = (NewGameState) arg;
     SharedPreferences sharedPreferences = getSharedPreferences("highScores", MODE_PRIVATE);
-    if (newGameState.isGameOver()){
+    if (newGameState.isGameOver()) {
       if (usr.getUserData().getMazeHighScore() < newGameState.getScore()) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt(usr.getUsername() + "mazehighscore", newGameState.getScore());
@@ -87,6 +88,5 @@ public class MazeGameActivity extends GameActivity implements Observer {
       }
       switchToGameOverActivity(this);
     }
-
   }
 }

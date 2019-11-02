@@ -4,17 +4,18 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
+import com.example.game.MazeGame.DataStructures.Cell;
 import com.example.game.R;
 
 /** Class representing the tiles of the maze. A tile is a wall, a floor, or a player. */
-public class Tile {
+class Tile {
 
   private Bitmap wall, floor, player, playerAtExit;
 
   // Side length of any Tile bitmap.
   private int sideLength;
 
-  public Tile(Resources res) {
+  Tile(Resources res) {
 
     Bitmap tmpWall = BitmapFactory.decodeResource(res, R.drawable.brick_wall);
     Bitmap tmpfloor = BitmapFactory.decodeResource(res, R.drawable.floor);

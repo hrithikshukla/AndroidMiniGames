@@ -1,6 +1,11 @@
-package com.example.game.MazeGame;
+package com.example.game.MazeGame.DataStructures;
 
 import android.util.Pair;
+
+import androidx.annotation.NonNull;
+
+import com.example.game.MazeGame.DataStructures.Cell;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -8,10 +13,16 @@ import java.util.Collections;
 // TODO: fix get cell method, code smells looks awkward
 /** Represents the maze of the game. */
 public class Maze {
+  /**
+   *  grid: Cell object representation of our Maze
+   * width: The width of the maze
+   * height: The height of the maze;
+   * exit: The coordinates of the exit; x coordinate is stored in exit[0], y exit[1]
+   */
   private Cell[][] grid;
+
   private int width;
   private int height;
-
   private int[] exit;
 
   /**
@@ -35,22 +46,19 @@ public class Maze {
     return height;
   }
 
-  Cell getCell(int x, int y) {
-    try {
-      return grid[y][x];
-    } catch (IndexOutOfBoundsException e) {
-      e.printStackTrace();
-    }
+  // Returns cell at coordinate
+  public Cell getCell(int x, int y) throws IndexOutOfBoundsException {
     return grid[y][x];
   }
 
-  void generateMaze() {
+  private void generateMaze() {
     initNodes();
     mst();
     generateExit();
   }
 
   @Override
+  @NonNull
   public String toString() {
     StringBuilder s = new StringBuilder();
     for (int i = 0; i < height; i++) {
@@ -71,8 +79,21 @@ public class Maze {
     return grid;
   }
 
-  // initialize the floor and wall "nodes" of the maze
+  /** Returns a deep copy of the grid representing the maze. */
+  public Cell[][] getGridDeepCopy() {
+    Cell[][] tmp = new Cell[height][width];
+    for (int i = 0; i < height; i++) {
+      tmp[i] = grid[i].clone();
+    }
+    return tmp;
+  }
 
+  /** Getter for exit. */
+  public int[] getExit() {
+    return exit;
+  }
+
+  // initialize the floor and wall "nodes" of the maze
   private void initNodes() {
     for (int row = 0; row < height; row++) {
       for (int col = 0; col < width; col++) {
@@ -83,17 +104,6 @@ public class Maze {
         }
       }
     }
-  }
-
-  /** Returns a deep copy of the grid representing the maze. */
-  Cell[][] getGridDeepCopy() {
-    Cell[][] tmp = new Cell[height][width];
-    for (int i = 0; i < height; i++) {
-      for (int j = 0; j < width; j++) {
-        tmp[i][j] = grid[i][j];
-      }
-    }
-    return tmp;
   }
 
   // prim's algorithm for MST(minimum spanning tree)
@@ -137,6 +147,7 @@ public class Maze {
     }
   }
 
+  // Returns the neighbours of a node where it has already been examined by the algorithm
   private ArrayList<Pair<Integer, Integer>> getPickedNodes(
       Pair<Integer, Integer> neighbourNode, ArrayList<Pair<Integer, Integer>> processed) {
     ArrayList<Pair<Integer, Integer>> neighbours = getValidNeighbours(neighbourNode);
@@ -150,6 +161,7 @@ public class Maze {
     return picked;
   }
 
+  // The neighbours of a given node that have not been processed by the algorithm
   private void addNeighbours(
       Pair<Integer, Integer> cellCoordinate,
       ArrayList<Pair<Integer, Integer>> neighboursUnprocessed,
@@ -163,6 +175,7 @@ public class Maze {
     }
   }
 
+  // The possible neighbouring nodes of a given cell
   private ArrayList<Pair<Integer, Integer>> getValidNeighbours(
       Pair<Integer, Integer> cellCoordinate) {
     int row = cellCoordinate.first;
@@ -207,14 +220,9 @@ public class Maze {
         this.exit = new int[] {width - 2, 0};
         break;
       case "bottomRightCorner":
-        grid[height - 1][width- 2] = Cell.EXIT;
+        grid[height - 1][width - 2] = Cell.EXIT;
         this.exit = new int[] {width - 2, height - 1};
         break;
     }
-  }
-
-  /** Getter for exit. */
-  int[] getExit() {
-    return exit;
   }
 }

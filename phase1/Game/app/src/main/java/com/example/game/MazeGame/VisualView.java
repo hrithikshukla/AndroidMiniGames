@@ -1,12 +1,14 @@
 package com.example.game.MazeGame;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.view.SurfaceHolder;
 
+import com.example.game.MazeGame.DataStructures.Background;
+import com.example.game.MazeGame.DataStructures.Cell;
+import com.example.game.MazeGame.DataStructures.NewGameState;
 import com.example.game.R;
 
 import java.util.Observable;
@@ -34,8 +36,7 @@ public class VisualView implements Observer, Gameover {
    * @param maxScreenX - maximum x position of the screen
    * @param maxScreenY - maximum y position of the screen
    */
-  public VisualView(
-          int maxScreenX, int maxScreenY, Context context, SurfaceHolder surfaceHolder) {
+  VisualView(int maxScreenX, int maxScreenY, Context context, SurfaceHolder surfaceHolder) {
     this.maxScreenX = maxScreenX;
     this.maxscreenY = maxScreenY;
 
@@ -112,6 +113,4 @@ public class VisualView implements Observer, Gameover {
   public boolean isGameOver() {
     return gameOver;
   }
-
-
 }

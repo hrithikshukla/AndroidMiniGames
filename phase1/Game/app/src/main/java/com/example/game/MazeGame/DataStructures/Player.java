@@ -1,4 +1,4 @@
-package com.example.game.MazeGame;
+package com.example.game.MazeGame.DataStructures;
 
 import java.util.ArrayList;
 
@@ -34,7 +34,7 @@ public class Player {
   }
 
   /** Getter for the powerups player is affected by. */
-  ArrayList<Powerup> getPowerups() {
+  public ArrayList<Powerup> getPowerups() {
     return powerups;
   }
 
@@ -43,7 +43,7 @@ public class Player {
    *
    * @param pu - new powerup that player is affected by
    */
-  void addPowerup(Powerup pu) {
+  public void addPowerup(Powerup pu) {
     powerups.add(pu);
   }
 
@@ -52,7 +52,7 @@ public class Player {
    *
    * @param pu - existing powerup that player is affected by
    */
-  void removePowerup(Powerup pu) {
+  public void removePowerup(Powerup pu) {
     if (isAffectedBy(pu)) {
       powerups.remove(pu);
     }
@@ -63,11 +63,11 @@ public class Player {
    *
    * @param pu - powerup to be checked
    */
-  boolean isAffectedBy(Powerup pu) {
+  private boolean isAffectedBy(Powerup pu) {
     return powerups.contains(pu);
   }
 
-  void displace(int x, int y) {
+  public void displace(int x, int y) {
     posX += x;
     posY += y;
     incrementStep();
@@ -80,17 +80,17 @@ public class Player {
   }
 
   /** Returns the current position of the player. */
-  int[] getPos() {
+  public int[] getPos() {
     return new int[] {posX, posY};
   }
 
   /** Returns the player's current score. */
-  int getScore() {
+  public int getScore() {
     return score.getScore();
   }
 
   /** Getter for number of steps. */
-  int getNumSteps() {
+  public int getNumSteps() {
     return numSteps;
   }
 
@@ -100,7 +100,7 @@ public class Player {
    * @param x - x coordinate in question
    * @param y - y coordinate in question
    */
-  boolean isAt(int x, int y) {
+  public boolean isAt(int x, int y) {
     return (posX == x) && (posY == y);
   }
 }

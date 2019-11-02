@@ -1,4 +1,6 @@
-package com.example.game.MazeGame;
+package com.example.game.MazeGame.DataStructures;
+
+import com.example.game.MazeGame.DataStructures.Collectable;
 
 /**
  * Class representing the player's current score. Score is currently calculated based on the number
@@ -7,7 +9,7 @@ package com.example.game.MazeGame;
 public class Score {
 
   // Current score.
-  int score;
+  private int score;
 
   public Score(int startingScore) {
     this.score = startingScore;
@@ -23,12 +25,12 @@ public class Score {
    *
    * @param collectable a score affecting item
    */
-  void multiplyScore(Collectable collectable) {
+  public void multiplyScore(Collectable collectable) {
     score *= collectable.getMultiplier();
   }
 
   /** Getter for score. */
-  int getScore() {
+  public int getScore() {
     return score;
   }
 }
