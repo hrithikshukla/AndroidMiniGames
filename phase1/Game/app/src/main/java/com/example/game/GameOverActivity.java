@@ -26,7 +26,7 @@ public class GameOverActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.gameover_activity);
 
-    goToHomePage = (Button) findViewById(R.id.homepagebutton);
+    goToHomePage = findViewById(R.id.homepagebutton);
   }
 
   public void goToHomePage(View view) {

@@ -1,7 +1,5 @@
 package com.example.game.MazeGame.DataStructures;
 
-import com.example.game.MazeGame.DataStructures.Item;
-
 /** Represents a powerup item in a maze. */
 public class Powerup extends Item {
 

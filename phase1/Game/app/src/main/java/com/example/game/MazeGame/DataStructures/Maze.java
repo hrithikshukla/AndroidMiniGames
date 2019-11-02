@@ -4,8 +4,6 @@ import android.util.Pair;
 
 import androidx.annotation.NonNull;
 
-import com.example.game.MazeGame.DataStructures.Cell;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -14,10 +12,8 @@ import java.util.Collections;
 /** Represents the maze of the game. */
 public class Maze {
   /**
-   *  grid: Cell object representation of our Maze
-   * width: The width of the maze
-   * height: The height of the maze;
-   * exit: The coordinates of the exit; x coordinate is stored in exit[0], y exit[1]
+   * grid: Cell object representation of our Maze width: The width of the maze height: The height of
+   * the maze; exit: The coordinates of the exit; x coordinate is stored in exit[0], y exit[1]
    */
   private Cell[][] grid;
 

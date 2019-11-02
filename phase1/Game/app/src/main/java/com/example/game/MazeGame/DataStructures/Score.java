@@ -1,7 +1,5 @@
 package com.example.game.MazeGame.DataStructures;
 
-import com.example.game.MazeGame.DataStructures.Collectable;
-
 /**
  * Class representing the player's current score. Score is currently calculated based on the number
  * of steps the player has taken.

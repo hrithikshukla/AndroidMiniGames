@@ -1,7 +1,6 @@
 package com.example.game;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -29,8 +28,8 @@ public class LoginActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_login);
 
-    loginButton = (Button) findViewById(R.id.loginButton);
-    registerButton = (Button) findViewById(R.id.registerButton);
+    loginButton = findViewById(R.id.loginButton);
+    registerButton = findViewById(R.id.registerButton);
 
     // Open .json file; this is an empty file need to fix later
     //        File file = new File("/Users/tom_kan/Documents/School/Second Year/CSC
@@ -64,10 +63,8 @@ public class LoginActivity extends AppCompatActivity {
           new Intent(LoginActivity.this, com.example.game.MainActivity.class);
       mainActivityIntent.putExtra("UserObject", usr);
       startActivity(mainActivityIntent);
-    }
-    else {
+    } else {
       Toast.makeText(getApplicationContext(), "Invalid Login", Toast.LENGTH_LONG).show();
     }
-
-  };
+  }
 }

@@ -10,6 +10,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Serializable;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 
 /** Class that can read/save User information to a JSON file. */
@@ -37,7 +38,7 @@ public class JSONData implements Data, Serializable {
     // http://www.musingscafe.com/reading-large-json-file-in-java-efficiently/
 
     try (JsonReader jsonReader =
-        new JsonReader(new InputStreamReader(new FileInputStream(saveFile), "UTF-8"))) {
+        new JsonReader(new InputStreamReader(new FileInputStream(saveFile), StandardCharsets.UTF_8))) {
       Gson gson = new GsonBuilder().create();
 
       // Read the JSON file as an array.

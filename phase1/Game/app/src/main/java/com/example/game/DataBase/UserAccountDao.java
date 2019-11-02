@@ -8,13 +8,12 @@ import androidx.room.Update;
 @Dao
 public interface UserAccountDao {
 
-    @Insert
-    void insert(UserAccount userAccount);
+  @Insert
+  void insert(UserAccount userAccount);
 
-    @Update
-    void update(UserAccount userAccount);
+  @Update
+  void update(UserAccount userAccount);
 
-    @Delete
-    void delete(UserAccount userAccount);
-
+  @Delete
+  void delete(UserAccount userAccount);
 }

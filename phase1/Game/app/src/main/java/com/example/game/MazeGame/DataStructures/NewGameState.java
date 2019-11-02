@@ -1,7 +1,5 @@
 package com.example.game.MazeGame.DataStructures;
 
-import com.example.game.MazeGame.DataStructures.Cell;
-
 /** Class containing updated information about the current game state. */
 public class NewGameState {
 

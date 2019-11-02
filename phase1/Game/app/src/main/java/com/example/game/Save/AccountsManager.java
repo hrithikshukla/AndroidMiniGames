@@ -1,6 +1,5 @@
 package com.example.game.Save;
 
-import java.io.Serializable;
 import java.util.HashMap;
 
 /**

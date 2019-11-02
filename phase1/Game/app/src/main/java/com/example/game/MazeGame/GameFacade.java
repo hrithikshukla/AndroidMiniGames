@@ -4,12 +4,9 @@ import android.util.Pair;
 
 import com.example.game.MazeGame.DataStructures.Cell;
 import com.example.game.MazeGame.DataStructures.Maze;
-import com.example.game.MazeGame.DataStructures.Movement;
 import com.example.game.MazeGame.DataStructures.NewGameState;
 import com.example.game.MazeGame.DataStructures.Player;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Observable;
 
 /**

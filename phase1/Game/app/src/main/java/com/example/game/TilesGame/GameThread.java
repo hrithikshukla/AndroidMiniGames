@@ -50,7 +50,7 @@ public class GameThread extends Thread {
       }
 
       try {
-        this.sleep(300);
+        sleep(300);
       } catch (Exception e) {
         e.printStackTrace();
       }
