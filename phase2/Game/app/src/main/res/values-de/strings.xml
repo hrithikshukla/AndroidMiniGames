@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Translations made by Google translate -->
+<resources>
+    <string name="app_name">" Spiel"</string>
+    <string name="button_maze">Matze</string>
+    <string name="button_tapioca_launcher">Tapioka-Trägerrakete</string>
+    <string name="button_tiles">Fliesen</string>
+    <string name="select_game">Spiel wählen</string>
+    <string name="title_tiles">Fliesen!</string>
+    <string name="buttonPlay">Abspielen</string>
+    <string name="signUp">Anmelden</string>
+    <string name="signIn">Einloggen</string>
+    <string name="changeLang">Sprache</string>
+    <string name="level">"Level: "</string>
+    <string name="score">"Punktzahl: "</string>
+    <string name="highScore">"Hohe Punktzahl: "</string>
+    <string name="create_account">" Registrieren"</string>
+    <string name="register_button">" Registrieren"</string>
+    <string name="login_button">" Anmeldung"</string>
+    <string name="password">" Passwort"</string>
+    <string name="password2">" Passwort"</string>
+    <string name="title_activity_login">Einloggen</string>
+    <string name="username">" Nutzername"</string>
+    <string name="username2">" Nutzername"</string>
+    <string name="button_retry">Versuch es noch einmal</string>
+    <string name="button_exit">Verlassen</string>
+    <string name="steps">"Schritte: "</string>
+    <string name="change_theme">Thema</string>\
+    <string name="TapiocaScore">"Tapioka-Trägerrakete Hohe Punktzahl: "</string>
+    <string name="MazeScore">"Matze Hohe Punktzahl: "</string>
+    <string name="TileScore">"Fliesen Hohe Punktzahl: "</string>
+    <string name="TapiocaTime">"Zeit zum Spielen Tapioka-Trägerrakete: "</string>
+    <string name="MazeTime">"Zeit zum Spielen Matze: "</string>
+    <string name="TileTime">Zeit zum Spielen Fliesen:</string>
+    <string name="Reset">uWu Statistik zurücksetzen uWu</string>
+    <string name="Statistics">" Ihre Statistiken"</string>
+    <string name="attachment_summary_off">Laden Sie Anhänge nur herunter, wenn Sie manuell dazu aufgefordert werden</string>
+    <string name="attachment_summary_on">Laden Sie Anhänge für eingehende E-Mails automatisch herunter</string>
+    <string name="attachment_title">Laden Sie eingehende Anhänge herunter</string>
+    <string name="messages_header">Mitteilungen</string>
+    <string name="signature_title">Ihre Unterschrift</string>
+    <string name="reply_title">Standardantwortaktion</string>
+    <string name="sync_header">Synchronisieren</string>
+    <string name="sync_title">Synchronisieren Sie Ihre E-Mails regelmäßig</string>
+    <string name="title_activity_settings">die Einstellungen</string>
+    <string name="instructions_tiles">Ne touchez pas les carreaux blancs! Appuyez sur les carreaux noirs pour gagner des points. Vous perdez si vous appuyez sur une tuile blanche ou quand une tuile noire inexploitée quitte le tableau.</string>
+    <string name="instructions_maze">Entkomme dem Labyrinth! Je weniger Schritte Sie machen, desto höher ist Ihre Punktzahl. Bewegen Sie Ihren Charakter, indem Sie auf die entsprechende Richtung tippen, z. oben auf dem Bildschirm nach oben.</string>
+    <string name="text_game_over">Spiel ist aus</string>
+    <string name="text_swipe_right">Wische nach rechts!</string>
+    <string name="text_swipe_left">Nach links wischen!</string>
+    <string name="title_maze">Matze</string>
+    <string name="NotAvailable">" Zurzeit nicht verfügbar :("</string>
+</resources>

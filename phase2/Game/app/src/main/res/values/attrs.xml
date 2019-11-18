@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="buttonPrimary" format="reference" />
+    <attr name="buttonSecondary" format="reference" />
+    <attr name="login" format="reference" />
+
+</resources>

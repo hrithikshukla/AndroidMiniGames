@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Translations made by Google translate -->
+<resources>
+    <string name="app_name">Jeu</string>
+    <string name="button_maze">Labyrinthe</string>
+    <string name="button_tapioca_launcher">Lanceur de Tapioca</string>
+    <string name="button_tiles">Carrelage</string>
+    <string name="select_game">Choisir le jeu</string>
+    <string name="title_tiles">Carrelage!</string>
+    <string name="buttonPlay">Jouer</string>
+    <string name="signUp">S\'inscrire</string>
+    <string name="signIn">S\'identifier</string>
+    <string name="changeLang">Langue</string>
+    <string name="level">"Niveau: "</string>
+    <string name="score">"Score: "</string>
+    <string name="highScore">"Score élevé: "</string>
+    <string name="create_account">S\'inscrire</string>
+    <string name="register_button">S\'inscrire</string>
+    <string name="password">Mot de passe</string>
+    <string name="password2">Mot de passe</string>
+    <string name="login_button">S\'identifier</string>
+    <string name="title_activity_login">S\'identifier</string>
+    <string name="username">" Nom d'utilisateur"</string>
+    <string name="username2">" Nom d'utilisateur"</string>
+    <string name="button_exit">Partir</string>
+    <string name="button_retry">Réessayer</string>
+    <string name="steps">"Pas: "</string>
+    <string name="change_theme">Thème</string>
+    <string name="TapiocaScore">"Lanceur de Tapioca Score élevé: "</string>
+    <string name="MazeScore">"Labyrinthe Score élevé: "</string>
+    <string name="TileScore">"Carrelage Score élevé: "</string>
+    <string name="TapiocaTime">Temps passé à jouer Lanceur de Tapioca:</string>
+    <string name="MazeTime">"Temps passé à jouer Labyrinthe: "</string>
+    <string name="TileTime">Temps passé à jouer Carrelage:</string>
+    <string name="Reset">" Réinitialiser les statistiques oWo"</string>
+    <string name="Statistics">" Vos statistiques"</string>
+    <string name="attachment_title">Télécharger les pièces jointes entrantes</string>
+    <string name="attachment_summary_on">Télécharger automatiquement les pièces jointes pour les emails entrants</string>
+    <string name="attachment_summary_off">Télécharger uniquement les pièces jointes sur demande manuelle</string>
+    <string name="title_activity_settings">Paramètres</string>
+    <string name="sync_header">Sync</string>
+    <string name="sync_title">Synchroniser les emails périodiquement</string>
+    <string name="signature_title">Votre signature</string>
+    <string name="reply_title">Action de réponse par défaut</string>
+    <string name="messages_header">Messages</string>
+    <string name="instructions_tiles">Ne touchez pas les carreaux blancs! Appuyez sur les carreaux noirs pour gagner des points. Vous perdez si vous appuyez sur une tuile blanche ou quand une tuile noire inexploitée quitte le tableau.</string>
+    <string name="instructions_maze">Échapper au labyrinthe! Moins vous faites d’étapes, plus votre score est élevé. Déplacez votre personnage en appuyant sur la direction correspondante, par exemple. haut de l\'écran pour up.</string>
+    <string name="text_game_over">Jeu terminé</string>
+    <string name="text_swipe_left">Glissez à gauche!</string>
+    <string name="text_swipe_right">Glisser à droite!</string>
+    <string name="title_maze">Labyrinthe</string>
+    <string name="NotAvailable">Pas encore disponible :(</string>
+</resources>

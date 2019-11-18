@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Translations made by Google translate -->
+<resources>
+    <string name="app_name">משחק</string>
+    <string name="Reset">איפוס סטטיסטיקות</string>
+    <string name="MazeScore">מבוך ציון גבוה:</string>
+    <string name="MazeTime">זמן מבוזבז במשחק מבוך:</string>
+    <string name="NotAvailable">עדיין לא זמין :(</string>
+    <string name="Statistics">הסטטיסטיקה שלך</string>
+    <string name="TapiocaScore">מפעל טפיוקה ניקוד גבוה :</string>
+    <string name="TapiocaTime">זמן בילוי טפיוקה:</string>
+    <string name="TileScore">ציון גבוה לאריחים:</string>
+    <string name="TileTime">משך הזמן שמשמש אריחים:</string>
+    <string name="attachment_summary_off">הורד קבצים מצורפים רק כשתבקש ידנית</string>
+    <string name="attachment_summary_on">הורד אוטומטית קבצים מצורפים להודעות דוא\"ל נכנסות</string>
+    <string name="attachment_title">הורד קבצים מצורפים נכנסים</string>
+    <string name="buttonPlay">שחק</string>
+    <string name="button_exit">יציאה</string>
+    <string name="button_maze">מבוך</string>
+    <string name="button_retry">נסה שוב</string>
+    <string name="button_tapioca_launcher">משגר טפיוקה</string>
+    <string name="button_tiles">אריחים</string>
+    <string name="changeLang">שפה</string>
+    <string name="change_theme">נושא</string>
+    <string name="create_account">ליצור</string>
+    <string name="highScore">ניקוד גבוה:</string>
+    <string name="instructions_maze">לברוח מבוך! ככל שאתה לוקח פחות צעדים כך הציון שלך גבוה יותר. הזז את הדמות שלך על ידי הקשה על הכיוון המקביל, למשל למעלה המסך למעלה.</string>
+    <string name="instructions_tiles">אל תיגע באריחים הלבנים! הקש על האריחים השחורים כדי להשיג נקודות. אתה מפסיד אם אתה לוחץ על אריח לבן או כאשר אריח שחור לא מנוצל יוצא מהלוח.</string>
+    <string name="level">רמה:</string>
+    <string name="login_button">התחברות</string>
+    <string name="messages_header">הודעות</string>
+    <string name="password">הכנס את הסיסמה שלך</string>
+    <string name="password2">הכנס את הסיסמה שלך</string>
+    <string name="register_button">הירשם</string>
+    <string name="reply_title">פעולת תשובה ברירת מחדל</string>
+    <string name="score">ציון:</string>
+    <string name="select_game">בחר את המשחק שלך</string>
+    <string name="signIn">היכנס</string>
+    <string name="signUp">הירשם</string>
+    <string name="signature_title">החתימה שלך</string>
+    <string name="steps">שלבים:</string>
+    <string name="sync_header">סינכרון</string>
+    <string name="sync_title">סנכרן דוא\"ל מעת לעת</string>
+    <string name="text_game_over">סוף המשחק</string>
+    <string name="text_swipe_left">החלק שמאלה!</string>
+    <string name="text_swipe_right">החלק ימינה!</string>
+    <string name="title_activity_login">היכנס</string>
+    <string name="title_activity_settings">הגדרות</string>
+    <string name="title_maze">מבוך</string>
+    <string name="title_tiles">אריחים!</string>
+    <string name="username">הכנס שם משתמש</string>
+    <string name="username2">הכנס שם משתמש</string>
+</resources>

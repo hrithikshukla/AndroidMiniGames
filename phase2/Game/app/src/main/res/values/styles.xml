@@ -1,0 +1,135 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    import attrs.xml
+
+    <!-- Base application theme. -->
+    <style name="BaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+    </style>
+
+    <!-- Light application theme. -->
+    <style name="LightTheme" parent="BaseTheme">
+        <item name="android:colorBackground">@color/lightBackground</item>
+    </style>
+
+    <!-- Default Light application theme. -->
+    <style name="LightDefaultTheme" parent="LightTheme">
+        <item name="android:colorPrimary">@color/defaultPrimary</item>
+        <item name="colorPrimary">@color/defaultPrimary</item>
+        <item name="android:colorPrimaryDark">@color/defaultPrimaryDark</item>
+        <item name="colorPrimaryDark">@color/defaultPrimaryDark</item>
+        <item name="android:colorSecondary">@color/defaultSecondary</item>
+        <item name="android:colorAccent">@color/defaultAccent</item>
+        <item name="colorAccent">@color/defaultAccent</item>
+        <item name="buttonPrimary">@style/button_prim_default</item>
+        <item name="buttonSecondary">@style/button_sec_default</item>
+        <item name="login">@style/login_default</item>
+        <item name="android:textColor">@color/defaultPrimaryDark</item>
+    </style>
+
+    <!-- Green/Purple (GP) Light application theme. -->
+    <style name="LightGPTheme" parent="LightTheme">
+        <item name="android:colorPrimary">@color/gpPrimary</item>
+        <item name="colorPrimary">@color/gpPrimary</item>
+        <item name="android:colorPrimaryDark">@color/gpPrimaryDark</item>
+        <item name="colorPrimaryDark">@color/gpPrimaryDark</item>
+        <item name="android:colorSecondary">@color/gpSecondary</item>
+        <item name="android:colorAccent">@color/gpAccent</item>
+        <item name="colorAccent">@color/gpAccent</item>
+        <item name="buttonPrimary">@style/button_prim_gp</item>
+        <item name="buttonSecondary">@style/button_sec_gp</item>
+        <item name="android:textColor">@color/gpPrimaryDark</item>
+    </style>
+
+    <!-- Orange/Teal (OT) Light application theme. -->
+    <style name="LightOTTheme" parent="LightTheme">
+        <item name="android:colorPrimary">@color/otPrimary</item>
+        <item name="colorPrimary">@color/otPrimary</item>
+        <item name="android:colorPrimaryDark">@color/otPrimaryDark</item>
+        <item name="colorPrimaryDark">@color/otPrimaryDark</item>
+        <item name="android:colorSecondary">@color/otSecondary</item>
+        <item name="android:colorAccent">@color/otAccent</item>
+        <item name="colorAccent">@color/otAccent</item>
+        <item name="buttonPrimary">@style/button_prim_ot</item>
+        <item name="buttonSecondary">@style/button_sec_ot</item>
+        <item name="android:textColor">@color/otPrimaryDark</item>
+    </style>
+
+    <!-- Blue/Pink (BP) Light application theme. -->
+    <style name="LightBPTheme" parent="LightTheme">
+        <item name="android:colorPrimary">@color/bpPrimary</item>
+        <item name="colorPrimary">@color/bpPrimary</item>
+        <item name="android:colorPrimaryDark">@color/bpPrimaryDark</item>
+        <item name="colorPrimaryDark">@color/bpPrimaryDark</item>
+        <item name="android:colorSecondary">@color/bpSecondary</item>
+        <item name="android:colorAccent">@color/bpAccent</item>
+        <item name="colorAccent">@color/bpAccent</item>
+        <item name="buttonPrimary">@style/button_prim_bp</item>
+        <item name="buttonSecondary">@style/button_sec_bp</item>
+        <item name="android:textColor">@color/bpPrimaryDark</item>
+    </style>
+
+    <!-- =============================================================== -->
+    <!-- Default styles -->
+    <!-- =============================================================== -->
+
+    <style name="button_prim_default">
+        <item name="android:background">@drawable/button_primary_default</item>
+        <item name="android:textColor">@color/defaultPrimaryDark</item>
+    </style>
+
+    <style name="button_sec_default">
+        <item name="android:background">@drawable/button_secondary_default</item>
+        <item name="android:textColor">@color/defaultAccent</item>
+    </style>
+
+    <style name="login_default">
+        <item name="android:textColor">@color/defaultPrimaryDark</item>
+        <item name="android:textColorHighlight">@color/defaultPrimary</item>
+        <item name="android:textColorHint">@color/defaultSecondary</item>
+        <item name="android:textColorLink">@color/defaultSecondary</item>
+    </style>
+
+    <!-- =============================================================== -->
+    <!-- Green/Purple (GP) styles -->
+    <!-- =============================================================== -->
+
+    <style name="button_prim_gp">
+        <item name="android:background">@drawable/button_primary_gp</item>
+        <item name="android:textColor">@color/gpPrimaryDark</item>
+    </style>
+
+    <style name="button_sec_gp">
+        <item name="android:background">@drawable/button_secondary_gp</item>
+        <item name="android:textColor">@color/gpAccent</item>
+    </style>
+
+    <!-- =============================================================== -->
+    <!-- Orange/Teal (OT) styles -->
+    <!-- =============================================================== -->
+
+    <style name="button_prim_ot">
+        <item name="android:background">@drawable/button_primary_ot</item>
+        <item name="android:textColor">@color/otPrimaryDark</item>
+    </style>
+
+    <style name="button_sec_ot">
+        <item name="android:background">@drawable/button_secondary_ot</item>
+        <item name="android:textColor">@color/otAccent</item>
+    </style>
+
+    <!-- =============================================================== -->
+    <!-- Blue/Pink (BP) styles -->
+    <!-- =============================================================== -->
+
+    <style name="button_prim_bp">
+        <item name="android:background">@drawable/button_primary_bp</item>
+        <item name="android:textColor">@color/bpPrimaryDark</item>
+    </style>
+
+    <style name="button_sec_bp">
+        <item name="android:background">@drawable/button_secondary_bp</item>
+        <item name="android:textColor">@color/bpAccent</item>
+    </style>
+
+</resources>
