@@ -41,5 +41,4 @@ public class TapiocaStats extends Stats {
     void setUniqueStat(int totalBubblesPopped) {
         this.totalBubblesPopped += totalBubblesPopped;
     }
-
 }

@@ -13,11 +13,15 @@ public class UserScores {
     @NonNull
     private int id;
 
-    @ForeignKey(entity = UserAccount.class, parentColumns = "userName",
-                childColumns = "userName", onDelete = ForeignKey.CASCADE)
+    @ForeignKey(
+            entity = UserAccount.class,
+            parentColumns = "userName",
+            childColumns = "userName",
+            onDelete = ForeignKey.CASCADE)
     private String userName;
 
     private int score;
+
     @ColumnInfo(name = "game_type")
     private String gameType;
 

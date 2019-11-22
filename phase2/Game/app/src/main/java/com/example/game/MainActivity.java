@@ -225,7 +225,9 @@ public class MainActivity extends Activity {
         mDialog.show();
     }
 
-    /** Called when the user taps the 'MAZE' button */
+    /**
+     * Called when the user taps the 'MAZE' button
+     */
     public void goToMazeGame(View view) {
         Intent intent = new Intent(this, com.example.game.MazeGameLauncher.class);
         putUser(intent);
@@ -233,7 +235,9 @@ public class MainActivity extends Activity {
         usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
     }
 
-    /** Called when the user taps the 'TAPIOCA LAUNCHER' button */
+    /**
+     * Called when the user taps the 'TAPIOCA LAUNCHER' button
+     */
     public void goToTapiocaLauncher(View view) {
         Intent intent = new Intent(this, com.example.game.TapiocaGameLauncher.class);
         putUser(intent);
@@ -241,7 +245,9 @@ public class MainActivity extends Activity {
         usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
     }
 
-    /** Called when the user taps the 'TILES' button */
+    /**
+     * Called when the user taps the 'TILES' button
+     */
     public void goToTilesGame(View view) {
         Intent intent = new Intent(this, com.example.game.TilesGameLauncher.class);
         //    intent.putExtra("UserObject", usr);

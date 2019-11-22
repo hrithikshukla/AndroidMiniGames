@@ -63,10 +63,8 @@ public class LoginActivity extends AppCompatActivity {
           new Intent(LoginActivity.this, com.example.game.MainActivity.class);
       mainActivityIntent.putExtra("UserObject", usr);
       startActivity(mainActivityIntent);
-    }
-    else {
+    } else {
       Toast.makeText(getApplicationContext(), "Invalid Login", Toast.LENGTH_LONG).show();
     }
-
   };
 }

@@ -65,7 +65,7 @@ public class UserData implements Serializable {
     this.sharedPreferences = prefs;
   }
 
-  void setUserName (String name) {
+  void setUserName(String name) {
     this.userName = name;
   }
 

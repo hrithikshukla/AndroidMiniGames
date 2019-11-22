@@ -2,7 +2,7 @@ package com.example.game;
 
 import android.content.SharedPreferences;
 
-public class ScoreManager{
+public class ScoreManager {
 
     private SharedPreferences prefs;
     private int score;

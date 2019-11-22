@@ -16,5 +16,4 @@ public interface UserAccountDao {
 
     @Delete
     void delete(UserAccount userAccount);
-
 }

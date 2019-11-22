@@ -15,9 +15,9 @@ public class MazeStats extends Stats {
     /**
      * Set the stats of the Maze game with the provided values.
      *
-     * @param highScore          - input high score
-     * @param totalGames         - input total games
-     * @param totalStepsTaken    - input steps taken
+     * @param highScore       - input high score
+     * @param totalGames      - input total games
+     * @param totalStepsTaken - input steps taken
      */
     public MazeStats(int highScore, int totalGames, int totalStepsTaken) {
         super(highScore, totalGames);
@@ -41,5 +41,4 @@ public class MazeStats extends Stats {
     void setUniqueStat(int totalStepsTaken) {
         this.totalStepsTaken += totalStepsTaken;
     }
-
 }

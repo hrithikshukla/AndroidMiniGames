@@ -45,7 +45,11 @@ public class RegisterActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Input a password", Toast.LENGTH_LONG).show();
         } else if (accountsManager.createUser(usernameString, passwordString)) {
             // Informs the user that their account is created.
-            Toast.makeText(getApplicationContext(), String.format("New user %s created", usernameString), Toast.LENGTH_LONG).show();
+            Toast.makeText(
+                    getApplicationContext(),
+                    String.format("New user %s created", usernameString),
+                    Toast.LENGTH_LONG)
+                    .show();
             Intent loginIntent = new Intent(RegisterActivity.this, com.example.game.LoginActivity.class);
             startActivity(loginIntent);
         }

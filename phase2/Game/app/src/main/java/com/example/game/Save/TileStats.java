@@ -18,9 +18,9 @@ public class TileStats extends Stats {
     /**
      * Set the stats of the Tile game with the provided values.
      *
-     * @param highScore          - input high score
-     * @param totalGames         - input total games
-     * @param totalTilesTapped   - input tiles tapped
+     * @param highScore        - input high score
+     * @param totalGames       - input total games
+     * @param totalTilesTapped - input tiles tapped
      */
     public TileStats(int highScore, int totalGames, int totalTilesTapped) {
         super(highScore, totalGames);
@@ -44,5 +44,4 @@ public class TileStats extends Stats {
     void setUniqueStat(int totalTilesTapped) {
         this.totalTilesTapped += totalTilesTapped;
     }
-
 }

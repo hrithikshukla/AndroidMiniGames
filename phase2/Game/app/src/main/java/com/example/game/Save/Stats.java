@@ -61,5 +61,4 @@ public abstract class Stats {
      * @param uniqueStat - new unique stat value
      */
     abstract void setUniqueStat(int uniqueStat);
-
 }

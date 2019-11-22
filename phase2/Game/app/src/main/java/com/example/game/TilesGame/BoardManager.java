@@ -30,8 +30,8 @@ class BoardManager extends ClassLoader {
   /** A list of all tiles on this board. */
   private ArrayList<ArrayList<Tile>> tileBoard = new ArrayList<>();
 
-//  /** The score of this game. */
-//  private Integer score = 0;
+  //  /** The score of this game. */
+  //  private Integer score = 0;
 
   /** A boolean representing whether the game has started. */
   private boolean gameStart = false;

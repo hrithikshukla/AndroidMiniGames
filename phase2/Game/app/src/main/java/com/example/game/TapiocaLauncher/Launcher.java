@@ -8,7 +8,7 @@ class Launcher {
     // The speed components of the ball.
     private double speedX, speedY;
 
-    //The Launcher ball that the player launches
+    // The Launcher ball that the player launches
     Launcher(int x, int y, int radius) {
         this.x = x;
         this.y = y;
@@ -56,5 +56,4 @@ class Launcher {
     public void setSpeedY(double speedY) {
         this.speedY = speedY;
     }
-
 }

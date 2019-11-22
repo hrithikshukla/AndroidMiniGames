@@ -27,15 +27,14 @@ public class OnSwipeTouchListener implements OnTouchListener {
      *
      * @return the gesture detector
      */
-    public GestureDetector getGestureDetector(){
-        return  gestureDetector;
+    public GestureDetector getGestureDetector() {
+        return gestureDetector;
     }
 
     /**
      * Instantiates a new on swipe touch listener.
      *
-     * @param context
-     *            the context
+     * @param context the context
      */
     OnSwipeTouchListener(Context context) {
         super();

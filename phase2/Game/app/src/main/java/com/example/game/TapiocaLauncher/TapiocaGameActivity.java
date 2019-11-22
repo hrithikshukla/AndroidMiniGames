@@ -12,22 +12,22 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
-//Creates the MVC design within the TapiocaLauncher
+// Creates the MVC design within the TapiocaLauncher
 public class TapiocaGameActivity extends GameActivity implements Observer {
 
     // View
     private GameView gameView;
 
-    //Model
+    // Model
     private GameFacade gameFacade;
 
-    //Controller
+    // Controller
     private GameController gameController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        usr = (User) getIntent().getSerializableExtra("UserObject"); //Gets the
+        usr = (User) getIntent().getSerializableExtra("UserObject"); // Gets the
 
         getWindow()
                 .setFlags(
@@ -39,12 +39,13 @@ public class TapiocaGameActivity extends GameActivity implements Observer {
         gameView = new GameView(this, point.x, point.y);
         setContentView(gameView);
 
-        int launcherRadius = 136 / 2; //Radius of the launcher
-        int launcherX = point.x / 2 - launcherRadius; //Launchers inital x
-        int launcherY = point.y - 3 * launcherRadius; //Launchers inital y
+        int launcherRadius = 136 / 2; // Radius of the launcher
+        int launcherX = point.x / 2 - launcherRadius; // Launchers inital x
+        int launcherY = point.y - 3 * launcherRadius; // Launchers inital y
 
         // Create MVC components.
-        this.gameFacade = new GameFacade(new Launcher(launcherX, launcherY, launcherRadius), new ArrayList<Ball>());
+        this.gameFacade =
+                new GameFacade(new Launcher(launcherX, launcherY, launcherRadius), new ArrayList<Ball>());
         this.gameController = new GameController(gameFacade, point.x, point.y);
         this.gameView = new GameView(this, point.x, point.y);
 
@@ -68,8 +69,8 @@ public class TapiocaGameActivity extends GameActivity implements Observer {
         gameView.resume();
     }
 
-
-    //Observes the GameFacade to see if the game is over, and if so goes to the exit screen and updates the statistics
+    // Observes the GameFacade to see if the game is over, and if so goes to the exit screen and
+    // updates the statistics
     @Override
     public synchronized void update(Observable o, Object arg) {
         gameFacade = (GameFacade) arg;
