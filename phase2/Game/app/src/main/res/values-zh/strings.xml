@@ -50,4 +50,7 @@
     <string name="text_swipe_right">向右滑动！</string>
     <string name="title_maze">迷宫</string>
     <string name="NotAvailable">還不可用 ：（</string>
+    <string name="SwipeToShop">向右滑動即可購物！</string>
+    <string name="coins">"您的硬幣： "</string>
+    <string name="characters">" 擁有的角色： "</string>
 </resources>

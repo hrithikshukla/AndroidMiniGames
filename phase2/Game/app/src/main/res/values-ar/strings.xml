@@ -50,4 +50,7 @@
     <string name="username">أدخل اسم المستخدم الخاص بك</string>
     <string name="username2">أدخل اسم المستخدم الخاص بك</string>
     <string name="NotAvailable">غير متوفر حتى الآن :(</string>
+    <string name="SwipeToShop">انتقد اليمين للتسوق!</string>
+    <string name="coins">"عملاتك المعدنية: "</string>
+    <string name="characters">"الشخصيات المملوكة: "</string>
 </resources>

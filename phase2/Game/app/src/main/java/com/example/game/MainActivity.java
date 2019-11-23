@@ -59,12 +59,25 @@ public class MainActivity extends Activity {
                         startActivity(intent);
                     }
                 });
+
+        ImageView shop = findViewById(R.id.shopArrow);
+        shop.setOnTouchListener(
+                new OnSwipeTouchListener(MainActivity.this) {
+                    @Override
+                    public void onSwipeRight() {
+                        // your actions
+                        Intent intent = new Intent(MainActivity.this, ShopActivity.class);
+                        putUser(intent);
+                        startActivity(intent);
+                    }
+                });
+
     }
 
     // Code based on https://www.youtube.com/watch?v=zILw5eV9QBQ. I liked the video so I can use it.
     private void showChangeLanguageDialog() {
         final String[] languages = {
-                "Français", "中文", "Deutsche", "عربى", "עברי", "Sign Language", "English"
+                "Français", "中文", "Deutsche", "عربى", "English"
         };
         AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
         mBuilder.setTitle("Choose Language...");
@@ -111,24 +124,6 @@ public class MainActivity extends Activity {
                             finish();
                             overridePendingTransition(0, 0);
                         } else if (which == 4) {
-                            // Hebrew
-                            setLocale("iw");
-                            Intent intent = getIntent();
-                            putUser(intent);
-                            startActivity(intent);
-                            usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
-                            finish();
-                            overridePendingTransition(0, 0);
-                        } else if (which == 5) {
-                            // Hebrew
-                            setLocale("sgn");
-                            Intent intent = getIntent();
-                            putUser(intent);
-                            startActivity(intent);
-                            usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
-                            finish();
-                            overridePendingTransition(0, 0);
-                        } else if (which == 6) {
                             // English
                             setLocale("en");
                             Intent intent = getIntent();

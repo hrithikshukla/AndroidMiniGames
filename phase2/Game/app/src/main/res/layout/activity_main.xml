@@ -8,6 +8,20 @@
     tools:context=".MainActivity">
 
 
+    <TextView
+        android:id="@+id/SwipeShop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="60dp"
+        android:text="@string/SwipeToShop"
+        android:textColor="?android:attr/colorAccent"
+        android:textSize="7pt"
+        app:layout_constraintBottom_toTopOf="@+id/ArrowRight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.118"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonTiles" />
+
     <Button
         android:id="@+id/buttonTapiocaLauncher"
         style="?buttonPrimary"
@@ -128,10 +142,21 @@
         android:layout_height="64dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
-        android:src="@drawable/arrow"
+        android:src="@drawable/arrow2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/shopArrow"
+        android:layout_width="169dp"
+        android:layout_height="66dp"
+        android:layout_marginBottom="12dp"
+        android:src="@drawable/arrow"
+        app:layout_constraintBottom_toTopOf="@+id/changeMyLang"
+        app:layout_constraintEnd_toStartOf="@+id/textSwipeRight"
+        app:layout_constraintHorizontal_bias="0.137"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -26,7 +26,7 @@
     <string name="button_retry">Réessayer</string>
     <string name="steps">"Pas: "</string>
     <string name="change_theme">Thème</string>
-    <string name="TapiocaScore">"Lanceur de Tapioca Score élevé: "</string>
+    <string name="TapiocaScore">Lanceur de Tapioca Score élevé</string>
     <string name="MazeScore">"Labyrinthe Score élevé: "</string>
     <string name="TileScore">"Carrelage Score élevé: "</string>
     <string name="TapiocaTime">Temps passé à jouer Lanceur de Tapioca:</string>
@@ -50,4 +50,7 @@
     <string name="text_swipe_right">Glisser à droite!</string>
     <string name="title_maze">Labyrinthe</string>
     <string name="NotAvailable">Pas encore disponible :(</string>
+    <string name="SwipeToShop">" Balayez à droite pour magasiner"</string>
+    <string name="coins">"Vos pièces de monnaie: "</string>
+    <string name="characters">" Caractères possédés: "</string>
 </resources>

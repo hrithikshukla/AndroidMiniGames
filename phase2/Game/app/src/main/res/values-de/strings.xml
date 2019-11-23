@@ -50,4 +50,7 @@
     <string name="text_swipe_left">Nach links wischen!</string>
     <string name="title_maze">Matze</string>
     <string name="NotAvailable">" Zurzeit nicht verfügbar :("</string>
+    <string name="SwipeToShop">" Streichen Sie nach rechts, um einzukaufen!"</string>
+    <string name="coins">" Ihre Münzen: "</string>
+    <string name="characters">"Charaktere im Besitz von: "</string>
 </resources>
