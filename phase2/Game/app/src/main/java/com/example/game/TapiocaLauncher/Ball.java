@@ -18,6 +18,8 @@ abstract class Ball {
     this.y = y;
     this.radius = radius;
     this.hp = hp;
+    this.width = 2 * radius;
+    this.height = 2 * radius;
   }
 
   public int getX() {

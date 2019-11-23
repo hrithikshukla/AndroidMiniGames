@@ -12,16 +12,22 @@ public class GameFacade extends Observable {
     private int score; // the current score
     private int level = 1; // the current level
     private boolean gameOver = false; // if the game is over or not
+    private BoardManager boardManager;
 
     GameFacade(Launcher launcher, List<Ball> balls) {
 
         this.launcher = launcher;
         this.balls = balls;
         this.score = 0;
+        boardManager = new BoardManager();
     }
 
     Launcher getLauncher() {
         return launcher;
+    }
+
+    void setBalls(int level) {
+        balls = boardManager.getLevel(level);
     }
 
     List<Ball> getBalls() {

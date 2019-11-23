@@ -21,14 +21,12 @@ public class GameController implements Observer {
           startY,
           endX,
           endY; // stores the start and end values of the player's hand motion
-  private TapiocaFactory tapiocaFactory;
 
   // Initializes the GameController
   GameController(GameFacade gameFacade, int screenX, int screenY) {
     this.gameFacade = gameFacade;
     this.screenX = screenX;
     this.screenY = screenY;
-    this.tapiocaFactory = new TapiocaFactory();
     generateLevel();
   }
 
@@ -195,7 +193,7 @@ public class GameController implements Observer {
 
   // moves the ball in the angle of the direction of the starting and end point of the players
   // motion
-  void moveBall(double startX, double startY, double endX, double endY) {
+  private void moveBall(double startX, double startY, double endX, double endY) {
     isMoving = true;
     readyToLaunch = false;
     Launcher launcher = gameFacade.getLauncher();
@@ -206,36 +204,19 @@ public class GameController implements Observer {
   }
 
   // generates the level based on the current level or ends the game if it's the last level
-  void generateLevel() {
+  private void generateLevel() {
     if (gameFacade.getLevel() == 1) {
-      generateLevel1();
+        gameFacade.setBalls(1);
       gameFacade.setLevel(2);
     } else if (gameFacade.getLevel() == 2) {
-      generateLevel2();
+        gameFacade.setBalls(2);
       gameFacade.setLevel(3);
     } else if (gameFacade.getLevel() == 3) {
-      gameFacade.setGameOver(true);
-      gameFacade.update();
-    }
-  }
-
-  private void generateLevel1() {
-    // 6 rows and 6 columns of tapioca with 1 HP
-    for (int j = 0; j < 6; j++) {
-      for (int i = 0; i < 6; i++) {
-        gameFacade
-                .getBalls()
-                .add(this.tapiocaFactory.makeBrown(50 + (170 * i), 50 + (140 * j), 41));
-      }
-    }
-  }
-
-  private void generateLevel2() {
-    // 6 rows and 6 columns of tapioca with 2 HP
-    for (int j = 0; j < 6; j++) {
-      for (int i = 0; i < 6; i++) {
-        gameFacade.getBalls().add(this.tapiocaFactory.makeRed(50 + (170 * i), 50 + (140 * j), 41));
-      }
+        gameFacade.setBalls(3);
+        gameFacade.setLevel(4);
+    } else if (gameFacade.getLevel() == 4) {
+        gameFacade.setGameOver(true);
+        gameFacade.update();
     }
   }
 }

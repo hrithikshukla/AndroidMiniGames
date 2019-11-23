@@ -38,7 +38,7 @@ class VisualView implements Observer {
             launcherOrientation2,
             launcherOrientation3,
             launcherOrientation4;
-    private Bitmap tapiocaRed, tapiocaBrown; // Bitmap of the Ball, brown for 1hp, red for 2hp
+    private Bitmap tapiocaRed, tapiocaBrown, tapiocaWhite; // Bitmap of the brown, red, white balls
 
     VisualView(
             int screenX, int screenY, Resources res, SurfaceHolder surfaceHolder, Context context) {
@@ -68,6 +68,7 @@ class VisualView implements Observer {
     private void createTapiocaBitmaps() {
         tapiocaBrown = BitmapFactory.decodeResource(res, R.drawable.brown);
         tapiocaRed = BitmapFactory.decodeResource(res, R.drawable.red);
+        tapiocaWhite = BitmapFactory.decodeResource(res, R.drawable.white);
 
         int width = tapiocaBrown.getWidth() / 2; // 157
         int height = tapiocaBrown.getHeight() / 2; // 136
@@ -76,6 +77,10 @@ class VisualView implements Observer {
         width = tapiocaRed.getWidth() / 2; // 157
         height = tapiocaRed.getHeight() / 2; // 136
         tapiocaRed = Bitmap.createScaledBitmap(tapiocaRed, width, height, false);
+
+        width = tapiocaWhite.getWidth() / 2; // 157
+        height = tapiocaWhite.getHeight() / 2; // 136
+        tapiocaWhite = Bitmap.createScaledBitmap(tapiocaWhite, width, height, false);
     }
 
     // Creates and stores the Launcher's Bitmaps
@@ -149,10 +154,12 @@ class VisualView implements Observer {
     // draws a ball
     private void drawBall(Ball ball, Canvas canvas) {
         Bitmap orientation1;
-        if (ball.getHp() == 1) { // assigns the relevant image based on the hp
+        if (ball instanceof Brown) {
             orientation1 = tapiocaBrown;
-        } else { // ball hp == 2
+        } else if (ball instanceof Red) {
             orientation1 = tapiocaRed;
+        } else {
+            orientation1 = tapiocaWhite;
         }
         canvas.drawBitmap(orientation1, ball.getX(), ball.getY(), paint);
     }
