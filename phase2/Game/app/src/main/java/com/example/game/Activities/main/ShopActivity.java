@@ -1,4 +1,4 @@
-package com.example.game;
+package com.example.game.Activities.main;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,8 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
+
+import com.example.game.R;
 
 // https://opengameart.org/content/2d-complete-characters credit for sprites
 
