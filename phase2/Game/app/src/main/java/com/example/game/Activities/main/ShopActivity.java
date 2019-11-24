@@ -4,8 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.Color;
-import android.media.Image;
+import android.graphics.ColorMatrix;
+import android.graphics.ColorMatrixColorFilter;
 import android.os.Bundle;
 import android.widget.ImageView;
 
@@ -30,7 +30,7 @@ public class ShopActivity extends AppCompatActivity {
         ImageView arrow = findViewById(R.id.toMain);
 
         // Code based on https://stackoverflow.com/a/24256106/10322608
-        arrow.setOnTouchListener(
+        arrow.setOnTouchListener( // Swipe back to main screen
                 new OnSwipeTouchListener(ShopActivity.this) {
                     @Override
                     public void onSwipeLeft() {
@@ -80,18 +80,21 @@ public class ShopActivity extends AppCompatActivity {
         ImageView shogun = findViewById(R.id.char_shogun);
         images.add(shogun);
 
+        // Grey out the characters that are not owned
         for (ImageView img : images) {
             grayOut(img);
         }
 
     }
 
-    // Code from https://stackoverflow.com/a/25454597/10322608
-    public void grayOut(ImageView img) {
-        // if not grayed
-        if (img.getTag() == "grayed") {
-            img.setColorFilter(Color.argb(150, 200, 200, 200));
-            img.setTag("grayed");
+    // Code from https://gist.github.com/nisrulz/3078eaa6357d6f5c0051
+    private void grayOut(ImageView img) {
+        // if grayed
+        if (img.getTag().equals("grayed")) {
+            ColorMatrix matrix = new ColorMatrix();
+            matrix.setSaturation(0);
+            ColorMatrixColorFilter filter = new ColorMatrixColorFilter(matrix);
+            img.setColorFilter(filter);
         } else {
             img.setColorFilter(null);
             img.setTag("");
