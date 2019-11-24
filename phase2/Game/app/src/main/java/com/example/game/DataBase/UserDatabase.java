@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase;
 
 @Database(
     entities = {UserAccount.class, UserScores.class},
-    version = 1)
+    version = 1, exportSchema = false)
 public abstract class UserDatabase extends RoomDatabase {
 
   // Create singleton; so can't create multiple instances
