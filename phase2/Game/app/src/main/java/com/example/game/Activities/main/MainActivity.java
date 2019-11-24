@@ -1,4 +1,4 @@
-package com.example.game;
+package com.example.game.Activities.main;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -13,6 +13,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.example.game.Activities.main.GameLauncher.MazeGameLauncher;
+import com.example.game.Activities.main.GameLauncher.TapiocaGameLauncher;
+import com.example.game.Activities.main.GameLauncher.TilesGameLauncher;
+import com.example.game.R;
 import com.example.game.Save.User;
 
 import java.util.Locale;
@@ -224,7 +228,7 @@ public class MainActivity extends Activity {
      * Called when the user taps the 'MAZE' button
      */
     public void goToMazeGame(View view) {
-        Intent intent = new Intent(this, com.example.game.MazeGameLauncher.class);
+        Intent intent = new Intent(this, MazeGameLauncher.class);
         putUser(intent);
         startActivity(intent);
         usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
@@ -234,7 +238,7 @@ public class MainActivity extends Activity {
      * Called when the user taps the 'TAPIOCA LAUNCHER' button
      */
     public void goToTapiocaLauncher(View view) {
-        Intent intent = new Intent(this, com.example.game.TapiocaGameLauncher.class);
+        Intent intent = new Intent(this, TapiocaGameLauncher.class);
         putUser(intent);
         startActivity(intent);
         usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
@@ -244,7 +248,7 @@ public class MainActivity extends Activity {
      * Called when the user taps the 'TILES' button
      */
     public void goToTilesGame(View view) {
-        Intent intent = new Intent(this, com.example.game.TilesGameLauncher.class);
+        Intent intent = new Intent(this, TilesGameLauncher.class);
         //    intent.putExtra("UserObject", usr);
         putUser(intent);
         startActivity(intent);
