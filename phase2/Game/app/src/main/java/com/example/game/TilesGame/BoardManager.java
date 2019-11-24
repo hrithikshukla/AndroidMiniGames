@@ -6,7 +6,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 
-import com.example.game.ScoreManager;
+import com.example.game.Activities.main.ScoreManager;
 
 import java.util.ArrayList;
 import java.util.Random;

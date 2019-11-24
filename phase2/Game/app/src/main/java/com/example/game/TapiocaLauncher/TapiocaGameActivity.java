@@ -5,7 +5,7 @@ import android.graphics.Point;
 import android.os.Bundle;
 import android.view.WindowManager;
 
-import com.example.game.GameActivity;
+import com.example.game.Activities.Game.GameActivity;
 import com.example.game.Save.User;
 
 import java.util.ArrayList;
