@@ -7,24 +7,26 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 @Database(
-        entities = {UserAccount.class, UserScores.class},
-        version = 1)
+    entities = {UserAccount.class, UserScores.class},
+    version = 1)
 public abstract class UserDatabase extends RoomDatabase {
 
-    // Create singleton; so can't create multiple instances
-    private static UserDatabase instance;
+  // Create singleton; so can't create multiple instances
+  private static UserDatabase instance;
 
-    // To access our Dao (Data access objects)
-    public abstract UserAccountDao userAccountDao();
+  // To access our Dao (Data access objects)
+  public abstract UserAccountDao userAccountDao();
 
-    // synchrnoized means only one thread can access this method at a time
-    public static synchronized UserDatabase getInstance(Context context) {
-        if (instance == null) {
-            instance =
-                    Room.databaseBuilder(context.getApplicationContext(), UserDatabase.class, "user_database")
-                            .fallbackToDestructiveMigration()
-                            .build();
-        }
-        return instance;
+  public abstract UserScoresDao userScoresDao();
+
+  // synchrnoized means only one thread can access this method at a time
+  public static synchronized UserDatabase getInstance(Context context) {
+    if (instance == null) {
+      instance =
+          Room.databaseBuilder(context.getApplicationContext(), UserDatabase.class, "user_database")
+              .fallbackToDestructiveMigration()
+              .build();
     }
+    return instance;
+  }
 }
