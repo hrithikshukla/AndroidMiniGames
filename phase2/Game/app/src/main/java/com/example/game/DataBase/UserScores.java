@@ -14,23 +14,24 @@ public class UserScores {
   @PrimaryKey(autoGenerate = true)
   @NonNull
   private int id;
-
   @ForeignKey(
       entity = UserAccount.class,
       parentColumns = "userName",
       childColumns = "userName",
       onDelete = ForeignKey.CASCADE)
   private String userName;
-
   private int score;
+  private int timeSpent;
+
 
   @ColumnInfo(name = "game_type")
   private String gameType;
 
-  public UserScores(String userName, int score, String gameType) {
+  public UserScores(String userName, int score, String gameType, int timeSpent) {
     this.userName = userName;
     this.score = score;
     this.gameType = gameType;
+    this.timeSpent = timeSpent;
   }
 
   public void setId(int id) {
@@ -63,5 +64,13 @@ public class UserScores {
 
   public void setGameType(String gameType) {
     this.gameType = gameType;
+  }
+
+  public int getTimeSpent() {
+    return timeSpent;
+  }
+
+  public void setTimeSpent(int timeSpent) {
+    this.timeSpent = timeSpent;
   }
 }
