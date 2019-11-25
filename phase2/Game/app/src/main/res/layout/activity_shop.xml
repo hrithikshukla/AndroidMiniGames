@@ -61,9 +61,232 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
-        android:text="@string/characters"
+        android:text="@string/coins"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        tools:text="@string/coins" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <ImageView
+        android:id="@+id/char_worm"
+        android:tag="grayed"
+        android:layout_width="44dp"
+        android:layout_height="93dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/imageView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView"
+        app:srcCompat="@drawable/char_worm" />
+
+    <ImageView
+        android:id="@+id/char_bird"
+        android:tag="grayed"
+        android:layout_width="98dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView"
+        app:srcCompat="@drawable/char_bird_blue" />
+
+    <ImageView
+        android:id="@+id/char_spider"
+        android:tag="grayed"
+        android:layout_width="61dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="52dp"
+        app:layout_constraintStart_toEndOf="@+id/char_worm"
+        app:layout_constraintTop_toTopOf="@+id/imageView"
+        app:srcCompat="@drawable/char_spider" />
+
+    <ImageView
+        android:id="@+id/char_dog"
+        android:tag="grayed"
+        android:layout_width="67dp"
+        android:layout_height="91dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toEndOf="@+id/char_spider"
+        app:layout_constraintTop_toTopOf="@+id/imageView"
+        app:srcCompat="@drawable/char_dog" />
+
+    <ImageView
+        android:id="@+id/char_tree"
+        android:tag="grayed"
+        android:layout_width="74dp"
+        android:layout_height="83dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/char_worm"
+        app:srcCompat="@drawable/char_tree" />
+
+    <ImageView
+        android:id="@+id/char_astro"
+        android:tag="grayed"
+        android:layout_width="50dp"
+        android:layout_height="66dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@+id/char_tree"
+        app:layout_constraintTop_toBottomOf="@+id/char_spider"
+        app:srcCompat="@drawable/char_astro" />
+
+    <ImageView
+        android:id="@+id/char_alien"
+        android:tag="grayed"
+        android:layout_width="61dp"
+        android:layout_height="69dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@+id/char_astro"
+        app:layout_constraintTop_toBottomOf="@+id/char_dog"
+        app:srcCompat="@drawable/char_alien_dark" />
+
+    <ImageView
+        android:id="@+id/char_monster"
+        android:tag="grayed"
+        android:layout_width="91dp"
+        android:layout_height="68dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/char_bird"
+        app:srcCompat="@drawable/char_monster_red" />
+
+    <ImageView
+        android:id="@+id/char_bat"
+        android:tag="grayed"
+        android:layout_width="183dp"
+        android:layout_height="144dp"
+        android:layout_marginStart="36dp"
+        app:layout_constraintBottom_toTopOf="@+id/char_summoner"
+        app:layout_constraintEnd_toStartOf="@+id/char_king"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/char_bat" />
+
+    <ImageView
+        android:id="@+id/char_king"
+        android:tag="grayed"
+        android:layout_width="170dp"
+        android:layout_height="73dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/char_summoner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:srcCompat="@drawable/char_king" />
+
+    <ImageView
+        android:id="@+id/char_summoner"
+        android:tag="grayed"
+        android:layout_width="204dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="12dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/char_summoner" />
+
+    <ImageView
+        android:id="@+id/char_viking1"
+        android:tag="grayed"
+        android:layout_width="61dp"
+        android:layout_height="79dp"
+        android:layout_marginStart="60dp"
+        app:layout_constraintEnd_toStartOf="@+id/imageView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/char_tree"
+        app:srcCompat="@drawable/char_viking_1" />
+
+    <ImageView
+        android:id="@+id/char_viking2"
+        android:tag="grayed"
+        android:layout_width="78dp"
+        android:layout_height="81dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/char_viking3"
+        app:layout_constraintStart_toEndOf="@+id/char_viking1"
+        app:layout_constraintTop_toBottomOf="@+id/char_astro"
+        app:layout_constraintVertical_bias="0.6"
+        app:srcCompat="@drawable/char_viking_2" />
+
+    <ImageView
+        android:id="@+id/char_viking3"
+        android:tag="grayed"
+        android:layout_width="70dp"
+        android:layout_height="71dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/char_wizard"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/char_viking2"
+        app:layout_constraintTop_toBottomOf="@+id/char_alien"
+        app:srcCompat="@drawable/char_viking_3" />
+
+    <ImageView
+        android:id="@+id/char_wizard"
+        android:tag="grayed"
+        android:layout_width="72dp"
+        android:layout_height="77dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="64dp"
+        app:layout_constraintBottom_toBottomOf="@+id/char_viking3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/char_monster"
+        app:srcCompat="@drawable/char_wizard" />
+
+    <ImageView
+        android:id="@+id/char_archer"
+        android:tag="grayed"
+        android:layout_width="86dp"
+        android:layout_height="79dp"
+        android:layout_marginStart="60dp"
+        app:layout_constraintEnd_toStartOf="@+id/imageView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/char_viking1"
+        app:srcCompat="@drawable/char_archer" />
+
+    <ImageView
+        android:id="@+id/char_knight"
+        android:tag="grayed"
+        android:layout_width="64dp"
+        android:layout_height="68dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toEndOf="@+id/char_archer"
+        app:layout_constraintTop_toBottomOf="@+id/char_viking2"
+        app:srcCompat="@drawable/char_knight" />
+
+    <ImageView
+        android:id="@+id/char_samurai"
+        android:tag="grayed"
+        android:layout_width="76dp"
+        android:layout_height="69dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/char_king"
+        app:layout_constraintStart_toEndOf="@+id/char_knight"
+        app:layout_constraintTop_toBottomOf="@+id/char_viking3"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/char_samurai" />
+
+    <ImageView
+        android:id="@+id/char_shogun"
+        android:tag="grayed"
+        android:layout_width="77dp"
+        android:layout_height="68dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="64dp"
+        app:layout_constraintBottom_toTopOf="@+id/char_king"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/char_knight"
+        app:layout_constraintTop_toBottomOf="@+id/char_wizard"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/char_shogun" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

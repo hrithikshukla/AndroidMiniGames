@@ -1,4 +1,4 @@
-package com.example.game;
+package com.example.game.Activities.Loginregister;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.game.R;
 import com.example.game.Save.AccountsManager;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -50,7 +51,7 @@ public class RegisterActivity extends AppCompatActivity {
                     String.format("New user %s created", usernameString),
                     Toast.LENGTH_LONG)
                     .show();
-            Intent loginIntent = new Intent(RegisterActivity.this, com.example.game.LoginActivity.class);
+            Intent loginIntent = new Intent(RegisterActivity.this, LoginActivity.class);
             startActivity(loginIntent);
         }
         // Informs the user that their input username is already an existing user.

@@ -1,4 +1,4 @@
-package com.example.game;
+package com.example.game.Activities.main;
 
 import android.content.SharedPreferences;
 

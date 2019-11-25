@@ -10,27 +10,27 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/LightDefaultTheme">
-        <activity android:name=".ShopActivity"></activity>
-        <activity android:name=".StatsActivity" />
-        <activity android:name=".TapiocaGameLauncher" />
-        <activity android:name=".TilesGameLauncher" />
-        <activity android:name=".MazeGameLauncher" />
+        <activity android:name=".Activities.main.ShopActivity"></activity>
+        <activity android:name=".Activities.main.StatsActivity" />
+        <activity android:name=".Activities.main.GameLauncher.TapiocaGameLauncher" />
+        <activity android:name=".Activities.main.GameLauncher.TilesGameLauncher" />
+        <activity android:name=".Activities.main.GameLauncher.MazeGameLauncher" />
         <activity android:name=".TilesGame.GameFinish" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".Activities.main.MainActivity" />
         <activity android:name=".TapiocaLauncher.TapiocaGameActivity" />
         <activity android:name=".TilesGame.TileGameActivity" />
         <activity
             android:name=".MazeGame.MazeGameActivity"
             android:screenOrientation="landscape" />
-        <activity android:name=".LoginActivity">
+        <activity android:name=".Activities.Loginregister.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".GameOverActivity" />
+        <activity android:name=".Activities.Loginregister.RegisterActivity" />
+        <activity android:name=".Activities.Game.GameOverActivity" />
     </application>
 
 </manifest>

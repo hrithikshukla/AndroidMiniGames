@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.R;
 import com.example.game.Save.User;
-import com.example.game.ThemeManager;
+import com.example.game.Activities.main.ThemeManager;
 
 public class GameFinish extends AppCompatActivity {
   User usr;
@@ -55,7 +55,7 @@ public class GameFinish extends AppCompatActivity {
 
   /** Called when the user taps the 'EXIT' button */
   public void exitToMenu(View view) {
-    Intent intent = new Intent(this, com.example.game.TilesGameLauncher.class);
+    Intent intent = new Intent(this, com.example.game.Activities.main.GameLauncher.TilesGameLauncher.class);
     usr.getUserData().setPrefs(null);
     intent.putExtra("UserObject", usr);
     startActivity(intent);

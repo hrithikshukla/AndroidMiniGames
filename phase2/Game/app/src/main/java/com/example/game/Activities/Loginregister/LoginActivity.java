@@ -1,4 +1,4 @@
-package com.example.game;
+package com.example.game.Activities.Loginregister;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +10,8 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.game.Activities.main.MainActivity;
+import com.example.game.R;
 import com.example.game.Save.AccountsManager;
 import com.example.game.Save.JSONData;
 import com.example.game.Save.User;
@@ -60,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
             username.getText().toString().trim(), password.getText().toString().trim());
     if (usr != null) {
       Intent mainActivityIntent =
-          new Intent(LoginActivity.this, com.example.game.MainActivity.class);
+          new Intent(LoginActivity.this, MainActivity.class);
       mainActivityIntent.putExtra("UserObject", usr);
       startActivity(mainActivityIntent);
     } else {

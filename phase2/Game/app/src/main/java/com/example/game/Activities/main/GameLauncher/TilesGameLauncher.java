@@ -1,4 +1,4 @@
-package com.example.game;
+package com.example.game.Activities.main.GameLauncher;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -7,6 +7,9 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.game.Activities.main.MainActivity;
+import com.example.game.Activities.main.ThemeManager;
+import com.example.game.R;
 import com.example.game.Save.User;
 
 public class TilesGameLauncher extends AppCompatActivity {
@@ -42,7 +45,7 @@ public class TilesGameLauncher extends AppCompatActivity {
 
   /** Called when the user taps the 'EXIT' button */
   public void exitTilesGame(View view) {
-    Intent intent = new Intent(this, com.example.game.MainActivity.class);
+    Intent intent = new Intent(this, MainActivity.class);
     intent.putExtra("UserObject", usr);
     startActivity(intent);
   }
