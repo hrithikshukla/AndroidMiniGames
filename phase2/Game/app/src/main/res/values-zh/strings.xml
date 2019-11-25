@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Translations made by Google translate -->
+<?xml version="1.0" encoding="utf-8"?><!-- Translations made by Google translate -->
 <resources>
     <string name="app_name">遊戲</string>
     <string name="button_maze">迷宮</string>
@@ -53,4 +52,7 @@
     <string name="SwipeToShop">向右滑動即可購物！</string>
     <string name="coins">"您的硬幣： "</string>
     <string name="characters">" 擁有的角色： "</string>
+    <string name="play_4by4">4 x 4</string>
+    <string name="text_select_mode">选择你的模式</string>
+    <string name="play_5by5">5 x 5</string>
 </resources>

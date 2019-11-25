@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Translations made by Google translate -->
+<?xml version="1.0" encoding="utf-8"?><!-- Translations made by Google translate -->
 <resources>
     <string name="app_name">" Spiel"</string>
     <string name="button_maze">Matze</string>
@@ -53,4 +52,6 @@
     <string name="SwipeToShop">" Streichen Sie nach rechts, um einzukaufen!"</string>
     <string name="coins">" Ihre Münzen: "</string>
     <string name="characters">"Charaktere im Besitz von: "</string>
+    <string name="play_4by4">4 x 4</string>
+    <string name="text_select_mode">Wählen Sie Ihren Modus</string>
 </resources>

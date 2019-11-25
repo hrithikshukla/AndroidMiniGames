@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Translations made by Google translate -->
+<?xml version="1.0" encoding="utf-8"?><!-- Translations made by Google translate -->
 <resources>
     <string name="app_name">Jeu</string>
     <string name="button_maze">Labyrinthe</string>
@@ -53,4 +52,7 @@
     <string name="SwipeToShop">" Balayez à droite pour magasiner"</string>
     <string name="coins">"Vos pièces de monnaie: "</string>
     <string name="characters">" Caractères possédés: "</string>
+    <string name="play_4by4">4 x 4</string>
+    <string name="text_select_mode">Sélectionnez votre mode</string>
+    <string name="play_5by5">5 x 5</string>
 </resources>

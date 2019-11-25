@@ -24,10 +24,19 @@ public class TilesGameLauncher extends AppCompatActivity {
     setContentView(R.layout.tiles_game_launch);
   }
 
-  /** Called when the user taps the 'PLAY' button */
-  public void startTilesGame(View view) {
+  /** Called when the user taps the '4 X 4' button */
+  public void startTiles4By4(View view) {
     Intent intent = new Intent(this, com.example.game.TilesGame.TileGameActivity.class);
     intent.putExtra("UserObject", usr);
+    intent.putExtra("BoardType", "4By4");
+    startActivity(intent);
+  }
+
+  /** Called when the user taps the '5 X 5' button */
+  public void startTiles5By5(View view) {
+    Intent intent = new Intent(this, com.example.game.TilesGame.TileGameActivity.class);
+    intent.putExtra("UserObject", usr);
+    intent.putExtra("BoardType", "5By5");
     startActivity(intent);
   }
 

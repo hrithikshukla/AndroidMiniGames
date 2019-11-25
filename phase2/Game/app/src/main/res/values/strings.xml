@@ -8,7 +8,7 @@
     <string name="title_maze">Maze</string>
     <string name="buttonPlay">Play</string>
     <string name="signUp">Sign Up</string>
-    <string name="signIn">Sign In</string>
+    <string name="gisignIn">Sign In</string>
     <string name="changeLang">Language</string>
     <string name="level">"Level: "</string>
     <string name="score">"Score: "</string>
@@ -57,5 +57,8 @@
     <string name="SwipeToShop">Swipe Right To Shop!</string>
     <string name="coins">Your Coins:</string>
     <string name="characters">Characters Owned:</string>
+    <string name="play_4by4">4 x 4</string>
+    <string name="text_select_mode">Select your mode:</string>
+    <string name="play_5by5">5 x 5</string>
 
 </resources>

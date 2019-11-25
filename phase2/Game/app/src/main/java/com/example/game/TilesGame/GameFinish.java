@@ -16,6 +16,7 @@ import com.example.game.ThemeManager;
 
 public class GameFinish extends AppCompatActivity {
   User usr;
+  String boardType;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +25,9 @@ public class GameFinish extends AppCompatActivity {
     String username = usr.getUsername();
     SharedPreferences mSettings = this.getSharedPreferences("Settings", MODE_PRIVATE);
     ThemeManager.setTheme(GameFinish.this, mSettings.getInt(username + "theme", 0));
+
+    // Get the Tiles mode that was just played.
+    boardType = (String) getIntent().getSerializableExtra("BoardType");
 
     super.onCreate(savedInstanceState);
     requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -62,6 +66,7 @@ public class GameFinish extends AppCompatActivity {
     Intent intent = new Intent(this, com.example.game.TilesGame.TileGameActivity.class);
     usr.getUserData().setPrefs(null);
     intent.putExtra("UserObject", usr);
+    intent.putExtra("BoardType", boardType);
     startActivity(intent);
   }
 }

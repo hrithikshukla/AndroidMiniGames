@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Translations made by Google translate -->
+<?xml version="1.0" encoding="utf-8"?><!-- Translations made by Google translate -->
 <resources>
     <string name="app_name">لعبه</string>
     <string name="MazeScore">المتاهة درجة عالية:</string>
@@ -53,4 +52,7 @@
     <string name="SwipeToShop">انتقد اليمين للتسوق!</string>
     <string name="coins">"عملاتك المعدنية: "</string>
     <string name="characters">"الشخصيات المملوكة: "</string>
+    <string name="play_4by4">4 x 4</string>
+    <string name="text_select_mode">حدد وضعك</string>
+    <string name="play_5by5">5 x 5</string>
 </resources>
