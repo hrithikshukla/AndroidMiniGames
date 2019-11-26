@@ -2,6 +2,7 @@ package com.example.game.MazeGame;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.view.SurfaceHolder;
 
@@ -17,14 +18,14 @@ import java.util.Observer;
 public class VisualView implements Observer, Gameover {
 
   private Cell[][] grid; // Representation of the Maze grid object.
-
-  // Dependency injected in
   private Paint backgroundPaint, textPaint;
   private Tile tile;
   private Background background;
   private SurfaceHolder surfaceHolder;
   private Context context;
-  private int maxScreenX, maxScreenY;
+
+  // Maximum x and y positions of the screen.
+  private int maxScreenX, maxscreenY;
 
   private int score;
   private int numSteps;
@@ -32,35 +33,25 @@ public class VisualView implements Observer, Gameover {
   private boolean gameOver;
 
   /**
-   * @param context - the context from a GameView object
-   * @param surfaceHolder - the SurfaceHolder from a GameView object
-   * @param tile - used for drawing tiles
-   * @param background - used for drawing the background
-   * @param maxScreenX - maximum x-position of the screen
-   * @param maxScreenY - maximum y-position of the screen
-   * @param textPaint - Paint object used for drawing text
-   * @param backgroundPaint - Paint object used for drawing the background
+   * @param maxScreenX - maximum x position of the screen
+   * @param maxScreenY - maximum y position of the screen
    */
-  VisualView(
-      Context context,
-      SurfaceHolder surfaceHolder,
-      Tile tile,
-      Background background,
-      int maxScreenX,
-      int maxScreenY,
-      Paint textPaint,
-      Paint backgroundPaint) {
+  VisualView(int maxScreenX, int maxScreenY, Context context, SurfaceHolder surfaceHolder) {
+    this.maxScreenX = maxScreenX;
+    this.maxscreenY = maxScreenY;
 
     this.context = context;
+    this.tile = new Tile(context.getResources());
+    this.background = new Background(maxScreenX, maxScreenY, context.getResources());
+
     this.surfaceHolder = surfaceHolder;
-    this.tile = tile;
-    this.background = background;
 
-    this.maxScreenX = maxScreenX;
-    this.maxScreenY = maxScreenY;
+    this.backgroundPaint = new Paint();
 
-    this.textPaint = textPaint;
-    this.backgroundPaint = backgroundPaint;
+    // Set colors and size of text.
+    this.textPaint = new Paint();
+    textPaint.setColor(Color.GREEN);
+    textPaint.setTextSize(32);
   }
 
   /** Draws the UI of the Maze. */
@@ -93,7 +84,7 @@ public class VisualView implements Observer, Gameover {
     // Following two lines represents the x and y position of the first Tile of the Maze,
     // i.e. grid[0][0].
     int topLeftTileX = (maxScreenX - grid[0].length * tile.getSideLength()) / 2;
-    int topLeftTileY = (maxScreenY - grid.length * tile.getSideLength()) / 2;
+    int topLeftTileY = (maxscreenY - grid.length * tile.getSideLength()) / 2;
 
     // Draw every Tile of the Maze. An offset of a Tile's side length ensures that each
     // Tile is drawn right next to each other.

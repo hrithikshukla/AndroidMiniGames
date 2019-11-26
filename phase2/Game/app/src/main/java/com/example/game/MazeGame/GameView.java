@@ -2,7 +2,6 @@ package com.example.game.MazeGame;
 
 import android.content.Context;
 import android.view.MotionEvent;
-import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
 /** View component of the game. Handles the drawing of the screen and user inputs (touches). */
@@ -11,12 +10,13 @@ public class GameView extends SurfaceView implements Runnable, Gameover {
   private Thread thread;
   private boolean isPlaying;
 
-  // inputView and visualView are dependency injected via methods.
   private InputView inputView; // View subcomponent dealing with user input.
   private VisualView visualView; // View subcomponent dealing with drawing the screen.
 
-  public GameView(Context context) {
+  public GameView(Context context, int maxScreenX, int maxScreenY) {
     super(context);
+    this.inputView = new InputView(maxScreenX, maxScreenY);
+    this.visualView = new VisualView(maxScreenX, maxScreenY, context, getHolder());
   }
 
   /** Runs the game. */
@@ -58,33 +58,6 @@ public class GameView extends SurfaceView implements Runnable, Gameover {
   }
 
   /**
-   * Setter for inputView
-   *
-   * @param inputView the inputView to be injected
-   */
-  void setInputView(InputView inputView) {
-    this.inputView = inputView;
-  }
-
-  /**
-   * Setter for visualView
-   *
-   * @param visualView the visualView to be injected
-   */
-  void setVisualView(VisualView visualView) {
-    this.visualView = visualView;
-  }
-
-  /**
-   * Getter for GameView's SurfaceHolder object.
-   *
-   * @return SurfaceHolder object of GameView
-   */
-  SurfaceHolder getSurfaceHolder() {
-    return getHolder();
-  }
-
-  /**
    * Registers a touch event by the user and passes it to inputView.
    *
    * @param event - user input event
@@ -95,6 +68,16 @@ public class GameView extends SurfaceView implements Runnable, Gameover {
       inputView.setNewTouch(event.getX(), event.getY());
     }
     return true;
+  }
+
+  /** Getter for inputView. */
+  InputView getInputView() {
+    return inputView;
+  }
+
+  /** Getter for visualView. */
+  VisualView getVisualView() {
+    return visualView;
   }
 
   @Override

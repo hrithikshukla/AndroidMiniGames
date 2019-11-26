@@ -6,7 +6,10 @@ import android.os.Bundle;
 import android.view.WindowManager;
 
 import com.example.game.Activities.Game.GameActivity;
+import com.example.game.MazeGame.DataStructures.Maze;
 import com.example.game.MazeGame.DataStructures.NewGameState;
+import com.example.game.MazeGame.DataStructures.Player;
+import com.example.game.MazeGame.DataStructures.Score;
 import com.example.game.Save.User;
 
 import java.util.Observable;
@@ -15,7 +18,11 @@ import java.util.Observer;
 /** * Class that initializes all three components of the MVC model. */
 public class MazeGameActivity extends GameActivity implements Observer {
 
-  private GameView gameView;
+  private GameFacade gameFacade; // Model of the game.
+  private GameView gameView; // View of the game. Displays the UI and registers user input.
+  // Controller of the game. Processes user input using game state logic to possibly change the
+  // model.
+  private GameController gameController;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -30,9 +37,6 @@ public class MazeGameActivity extends GameActivity implements Observer {
     Point point = new Point();
     getWindowManager().getDefaultDisplay().getSize(point);
 
-    int maxScreenX = point.x;
-    int maxScreenY = point.y;
-
     int mazeWidth = 41;
     int mazeHeight = 21;
 
@@ -41,33 +45,19 @@ public class MazeGameActivity extends GameActivity implements Observer {
     int startY = mazeHeight - 2;
     int startingScore = 100;
 
-    // Create MVC components. Complicated objects are assembled using builders.
+    // Create MVC components.
+    this.gameFacade =
+        new GameFacade(
+            new Player(startX, startY, new Score(startingScore)), new Maze(mazeWidth, mazeHeight));
+    this.gameController = new GameController(gameFacade);
+    this.gameView = new GameView(this, point.x, point.y);
 
-    // Model of the game.
-    GameFacadeBuilder gameFacadeBuilder =
-        new GameFacadeBuilder(startX, startY, startingScore, mazeWidth, mazeHeight);
-    gameFacadeBuilder.build();
-    GameFacade gameFacade = gameFacadeBuilder.getGameFacade();
-
-    // View of the game. Displays the UI and registers user input.
-    ViewBuilder viewBuilder = new ViewBuilder(this, maxScreenX, maxScreenY);
-    viewBuilder.build();
-    InputView inputView = viewBuilder.getInputView();
-    VisualView visualView = viewBuilder.getVisualView();
-    this.gameView = viewBuilder.getGameView();
-
-    // Controller of the game. Processes user input using game state logic to possibly change the
-    // model.
-    GameController gameController = new GameController(gameFacade);
-
-    // Add observers to our MVC components.
-    inputView.addObserver(gameController);
-    gameFacade.addObserver(visualView);
-    gameFacade.addObserver(inputView);
+    // Add observors to our MVC components.
+    gameView.getInputView().addObserver(gameController);
+    gameFacade.addObserver(gameView.getVisualView());
+    gameFacade.addObserver(gameView.getInputView());
     gameFacade.addObserver(this);
 
-    // The view components observing gameFacade must be updated at least once to display the
-    // initial board.
     gameFacade.update();
 
     setContentView(gameView);
