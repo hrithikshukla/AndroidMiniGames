@@ -16,7 +16,7 @@ public class ThemeManager {
   static final int THEME_BP = 3;
 
   /** Set the theme of the Activity, and restart it by creating a new Activity of the same type. */
-  static void changeToTheme(Activity activity, int mode, int theme, User usr) {
+  static void changeToTheme(Activity activity, int mode, int theme, String username) {
     switch (mode) {
       default:
       case LIGHT:
@@ -26,9 +26,9 @@ public class ThemeManager {
         setThemeDark(activity, theme);
         break;
     }
-    usr.getUserData().setPrefs(null);
+//    usr.getUserData().setPrefs(null);
     Intent intent = new Intent(activity, activity.getClass());
-    intent.putExtra("UserObject", usr);
+    intent.putExtra("USERNAME", username);
     activity.finish();
     activity.startActivity(intent);
   }

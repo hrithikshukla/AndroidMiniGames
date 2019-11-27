@@ -34,9 +34,10 @@ public class MainActivity extends Activity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     // Get the user.
-    usr = (User) getIntent().getSerializableExtra("UserObject");
-    String username = usr.getUsername();
-    // Set the theme.
+    //rname();usr = (User)
+    // getIntent().getSerializableExtra("UserObject");
+      String username = getIntent().getStringExtra("USERNAME");
+      // Set the theme.
     SharedPreferences mSettings = this.getSharedPreferences("Settings", MODE_PRIVATE);
     ThemeManager.setTheme(
         MainActivity.this,
@@ -89,7 +90,7 @@ public class MainActivity extends Activity {
           public void onSwipeLeft() {
             // your actions
             Intent intent = new Intent(MainActivity.this, StatsActivity.class);
-            putUser(intent);
+            putUserName(intent);
             startActivity(intent);
           }
         });
@@ -101,7 +102,7 @@ public class MainActivity extends Activity {
           public void onSwipeRight() {
             // your actions
             Intent intent = new Intent(MainActivity.this, ShopActivity.class);
-            putUser(intent);
+            putUserName(intent);
             startActivity(intent);
           }
         });
@@ -122,50 +123,50 @@ public class MainActivity extends Activity {
               // French
               setLocale("fr");
               Intent intent = getIntent();
-              putUser(intent);
+              putUserName(intent);
               putSettingsMenu(intent);
               startActivity(intent);
-              usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
+//              usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
               finish();
               overridePendingTransition(0, 0);
             } else if (which == 1) {
               // Chinese
               setLocale("zh");
               Intent intent = getIntent();
-              putUser(intent);
+              putUserName(intent);
               putSettingsMenu(intent);
               startActivity(intent);
-              usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
+//              usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
               finish();
               overridePendingTransition(0, 0);
             } else if (which == 2) {
               // German
               setLocale("de");
               Intent intent = getIntent();
-              putUser(intent);
+              putUserName(intent);
               putSettingsMenu(intent);
               startActivity(intent);
-              usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
+//              usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
               finish();
               overridePendingTransition(0, 0);
             } else if (which == 3) {
               // Arabic
               setLocale("ar");
               Intent intent = getIntent();
-              putUser(intent);
+              putUserName(intent);
               putSettingsMenu(intent);
               startActivity(intent);
-              usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
+//              usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
               finish();
               overridePendingTransition(0, 0);
             } else if (which == 4) {
               // English
               setLocale("en");
               Intent intent = getIntent();
-              putUser(intent);
+              putUserName(intent);
               putSettingsMenu(intent);
               startActivity(intent);
-              usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
+//              usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
               finish();
               overridePendingTransition(0, 0);
             }
@@ -204,7 +205,7 @@ public class MainActivity extends Activity {
     // Setup the SharedPreferences
     final SharedPreferences mSettings = getSharedPreferences("Settings", MODE_PRIVATE);
     final SharedPreferences.Editor editor = mSettings.edit();
-    final String username = usr.getUsername();
+    final String username = getIntent().getStringExtra("USERNAME");
 
     final String[] themes = {"Default", "Green/Purple", "Orange/Teal", "Blue/Pink"};
     AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
@@ -221,7 +222,7 @@ public class MainActivity extends Activity {
                   MainActivity.this,
                   mSettings.getInt(username + "mode", 0),
                   ThemeManager.THEME_DEFAULT,
-                  usr);
+                  username);
               // Add the theme's int to SharedPreferences
               editor.putInt(username + "theme", ThemeManager.THEME_DEFAULT);
               // Apply the save
@@ -232,7 +233,7 @@ public class MainActivity extends Activity {
                   MainActivity.this,
                   mSettings.getInt(username + "mode", 0),
                   ThemeManager.THEME_GP,
-                  usr);
+                  username);
               // Add the theme's int to SharedPreferences
               editor.putInt(username + "theme", ThemeManager.THEME_GP);
               // Apply the save
@@ -243,7 +244,7 @@ public class MainActivity extends Activity {
                   MainActivity.this,
                   mSettings.getInt(username + "mode", 0),
                   ThemeManager.THEME_OT,
-                  usr);
+                  username);
               // Add the theme's int to SharedPreferences
               editor.putInt(username + "theme", ThemeManager.THEME_OT);
               // Apply the save
@@ -254,7 +255,7 @@ public class MainActivity extends Activity {
                   MainActivity.this,
                   mSettings.getInt(username + "mode", 0),
                   ThemeManager.THEME_BP,
-                  usr);
+                  username);
               // Add the theme's int to SharedPreferences
               editor.putInt(username + "theme", ThemeManager.THEME_BP);
               // Apply the save
@@ -262,7 +263,7 @@ public class MainActivity extends Activity {
             }
             // Start MainActivity with new theme.
             Intent intent = getIntent();
-            putUser(intent);
+            putUserName(intent);
             putSettingsMenu(intent);
             startActivity(intent);
             overridePendingTransition(0, 0); // Remove new Activity transition.
@@ -280,28 +281,28 @@ public class MainActivity extends Activity {
     // Setup the SharedPreferences
     final SharedPreferences mSettings = getSharedPreferences("Settings", MODE_PRIVATE);
     final SharedPreferences.Editor editor = mSettings.edit();
-    final String username = usr.getUsername();
+    final String username = getIntent().getStringExtra("USERNAME");
 
     ToggleButton toggleMode = findViewById(R.id.toggleThemeMode);
     if (mSettings.getInt(username + "mode", 0) == ThemeManager.LIGHT) { // If user is on light mode
       // Add dark mode's int to SharedPreferences
       editor.putInt(username + "mode", ThemeManager.DARK);
       ThemeManager.changeToTheme(
-          MainActivity.this, ThemeManager.DARK, mSettings.getInt(username + "theme", 0), usr);
+          MainActivity.this, ThemeManager.DARK, mSettings.getInt(username + "theme", 0), username);
       // Apply the save
       editor.apply();
     } else { // If user is on dark mode
       // Add light mode's int to SharedPreferences
       editor.putInt(username + "mode", ThemeManager.LIGHT);
       ThemeManager.changeToTheme(
-          MainActivity.this, ThemeManager.LIGHT, mSettings.getInt(username + "theme", 0), usr);
+          MainActivity.this, ThemeManager.LIGHT, mSettings.getInt(username + "theme", 0), username);
       // Apply the save
       editor.apply();
     }
     toggleMode.toggle(); // Toggle button mode
     // Start MainActivity with new mode.
     Intent intent = getIntent();
-    putUser(intent);
+    putUserName(intent);
     putSettingsMenu(intent);
     startActivity(intent);
     overridePendingTransition(0, 0); // Remove new Activity transition.
@@ -310,26 +311,26 @@ public class MainActivity extends Activity {
   /** Called when the user taps the 'MAZE' button */
   public void goToMazeGame(View view) {
     Intent intent = new Intent(this, MazeGameLauncher.class);
-    putUser(intent);
+    putUserName(intent);
     startActivity(intent);
-    usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
+//    usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
   }
 
   /** Called when the user taps the 'TAPIOCA LAUNCHER' button */
   public void goToTapiocaLauncher(View view) {
     Intent intent = new Intent(this, TapiocaGameLauncher.class);
-    putUser(intent);
+    putUserName(intent);
     startActivity(intent);
-    usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
+//    usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
   }
 
   /** Called when the user taps the 'TILES' button */
   public void goToTilesGame(View view) {
     Intent intent = new Intent(this, TilesGameLauncher.class);
     //    intent.putExtra("UserObject", usr);
-    putUser(intent);
+    putUserName(intent);
     startActivity(intent);
-    usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
+//    usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
   }
 
   /** Called when the user taps the Settings button; makes the settings menu visible. */
@@ -366,6 +367,11 @@ public class MainActivity extends Activity {
     usr.getUserData().setPrefs(null);
     intent.putExtra("UserObject", usr);
   }
+
+    private void putUserName(Intent intent) {
+        String userName = getIntent().getStringExtra("USERNAME");
+        intent.putExtra("USERNAME", userName);
+    }
 
   private void putSettingsMenu(Intent intent) {
     intent.putExtra("SettingsMenu", isSettingsMenu);
