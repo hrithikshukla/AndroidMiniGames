@@ -57,5 +57,9 @@
     <string name="SwipeToShop">Swipe Right To Shop!</string>
     <string name="coins">Your Coins:</string>
     <string name="characters">Characters Owned:</string>
+    <item type="id" name="id" />
+
+    <string name="purchase">I want it!</string>
+    <string name="cancel">Cancel</string>
 
 </resources>

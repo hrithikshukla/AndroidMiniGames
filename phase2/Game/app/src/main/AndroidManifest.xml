@@ -10,7 +10,8 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/LightDefaultTheme">
-        <activity android:name=".Activities.main.ShopActivity"></activity>
+        <activity android:name=".Activities.main.SpriteFragment"></activity>
+        <activity android:name=".Activities.main.ShopActivity" />
         <activity android:name=".Activities.main.StatsActivity" />
         <activity android:name=".Activities.main.GameLauncher.TapiocaGameLauncher" />
         <activity android:name=".Activities.main.GameLauncher.TilesGameLauncher" />

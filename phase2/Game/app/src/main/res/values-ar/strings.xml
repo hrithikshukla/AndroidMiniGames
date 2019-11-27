@@ -53,4 +53,6 @@
     <string name="SwipeToShop">انتقد اليمين للتسوق!</string>
     <string name="coins">"عملاتك المعدنية: "</string>
     <string name="characters">"الشخصيات المملوكة: "</string>
+    <string name="purchase">أريدها!</string>
+    <string name="cancel">إلغاء</string>
 </resources>

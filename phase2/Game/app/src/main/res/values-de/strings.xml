@@ -15,7 +15,6 @@
     <string name="score">"Punktzahl: "</string>
     <string name="highScore">"Hohe Punktzahl: "</string>
     <string name="create_account">" Registrieren"</string>
-    <string name="register_button">" Registrieren"</string>
     <string name="login_button">" Anmeldung"</string>
     <string name="password">" Passwort"</string>
     <string name="password2">" Passwort"</string>
@@ -53,4 +52,7 @@
     <string name="SwipeToShop">" Streichen Sie nach rechts, um einzukaufen!"</string>
     <string name="coins">" Ihre Münzen: "</string>
     <string name="characters">"Charaktere im Besitz von: "</string>
+    <string name="purchase">" Ich will es!"</string>
+    <string name="register_button">" Registrieren"</string>
+    <string name="cancel">Stornieren</string>
 </resources>

@@ -53,4 +53,6 @@
     <string name="SwipeToShop">" Balayez à droite pour magasiner"</string>
     <string name="coins">"Vos pièces de monnaie: "</string>
     <string name="characters">" Caractères possédés: "</string>
+    <string name="purchase">Je le veux!</string>
+    <string name="cancel">" Annuler"</string>
 </resources>
