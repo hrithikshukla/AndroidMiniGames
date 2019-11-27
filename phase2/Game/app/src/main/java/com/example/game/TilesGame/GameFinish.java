@@ -24,7 +24,10 @@ public class GameFinish extends AppCompatActivity {
     usr = (User) getIntent().getSerializableExtra("UserObject");
     String username = usr.getUsername();
     SharedPreferences mSettings = this.getSharedPreferences("Settings", MODE_PRIVATE);
-    ThemeManager.setTheme(GameFinish.this, mSettings.getInt(username + "theme", 0));
+    ThemeManager.setTheme(
+        GameFinish.this,
+        mSettings.getInt(username + "mode", 0),
+        mSettings.getInt(username + "theme", 0));
 
     // Get the Tiles mode that was just played.
     boardType = (String) getIntent().getSerializableExtra("BoardType");
@@ -55,7 +58,8 @@ public class GameFinish extends AppCompatActivity {
 
   /** Called when the user taps the 'EXIT' button */
   public void exitToMenu(View view) {
-    Intent intent = new Intent(this, com.example.game.Activities.main.GameLauncher.TilesGameLauncher.class);
+    Intent intent =
+        new Intent(this, com.example.game.Activities.main.GameLauncher.TilesGameLauncher.class);
     usr.getUserData().setPrefs(null);
     intent.putExtra("UserObject", usr);
     startActivity(intent);

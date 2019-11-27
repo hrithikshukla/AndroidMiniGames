@@ -28,6 +28,7 @@
         android:layout_marginTop="20dp"
         android:onClick="goToHomePage"
         android:text="@string/button_exit"
+        android:textColor="?android:attr/colorPrimaryDark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -4,5 +4,6 @@
     <attr name="buttonPrimary" format="reference" />
     <attr name="buttonSecondary" format="reference" />
     <attr name="login" format="reference" />
+    <attr name="settingsMenu" format="reference" />
 
 </resources>

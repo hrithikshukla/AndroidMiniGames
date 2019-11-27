@@ -52,7 +52,7 @@
     <string name="text_game_over">Game Over</string>
     <string name="text_swipe_right">Swipe Right!</string>
     <string name="text_swipe_left">Swipe Left!</string>
-    <string name="instructions_maze">Escape the maze! The fewer steps you take the higher your score. Move your character by tapping the corresponding direction e.g. top of the screen for up.</string>
+    <string name="instructions_maze">Escape the maze! The fewer steps you take the higher your score. Move your character by tapping the arrow buttons.</string>
     <string name="NotAvailable">Not Available Yet :(</string>
     <string name="SwipeToShop">Swipe Right To Shop!</string>
     <string name="coins">Your Coins:</string>
@@ -60,5 +60,9 @@
     <string name="play_4by4">4 x 4</string>
     <string name="text_select_mode">Select your mode:</string>
     <string name="play_5by5">5 x 5</string>
+    <string name="text_settings">Settings</string>
+    <string name="button_settings_exit">x</string>
+    <string name="text_light">Light</string>
+    <string name="text_dark">Dark</string>
 
 </resources>
