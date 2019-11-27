@@ -1,18 +1,8 @@
 package com.example.game.DataBase;
 
-import android.app.Application;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
-
-import androidx.lifecycle.LiveData;
-
-import com.example.game.DataBase.POJO.UserAverageScore;
-import com.example.game.DataBase.POJO.UserAverageTime;
-import com.example.game.DataBase.POJO.UserHighScore;
-import com.example.game.DataBase.POJO.UserMinTime;
-
-import java.util.List;
 
 public class UserRepository {
   private UserAccountDao userAccountDao;
@@ -33,9 +23,10 @@ public class UserRepository {
   }
 
   // Use this constructor for everything else
-  public UserRepository(Context context, String userName){
+  public UserRepository(Context context, String userName) {
     UserDatabase db = UserDatabase.getInstance(context);
     userAccountDao = db.userAccountDao();
+      userScoresDao = db.userScoresDao();
     this.userName = userName;
   }
 
@@ -48,7 +39,6 @@ public class UserRepository {
       e.printStackTrace();
     }
     return v.isSuccess();
-
   }
 
   public boolean addUser() {
@@ -65,58 +55,79 @@ public class UserRepository {
   }
 
   /* Use this method whenever need to get User, can easily check user's
-  *? amount once you retrieve the user by calling user.getAmount()
+   *? amount once you retrieve the user by calling user.getAmount()
    */
-  public UserAccount getUser(String userName){
+  public UserAccount getUser(String userName) {
       getUserAsyncTask a = new getUserAsyncTask(userAccountDao);
-      try{
+      try {
           a.execute(userName).get();
-      } catch (Exception e){
+      } catch (Exception e) {
           e.printStackTrace();
       }
       return a.getUserAccount();
-
   }
 
   // Use this to update User's amount
   public void updateUserAmount(String userName, int costOfItem) {
       UserAccount ac = getUser(userName);
-      ac.setAmount(ac.getAmount()- costOfItem);
+      ac.setAmount(ac.getAmount() - costOfItem);
       updateUserAmountAsyncTask a = new updateUserAmountAsyncTask(userAccountDao);
-      try{
+      try {
           a.execute(ac).get();
-      }catch (Exception e){
+      } catch (Exception e) {
           e.printStackTrace();
       }
-
   }
 
   // Call this when the game ends
   public void addUserScore(UserScores userScores) {
     addUserScoreAsyncTask a = new addUserScoreAsyncTask(userScoresDao);
-    try{
+      try {
       a.execute(userScores).get();
       Log.i("ADD_USER_SCORE", "user score successfully recorded");
-    } catch(Exception e){
+      } catch (Exception e) {
       e.printStackTrace();
     }
   }
 
-  public int getUserHighScore() {
-    return userHighScore;
+    public int getUserHighScore(String userName, String gameType) {
+        StatsTaskParam s = new StatsTaskParam(userName, gameType);
+        getUserHighScoreAsyncTask a = new getUserHighScoreAsyncTask(userScoresDao);
+        try {
+            a.execute(s).get();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return a.getUserHighScore();
   }
 
-  public double getUserAverageScore() {
-    return userAverageScore;
+    public double getUserAverageScore(String userName, String gameType) {
+        StatsTaskParam s = new StatsTaskParam(userName, gameType);
+        getUserAverageScoreAsyncTask a = new getUserAverageScoreAsyncTask(userScoresDao);
+        try {
+            a.execute(s).get();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return a.getUserAverageScore();
   }
 
   public int getUserMinTime() {
     return userMinTime;
   }
 
-  public double getUserAverageTime() {
+    public int getUserAverageTime() {
     return userAverageTime;
   }
+
+    public void resetUserStatistics(String userName) {
+        removeUserStatisticsAsyncTask a = new removeUserStatisticsAsyncTask(userScoresDao);
+        try {
+            a.execute(userName).get();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
   public static class addUserAsyncTask extends AsyncTask<UserAccount, Void, Boolean> {
 
@@ -156,7 +167,7 @@ public class UserRepository {
       this.success = false;
     }
 
-     boolean isSuccess() {
+      boolean isSuccess() {
       return success;
     }
 
@@ -169,7 +180,7 @@ public class UserRepository {
     }
   }
 
-  public static class addUserScoreAsyncTask extends AsyncTask<UserScores, Void, Void >{
+    public static class addUserScoreAsyncTask extends AsyncTask<UserScores, Void, Void> {
     private UserScoresDao userScoresDao;
 
     addUserScoreAsyncTask(UserScoresDao userScoresDao) {
@@ -183,36 +194,110 @@ public class UserRepository {
     }
   }
 
-  public static class getUserAsyncTask extends AsyncTask<String, Void, UserAccount>{
-      private UserAccountDao userAccountDao;
-      private UserAccount userAccount;
+    public static class getUserAsyncTask extends AsyncTask<String, Void, UserAccount> {
+        private UserAccountDao userAccountDao;
+        private UserAccount userAccount;
 
-      getUserAsyncTask(UserAccountDao userAccountDao) {
-          this.userAccountDao = userAccountDao;
-      }
+        getUserAsyncTask(UserAccountDao userAccountDao) {
+            this.userAccountDao = userAccountDao;
+        }
 
-      UserAccount getUserAccount() {
-          return userAccount;
-      }
+        UserAccount getUserAccount() {
+            return userAccount;
+        }
 
-      @Override
-      protected UserAccount doInBackground(String... strings) {
-          userAccount = userAccountDao.getUserAccountByUsername(strings[0]);
-          return userAccount;
-      }
+        @Override
+        protected UserAccount doInBackground(String... strings) {
+            userAccount = userAccountDao.getUserAccountByUsername(strings[0]);
+            return userAccount;
+        }
   }
 
-  public static class updateUserAmountAsyncTask extends AsyncTask<UserAccount, Void, Void>{
-      private UserAccountDao userAccountDao;
+    public static class updateUserAmountAsyncTask extends AsyncTask<UserAccount, Void, Void> {
+        private UserAccountDao userAccountDao;
 
-      updateUserAmountAsyncTask(UserAccountDao userAccountDao) {
-          this.userAccountDao = userAccountDao;
-      }
+        updateUserAmountAsyncTask(UserAccountDao userAccountDao) {
+            this.userAccountDao = userAccountDao;
+        }
 
-      @Override
-      protected Void doInBackground(UserAccount... userAccounts) {
-          userAccountDao.update(userAccounts[0]);
-          return null;
-      }
-  }
+        @Override
+        protected Void doInBackground(UserAccount... userAccounts) {
+            userAccountDao.update(userAccounts[0]);
+            return null;
+        }
+    }
+
+    public static class getUserHighScoreAsyncTask extends AsyncTask<StatsTaskParam, Void, Integer> {
+        private UserScoresDao userScoresDao;
+        private int userHighScore;
+
+        getUserHighScoreAsyncTask(UserScoresDao userScoresDao) {
+            this.userScoresDao = userScoresDao;
+        }
+
+        int getUserHighScore() {
+            return userHighScore;
+        }
+
+        @Override
+        protected Integer doInBackground(StatsTaskParam... statsTaskParams) {
+            String userName = statsTaskParams[0].getUserName();
+            String gameType = statsTaskParams[0].getGameType();
+            userHighScore = userScoresDao.getUserHighScore(userName, gameType);
+            return userHighScore;
+        }
+    }
+
+    public static class getUserAverageScoreAsyncTask extends AsyncTask<StatsTaskParam, Void, Double> {
+        private UserScoresDao userScoresDao;
+        private double userAverageScore;
+
+        getUserAverageScoreAsyncTask(UserScoresDao userScoresDao) {
+            this.userScoresDao = userScoresDao;
+        }
+
+        double getUserAverageScore() {
+            return userAverageScore;
+        }
+
+        @Override
+        protected Double doInBackground(StatsTaskParam... statsTaskParams) {
+            String userName = statsTaskParams[0].getUserName();
+            String gameType = statsTaskParams[0].getGameType();
+            userAverageScore = userScoresDao.getUserAvgScore(userName, gameType);
+            return userAverageScore;
+        }
+    }
+
+    public static class removeUserStatisticsAsyncTask extends AsyncTask<String, Void, Void> {
+        private UserScoresDao userScoresDao;
+
+        public removeUserStatisticsAsyncTask(UserScoresDao userScoresDao) {
+            this.userScoresDao = userScoresDao;
+        }
+
+        @Override
+        protected Void doInBackground(String... strings) {
+            userScoresDao.deleteUserScores(strings[0]);
+            return null;
+        }
+    }
+
+    private class StatsTaskParam {
+        String userName;
+        String gameType;
+
+        StatsTaskParam(String userName, String gameType) {
+            this.userName = userName;
+            this.gameType = gameType;
+        }
+
+        public String getUserName() {
+            return userName;
+        }
+
+        public String getGameType() {
+            return gameType;
+        }
+    }
 }

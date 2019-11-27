@@ -32,10 +32,13 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // Set the theme.
-        usr = (User) getIntent().getSerializableExtra("UserObject");
-        String username = usr.getUsername();
+//        usr = (User) getIntent().getSerializableExtra("UserObject");
+//        String username = usr.getUsername();
+
+        // retrieve userName from loginActivity
+        String userName = getIntent().getStringExtra("USERNAME");
         SharedPreferences mSettings = this.getSharedPreferences("Settings", MODE_PRIVATE);
-        ThemeManager.setTheme(MainActivity.this, mSettings.getInt(username + "theme", 0));
+        ThemeManager.setTheme(MainActivity.this, mSettings.getInt(userName + "theme", 0));
 
         super.onCreate(savedInstanceState);
         loadLocale();
@@ -59,7 +62,7 @@ public class MainActivity extends Activity {
                     public void onSwipeLeft() {
                         // your actions
                         Intent intent = new Intent(MainActivity.this, StatsActivity.class);
-                        putUser(intent);
+                        putUserName(intent);
                         startActivity(intent);
                     }
                 });
@@ -71,7 +74,7 @@ public class MainActivity extends Activity {
                     public void onSwipeRight() {
                         // your actions
                         Intent intent = new Intent(MainActivity.this, ShopActivity.class);
-                        putUser(intent);
+                        putUserName(intent);
                         startActivity(intent);
                     }
                 });
@@ -229,7 +232,7 @@ public class MainActivity extends Activity {
      */
     public void goToMazeGame(View view) {
         Intent intent = new Intent(this, MazeGameLauncher.class);
-        putUser(intent);
+        putUserName(intent);
         startActivity(intent);
         usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
     }
@@ -239,7 +242,7 @@ public class MainActivity extends Activity {
      */
     public void goToTapiocaLauncher(View view) {
         Intent intent = new Intent(this, TapiocaGameLauncher.class);
-        putUser(intent);
+        putUserName(intent);
         startActivity(intent);
         usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
     }
@@ -250,7 +253,7 @@ public class MainActivity extends Activity {
     public void goToTilesGame(View view) {
         Intent intent = new Intent(this, TilesGameLauncher.class);
         //    intent.putExtra("UserObject", usr);
-        putUser(intent);
+        putUserName(intent);
         startActivity(intent);
         usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
     }
@@ -258,5 +261,10 @@ public class MainActivity extends Activity {
     private void putUser(Intent intent) {
         usr.getUserData().setPrefs(null);
         intent.putExtra("UserObject", usr);
+    }
+
+    private void putUserName(Intent intent) {
+        String userName = getIntent().getStringExtra("USERNAME");
+        intent.putExtra("USERNAME", userName);
     }
 }

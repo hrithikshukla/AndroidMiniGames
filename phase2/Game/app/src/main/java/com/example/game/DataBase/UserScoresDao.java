@@ -1,16 +1,10 @@
 package com.example.game.DataBase;
 
-import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
-
-import com.example.game.DataBase.POJO.UserAverageScore;
-import com.example.game.DataBase.POJO.UserAverageTime;
-import com.example.game.DataBase.POJO.UserHighScore;
-import com.example.game.DataBase.POJO.UserMinTime;
 
 @Dao
 public interface UserScoresDao {
@@ -47,6 +41,7 @@ public interface UserScoresDao {
                   + "AND game_type LIKE :game_type GROUP BY userName, game_type LIMIT 1")
   public int getUserAvgTime(String name, String game_type);
 
-
+  @Query("DELETE FROM scores_table WHERE userName LIKE :name")
+  public void deleteUserScores(String name);
 
 }
