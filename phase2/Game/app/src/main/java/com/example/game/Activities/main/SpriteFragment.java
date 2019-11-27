@@ -1,5 +1,6 @@
 package com.example.game.Activities.main;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.ColorMatrix;
@@ -10,6 +11,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -25,6 +27,8 @@ public class SpriteFragment extends DialogFragment {
 
     private int image;
 
+    private ShopActivity activity;
+
     SpriteFragment(int image) {
         this.image = image;
     }
@@ -32,6 +36,8 @@ public class SpriteFragment extends DialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        activity = (ShopActivity) getActivity();
+        activity.setOnBackPressedListener(new BaseBackPressedListener(activity));
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_sprite, container, false);
     }
@@ -51,8 +57,8 @@ public class SpriteFragment extends DialogFragment {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        getActivity().findViewById(R.id.frame).setClickable(false);
-                        getActivity().getSupportFragmentManager().popBackStack();
+                        activity.findViewById(R.id.frame).setClickable(false);
+                        activity.getSupportFragmentManager().popBackStack();
                     }
                 });
         Button purchase = getView().findViewById(R.id.purchase);

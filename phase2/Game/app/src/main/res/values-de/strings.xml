@@ -61,4 +61,5 @@
     <string name="register_button">" Registrieren"</string>
     <string name="cancel">Stornieren</string>
     <string name="gisignIn">" Anmelden"</string>
+    <string name="likeToPurchase">Möchten Sie kaufen?</string>
 </resources>

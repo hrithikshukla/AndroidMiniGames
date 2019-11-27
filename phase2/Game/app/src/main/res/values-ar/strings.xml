@@ -61,4 +61,5 @@
     <string name="purchase">أريدها!</string>
     <string name="cancel">إلغاء</string>
     <string name="gisignIn">تسجيل الدخول</string>
+    <string name="likeToPurchase">هل ترغب في الشراء؟</string>
 </resources>

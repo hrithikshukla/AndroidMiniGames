@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cl"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activities.main.ShopActivity">
@@ -33,13 +34,13 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="115dp"
-        android:layout_height="28dp"
+        android:layout_width="208dp"
+        android:layout_height="30dp"
         android:layout_marginTop="12dp"
         android:text="@string/text_swipe_left"
-        android:textSize="18sp"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.798"
+        app:layout_constraintHorizontal_bias="0.953"
         app:layout_constraintStart_toEndOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
@@ -265,10 +266,10 @@
 
     <ImageView
         android:id="@+id/char_samurai"
-        android:tag="grayed"
         android:layout_width="76dp"
         android:layout_height="69dp"
         android:layout_marginTop="20dp"
+        android:tag="grayed"
         app:layout_constraintBottom_toTopOf="@+id/char_king"
         app:layout_constraintStart_toEndOf="@+id/char_knight"
         app:layout_constraintTop_toBottomOf="@+id/char_viking3"
@@ -277,24 +278,23 @@
 
     <ImageView
         android:id="@+id/char_shogun"
-        android:tag="grayed"
         android:layout_width="77dp"
         android:layout_height="68dp"
         android:layout_marginTop="12dp"
-        android:layout_marginEnd="64dp"
+        android:layout_marginEnd="48dp"
+        android:tag="grayed"
         app:layout_constraintBottom_toTopOf="@+id/char_king"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/char_knight"
+        app:layout_constraintStart_toEndOf="@+id/char_samurai"
         app:layout_constraintTop_toBottomOf="@+id/char_wizard"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.291"
         app:srcCompat="@drawable/char_shogun" />
 
     <FrameLayout
         android:id="@+id/frame"
         android:name="character_fragment"
-        android:layout_width="337dp"
-        android:layout_height="656dp"
+        android:layout_width="333dp"
+        android:layout_height="584dp"
         android:layout_marginStart="36dp"
         android:layout_marginTop="40dp"
         app:layout_constraintBottom_toBottomOf="parent"

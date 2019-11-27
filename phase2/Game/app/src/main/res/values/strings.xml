@@ -68,5 +68,6 @@
 
     <string name="purchase">I want it!</string>
     <string name="cancel">Cancel</string>
+    <string name="likeToPurchase">Would you like to purchase?</string>
 
 </resources>

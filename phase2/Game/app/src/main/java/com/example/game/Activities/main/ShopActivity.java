@@ -1,6 +1,7 @@
 package com.example.game.Activities.main;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -13,6 +14,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.example.game.R;
 
@@ -25,6 +27,8 @@ public class ShopActivity extends AppCompatActivity {
 
     // List of images to display
     private List<ImageView> images = new ArrayList<>();
+    // Checks if back button is pressed
+    protected OnBackPressedListener onBackPressedListener;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -89,7 +93,7 @@ public class ShopActivity extends AppCompatActivity {
         viking3.setTag(R.id.id, R.drawable.char_viking_3);
         images.add(viking3);
         ImageView wizard = findViewById(R.id.char_wizard);
-        viking3.setTag(R.id.id, R.drawable.char_wizard);
+        wizard.setTag(R.id.id, R.drawable.char_wizard);
         images.add(wizard);
         ImageView archer = findViewById(R.id.char_archer);
         archer.setTag(R.id.id, R.drawable.char_archer);
@@ -126,6 +130,12 @@ public class ShopActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        if (onBackPressedListener != null) onBackPressedListener.doBack();
+        else super.onBackPressed();
+    }
+
     // Code from https://gist.github.com/nisrulz/3078eaa6357d6f5c0051
     private void grayOut(ImageView img) {
         // if grayed
@@ -138,5 +148,9 @@ public class ShopActivity extends AppCompatActivity {
             img.setColorFilter(null);
             img.setTag("");
         }
+    }
+
+    public void setOnBackPressedListener(OnBackPressedListener onBackPressedListener) {
+        this.onBackPressedListener = onBackPressedListener;
     }
 }
