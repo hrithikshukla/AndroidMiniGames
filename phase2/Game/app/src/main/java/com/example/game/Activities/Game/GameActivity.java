@@ -8,12 +8,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.game.Save.User;
 
 public abstract class GameActivity extends AppCompatActivity {
-  public User usr;
+  public String username;
 
   protected void switchToGameOverActivity(Context context) {
     Intent intent = new Intent(context, GameOverActivity.class);
-    usr.getUserData().setPrefs(null);
-    intent.putExtra("UserObject", usr);
+//    usr.getUserData().setPrefs(null);
+    intent.putExtra("USERNAME", username);
     startActivity(intent);
   }
 }

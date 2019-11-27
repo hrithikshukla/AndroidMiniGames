@@ -17,12 +17,13 @@ import com.example.game.Save.User;
 public class GameOverActivity extends AppCompatActivity {
   User usr;
   Button goToHomePage;
+  String username;
 
   @Override
   protected void onCreate(@Nullable Bundle savedInstanceState) {
     // Set the theme.
-    usr = (User) getIntent().getSerializableExtra("UserObject");
-    String username = usr.getUsername();
+//    usr = (User) getIntent().getSerializableExtra("UserObject");
+    username = getIntent().getStringExtra("USERNAME");
     SharedPreferences mSettings = this.getSharedPreferences("Settings", MODE_PRIVATE);
     ThemeManager.setTheme(
             GameOverActivity.this,
@@ -37,7 +38,7 @@ public class GameOverActivity extends AppCompatActivity {
 
   public void goToHomePage(View view) {
     Intent intent = new Intent(this, MainActivity.class);
-    intent.putExtra("UserObject", usr);
+    intent.putExtra("USERNAME", username);
     startActivity(intent);
   }
 }

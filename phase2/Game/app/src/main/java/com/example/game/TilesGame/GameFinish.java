@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.game.DataBase.UserRepository;
 import com.example.game.R;
 import com.example.game.Save.User;
 import com.example.game.Activities.main.ThemeManager;
@@ -17,12 +18,13 @@ import com.example.game.Activities.main.ThemeManager;
 public class GameFinish extends AppCompatActivity {
   User usr;
     String boardType;
-
+  String username;
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     // Set the theme.
-    usr = (User) getIntent().getSerializableExtra("UserObject");
-    String username = usr.getUsername();
+    username = getIntent().getStringExtra("USERNAME");
+//    usr = (User) getIntent().getSerializableExtra("UserObject");
+//    String username = usr.getUsername();
     SharedPreferences mSettings = this.getSharedPreferences("Settings", MODE_PRIVATE);
       ThemeManager.setTheme(
               GameFinish.this,
@@ -51,8 +53,12 @@ public class GameFinish extends AppCompatActivity {
     // saved in SharedPreferences as its text.
     TextView textViewHighScore = findViewById(R.id.highScoreText);
     SharedPreferences prefs = getSharedPreferences("highScores", MODE_PRIVATE);
-    String highScoreText =
-        getString(R.string.highScore) + prefs.getInt(usr.getUsername() + "tileshighscore", 0);
+
+    UserRepository ur = new UserRepository(this, username);
+    int tilesHighScore = ur.getUserHighScore(username, "TILES_GAME");
+//    String highScoreText =
+//        getString(R.string.highScore) + prefs.getInt(usr.getUsername() + "tileshighscore", 0);
+    String highScoreText = getString(R.string.highScore) + tilesHighScore;
     textViewHighScore.setText(highScoreText);
   }
 
@@ -60,16 +66,16 @@ public class GameFinish extends AppCompatActivity {
   public void exitToMenu(View view) {
       Intent intent =
               new Intent(this, com.example.game.Activities.main.GameLauncher.TilesGameLauncher.class);
-    usr.getUserData().setPrefs(null);
-    intent.putExtra("UserObject", usr);
+//    usr.getUserData().setPrefs(null);
+    intent.putExtra("USERNAME", username);
     startActivity(intent);
   }
 
   /** Called when the user taps the 'TRY AGAIN' button */
   public void restartTilesGame(View view) {
     Intent intent = new Intent(this, com.example.game.TilesGame.TileGameActivity.class);
-    usr.getUserData().setPrefs(null);
-    intent.putExtra("UserObject", usr);
+//    usr.getUserData().setPrefs(null);
+    intent.putExtra("USERNAME", username);
       intent.putExtra("BoardType", boardType);
     startActivity(intent);
   }

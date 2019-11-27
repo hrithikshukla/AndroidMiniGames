@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.WindowManager;
 
 import com.example.game.Activities.Game.GameActivity;
+import com.example.game.DataBase.UserRepository;
+import com.example.game.DataBase.UserScores;
 import com.example.game.MazeGame.DataStructures.NewGameState;
 import com.example.game.Save.User;
 
@@ -16,11 +18,12 @@ import java.util.Observer;
 public class MazeGameActivity extends GameActivity implements Observer {
 
     private GameView gameView;
-
+    private UserRepository ur;
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    usr = (User) getIntent().getSerializableExtra("UserObject");
+    username = getIntent().getStringExtra("USERNAME");
+    ur = new UserRepository(this, username);
     // Set fullscreen mode.
     getWindow()
         .setFlags(
@@ -91,11 +94,13 @@ public class MazeGameActivity extends GameActivity implements Observer {
     NewGameState newGameState = (NewGameState) arg;
     SharedPreferences sharedPreferences = getSharedPreferences("highScores", MODE_PRIVATE);
     if (newGameState.isGameOver()) {
-      if (usr.getUserData().getMazeHighScore() < newGameState.getScore()) {
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt(usr.getUsername() + "mazehighscore", newGameState.getScore());
-        editor.apply();
-      }
+      UserScores u = new UserScores(username, newGameState.getScore(),"MAZE_GAME", 120 );
+      ur.addUserScore(u);
+//      if (ur.getUserHighScore(username, "MAZE_GAME") < newGameState.getScore()) {
+//        SharedPreferences.Editor editor = sharedPreferences.edit();
+//        editor.putInt(usr.getUsername() + "mazehighscore", newGameState.getScore());
+//        editor.apply();
+//      }
       switchToGameOverActivity(this);
     }
   }

@@ -12,15 +12,15 @@ import com.example.game.Activities.main.MainActivity;
 import com.example.game.Activities.main.ThemeManager;
 import com.example.game.R;
 import com.example.game.Save.User;
-
+// TODO: LINE 53 not displaying true high score, needs to fix
 public class TapiocaGameLauncher extends AppCompatActivity {
   User usr;
-
+  String username;
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     // Set the theme.
-    usr = (User) getIntent().getSerializableExtra("UserObject");
-    String username = usr.getUsername();
+//    usr = (User) getIntent().getSerializableExtra("UserObject");
+    username = getIntent().getStringExtra("USERNAME");
     SharedPreferences mSettings = this.getSharedPreferences("Settings", MODE_PRIVATE);
       ThemeManager.setTheme(
               TapiocaGameLauncher.this,
@@ -39,16 +39,19 @@ public class TapiocaGameLauncher extends AppCompatActivity {
                     new Intent(
                         TapiocaGameLauncher.this,
                         com.example.game.TapiocaLauncher.TapiocaGameActivity.class);
-                intent.putExtra("UserObject", usr);
+                intent.putExtra("USERNAME", username);
                 startActivity(intent);
               }
             });
 
     TextView highScoretxt = findViewById(R.id.highScoreText);
 
-    SharedPreferences prefs = getSharedPreferences("highScores", MODE_PRIVATE);
-    highScoretxt.setText(
-        getString(R.string.highScore) + prefs.getInt(usr.getUsername() + "tapiocahighscore", 0));
+//    SharedPreferences prefs = getSharedPreferences("highScores", MODE_PRIVATE);
+//    highScoretxt.setText(
+//        getString(R.string.highScore) + prefs.getInt(usr.getUsername() + "tapiocahighscore", 0));
+    // temporary solution needs to fix
+    highScoretxt.setText(getString(R.string.highScore)
+    );
   }
   /*
    */
@@ -62,8 +65,8 @@ public class TapiocaGameLauncher extends AppCompatActivity {
   /** Called when the user taps the 'EXIT' button */
   public void exitToMenu(View view) {
     Intent intent = new Intent(this, MainActivity.class);
-    intent.putExtra("UserObject", usr);
-    usr.getUserData().setPrefs(null);
+    intent.putExtra("USERNAME", username);
+//    usr.getUserData().setPrefs(null);
     startActivity(intent);
   }
 }

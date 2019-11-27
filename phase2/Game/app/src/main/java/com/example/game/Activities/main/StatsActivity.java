@@ -74,8 +74,8 @@ public class StatsActivity extends AppCompatActivity {
     int tapiocaHighScore = uR.getUserHighScore(username, "TAPIOCA_GAME");
     int tilesHighScore = uR.getUserHighScore(username, "TILES_GAME");
     tapiocaScore.setText(
-        getString(R.string.TapiocaScore) + mazeHighScore);
-    mazeScore.setText(getString(R.string.MazeScore) + tapiocaHighScore);
+        getString(R.string.TapiocaScore) + tapiocaHighScore);
+    mazeScore.setText(getString(R.string.MazeScore) + mazeHighScore);
     tileScore.setText(getString(R.string.TileScore) + tilesHighScore);
 
     TextView tapiocaTime = findViewById(R.id.TapiocaTime);
