@@ -1,7 +1,6 @@
 package com.example.game.TilesGame;
 
 import android.content.Context;
-import android.graphics.Canvas;
 
 import java.util.ArrayList;
 import java.util.Random;

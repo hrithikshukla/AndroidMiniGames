@@ -24,6 +24,7 @@
         <item name="buttonPrimary">@style/button_prim_default</item>
         <item name="buttonSecondary">@style/button_sec_default</item>
         <item name="login">@style/login_default</item>
+        <item name="settingsMenu">@style/settings_menu_default</item>
         <item name="android:textColor">@color/defaultPrimaryDark</item>
     </style>
 
@@ -38,6 +39,7 @@
         <item name="colorAccent">@color/gpAccent</item>
         <item name="buttonPrimary">@style/button_prim_gp</item>
         <item name="buttonSecondary">@style/button_sec_gp</item>
+        <item name="settingsMenu">@style/settings_menu_gp</item>
         <item name="android:textColor">@color/gpPrimaryDark</item>
     </style>
 
@@ -52,6 +54,7 @@
         <item name="colorAccent">@color/otAccent</item>
         <item name="buttonPrimary">@style/button_prim_ot</item>
         <item name="buttonSecondary">@style/button_sec_ot</item>
+        <item name="settingsMenu">@style/settings_menu_ot</item>
         <item name="android:textColor">@color/otPrimaryDark</item>
     </style>
 
@@ -66,6 +69,7 @@
         <item name="colorAccent">@color/bpAccent</item>
         <item name="buttonPrimary">@style/button_prim_bp</item>
         <item name="buttonSecondary">@style/button_sec_bp</item>
+        <item name="settingsMenu">@style/settings_menu_bp</item>
         <item name="android:textColor">@color/bpPrimaryDark</item>
     </style>
 
@@ -90,6 +94,10 @@
         <item name="android:textColorLink">@color/defaultSecondary</item>
     </style>
 
+    <style name="settings_menu_default">
+        <item name="android:background">@drawable/settings_menu_default</item>
+    </style>
+
     <!-- =============================================================== -->
     <!-- Green/Purple (GP) styles -->
     <!-- =============================================================== -->
@@ -102,6 +110,10 @@
     <style name="button_sec_gp">
         <item name="android:background">@drawable/button_secondary_gp</item>
         <item name="android:textColor">@color/gpAccent</item>
+    </style>
+
+    <style name="settings_menu_gp">
+        <item name="android:background">@drawable/settings_menu_gp</item>
     </style>
 
     <!-- =============================================================== -->
@@ -118,6 +130,10 @@
         <item name="android:textColor">@color/otAccent</item>
     </style>
 
+    <style name="settings_menu_ot">
+        <item name="android:background">@drawable/settings_menu_ot</item>
+    </style>
+
     <!-- =============================================================== -->
     <!-- Blue/Pink (BP) styles -->
     <!-- =============================================================== -->
@@ -130,6 +146,10 @@
     <style name="button_sec_bp">
         <item name="android:background">@drawable/button_secondary_bp</item>
         <item name="android:textColor">@color/bpAccent</item>
+    </style>
+
+    <style name="settings_menu_bp">
+        <item name="android:background">@drawable/settings_menu_bp</item>
     </style>
 
 </resources>

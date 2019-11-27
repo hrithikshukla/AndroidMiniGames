@@ -55,4 +55,6 @@
     <string name="play_4by4">4 x 4</string>
     <string name="text_select_mode">选择你的模式</string>
     <string name="play_5by5">5 x 5</string>
+    <string name="text_settings">设定值</string>
+    <string name="button_settings_exit">x</string>
 </resources>

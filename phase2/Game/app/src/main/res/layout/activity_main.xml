@@ -1,26 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?android:attr/colorBackground"
-    tools:context=".MainActivity">
+    android:background="?android:attr/colorBackground">
 
 
     <TextView
-        android:id="@+id/SwipeShop"
+        android:id="@+id/textSelectGame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="60dp"
-        android:text="@string/SwipeToShop"
-        android:textColor="?android:attr/colorAccent"
-        android:textSize="7pt"
-        app:layout_constraintBottom_toTopOf="@+id/ArrowRight"
+        android:layout_marginTop="85dp"
+        android:layout_marginBottom="50dp"
+        android:text="@string/select_game"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="?android:attr/colorPrimaryDark"
+        android:textSize="16pt"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/buttonMaze"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.118"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonTiles" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/buttonTapiocaLauncher"
@@ -37,7 +39,7 @@
         android:textColor="?android:attr/colorPrimaryDark"
         app:layout_constraintBottom_toTopOf="@+id/buttonTiles"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonMaze" />
 
@@ -56,7 +58,7 @@
         android:textColor="?android:attr/colorPrimaryDark"
         app:layout_constraintBottom_toTopOf="@+id/buttonTapiocaLauncher"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.6" />
@@ -76,53 +78,109 @@
         android:textColor="?android:attr/colorPrimaryDark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonTapiocaLauncher" />
 
-    <TextView
-        android:id="@+id/textView"
+    <ImageButton
+        android:id="@+id/buttonOpenSettings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="65dp"
-        android:layout_marginBottom="50dp"
-        android:text="@string/select_game"
-        android:textAlignment="center"
-        android:textAllCaps="true"
-        android:textColor="?android:attr/colorPrimaryDark"
-        android:textSize="16pt"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/buttonMaze"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:backgroundTint="?android:attr/colorAccent"
+        android:contentDescription="@string/text_settings"
+        android:onClick="openSettings"
+        android:src="@android:drawable/ic_menu_preferences"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/changeMyLang"
-        style="?buttonSecondary"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginBottom="20dp"
-        android:text="@string/changeLang"
-        android:textAllCaps="true"
-        android:textColor="?android:attr/colorAccent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/settingsView"
+        style="?settingsMenu"
+        android:layout_width="320dp"
+        android:layout_height="385dp"
+        android:layout_marginTop="50dp"
+        android:translationZ="2dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textSelectGame">
 
-    <Button
-        android:id="@+id/changeMyTheme"
-        style="?buttonSecondary"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="35dp"
-        android:onClick="showChangeThemeDialog"
-        android:text="@string/change_theme"
-        android:textColor="?android:attr/colorAccent"
-        app:layout_constraintBaseline_toBaselineOf="@+id/changeMyLang"
-        app:layout_constraintEnd_toStartOf="@+id/ArrowRight"
-        app:layout_constraintStart_toEndOf="@+id/changeMyLang" />
+        <TextView
+            android:id="@+id/textSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="52dp"
+            android:text="@string/text_settings"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="?android:attr/colorSecondary"
+            android:textSize="12pt"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/buttonExitSettings"
+            style="?buttonPrimary"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:onClick="closeSettings"
+            android:text="@string/button_settings_exit"
+            android:textAllCaps="true"
+            android:textColor="?android:attr/colorPrimaryDark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/changeMyLang"
+            style="?buttonSecondary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/changeLang"
+            android:textAllCaps="true"
+            android:textColor="?android:attr/colorAccent"
+            app:layout_constraintBottom_toTopOf="@+id/toggleButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/changeMyTheme" />
+
+        <Button
+            android:id="@+id/changeMyTheme"
+            style="?buttonSecondary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="showChangeThemeDialog"
+            android:text="@string/change_theme"
+            android:textColor="?android:attr/colorAccent"
+            app:layout_constraintBottom_toTopOf="@+id/changeMyLang"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textSettings" />
+
+        <ToggleButton
+            android:id="@+id/toggleButton"
+            style="?buttonPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textOff="DARK"
+            android:textOn="LIGHT"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/changeMyLang" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:id="@+id/textSwipeRight"
@@ -136,27 +194,38 @@
         app:layout_constraintBottom_toTopOf="@+id/ArrowRight"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <TextView
+        android:id="@+id/SwipeShop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="31dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/SwipeToShop"
+        android:textColor="?android:attr/colorAccent"
+        android:textSize="7pt"
+        app:layout_constraintBottom_toTopOf="@+id/shopArrow"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <ImageView
         android:id="@+id/ArrowRight"
         android:layout_width="148dp"
         android:layout_height="64dp"
-        android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:src="@drawable/arrow2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/shopArrow" />
 
     <ImageView
         android:id="@+id/shopArrow"
         android:layout_width="169dp"
         android:layout_height="66dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="20dp"
         android:src="@drawable/arrow"
-        app:layout_constraintBottom_toTopOf="@+id/changeMyLang"
-        app:layout_constraintEnd_toStartOf="@+id/textSwipeRight"
-        app:layout_constraintHorizontal_bias="0.137"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ArrowRight"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
