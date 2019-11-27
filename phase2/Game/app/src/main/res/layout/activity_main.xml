@@ -146,7 +146,7 @@
             android:text="@string/changeLang"
             android:textAllCaps="true"
             android:textColor="?android:attr/colorAccent"
-            app:layout_constraintBottom_toTopOf="@+id/toggleButton"
+            app:layout_constraintBottom_toTopOf="@+id/toggleThemeMode"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -167,14 +167,16 @@
             app:layout_constraintTop_toBottomOf="@+id/textSettings" />
 
         <ToggleButton
-            android:id="@+id/toggleButton"
+            android:id="@+id/toggleThemeMode"
             style="?buttonPrimary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="toggleThemeMode"
             android:textAlignment="center"
             android:textAllCaps="true"
-            android:textOff="DARK"
-            android:textOn="LIGHT"
+            android:textColor="?android:attr/colorPrimaryDark"
+            android:textOff="@string/text_dark"
+            android:textOn="@string/text_light"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"

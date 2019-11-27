@@ -3,6 +3,9 @@
     <!--  LIGHT THEME  -->
     <color name="lightBackground">#F0F0F0</color>
 
+    <!--  DARK THEME  -->
+    <color name="darkBackground">#1F1F1F</color>
+
     <!--  DEFAULT  -->
     <color name="defaultPrimary">#D7D7D7</color>
     <color name="defaultPrimaryDark">#737373</color>

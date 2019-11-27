@@ -57,4 +57,6 @@
     <string name="play_5by5">5 x 5</string>
     <string name="text_settings">الإعدادات</string>
     <string name="button_settings_exit">x</string>
+    <string name="text_dark">داكن</string>
+    <string name="text_light">ضوء</string>
 </resources>

@@ -57,4 +57,6 @@
     <string name="play_5by5">5 x 5</string>
     <string name="text_settings">Paramètres</string>
     <string name="button_settings_exit">x</string>
+    <string name="text_dark">Sombre</string>
+    <string name="text_light">Lumière</string>
 </resources>

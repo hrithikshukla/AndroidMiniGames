@@ -57,4 +57,6 @@
     <string name="text_select_mode">Wählen Sie Ihren Modus</string>
     <string name="text_settings">die Einstellungen</string>
     <string name="button_settings_exit">x</string>
+    <string name="text_dark">Dunkel</string>
+    <string name="text_light">Licht</string>
 </resources>

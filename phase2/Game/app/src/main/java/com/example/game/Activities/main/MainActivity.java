@@ -12,6 +12,7 @@ import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ToggleButton;
 
 import com.example.game.Activities.main.GameLauncher.MazeGameLauncher;
 import com.example.game.Activities.main.GameLauncher.TapiocaGameLauncher;
@@ -37,7 +38,10 @@ public class MainActivity extends Activity {
     String username = usr.getUsername();
     // Set the theme.
     SharedPreferences mSettings = this.getSharedPreferences("Settings", MODE_PRIVATE);
-    ThemeManager.setTheme(MainActivity.this, mSettings.getInt(username + "theme", 0));
+    ThemeManager.setTheme(
+        MainActivity.this,
+        mSettings.getInt(username + "mode", 0),
+        mSettings.getInt(username + "theme", 0));
     // Determine settings menu visibility.
     if (getIntent().getSerializableExtra("SettingsMenu") != null) {
       isSettingsMenu = (boolean) getIntent().getSerializableExtra("SettingsMenu");
@@ -51,6 +55,12 @@ public class MainActivity extends Activity {
     if (isSettingsMenu) {
       View settingsView = findViewById(R.id.settingsView);
       settingsView.setVisibility(View.VISIBLE);
+    }
+
+    // Set toggle of light/dark mode to match user preference.
+    ToggleButton toggleMode = findViewById(R.id.toggleThemeMode);
+    if ((mSettings.getInt(username + "mode", 0)) == ThemeManager.DARK) {
+      toggleMode.toggle();
     }
 
     Button changeLang = findViewById(R.id.changeMyLang);
@@ -184,7 +194,8 @@ public class MainActivity extends Activity {
 
   public void showChangeThemeDialog(View view) {
     // Setup the SharedPreferences
-    final SharedPreferences.Editor editor = getSharedPreferences("Settings", MODE_PRIVATE).edit();
+    final SharedPreferences mSettings = getSharedPreferences("Settings", MODE_PRIVATE);
+    final SharedPreferences.Editor editor = mSettings.edit();
     final String username = usr.getUsername();
 
     final String[] themes = {"Default", "Green/Purple", "Orange/Teal", "Blue/Pink"};
@@ -198,28 +209,44 @@ public class MainActivity extends Activity {
           public void onClick(DialogInterface dialog, int which) {
             if (which == 0) {
               // Default
-              ThemeManager.changeToTheme(MainActivity.this, ThemeManager.THEME_DEFAULT, usr);
+              ThemeManager.changeToTheme(
+                  MainActivity.this,
+                  mSettings.getInt(username + "mode", 0),
+                  ThemeManager.THEME_DEFAULT,
+                  usr);
               // Add the theme's int to SharedPreferences
               editor.putInt(username + "theme", ThemeManager.THEME_DEFAULT);
               // Apply the save
               editor.apply();
             } else if (which == 1) {
               // Green/Purple
-              ThemeManager.changeToTheme(MainActivity.this, ThemeManager.THEME_GP, usr);
+              ThemeManager.changeToTheme(
+                  MainActivity.this,
+                  mSettings.getInt(username + "mode", 0),
+                  ThemeManager.THEME_GP,
+                  usr);
               // Add the theme's int to SharedPreferences
               editor.putInt(username + "theme", ThemeManager.THEME_GP);
               // Apply the save
               editor.apply();
             } else if (which == 2) {
               // Orange/Teal
-              ThemeManager.changeToTheme(MainActivity.this, ThemeManager.THEME_OT, usr);
+              ThemeManager.changeToTheme(
+                  MainActivity.this,
+                  mSettings.getInt(username + "mode", 0),
+                  ThemeManager.THEME_OT,
+                  usr);
               // Add the theme's int to SharedPreferences
               editor.putInt(username + "theme", ThemeManager.THEME_OT);
               // Apply the save
               editor.apply();
             } else if (which == 3) {
               // Orange/Teal
-              ThemeManager.changeToTheme(MainActivity.this, ThemeManager.THEME_BP, usr);
+              ThemeManager.changeToTheme(
+                  MainActivity.this,
+                  mSettings.getInt(username + "mode", 0),
+                  ThemeManager.THEME_BP,
+                  usr);
               // Add the theme's int to SharedPreferences
               editor.putInt(username + "theme", ThemeManager.THEME_BP);
               // Apply the save
@@ -238,6 +265,38 @@ public class MainActivity extends Activity {
     AlertDialog mDialog = mBuilder.create();
     // Show alert dialog
     mDialog.show();
+  }
+
+  /** Called when the user toggles the 'LIGHT'/'DARK' button in the settings menu */
+  public void toggleThemeMode(View view) {
+    // Setup the SharedPreferences
+    final SharedPreferences mSettings = getSharedPreferences("Settings", MODE_PRIVATE);
+    final SharedPreferences.Editor editor = mSettings.edit();
+    final String username = usr.getUsername();
+
+    ToggleButton toggleMode = findViewById(R.id.toggleThemeMode);
+    if (mSettings.getInt(username + "mode", 0) == ThemeManager.LIGHT) { // If user is on light mode
+      // Add dark mode's int to SharedPreferences
+      editor.putInt(username + "mode", ThemeManager.DARK);
+      ThemeManager.changeToTheme(
+          MainActivity.this, ThemeManager.DARK, mSettings.getInt(username + "theme", 0), usr);
+      // Apply the save
+      editor.apply();
+    } else { // If user is on dark mode
+      // Add light mode's int to SharedPreferences
+      editor.putInt(username + "mode", ThemeManager.LIGHT);
+      ThemeManager.changeToTheme(
+          MainActivity.this, ThemeManager.LIGHT, mSettings.getInt(username + "theme", 0), usr);
+      // Apply the save
+      editor.apply();
+    }
+    toggleMode.toggle(); // Toggle button mode
+    // Start MainActivity with new mode.
+    Intent intent = getIntent();
+    putUser(intent);
+    putSettingsMenu(intent);
+    startActivity(intent);
+    overridePendingTransition(0, 0); // Remove new Activity transition.
   }
 
   /** Called when the user taps the 'MAZE' button */
