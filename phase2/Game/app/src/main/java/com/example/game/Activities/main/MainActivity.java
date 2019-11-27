@@ -51,10 +51,18 @@ public class MainActivity extends Activity {
     loadLocale();
     setContentView(R.layout.activity_main);
 
-    // Set visibility of settings menu.
+    // If settings menu is visible:
     if (isSettingsMenu) {
+      // Set the settings menu to be visible
       View settingsView = findViewById(R.id.settingsView);
       settingsView.setVisibility(View.VISIBLE);
+      // Set the game buttons to be hidden
+      Button buttonMaze = findViewById(R.id.buttonMaze);
+      Button buttonLauncher = findViewById(R.id.buttonTapiocaLauncher);
+      Button buttonTiles = findViewById(R.id.buttonTiles);
+      buttonMaze.setVisibility(View.INVISIBLE);
+      buttonLauncher.setVisibility(View.INVISIBLE);
+      buttonTiles.setVisibility(View.INVISIBLE);
     }
 
     // Set toggle of light/dark mode to match user preference.
@@ -326,16 +334,32 @@ public class MainActivity extends Activity {
 
   /** Called when the user taps the Settings button; makes the settings menu visible. */
   public void openSettings(View view) {
+    // Set the settings menu to be visible
     View settingsView = findViewById(R.id.settingsView);
     settingsView.setVisibility(View.VISIBLE);
     isSettingsMenu = true;
+    // Set the game buttons to be hidden
+    Button buttonMaze = findViewById(R.id.buttonMaze);
+    Button buttonLauncher = findViewById(R.id.buttonTapiocaLauncher);
+    Button buttonTiles = findViewById(R.id.buttonTiles);
+    buttonMaze.setVisibility(View.INVISIBLE);
+    buttonLauncher.setVisibility(View.INVISIBLE);
+    buttonTiles.setVisibility(View.INVISIBLE);
   }
 
   /** Called when the user taps the 'x' button; makes the settings menu invisible. */
   public void closeSettings(View view) {
+    // Set the settings menu to be hidden
     View settingsView = findViewById(R.id.settingsView);
     settingsView.setVisibility(View.INVISIBLE);
     isSettingsMenu = false;
+    // Set the game buttons to be visible
+    Button buttonMaze = findViewById(R.id.buttonMaze);
+    Button buttonLauncher = findViewById(R.id.buttonTapiocaLauncher);
+    Button buttonTiles = findViewById(R.id.buttonTiles);
+    buttonMaze.setVisibility(View.VISIBLE);
+    buttonLauncher.setVisibility(View.VISIBLE);
+    buttonTiles.setVisibility(View.VISIBLE);
   }
 
   private void putUser(Intent intent) {
