@@ -8,7 +8,7 @@
     <string name="title_maze">Maze</string>
     <string name="buttonPlay">Play</string>
     <string name="signUp">Sign Up</string>
-    <string name="signIn">Sign In</string>
+    <string name="gisignIn">Sign In</string>
     <string name="changeLang">Language</string>
     <string name="level">"Level: "</string>
     <string name="score">"Score: "</string>
@@ -52,11 +52,18 @@
     <string name="text_game_over">Game Over</string>
     <string name="text_swipe_right">Swipe Right!</string>
     <string name="text_swipe_left">Swipe Left!</string>
-    <string name="instructions_maze">Escape the maze! The fewer steps you take the higher your score. Move your character by tapping the corresponding direction e.g. top of the screen for up.</string>
+    <string name="instructions_maze">Escape the maze! The fewer steps you take the higher your score. Move your character by tapping the arrow buttons.</string>
     <string name="NotAvailable">Not Available Yet :(</string>
     <string name="SwipeToShop">Swipe Right To Shop!</string>
     <string name="coins">Your Coins:</string>
     <string name="characters">Characters Owned:</string>
+    <string name="play_4by4">4 x 4</string>
+    <string name="text_select_mode">Select your mode:</string>
+    <string name="play_5by5">5 x 5</string>
+    <string name="text_settings">Settings</string>
+    <string name="button_settings_exit">x</string>
+    <string name="text_light">Light</string>
+    <string name="text_dark">Dark</string>
     <item type="id" name="id" />
 
     <string name="purchase">I want it!</string>

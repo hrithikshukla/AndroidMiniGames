@@ -38,12 +38,22 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
   @Override
   public void surfaceCreated(SurfaceHolder holder) {
-    boardManager = new BoardManager(context); // Instantiate new BoardManager.
+      boardManager = createBoardManager(); // Instantiate new BoardManager.
     boardManager.createBoardItems();
 
     thread.setRunning(true);
     thread.start();
   }
+
+    BoardManager createBoardManager() {
+        String boardType = gameActivity.getBoardType();
+
+        if (boardType.equals("5By5")) {
+            return new Board5By5(context);
+        } else {
+            return new Board4By4(context);
+        }
+    }
 
   @Override
   public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {}

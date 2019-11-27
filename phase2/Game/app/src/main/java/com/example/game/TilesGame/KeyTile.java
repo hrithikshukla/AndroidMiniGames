@@ -24,9 +24,20 @@ class KeyTile extends Tile {
     this.missed = missed;
   }
 
-  @Override
-  void draw(Canvas canvas) {
-    // Fill tile.
+    void draw4By4(Canvas canvas) {
+        draw(canvas); // Fill tile.
+        canvas.drawRect(x, y, x + width4By4, y + height4By4, paintRect);
+        draw4By4Border(canvas); // Draw border of tile.
+    }
+
+    void draw5By5(Canvas canvas) {
+        draw(canvas); // Fill tile.
+        canvas.drawRect(x, y, x + width5By5, y + height5By5, paintRect);
+        draw5By5Border(canvas); // Draw border of tile.
+    }
+
+    private void draw(Canvas canvas) {
+        // Set brush to fill tile.
     paintRect.setStyle(Paint.Style.FILL);
     if (missed) {
       paintRect.setColor(Color.RED);
@@ -35,8 +46,5 @@ class KeyTile extends Tile {
     } else {
       paintRect.setColor(Color.rgb(200, 200, 200));
     }
-    canvas.drawRect(x, y, x + width, y + height, paintRect);
-
-    super.draw(canvas); // Draw border of tile.
   }
 }

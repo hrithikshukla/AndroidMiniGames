@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TapiocaGameLauncher">
+    tools:context=".Activities.main.GameLauncher.TapiocaGameLauncher">
 
     <ImageView
         android:layout_width="match_parent"
@@ -63,6 +63,7 @@
         android:layout_toEndOf="@+id/highScoreText"
         android:onClick="exitToMenu"
         android:text="@string/button_exit"
+        android:textColor="?android:attr/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"

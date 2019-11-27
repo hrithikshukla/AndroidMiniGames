@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Translations made by Google translate -->
+<?xml version="1.0" encoding="utf-8"?><!-- Translations made by Google translate -->
 <resources>
     <string name="app_name">" Spiel"</string>
     <string name="button_maze">Matze</string>
@@ -9,7 +8,6 @@
     <string name="title_tiles">Fliesen!</string>
     <string name="buttonPlay">Abspielen</string>
     <string name="signUp">Anmelden</string>
-    <string name="signIn">Einloggen</string>
     <string name="changeLang">Sprache</string>
     <string name="level">"Level: "</string>
     <string name="score">"Punktzahl: "</string>
@@ -43,7 +41,7 @@
     <string name="sync_title">Synchronisieren Sie Ihre E-Mails regelmäßig</string>
     <string name="title_activity_settings">die Einstellungen</string>
     <string name="instructions_tiles">Ne touchez pas les carreaux blancs! Appuyez sur les carreaux noirs pour gagner des points. Vous perdez si vous appuyez sur une tuile blanche ou quand une tuile noire inexploitée quitte le tableau.</string>
-    <string name="instructions_maze">Entkomme dem Labyrinth! Je weniger Schritte Sie machen, desto höher ist Ihre Punktzahl. Bewegen Sie Ihren Charakter, indem Sie auf die entsprechende Richtung tippen, z. oben auf dem Bildschirm nach oben.</string>
+    <string name="instructions_maze">Entkomme dem Labyrinth! Je weniger Schritte Sie machen, desto höher ist Ihre Punktzahl. Bewegen Sie Ihren Charakter, indem Sie auf die Pfeiltasten tippen.</string>
     <string name="text_game_over">Spiel ist aus</string>
     <string name="text_swipe_right">Wische nach rechts!</string>
     <string name="text_swipe_left">Nach links wischen!</string>
@@ -52,7 +50,15 @@
     <string name="SwipeToShop">" Streichen Sie nach rechts, um einzukaufen!"</string>
     <string name="coins">" Ihre Münzen: "</string>
     <string name="characters">"Charaktere im Besitz von: "</string>
+    <string name="play_4by4">4 x 4</string>
+    <string name="play_5by5">5 x 5</string>
+    <string name="text_select_mode">Wählen Sie Ihren Modus</string>
+    <string name="text_settings">die Einstellungen</string>
+    <string name="button_settings_exit">x</string>
+    <string name="text_dark">Dunkel</string>
+    <string name="text_light">Licht</string>
     <string name="purchase">" Ich will es!"</string>
     <string name="register_button">" Registrieren"</string>
     <string name="cancel">Stornieren</string>
+    <string name="gisignIn">" Anmelden"</string>
 </resources>

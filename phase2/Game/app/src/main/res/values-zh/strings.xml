@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Translations made by Google translate -->
+<?xml version="1.0" encoding="utf-8"?><!-- Translations made by Google translate -->
 <resources>
     <string name="app_name">遊戲</string>
     <string name="button_maze">迷宮</string>
@@ -9,7 +8,6 @@
     <string name="title_tiles">瓷磚!</string>
     <string name="buttonPlay">玩</string>
     <string name="signUp">註冊</string>
-    <string name="signIn">登入</string>
     <string name="changeLang">語言</string>
     <string name="level">" 级: "</string>
     <string name="score">"得分: "</string>
@@ -44,7 +42,7 @@
     <string name="sync_title">定期同步电子邮件</string>
     <string name="title_activity_settings">设定值</string>
     <string name="instructions_tiles">" 请勿触摸白色瓷砖！点击黑色瓷砖以获取积分。如果您敲击白色瓷砖或未开发的黑色瓷砖离开电路板，则您会输。"</string>
-    <string name="instructions_maze">"逃脱迷宫！ 您采取的步骤越少，得分越高。 通过点击相应的方向来移动角色，例如 屏幕上方。"</string>
+    <string name="instructions_maze">逃脱迷宫！ 您采取的步骤越少，得分越高。 通过点击箭头按钮来移动角色。</string>
     <string name="text_game_over">游戏结束</string>
     <string name="text_swipe_left">向左滑动！</string>
     <string name="text_swipe_right">向右滑动！</string>
@@ -53,6 +51,14 @@
     <string name="SwipeToShop">向右滑動即可購物！</string>
     <string name="coins">"您的硬幣： "</string>
     <string name="characters">" 擁有的角色： "</string>
+    <string name="play_4by4">4 x 4</string>
+    <string name="text_select_mode">选择你的模式</string>
+    <string name="play_5by5">5 x 5</string>
+    <string name="text_settings">设定值</string>
+    <string name="button_settings_exit">x</string>
+    <string name="text_dark">暗</string>
+    <string name="text_light">光</string>
     <string name="purchase">" 我要它！"</string>
     <string name="cancel">" 取消"</string>
+    <string name="gisignIn">" 登入"</string>
 </resources>

@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Translations made by Google translate -->
+<?xml version="1.0" encoding="utf-8"?><!-- Translations made by Google translate -->
 <resources>
     <string name="app_name">لعبه</string>
     <string name="MazeScore">المتاهة درجة عالية:</string>
@@ -23,7 +22,7 @@
     <string name="change_theme">موضوع</string>
     <string name="create_account">خلق</string>
     <string name="highScore">درجة عالية:</string>
-    <string name="instructions_maze">الهروب من المتاهة! الخطوات القليلة التي تتخذها أعلى درجاتك. حرك شخصيتك عن طريق النقر على الاتجاه المقابل ، على سبيل المثال أعلى الشاشة لمدة تصل.</string>
+    <string name="instructions_maze">الهروب من المتاهة! الخطوات القليلة التي تتخذها أعلى درجاتك. حرك شخصيتك من خلال النقر على أزرار الأسهم.</string>
     <string name="instructions_tiles">لا تلمس البلاط الأبيض! اضغط على البلاط الأسود لكسب النقاط. ستفقد إذا قمت بالنقر فوق بلاطة بيضاء أو عندما يترك بلاطة سوداء غير مستغلة اللوحة.</string>
     <string name="level">مستوى:</string>
     <string name="login_button">تسجيل الدخول</string>
@@ -34,7 +33,6 @@
     <string name="reply_title">إجراء الرد الافتراضي</string>
     <string name="score">أحرز هدفا:</string>
     <string name="select_game">اختر لعبتك</string>
-    <string name="signIn">تسجيل الدخول</string>
     <string name="signUp">سجل</string>
     <string name="signature_title">توقيعك</string>
     <string name="steps">خطوات:</string>
@@ -53,6 +51,14 @@
     <string name="SwipeToShop">انتقد اليمين للتسوق!</string>
     <string name="coins">"عملاتك المعدنية: "</string>
     <string name="characters">"الشخصيات المملوكة: "</string>
+    <string name="play_4by4">4 x 4</string>
+    <string name="text_select_mode">حدد وضعك</string>
+    <string name="play_5by5">5 x 5</string>
+    <string name="text_settings">الإعدادات</string>
+    <string name="button_settings_exit">x</string>
+    <string name="text_dark">داكن</string>
+    <string name="text_light">ضوء</string>
     <string name="purchase">أريدها!</string>
     <string name="cancel">إلغاء</string>
+    <string name="gisignIn">تسجيل الدخول</string>
 </resources>

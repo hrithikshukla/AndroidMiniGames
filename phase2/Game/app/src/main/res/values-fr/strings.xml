@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Translations made by Google translate -->
+<?xml version="1.0" encoding="utf-8"?><!-- Translations made by Google translate -->
 <resources>
     <string name="app_name">Jeu</string>
     <string name="button_maze">Labyrinthe</string>
@@ -9,11 +8,10 @@
     <string name="title_tiles">Carrelage!</string>
     <string name="buttonPlay">Jouer</string>
     <string name="signUp">S\'inscrire</string>
-    <string name="signIn">S\'identifier</string>
     <string name="changeLang">Langue</string>
     <string name="level">"Niveau: "</string>
     <string name="score">"Score: "</string>
-    <string name="highScore">"Score élevé: "</string>
+    <string name="highScore">Score élevé</string>
     <string name="create_account">S\'inscrire</string>
     <string name="register_button">S\'inscrire</string>
     <string name="password">Mot de passe</string>
@@ -44,7 +42,7 @@
     <string name="reply_title">Action de réponse par défaut</string>
     <string name="messages_header">Messages</string>
     <string name="instructions_tiles">Ne touchez pas les carreaux blancs! Appuyez sur les carreaux noirs pour gagner des points. Vous perdez si vous appuyez sur une tuile blanche ou quand une tuile noire inexploitée quitte le tableau.</string>
-    <string name="instructions_maze">Échapper au labyrinthe! Moins vous faites d’étapes, plus votre score est élevé. Déplacez votre personnage en appuyant sur la direction correspondante, par exemple. haut de l\'écran pour up.</string>
+    <string name="instructions_maze">Échapper au labyrinthe! Moins vous faites d’étapes, plus votre score est élevé. Déplacez votre personnage en appuyant sur les boutons fléchés.</string>
     <string name="text_game_over">Jeu terminé</string>
     <string name="text_swipe_left">Glissez à gauche!</string>
     <string name="text_swipe_right">Glisser à droite!</string>
@@ -53,6 +51,14 @@
     <string name="SwipeToShop">" Balayez à droite pour magasiner"</string>
     <string name="coins">"Vos pièces de monnaie: "</string>
     <string name="characters">" Caractères possédés: "</string>
+    <string name="play_4by4">4 x 4</string>
+    <string name="text_select_mode">Sélectionnez votre mode</string>
+    <string name="play_5by5">5 x 5</string>
+    <string name="text_settings">Paramètres</string>
+    <string name="button_settings_exit">x</string>
+    <string name="text_dark">Sombre</string>
+    <string name="text_light">Lumière</string>
     <string name="purchase">Je le veux!</string>
     <string name="cancel">" Annuler"</string>
+    <string name="gisignIn">" se connecter"</string>
 </resources>

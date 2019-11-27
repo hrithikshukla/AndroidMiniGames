@@ -2,8 +2,8 @@ package com.example.game.MazeGame;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Rect;
 import android.view.SurfaceHolder;
 
 import com.example.game.MazeGame.DataStructures.Background;
@@ -11,6 +11,7 @@ import com.example.game.MazeGame.DataStructures.Cell;
 import com.example.game.MazeGame.DataStructures.NewGameState;
 import com.example.game.R;
 
+import java.util.HashMap;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -18,14 +19,16 @@ import java.util.Observer;
 public class VisualView implements Observer, Gameover {
 
   private Cell[][] grid; // Representation of the Maze grid object.
-  private Paint backgroundPaint, textPaint;
+
+    // Dependency injected in
+    private Paint backgroundPaint, textPaint;
   private Tile tile;
   private Background background;
   private SurfaceHolder surfaceHolder;
   private Context context;
+    private int maxScreenX, maxScreenY;
 
-  // Maximum x and y positions of the screen.
-  private int maxScreenX, maxscreenY;
+    private HashMap<String, Rect> arrowKeyRects;
 
   private int score;
   private int numSteps;
@@ -33,25 +36,39 @@ public class VisualView implements Observer, Gameover {
   private boolean gameOver;
 
   /**
-   * @param maxScreenX - maximum x position of the screen
-   * @param maxScreenY - maximum y position of the screen
+   * @param context - the context from a GameView object
+   * @param surfaceHolder - the SurfaceHolder from a GameView object
+   * @param tile - used for drawing tiles
+   * @param background - used for drawing the background
+   * @param maxScreenX - maximum x-position of the screen
+   * @param maxScreenY - maximum y-position of the screen
+   * @param textPaint - Paint object used for drawing text
+   * @param backgroundPaint - Paint object used for drawing the background
+   * @param arrowKeyRects
    */
-  VisualView(int maxScreenX, int maxScreenY, Context context, SurfaceHolder surfaceHolder) {
-    this.maxScreenX = maxScreenX;
-    this.maxscreenY = maxScreenY;
+  VisualView(
+          Context context,
+          SurfaceHolder surfaceHolder,
+          Tile tile,
+          Background background,
+          int maxScreenX,
+          int maxScreenY,
+          Paint textPaint,
+          Paint backgroundPaint,
+          HashMap<String, Rect> arrowKeyRects) {
 
     this.context = context;
-    this.tile = new Tile(context.getResources());
-    this.background = new Background(maxScreenX, maxScreenY, context.getResources());
-
     this.surfaceHolder = surfaceHolder;
+      this.tile = tile;
+      this.background = background;
 
-    this.backgroundPaint = new Paint();
+      this.maxScreenX = maxScreenX;
+      this.maxScreenY = maxScreenY;
 
-    // Set colors and size of text.
-    this.textPaint = new Paint();
-    textPaint.setColor(Color.GREEN);
-    textPaint.setTextSize(32);
+      this.textPaint = textPaint;
+      this.backgroundPaint = backgroundPaint;
+
+      this.arrowKeyRects = arrowKeyRects;
   }
 
   /** Draws the UI of the Maze. */
@@ -66,6 +83,7 @@ public class VisualView implements Observer, Gameover {
           background.getBackground(), background.getX(), background.getY(), backgroundPaint);
       drawTiles(canvas);
       drawText(canvas);
+        drawArrows(canvas);
 
       surfaceHolder.unlockCanvasAndPost(canvas);
     }
@@ -84,7 +102,7 @@ public class VisualView implements Observer, Gameover {
     // Following two lines represents the x and y position of the first Tile of the Maze,
     // i.e. grid[0][0].
     int topLeftTileX = (maxScreenX - grid[0].length * tile.getSideLength()) / 2;
-    int topLeftTileY = (maxscreenY - grid.length * tile.getSideLength()) / 2;
+      int topLeftTileY = (maxScreenY - grid.length * tile.getSideLength()) / 2;
 
     // Draw every Tile of the Maze. An offset of a Tile's side length ensures that each
     // Tile is drawn right next to each other.
@@ -99,6 +117,29 @@ public class VisualView implements Observer, Gameover {
     }
   }
 
+    /**
+     * Draws the 4 arrow buttons onto the screen.
+     */
+    private void drawArrows(Canvas canvas) {
+        drawArrow(canvas, "left");
+        drawArrow(canvas, "right");
+        drawArrow(canvas, "up");
+        drawArrow(canvas, "down");
+    }
+
+    /**
+     * Draws the arrow corresponding to the given arrow string on the screen.
+     *
+     * @param arrow - the arrow to draw
+     */
+    private void drawArrow(Canvas canvas, String arrow) {
+        canvas.drawBitmap(
+                background.getArrow(arrow),
+                arrowKeyRects.get(arrow).left,
+                arrowKeyRects.get(arrow).top,
+                backgroundPaint);
+    }
+
   /** @param o most recent representation of the Maze. */
   @Override
   public void update(Observable observable, Object o) {
@@ -111,6 +152,10 @@ public class VisualView implements Observer, Gameover {
 
   @Override
   public boolean isGameOver() {
-    return gameOver;
+      return gameOver;
   }
+
+    Background getBackground() {
+        return background;
+    }
 }

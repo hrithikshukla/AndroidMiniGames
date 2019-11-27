@@ -19,14 +19,11 @@ public class InputView extends Observable implements Observer, Gameover {
    */
   private Rect moveLeft, moveRight, moveUp, moveDown;
 
-  InputView(int maxScreenX, int maxScreenY) {
-    int horizontalWidth = maxScreenX / 4;
-    int verticalHeight = maxScreenY / 2;
-    this.moveLeft = new Rect(0, 0, horizontalWidth, maxScreenY);
-    this.moveRight = new Rect(maxScreenX - horizontalWidth, 0, maxScreenX, maxScreenY);
-    this.moveUp = new Rect(horizontalWidth, 0, maxScreenX - horizontalWidth, verticalHeight);
-    this.moveDown =
-        new Rect(horizontalWidth, verticalHeight, maxScreenX - horizontalWidth, maxScreenY);
+    InputView(Rect moveLeft, Rect moveRight, Rect moveUp, Rect moveDown) {
+        this.moveLeft = moveLeft;
+        this.moveRight = moveRight;
+        this.moveUp = moveUp;
+        this.moveDown = moveDown;
   }
 
   /**

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StatsActivity">
+    tools:context=".Activities.main.StatsActivity">
 
     <TextView
         android:id="@+id/textSwipeLeft"
@@ -125,6 +125,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginBottom="25dp"
         android:text="@string/Reset"
+        android:textColor="?android:attr/colorPrimaryDark"
         app:layout_constraintBottom_toTopOf="@+id/ArrowLeft"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

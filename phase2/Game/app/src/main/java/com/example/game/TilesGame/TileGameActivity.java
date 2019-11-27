@@ -13,10 +13,13 @@ import com.example.game.Save.User;
 public class TileGameActivity extends AppCompatActivity {
   User usr;
 
+    String boardType;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     usr = (User) getIntent().getSerializableExtra("UserObject");
+      boardType = (String) getIntent().getSerializableExtra("BoardType");
     requestWindowFeature(Window.FEATURE_NO_TITLE);
     getWindow()
         .setFlags(
@@ -24,6 +27,10 @@ public class TileGameActivity extends AppCompatActivity {
     GameView.setGameActivity(this);
     setContentView(new GameView(this)); // Instantiates new GameView.
   }
+
+    String getBoardType() {
+        return boardType;
+    }
 
   /** Called when the user loses and the game ends. */
   public void endTilesGame(GameView gameView) {
@@ -36,6 +43,7 @@ public class TileGameActivity extends AppCompatActivity {
     intent.putExtra("GAME_SCORE", message);
     usr.getUserData().setPrefs(null);
     intent.putExtra("UserObject", usr);
+      intent.putExtra("BoardType", boardType);
     startActivity(intent);
   }
 

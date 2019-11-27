@@ -34,7 +34,7 @@ public class ShopActivity extends AppCompatActivity {
 
         ImageView arrow = findViewById(R.id.toMain);
 
-        // Code based on https://stackoverflow.com/a/24256id06/id0322608
+        // Code based on https://stackoverflow.com/a/24256106/10322608
         arrow.setOnTouchListener( // Swipe back to main screen
                 new OnSwipeTouchListener(ShopActivity.this) {
                     @Override
@@ -139,5 +139,4 @@ public class ShopActivity extends AppCompatActivity {
             img.setTag("");
         }
     }
-
 }

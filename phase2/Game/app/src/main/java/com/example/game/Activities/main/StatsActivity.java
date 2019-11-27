@@ -27,7 +27,10 @@ public class StatsActivity extends AppCompatActivity {
     // Set the theme.
     String username = usr.getUsername();
     SharedPreferences mSettings = this.getSharedPreferences("Settings", MODE_PRIVATE);
-    ThemeManager.setTheme(StatsActivity.this, mSettings.getInt(username + "theme", 0));
+      ThemeManager.setTheme(
+              StatsActivity.this,
+              mSettings.getInt(username + "mode", 0),
+              mSettings.getInt(username + "theme", 0));
 
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_stats);
