@@ -28,8 +28,8 @@ public class GameController implements Observer, Gameover {
   private void updateModel(Movement mov) {
     if (!isGameOver()) {
       Pair<Integer, Integer> movement_vector = movementMap.get(mov);
-      // Don't want to update score if player isn't moving.
-      if (mov != Movement.AFK && boundaryCheck(movement_vector)) {
+        // Don't want to update score if player isn't moving.
+        if (mov != Movement.AFK && boundaryCheck(movement_vector)) {
         gameFacade.update(movement_vector);
       }
     }

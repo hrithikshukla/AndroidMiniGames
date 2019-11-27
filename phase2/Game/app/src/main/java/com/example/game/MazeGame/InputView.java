@@ -19,11 +19,11 @@ public class InputView extends Observable implements Observer, Gameover {
    */
   private Rect moveLeft, moveRight, moveUp, moveDown;
 
-  InputView(Rect moveLeft, Rect moveRight, Rect moveUp, Rect moveDown) {
-    this.moveLeft = moveLeft;
-    this.moveRight = moveRight;
-    this.moveUp = moveUp;
-    this.moveDown = moveDown;
+    InputView(Rect moveLeft, Rect moveRight, Rect moveUp, Rect moveDown) {
+        this.moveLeft = moveLeft;
+        this.moveRight = moveRight;
+        this.moveUp = moveUp;
+        this.moveDown = moveDown;
   }
 
   /**

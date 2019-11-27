@@ -13,19 +13,29 @@ import java.util.Random;
 
 import static android.content.Context.MODE_PRIVATE;
 
-/** An abstract board manager class that should not be instantiated. * */
+/**
+ * An abstract board manager class that should not be instantiated. *
+ */
 abstract class BoardManager extends ClassLoader {
 
-  /** The width of a tile. (Default is 4X4) */
-  int tileWidth = Tile.getWidth4By4();
+    /**
+     * The width of a tile. (Default is 4X4)
+     */
+    int tileWidth = Tile.getWidth4By4();
 
-  /** The height of a tile. (Default is 4X4) */
-  int tileHeight = Tile.getHeight4By4();
+    /**
+     * The height of a tile. (Default is 4X4)
+     */
+    int tileHeight = Tile.getHeight4By4();
 
-  /** The width of this board. (Default is 4X4 board) */
+    /**
+     * The width of this board. (Default is 4X4 board)
+     */
   private int boardWidth = 4 * tileWidth;
 
-  /** The height of this board. (Default is 4X4 board) */
+    /**
+     * The height of this board. (Default is 4X4 board)
+     */
   private int boardHeight = 4 * tileHeight;
 
   /** A list of all tiles on this board. */
@@ -37,7 +47,7 @@ abstract class BoardManager extends ClassLoader {
   /** A boolean representing whether the game has ended. */
   private boolean gameEnd = false;
 
-  ScoreManager scoreManager;
+    ScoreManager scoreManager;
 
   /** Construct a board manager. */
   BoardManager(Context context) {
@@ -85,24 +95,26 @@ abstract class BoardManager extends ClassLoader {
 
   /** Draw the items in a board. */
   void draw(Canvas canvas) {
-    // Draw tiles.
-    for (ArrayList<Tile> tileRow : tileBoard) {
-      for (Tile tile : tileRow) {
-        tile.draw4By4(canvas);
+      // Draw tiles.
+      for (ArrayList<Tile> tileRow : tileBoard) {
+          for (Tile tile : tileRow) {
+              tile.draw4By4(canvas);
+          }
       }
-    }
-    // Draw score.
-    drawScore(canvas);
+      // Draw score.
+      drawScore(canvas);
   }
 
-  /** Draw the score. */
-  void drawScore(Canvas canvas) {
-    Paint paint = new Paint();
-    paint.setTypeface(Typeface.DEFAULT_BOLD);
-    paint.setTextSize(80);
-    paint.setColor(Color.MAGENTA);
-    canvas.drawText(scoreManager.getScore() + "", (2 * tileWidth - 35), 150, paint);
-  }
+    /**
+     * Draw the score.
+     */
+    void drawScore(Canvas canvas) {
+        Paint paint = new Paint();
+        paint.setTypeface(Typeface.DEFAULT_BOLD);
+        paint.setTextSize(80);
+        paint.setColor(Color.MAGENTA);
+        canvas.drawText(scoreManager.getScore() + "", (2 * tileWidth - 35), 150, paint);
+    }
 
   /**
    * Mark the tile at location (x, y) as touched.

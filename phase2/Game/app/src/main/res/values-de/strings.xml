@@ -8,13 +8,11 @@
     <string name="title_tiles">Fliesen!</string>
     <string name="buttonPlay">Abspielen</string>
     <string name="signUp">Anmelden</string>
-    <string name="signIn">Einloggen</string>
     <string name="changeLang">Sprache</string>
     <string name="level">"Level: "</string>
     <string name="score">"Punktzahl: "</string>
     <string name="highScore">"Hohe Punktzahl: "</string>
     <string name="create_account">" Registrieren"</string>
-    <string name="register_button">" Registrieren"</string>
     <string name="login_button">" Anmeldung"</string>
     <string name="password">" Passwort"</string>
     <string name="password2">" Passwort"</string>
@@ -59,4 +57,8 @@
     <string name="button_settings_exit">x</string>
     <string name="text_dark">Dunkel</string>
     <string name="text_light">Licht</string>
+    <string name="purchase">" Ich will es!"</string>
+    <string name="register_button">" Registrieren"</string>
+    <string name="cancel">Stornieren</string>
+    <string name="gisignIn">" Anmelden"</string>
 </resources>

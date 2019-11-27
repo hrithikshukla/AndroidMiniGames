@@ -25,9 +25,9 @@ public class GameOverActivity extends AppCompatActivity {
     String username = usr.getUsername();
     SharedPreferences mSettings = this.getSharedPreferences("Settings", MODE_PRIVATE);
     ThemeManager.setTheme(
-        GameOverActivity.this,
-        mSettings.getInt(username + "mode", 0),
-        mSettings.getInt(username + "theme", 0));
+            GameOverActivity.this,
+            mSettings.getInt(username + "mode", 0),
+            mSettings.getInt(username + "theme", 0));
 
     super.onCreate(savedInstanceState);
     setContentView(R.layout.gameover_activity);

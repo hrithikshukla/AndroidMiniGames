@@ -11,11 +11,11 @@ public class GameView extends SurfaceView implements Runnable, Gameover {
   private Thread thread;
   private boolean isPlaying;
 
-  // inputView and visualView are dependency injected via methods.
-  private InputView inputView; // View subcomponent dealing with user input.
+    // inputView and visualView are dependency injected via methods.
+    private InputView inputView; // View subcomponent dealing with user input.
   private VisualView visualView; // View subcomponent dealing with drawing the screen.
 
-  public GameView(Context context) {
+    public GameView(Context context) {
     super(context);
   }
 
@@ -57,32 +57,32 @@ public class GameView extends SurfaceView implements Runnable, Gameover {
     }
   }
 
-  /**
-   * Setter for inputView
-   *
-   * @param inputView the inputView to be injected
-   */
-  void setInputView(InputView inputView) {
-    this.inputView = inputView;
-  }
+    /**
+     * Setter for inputView
+     *
+     * @param inputView the inputView to be injected
+     */
+    void setInputView(InputView inputView) {
+        this.inputView = inputView;
+    }
 
-  /**
-   * Setter for visualView
-   *
-   * @param visualView the visualView to be injected
-   */
-  void setVisualView(VisualView visualView) {
-    this.visualView = visualView;
-  }
+    /**
+     * Setter for visualView
+     *
+     * @param visualView the visualView to be injected
+     */
+    void setVisualView(VisualView visualView) {
+        this.visualView = visualView;
+    }
 
-  /**
-   * Getter for GameView's SurfaceHolder object.
-   *
-   * @return SurfaceHolder object of GameView
-   */
-  SurfaceHolder getSurfaceHolder() {
-    return getHolder();
-  }
+    /**
+     * Getter for GameView's SurfaceHolder object.
+     *
+     * @return SurfaceHolder object of GameView
+     */
+    SurfaceHolder getSurfaceHolder() {
+        return getHolder();
+    }
 
   /**
    * Registers a touch event by the user and passes it to inputView.

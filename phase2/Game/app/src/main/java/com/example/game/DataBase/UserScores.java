@@ -21,17 +21,17 @@ public class UserScores {
       onDelete = ForeignKey.CASCADE)
   private String userName;
   private int score;
-  private int timeSpent;
+    private int timeSpent;
 
 
   @ColumnInfo(name = "game_type")
   private String gameType;
 
-  public UserScores(String userName, int score, String gameType, int timeSpent) {
+    public UserScores(String userName, int score, String gameType, int timeSpent) {
     this.userName = userName;
     this.score = score;
     this.gameType = gameType;
-    this.timeSpent = timeSpent;
+        this.timeSpent = timeSpent;
   }
 
   public void setId(int id) {
@@ -66,11 +66,11 @@ public class UserScores {
     this.gameType = gameType;
   }
 
-  public int getTimeSpent() {
-    return timeSpent;
-  }
+    public int getTimeSpent() {
+        return timeSpent;
+    }
 
-  public void setTimeSpent(int timeSpent) {
-    this.timeSpent = timeSpent;
-  }
+    public void setTimeSpent(int timeSpent) {
+        this.timeSpent = timeSpent;
+    }
 }

@@ -8,7 +8,6 @@
     <string name="title_tiles">瓷磚!</string>
     <string name="buttonPlay">玩</string>
     <string name="signUp">註冊</string>
-    <string name="signIn">登入</string>
     <string name="changeLang">語言</string>
     <string name="level">" 级: "</string>
     <string name="score">"得分: "</string>
@@ -59,4 +58,7 @@
     <string name="button_settings_exit">x</string>
     <string name="text_dark">暗</string>
     <string name="text_light">光</string>
+    <string name="purchase">" 我要它！"</string>
+    <string name="cancel">" 取消"</string>
+    <string name="gisignIn">" 登入"</string>
 </resources>

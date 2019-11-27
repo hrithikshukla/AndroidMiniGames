@@ -16,7 +16,7 @@ import com.example.game.Activities.main.ThemeManager;
 
 public class GameFinish extends AppCompatActivity {
   User usr;
-  String boardType;
+    String boardType;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -24,13 +24,13 @@ public class GameFinish extends AppCompatActivity {
     usr = (User) getIntent().getSerializableExtra("UserObject");
     String username = usr.getUsername();
     SharedPreferences mSettings = this.getSharedPreferences("Settings", MODE_PRIVATE);
-    ThemeManager.setTheme(
-        GameFinish.this,
-        mSettings.getInt(username + "mode", 0),
-        mSettings.getInt(username + "theme", 0));
+      ThemeManager.setTheme(
+              GameFinish.this,
+              mSettings.getInt(username + "mode", 0),
+              mSettings.getInt(username + "theme", 0));
 
-    // Get the Tiles mode that was just played.
-    boardType = (String) getIntent().getSerializableExtra("BoardType");
+      // Get the Tiles mode that was just played.
+      boardType = (String) getIntent().getSerializableExtra("BoardType");
 
     super.onCreate(savedInstanceState);
     requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -58,8 +58,8 @@ public class GameFinish extends AppCompatActivity {
 
   /** Called when the user taps the 'EXIT' button */
   public void exitToMenu(View view) {
-    Intent intent =
-        new Intent(this, com.example.game.Activities.main.GameLauncher.TilesGameLauncher.class);
+      Intent intent =
+              new Intent(this, com.example.game.Activities.main.GameLauncher.TilesGameLauncher.class);
     usr.getUserData().setPrefs(null);
     intent.putExtra("UserObject", usr);
     startActivity(intent);
@@ -70,7 +70,7 @@ public class GameFinish extends AppCompatActivity {
     Intent intent = new Intent(this, com.example.game.TilesGame.TileGameActivity.class);
     usr.getUserData().setPrefs(null);
     intent.putExtra("UserObject", usr);
-    intent.putExtra("BoardType", boardType);
+      intent.putExtra("BoardType", boardType);
     startActivity(intent);
   }
 }

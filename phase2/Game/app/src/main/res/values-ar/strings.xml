@@ -33,7 +33,6 @@
     <string name="reply_title">إجراء الرد الافتراضي</string>
     <string name="score">أحرز هدفا:</string>
     <string name="select_game">اختر لعبتك</string>
-    <string name="signIn">تسجيل الدخول</string>
     <string name="signUp">سجل</string>
     <string name="signature_title">توقيعك</string>
     <string name="steps">خطوات:</string>
@@ -59,4 +58,7 @@
     <string name="button_settings_exit">x</string>
     <string name="text_dark">داكن</string>
     <string name="text_light">ضوء</string>
+    <string name="purchase">أريدها!</string>
+    <string name="cancel">إلغاء</string>
+    <string name="gisignIn">تسجيل الدخول</string>
 </resources>

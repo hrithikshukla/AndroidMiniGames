@@ -9,7 +9,7 @@ import androidx.room.PrimaryKey;
 public class UserAccount {
   @PrimaryKey @NonNull private String userName;
   private String password;
-  private int amount;
+    private int amount;
 
   public UserAccount(String userName, String password) {
     this.userName = userName;
@@ -24,11 +24,11 @@ public class UserAccount {
     return password;
   }
 
-  public int getAmount() {
-    return amount;
-  }
+    public int getAmount() {
+        return amount;
+    }
 
-  public void setAmount(int amount) {
-    this.amount = amount;
-  }
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
 }
