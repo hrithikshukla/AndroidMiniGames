@@ -53,5 +53,8 @@
     <string name="coins">" Ihre Münzen: "</string>
     <string name="characters">"Charaktere im Besitz von: "</string>
     <string name="play_4by4">4 x 4</string>
+    <string name="play_5by5">5 x 5</string>
     <string name="text_select_mode">Wählen Sie Ihren Modus</string>
+    <string name="text_settings">die Einstellungen</string>
+    <string name="button_settings_exit">x</string>
 </resources>
