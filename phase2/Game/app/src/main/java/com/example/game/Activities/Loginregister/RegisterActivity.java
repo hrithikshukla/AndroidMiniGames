@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.game.DataBase.UserRepository;
 import com.example.game.R;
 import com.example.game.Save.AccountsManager;
 
@@ -39,24 +40,41 @@ public class RegisterActivity extends AppCompatActivity {
         // Empty usernames are illegal an the user is informed.
         if (usernameString.equals("")) {
             Toast.makeText(getApplicationContext(), "Input a username", Toast.LENGTH_LONG).show();
+            return;
         }
 
         // Empty passwords are illegal and the user is informed.
         else if (passwordString.equals("")) {
             Toast.makeText(getApplicationContext(), "Input a password", Toast.LENGTH_LONG).show();
-        } else if (accountsManager.createUser(usernameString, passwordString)) {
-            // Informs the user that their account is created.
+            return;
+        }
+
+        UserRepository userRepository = new UserRepository(this, usernameString,
+                passwordString);
+        if (userRepository.addUser()){
             Toast.makeText(
                     getApplicationContext(),
                     String.format("New user %s created", usernameString),
                     Toast.LENGTH_LONG)
                     .show();
             Intent loginIntent = new Intent(RegisterActivity.this, LoginActivity.class);
+            loginIntent.putExtra("USERNAME", usernameString);
             startActivity(loginIntent);
         }
-        // Informs the user that their input username is already an existing user.
+        //   Informs the user that their input username is already an existing user.
         else {
             Toast.makeText(getApplicationContext(), "User already exists", Toast.LENGTH_LONG).show();
         }
+
+        //        else if (accountsManager.createUser(usernameString, passwordString)) {
+//            // Informs the user that their account is created.
+//            Toast.makeText(
+//                    getApplicationContext(),
+//                    String.format("New user %s created", usernameString),
+//                    Toast.LENGTH_LONG)
+//                    .show();
+//            Intent loginIntent = new Intent(RegisterActivity.this, LoginActivity.class);
+//            startActivity(loginIntent);
+//        }
     }
 }

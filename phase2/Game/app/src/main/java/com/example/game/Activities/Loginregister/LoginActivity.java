@@ -11,6 +11,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.Activities.main.MainActivity;
+import com.example.game.DataBase.UserAccount;
+import com.example.game.DataBase.UserRepository;
 import com.example.game.R;
 import com.example.game.Save.AccountsManager;
 import com.example.game.Save.JSONData;
@@ -54,19 +56,28 @@ public class LoginActivity extends AppCompatActivity {
   public void goToMainActivity(View view) {
     username = findViewById(R.id.username);
     password = findViewById(R.id.password);
-    System.out.println("random String");
-    System.out.println(username.getText().toString().trim());
-    System.out.println(password.getText().toString().trim());
-    User usr =
-        accountsManager.login(
-            username.getText().toString().trim(), password.getText().toString().trim());
-    if (usr != null) {
-      Intent mainActivityIntent =
-          new Intent(LoginActivity.this, MainActivity.class);
-      mainActivityIntent.putExtra("UserObject", usr);
+    String u = username.getText().toString().trim();
+    String p = password.getText().toString().trim();
+    UserRepository userRepository = new UserRepository(this, u, p);
+    if (userRepository.validateCredentials()) {
+      Intent mainActivityIntent = new Intent(LoginActivity.this, MainActivity.class);
+      mainActivityIntent.putExtra("USERNAME", u);
       startActivity(mainActivityIntent);
     } else {
       Toast.makeText(getApplicationContext(), "Invalid Login", Toast.LENGTH_LONG).show();
     }
-  };
+  }
+
+  //    User usr =
+  //        accountsManager.login(
+  //            username.getText().toString().trim(), password.getText().toString().trim());
+  //    if (usr != null) {
+  //      Intent mainActivityIntent =
+  //          new Intent(LoginActivity.this, MainActivity.class);
+  //      mainActivityIntent.putExtra("UserObject", usr);
+  //      startActivity(mainActivityIntent);
+  //    } else {
+  //      Toast.makeText(getApplicationContext(), "Invalid Login", Toast.LENGTH_LONG).show();
+  //    }
+  //  };
 }
