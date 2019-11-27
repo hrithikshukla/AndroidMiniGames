@@ -52,7 +52,7 @@
     <string name="text_game_over">Game Over</string>
     <string name="text_swipe_right">Swipe Right!</string>
     <string name="text_swipe_left">Swipe Left!</string>
-    <string name="instructions_maze">Escape the maze! The fewer steps you take the higher your score. Move your character by tapping the corresponding direction e.g. top of the screen for up.</string>
+    <string name="instructions_maze">Escape the maze! The fewer steps you take the higher your score. Move your character by tapping the arrow buttons.</string>
     <string name="NotAvailable">Not Available Yet :(</string>
     <string name="SwipeToShop">Swipe Right To Shop!</string>
     <string name="coins">Your Coins:</string>

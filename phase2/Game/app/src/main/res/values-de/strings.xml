@@ -43,7 +43,7 @@
     <string name="sync_title">Synchronisieren Sie Ihre E-Mails regelmäßig</string>
     <string name="title_activity_settings">die Einstellungen</string>
     <string name="instructions_tiles">Ne touchez pas les carreaux blancs! Appuyez sur les carreaux noirs pour gagner des points. Vous perdez si vous appuyez sur une tuile blanche ou quand une tuile noire inexploitée quitte le tableau.</string>
-    <string name="instructions_maze">Entkomme dem Labyrinth! Je weniger Schritte Sie machen, desto höher ist Ihre Punktzahl. Bewegen Sie Ihren Charakter, indem Sie auf die entsprechende Richtung tippen, z. oben auf dem Bildschirm nach oben.</string>
+    <string name="instructions_maze">Entkomme dem Labyrinth! Je weniger Schritte Sie machen, desto höher ist Ihre Punktzahl. Bewegen Sie Ihren Charakter, indem Sie auf die Pfeiltasten tippen.</string>
     <string name="text_game_over">Spiel ist aus</string>
     <string name="text_swipe_right">Wische nach rechts!</string>
     <string name="text_swipe_left">Nach links wischen!</string>
