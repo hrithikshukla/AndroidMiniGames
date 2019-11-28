@@ -11,7 +11,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 /** The controller of our game, handles user inputs and handles game logic */
-public class GameController implements Observer, Gameover {
+public class GameController implements Observer {
 
   // A gameFacade which is the model of our game
   private GameFacade gameFacade;
@@ -26,10 +26,10 @@ public class GameController implements Observer, Gameover {
 
   // Only update the model if the game isn't over i.e. the player hasn't escaped.
   private void updateModel(Movement mov) {
-    if (!isGameOver()) {
+    if (!gameFacade.isGameOver()) {
       Pair<Integer, Integer> movement_vector = movementMap.get(mov);
-        // Don't want to update score if player isn't moving.
-        if (mov != Movement.AFK && boundaryCheck(movement_vector)) {
+      // Don't want to update score if player isn't moving.
+      if (mov != Movement.AFK && boundaryCheck(movement_vector)) {
         gameFacade.update(movement_vector);
       }
     }
@@ -75,10 +75,5 @@ public class GameController implements Observer, Gameover {
   @Override
   public void update(Observable observable, Object o) {
     updateModel((Movement) o);
-  }
-
-  @Override
-  public boolean isGameOver() {
-    return gameFacade.isGameOver();
   }
 }

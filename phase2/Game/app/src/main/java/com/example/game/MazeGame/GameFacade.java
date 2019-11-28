@@ -12,7 +12,7 @@ import java.util.Observable;
 /**
  * A facade class of the game that contains an instance of maze and player i.e the model of our game
  */
-public class GameFacade extends Observable implements Gameover {
+public class GameFacade extends Observable {
 
   // Player in the game
   private Player player;
@@ -68,8 +68,7 @@ public class GameFacade extends Observable implements Gameover {
   }
 
   /** Return whether the player is at the Maze exit. */
-  @Override
-  public boolean isGameOver() {
+  boolean isGameOver() {
     int[] exit = maze.getExit();
     return getPlayer().isAt(exit[0], exit[1]);
   }
