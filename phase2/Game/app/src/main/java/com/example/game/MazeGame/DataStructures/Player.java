@@ -1,9 +1,9 @@
 package com.example.game.MazeGame.DataStructures;
 
-import java.util.ArrayList;
+import java.util.Observable;
 
 /** Represents the player in a maze. */
-public class Player {
+public class Player extends Observable {
 
   /** Position of the player. */
   private int posX;
@@ -12,9 +12,6 @@ public class Player {
 
   /** Number of steps the player has taken. */
   private int numSteps;
-
-  /** Powerups the player currently is affected by. */
-  private ArrayList<Powerup> powerups;
 
   /** Player's score. */
   private Score score;
@@ -30,47 +27,20 @@ public class Player {
     this.posY = y;
     this.numSteps = 0;
     this.score = score;
-    this.powerups = new ArrayList<>();
-  }
-
-  /** Getter for the powerups player is affected by. */
-  public ArrayList<Powerup> getPowerups() {
-    return powerups;
   }
 
   /**
-   * Adds the given powerup to the list of powerups affecting the player.
+   * Move the player in given direction.
    *
-   * @param pu - new powerup that player is affected by
+   * @param x - displacement in the x-direction
+   * @param y - displacement in the y-direction
    */
-  public void addPowerup(Powerup pu) {
-    powerups.add(pu);
-  }
-
-  /**
-   * Removes the given powerup from the list of powerups affecting the player.
-   *
-   * @param pu - existing powerup that player is affected by
-   */
-  public void removePowerup(Powerup pu) {
-    if (isAffectedBy(pu)) {
-      powerups.remove(pu);
-    }
-  }
-
-  /**
-   * Returns if player is currently affected by the given powerup.
-   *
-   * @param pu - powerup to be checked
-   */
-  private boolean isAffectedBy(Powerup pu) {
-    return powerups.contains(pu);
-  }
-
   public void displace(int x, int y) {
     posX += x;
     posY += y;
     incrementStep();
+    setChanged();
+    notifyObservers(); // Update player position in the maze
   }
 
   /** Increments the player's numbers of steps by 1. */
@@ -92,15 +62,5 @@ public class Player {
   /** Getter for number of steps. */
   public int getNumSteps() {
     return numSteps;
-  }
-
-  /**
-   * Return whether Player is at the given coordinates.
-   *
-   * @param x - x coordinate in question
-   * @param y - y coordinate in question
-   */
-  public boolean isAt(int x, int y) {
-    return (posX == x) && (posY == y);
   }
 }

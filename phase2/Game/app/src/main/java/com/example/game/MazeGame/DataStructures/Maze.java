@@ -7,11 +7,13 @@ import androidx.annotation.NonNull;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Observable;
+import java.util.Observer;
 
 // TODO: fix get cell method, code smells looks awkward
 
 /** Represents the maze of the game. */
-public class Maze {
+public class Maze implements Observer {
   /**
    * grid: Cell object representation of our Maze width: The width of the maze height: The height of
    * the maze; exit: The coordinates of the exit; x coordinate is stored in exit[0], y exit[1]
@@ -22,17 +24,24 @@ public class Maze {
   private int height;
   private int[] exit;
 
+  private int playerPosX, playerPosY;
+
   /**
-   * @param width: width of maze has to be geq 7 has to be odd; number of cells in x direction;
+   * @param width : width of maze has to be geq 7 has to be odd; number of cells in x direction;
    *     columns
-   * @param height: height of maze has to be geq 7 has to be odd; number of cells in y direction;
-   *     rows
+   * @param height : height of maze has to be geq 7 has to be odd; number of cells in y direction;
+   * @param playerStartX : the x starting position of the player
+   * @param playerStartY : the y starting position of the player
    */
-  public Maze(int width, int height) {
+  public Maze(int width, int height, int playerStartX, int playerStartY) {
     this.width = width;
     this.height = height;
+    this.playerPosX = playerStartX;
+    this.playerPosY = playerStartY;
     grid = new Cell[height][width];
     generateMaze();
+    grid[playerPosY][playerPosX] =
+        Cell.PLAYER; // Set player's starting position after generating the maze.
   }
 
   public int getWidth() {
@@ -72,10 +81,6 @@ public class Maze {
     return s.toString();
   }
 
-  Cell[][] getGrid() {
-    return grid;
-  }
-
   /** Returns a deep copy of the grid representing the maze. */
   public Cell[][] getGridDeepCopy() {
     Cell[][] tmp = new Cell[height][width];
@@ -85,9 +90,8 @@ public class Maze {
     return tmp;
   }
 
-  /** Getter for exit. */
-  public int[] getExit() {
-    return exit;
+  public boolean hasEscaped() {
+    return (playerPosX == exit[0]) && (playerPosY == exit[1]);
   }
 
   // initialize the floor and wall "nodes" of the maze
@@ -220,6 +224,18 @@ public class Maze {
         grid[height - 1][width - 2] = Cell.EXIT;
         this.exit = new int[] {width - 2, height - 1};
         break;
+    }
+  }
+
+  @Override
+  /** Update the representation of the maze. */
+  public void update(Observable observable, Object o) {
+    // Update the player's position.
+    if (observable instanceof Player) {
+      grid[playerPosY][playerPosX] = Cell.FLOOR;
+      playerPosX = ((Player) observable).getPos()[0];
+      playerPosY = ((Player) observable).getPos()[1];
+      grid[playerPosY][playerPosX] = hasEscaped() ? Cell.PLAYER_AT_EXIT : Cell.PLAYER;
     }
   }
 }

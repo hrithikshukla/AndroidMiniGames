@@ -26,7 +26,7 @@ public class GameController implements Observer {
 
   // Only update the model if the game isn't over i.e. the player hasn't escaped.
   private void updateModel(Movement mov) {
-    if (!gameFacade.isGameOver()) {
+    if (!gameFacade.getMaze().hasEscaped()) {
       Pair<Integer, Integer> movement_vector = movementMap.get(mov);
       // Don't want to update score if player isn't moving.
       if (mov != Movement.AFK && boundaryCheck(movement_vector)) {

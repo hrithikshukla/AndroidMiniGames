@@ -93,11 +93,11 @@ public class MazeGameActivity extends GameActivity implements Observer {
     if (newGameState.isGameOver()) {
       UserScores u = new UserScores(username, newGameState.getScore(), "MAZE_GAME", 120);
       ur.addUserScore(u);
-      //      if (ur.getUserHighScore(username, "MAZE_GAME") < newGameState.getScore()) {
-      //        SharedPreferences.Editor editor = sharedPreferences.edit();
-      //        editor.putInt(usr.getUsername() + "mazehighscore", newGameState.getScore());
-      //        editor.apply();
-      //      }
+//            if (ur.getUserHighScore(username, "MAZE_GAME") < newGameState.getScore()) {
+//              SharedPreferences.Editor editor = sharedPreferences.edit();
+//              editor.putInt(usr.getUsername() + "mazehighscore", newGameState.getScore());
+//              editor.apply();
+//            }
       switchToGameOverActivity(this);
     }
   }
