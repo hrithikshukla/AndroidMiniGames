@@ -7,5 +7,5 @@ public enum Cell {
   EXIT,
   PLAYER,
   PLAYER_AT_EXIT,
-  ITEMS
+  COLLECTABLE
 }

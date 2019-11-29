@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.Set;
 
 // TODO: fix get cell method, code smells looks awkward
 
@@ -24,6 +25,7 @@ public class Maze implements Observer {
   private int height;
   private int[] exit;
 
+  /** X and Y position of the Player. Represented in the Maze as [playerPosY][PlayerPosX]. */
   private int playerPosX, playerPosY;
 
   /**
@@ -88,10 +90,6 @@ public class Maze implements Observer {
       tmp[i] = grid[i].clone();
     }
     return tmp;
-  }
-
-  public boolean hasEscaped() {
-    return (playerPosX == exit[0]) && (playerPosY == exit[1]);
   }
 
   // initialize the floor and wall "nodes" of the maze
@@ -214,28 +212,52 @@ public class Maze implements Observer {
     switch (exit) {
       case "topLeftCorner":
         grid[0][1] = Cell.EXIT;
-        this.exit = new int[] {1, 0};
+        this.exit = new int[] {0, 1};
         break;
       case "topRightCorner":
         grid[0][width - 2] = Cell.EXIT;
-        this.exit = new int[] {width - 2, 0};
+        this.exit = new int[] {0, width - 2};
         break;
       case "bottomRightCorner":
         grid[height - 1][width - 2] = Cell.EXIT;
-        this.exit = new int[] {width - 2, height - 1};
+        this.exit = new int[] {height - 1, width - 2};
         break;
     }
   }
 
+  /** Returns whether the player has escaped the maze i.e. if they're at the exit. */
+  public boolean hasEscaped() {
+    return (playerPosY == exit[0]) && (playerPosX == exit[1]);
+  }
+
   @Override
-  /** Update the representation of the maze. */
+  /**
+   * Maze is observing a Player object. Whenever the player moves it notifies its observers of the
+   * player's new position in the maze.
+   */
   public void update(Observable observable, Object o) {
-    // Update the player's position.
-    if (observable instanceof Player) {
-      grid[playerPosY][playerPosX] = Cell.FLOOR;
-      playerPosX = ((Player) observable).getPos()[0];
-      playerPosY = ((Player) observable).getPos()[1];
-      grid[playerPosY][playerPosX] = hasEscaped() ? Cell.PLAYER_AT_EXIT : Cell.PLAYER;
+    // Remove the player's tile from their previous s position in the maze
+    grid[playerPosY][playerPosX] = Cell.FLOOR;
+    playerPosX = ((Player) observable).getPos()[0];
+    playerPosY = ((Player) observable).getPos()[1];
+    // Set the player's tile in their updated position in the maze
+    grid[playerPosY][playerPosX] = hasEscaped() ? Cell.PLAYER_AT_EXIT : Cell.PLAYER;
+  }
+
+  /**
+   * Insert the tiles of the given set of collectables into the maze representation. Format of an
+   * element of the set: "%d,%d" where the first and second %d's are the row/column number of the
+   * maze respectively.
+   *
+   * @param collectablesPos - set of tile positions, each formatted as described above
+   */
+  public void addCollectable(Set<String> collectablesPos) {
+    String[] tmp;
+    for (String s : collectablesPos) {
+      tmp = s.split(",");
+      int row = Integer.parseInt(tmp[0]);
+      int col = Integer.parseInt(tmp[1]);
+      grid[row][col] = Cell.COLLECTABLE;
     }
   }
 }

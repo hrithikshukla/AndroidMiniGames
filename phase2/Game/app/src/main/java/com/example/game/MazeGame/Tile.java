@@ -10,7 +10,7 @@ import com.example.game.R;
 /** Class representing the tiles of the maze. A tile is a wall, a floor, or a player. */
 class Tile {
 
-  private Bitmap wall, floor, player, playerAtExit;
+  private Bitmap wall, floor, collectable, player, playerAtExit;
 
   // Side length of any Tile bitmap.
   private int sideLength;
@@ -19,6 +19,7 @@ class Tile {
 
     Bitmap tmpWall = BitmapFactory.decodeResource(res, R.drawable.brick_wall);
     Bitmap tmpfloor = BitmapFactory.decodeResource(res, R.drawable.floor);
+    Bitmap tmpCollectable = BitmapFactory.decodeResource(res, R.drawable.score_modifier);
     Bitmap tmpPlayer = BitmapFactory.decodeResource(res, R.drawable.character);
     Bitmap tmpCharacterAtExit = BitmapFactory.decodeResource(res, R.drawable.character_at_exit);
 
@@ -33,6 +34,7 @@ class Tile {
     // Rescale the wall and floor bitmaps to fit on the phone screen.
     this.wall = Bitmap.createScaledBitmap(tmpWall, sideLength, sideLength, false);
     this.floor = Bitmap.createScaledBitmap(tmpfloor, sideLength, sideLength, false);
+    this.collectable = Bitmap.createScaledBitmap(tmpCollectable, sideLength, sideLength, false);
     this.player = Bitmap.createScaledBitmap(tmpPlayer, sideLength, sideLength, false);
     this.playerAtExit =
         Bitmap.createScaledBitmap(tmpCharacterAtExit, sideLength, sideLength, false);
@@ -59,6 +61,9 @@ class Tile {
 
       case PLAYER_AT_EXIT:
         return playerAtExit;
+
+      case COLLECTABLE:
+        return collectable;
 
       default:
         return wall;
