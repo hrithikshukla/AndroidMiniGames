@@ -54,19 +54,24 @@ public class GameController implements Observer {
       count++;
     }
     if (count == 60) {
-      Launcher launcher = gameFacade.getLauncher();
-      List<Ball> balls = gameFacade.getBalls();
-      count = 0;
-      launcher.setY(screenY - 3 * launcher.getRadius());
-      launcher.setX(screenX / 2 - launcher.getRadius());
-      readyToLaunch = true;
-      for (int i = 0; i < balls.size(); i++) {
-        if (balls.get(i).isHit()) {
-          balls.get(i).setHit(false);
-        }
+      if(gameFacade.getShots() == 0) {
+        gameFacade.setGameOver(true);
       }
-      if (balls.isEmpty()) {
-        generateLevel();
+      else {
+        Launcher launcher = gameFacade.getLauncher();
+        List<Ball> balls = gameFacade.getBalls();
+        count = 0;
+        launcher.setY(screenY - 3 * launcher.getRadius());
+        launcher.setX(screenX / 2 - launcher.getRadius());
+        readyToLaunch = true;
+        for (int i = 0; i < balls.size(); i++) {
+          if (balls.get(i).isHit()) {
+            balls.get(i).setHit(false);
+          }
+        }
+        if (balls.isEmpty()) {
+          generateLevel();
+        }
       }
     }
   }
@@ -209,6 +214,7 @@ public class GameController implements Observer {
   private void moveBall(double startX, double startY, double endX, double endY) {
     isMoving = true;
     readyToLaunch = false;
+    gameFacade.setShots(gameFacade.getShots()-1);
     Launcher launcher = gameFacade.getLauncher();
     launcher.setSpeedX(Math.cos(Math.atan2(endY - startY, endX - startX)) * 300);
     launcher.setSpeedY(Math.sin(Math.atan2(endY - startY, endX - startX)) * 300);

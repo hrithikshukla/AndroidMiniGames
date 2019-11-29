@@ -25,7 +25,7 @@ class VisualView implements Observer {
     GameFacade gameFacade; // Observes the gameFacade
     Launcher launcher; // Launcher within the gameFacade
     List<Ball> balls; // balls within the gameFacade
-    int score, level; // score/level within the gameFacade
+    int score, level, shots; // score/level within the gameFacade
     int turnCounter = 0; // keeps a counter to display the LauncherBall's rotation
     Resources res;
     private Paint paint; // Paint
@@ -170,6 +170,7 @@ class VisualView implements Observer {
     private void drawText(Canvas canvas) {
         canvas.drawText(context.getString(R.string.score) + score + "", 5, screenY - 30, paint);
         canvas.drawText(context.getString(R.string.level) + (level - 1) + "", 5, screenY - 100, paint);
+        canvas.drawText("Shots: " + shots +  "", 5, screenY - 170, paint);
     }
 
     // observes if gameFacade is changed, and stores its values for rendering
@@ -180,5 +181,6 @@ class VisualView implements Observer {
         balls = gameFacade.getBalls();
         score = gameFacade.getScore();
         level = gameFacade.getLevel();
+        shots = gameFacade.getShots();
     }
 }

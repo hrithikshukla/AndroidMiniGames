@@ -11,6 +11,7 @@ public class GameFacade extends Observable {
 
     private int score; // the current score
     private int level = 1; // the current level
+    private int shots = 10;
     private boolean gameOver = false; // if the game is over or not
     private BoardManager boardManager;
 
@@ -62,5 +63,13 @@ public class GameFacade extends Observable {
     void update() {
         setChanged();
         notifyObservers(this);
+    }
+
+    public int getShots() {
+        return shots;
+    }
+
+    public void setShots(int shots) {
+        this.shots = shots;
     }
 }
