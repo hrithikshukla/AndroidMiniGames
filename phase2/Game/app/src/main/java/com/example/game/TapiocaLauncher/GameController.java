@@ -1,5 +1,6 @@
 package com.example.game.TapiocaLauncher;
 
+import android.util.Log;
 import android.view.MotionEvent;
 
 import java.util.List;
@@ -105,6 +106,14 @@ public class GameController implements Observer {
     slowLauncher();
   }
 
+  private void speedLauncher() {
+    Launcher launcher = gameFacade.getLauncher();
+    launcher.setSpeedX(launcher.getSpeedX()*1.3);
+    launcher.setSpeedY(launcher.getSpeedY()*1.3);
+    gameFacade.update();
+    Log.d("", "speedLauncher: " + launcher.getSpeedX() + "" + launcher.getSpeedY());
+  }
+
   // Decreases launcher by the gravity amount.
   private void slowLauncher() {
     Launcher launcher = gameFacade.getLauncher();
@@ -145,14 +154,18 @@ public class GameController implements Observer {
                       - balls.get(i).getRadius())
               <= 2 * launcher.getRadius()) {
         if (!balls.get(i).isHit()) {
-          balls.get(i).setHp(balls.get(i).getHp() - 1);
-          balls.get(i).setHit(true);
-          if (balls.get(i).getHp() == 0) {
+          Ball currBall = balls.get(i);
+          currBall.setHp(currBall.getHp() - 1);
+          currBall.setHit(true);
+          if (currBall.getBallType().equals("speedboost")) {
+            speedLauncher();
+          }
+          if (currBall.getHp() == 0) {
             balls.remove(i);
             i--;
             gameFacade.setScore(gameFacade.getScore() + 1);
-            gameFacade.update();
           }
+          gameFacade.update();
         }
       }
     }

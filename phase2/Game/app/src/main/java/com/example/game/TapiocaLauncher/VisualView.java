@@ -108,6 +108,7 @@ class VisualView implements Observer {
             canvas.drawBitmap(background.getBackground(), background.getX(), background.getY(), paint);
             drawBalls(canvas); // Draw the balls
             drawLauncher(canvas); // Draw Launcher
+
             drawText(canvas); // Draw the level and score
             surfaceHolder.unlockCanvasAndPost(canvas);
         }
@@ -154,13 +155,14 @@ class VisualView implements Observer {
     // draws a ball
     private void drawBall(Ball ball, Canvas canvas) {
         Bitmap orientation1;
-        if (ball instanceof Brown) {
+        if(ball.getBallType().equals("reg") && ball.getHp() == 1) {
             orientation1 = tapiocaBrown;
-        } else if (ball instanceof Red) {
+        } else if(ball.getBallType().equals("reg") && ball.getHp() == 2) {
             orientation1 = tapiocaRed;
-        } else {
-            orientation1 = tapiocaWhite;
         }
+        else //if(ball.getBallType() == "speedboost")
+            orientation1 = tapiocaWhite;
+
         canvas.drawBitmap(orientation1, ball.getX(), ball.getY(), paint);
     }
 

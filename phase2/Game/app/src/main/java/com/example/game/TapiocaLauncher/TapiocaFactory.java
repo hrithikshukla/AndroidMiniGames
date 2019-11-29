@@ -9,16 +9,16 @@ class TapiocaFactory {
         rand = new Random();
     }
 
-    Brown makeBrown(int x, int y, int radius) {
-        return new Brown(x, y, radius, 1);
+    Ball makeBrown(int x, int y, int radius) {
+        return new Ball(x, y, radius, 1, "reg");
     }
 
-    Red makeRed(int x, int y, int radius) {
-        return new Red(x, y, radius, 2);
+    Ball makeRed(int x, int y, int radius) {
+        return new Ball(x, y, radius, 2, "reg");
     }
 
-    White makeWhite(int x, int y, int radius) {
-        return new White(x, y, radius, 1);
+    Ball makeWhite(int x, int y, int radius) {
+        return new Ball(x, y, radius, 1, "speedboost");
     }
 
     Ball makeRandom(int x, int y, int radius) {
@@ -27,8 +27,8 @@ class TapiocaFactory {
             case 0:
             case 1:
             case 2:
+                return makeWhite(x, y, radius);
             case 3:
-                return new White(x, y, radius, 1);
             case 4:
             case 5:
             case 6:
@@ -36,9 +36,9 @@ class TapiocaFactory {
             case 8:
             case 9:
             case 10:
-                return new Red(x, y, radius, 2);
+                return makeRed(x, y, radius);
             default:
-                return new Brown(x, y, radius, 1);
+                return makeBrown(x, y, radius);
         }
     }
 }

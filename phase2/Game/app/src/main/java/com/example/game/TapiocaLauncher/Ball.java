@@ -1,7 +1,7 @@
 package com.example.game.TapiocaLauncher;
 
 // Taopioca balls to be destroeyd
-abstract class Ball {
+ class Ball {
 
   // The top left coordinates of the ball
   private int x, y;
@@ -11,15 +11,16 @@ abstract class Ball {
   private boolean hit = false;
   // The number of hits to break this tapioca
   private int hp;
+  private String ballType;
 
-  Ball(int x, int y, int radius, int hp) {
-
+  Ball(int x, int y, int radius, int hp, String ballType) {
     this.x = x;
     this.y = y;
     this.radius = radius;
     this.hp = hp;
     this.width = 2 * radius;
     this.height = 2 * radius;
+    this.ballType = ballType;
   }
 
   public int getX() {
@@ -78,5 +79,11 @@ abstract class Ball {
     this.hp = hp;
   }
 
-  abstract void onHit();
+    public String getBallType() {
+        return ballType;
+    }
+
+    public void setBallType(String ballType) {
+        this.ballType = ballType;
+    }
 }

@@ -35,7 +35,6 @@ class BoardManager {
 
     private List<Ball> generateRandomLevel() {
         List<Ball> balls = new ArrayList<>();
-        // 6 rows and 6 columns of tapioca with 2 HP
         for (int j = 0; j < 6; j++) {
             for (int i = 0; i < 6; i++) {
                 balls.add(this.tapiocaFactory.makeRandom(50 + (170 * i), 50 + (140 * j), 41));
