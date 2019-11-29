@@ -62,4 +62,15 @@
     <string name="cancel">إلغاء</string>
     <string name="gisignIn">تسجيل الدخول</string>
     <string name="likeToPurchase">هل ترغب في الشراء؟</string>
+    <string name="instructions">تعليمات</string>
+    <string name="instructions_tapioca">"البوب جميع الكرات!
+
+انقر على الكرات السوداء واسحبها في الاتجاه الذي تريد إطلاقه عليه.
+
+كرات براون تأخذ 1 طلقة لتدمير!
+الكرات الحمراء تأخذ 2 طلقات لتدمير
+سوف كرات بيضاء تعطيك زيادة السرعة!
+
+    لكن كن سريعًا حيث لديك فقط عدد محدود من الطلقات!"
+    </string>
 </resources>

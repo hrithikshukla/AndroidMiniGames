@@ -62,4 +62,14 @@
     <string name="cancel">" Annuler"</string>
     <string name="gisignIn">" se connecter"</string>
     <string name="likeToPurchase">" Voulez-vous acheter?"</string>
+    <string name="instructions">Instructions</string>
+    <string name="instructions_tapioca">"Pop toutes les balles!
+
+Cliquez sur les boules noires et faites-la glisser dans la direction souhaitée.
+
+Les boules brunes ont 1 coup à détruire!
+Les boules rouges ont 2 coups à détruire
+Les balles blanches vous donneront un coup de pouce!
+
+Mais faites vite, vous n’avez qu’un nombre limité de coups!"</string>
 </resources>

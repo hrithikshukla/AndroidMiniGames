@@ -1,11 +1,12 @@
 package com.example.game.Activities.main.GameLauncher;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.Activities.main.MainActivity;
@@ -30,6 +31,7 @@ public class TapiocaGameLauncher extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.tapioca_game_launch);
 
+
     findViewById(R.id.play)
         .setOnClickListener(
             new View.OnClickListener() {
@@ -44,7 +46,11 @@ public class TapiocaGameLauncher extends AppCompatActivity {
               }
             });
 
+
     TextView highScoretxt = findViewById(R.id.highScoreText);
+
+
+
 
 //    SharedPreferences prefs = getSharedPreferences("highScores", MODE_PRIVATE);
 //    highScoretxt.setText(
@@ -68,5 +74,18 @@ public class TapiocaGameLauncher extends AppCompatActivity {
     intent.putExtra("USERNAME", username);
 //    usr.getUserData().setPrefs(null);
     startActivity(intent);
+  }
+
+  public void displayInstructions(View view) {
+    AlertDialog.Builder builder = new AlertDialog.Builder(this,   16974545);
+    builder.setMessage(R.string.instructions_tapioca);
+    builder.setTitle(R.string.instructions);
+    builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+      public void onClick(DialogInterface dialog, int id) {
+      }
+    });
+    AlertDialog dialog = builder.create();
+    dialog.show();
+
   }
 }

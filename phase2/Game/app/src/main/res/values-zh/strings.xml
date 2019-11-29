@@ -62,4 +62,14 @@
     <string name="cancel">" 取消"</string>
     <string name="gisignIn">" 登入"</string>
     <string name="likeToPurchase">" 您要購買嗎？"</string>
+    <string name="instructions">使用说明</string>
+    <string name="instructions_tapioca">"弹出所有球！
+
+单击黑球，然后将其拖向要发射的方向。
+
+棕球需要1枪才能摧毁！
+红球拍两枪摧毁
+白球会给你提速！
+
+但是要快，因为您的镜头数量有限！"</string>
 </resources>

@@ -9,6 +9,8 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:adjustViewBounds="false"
+        android:cropToPadding="false"
         android:scaleType="centerCrop"
         android:src="@drawable/milktea" />
 
@@ -68,4 +70,20 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/title" />
+
+    <Button
+        android:id="@+id/buttonInstructions"
+        android:layout_width="wrap_content"
+        android:layout_height="46dp"
+        android:layout_below="@+id/title"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="213dp"
+        android:background="@android:color/transparent"
+        android:text="@string/instructions"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:onClick="displayInstructions"/>
+
 </RelativeLayout>

@@ -62,4 +62,14 @@
     <string name="cancel">Stornieren</string>
     <string name="gisignIn">" Anmelden"</string>
     <string name="likeToPurchase">Möchten Sie kaufen?</string>
+    <string name="instructions">Anleitung</string>
+    <string name="instructions_tapioca">"Pop alle Bälle!
+
+Klicken Sie auf die schwarzen Kugeln und ziehen Sie sie in die Richtung, in die Sie sie abfeuern möchten.
+
+Braune Kugeln brauchen 1 Schuss, um zu zerstören!
+Rote Kugeln treffen zwei Schüsse, um sie zu zerstören
+Weiße Kugeln sorgen für einen Geschwindigkeitsschub!
+
+Aber sei schnell, denn du hast nur eine begrenzte Anzahl von Schüssen!"</string>
 </resources>
