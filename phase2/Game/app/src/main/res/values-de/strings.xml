@@ -76,4 +76,7 @@ Aber sei schnell, denn du hast nur eine begrenzte Anzahl von Schüssen!"</string
     <string name="play_easy">Einfach</string>
     <string name="play_medium">Mittel</string>
     <string name="play_hard">Hart</string>
+    <string name="MazeMediumScore">" Labyrinth (mittel) Highscore:"</string>
+    <string name="MazeEasyScore">" Maze (leicht) Highscore:"</string>
+    <string name="MazeHardScore">" Maze (schwer) Highscore:"</string>
 </resources>

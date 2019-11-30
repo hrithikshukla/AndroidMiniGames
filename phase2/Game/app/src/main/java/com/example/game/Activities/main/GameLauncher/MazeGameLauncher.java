@@ -38,6 +38,7 @@ public class MazeGameLauncher extends AppCompatActivity {
     Intent intent = new Intent(this, com.example.game.MazeGame.MazeGameActivity.class);
     intent.putExtra("USERNAME", username);
     intent.putExtra("DIMENSIONS", new int[] {15, 15});
+    intent.putExtra("DIFFICULTY", "EASY");
     intent.putExtra("SCORE", 40);
     startActivity(intent);
   }
@@ -47,6 +48,7 @@ public class MazeGameLauncher extends AppCompatActivity {
     Intent intent = new Intent(this, com.example.game.MazeGame.MazeGameActivity.class);
     intent.putExtra("USERNAME", username);
     intent.putExtra("DIMENSIONS", new int[] {37, 17});
+    intent.putExtra("DIFFICULTY", "MEDIUM");
     intent.putExtra("SCORE", 75);
     startActivity(intent);
   }
@@ -56,6 +58,7 @@ public class MazeGameLauncher extends AppCompatActivity {
     Intent intent = new Intent(this, com.example.game.MazeGame.MazeGameActivity.class);
     intent.putExtra("USERNAME", username);
     intent.putExtra("DIMENSIONS", new int[] {41, 21});
+    intent.putExtra("DIFFICULTY", "HARD");
     intent.putExtra("SCORE", 125);
     startActivity(intent);
   }

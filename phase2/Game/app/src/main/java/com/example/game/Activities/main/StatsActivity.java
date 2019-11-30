@@ -68,14 +68,22 @@ public class StatsActivity extends AppCompatActivity {
         });
 
     TextView tapiocaScore = findViewById(R.id.TapiocaScore);
-    TextView mazeScore = findViewById(R.id.MazeScore);
+//    TextView mazeScore = findViewById(R.id.MazeScore);
+    TextView mazeEasyScore = findViewById(R.id.MazeEasyScore);
+    TextView mazeMediumScore = findViewById(R.id.MazeMediumScore);
+    TextView mazeHardScore = findViewById(R.id.MazeHardScore);
     TextView tileScore = findViewById(R.id.TileScore);
-    int mazeHighScore = uR.getUserHighScore(username, "MAZE_GAME");
+    int mazeEasyHighScore = uR.getUserHighScore(username, "MAZE_GAME_EASY");
+    int mazeMediumHighScore = uR.getUserHighScore(username, "MAZE_GAME_MEDIUM");
+    int mazeHardHighScore = uR.getUserHighScore(username, "MAZE_GAME_HARD");
     int tapiocaHighScore = uR.getUserHighScore(username, "TAPIOCA_GAME");
     int tilesHighScore = uR.getUserHighScore(username, "TILES_GAME");
     tapiocaScore.setText(
         getString(R.string.TapiocaScore) + tapiocaHighScore);
-    mazeScore.setText(getString(R.string.MazeScore) + mazeHighScore);
+//    mazeScore.setText(getString(R.string.MazeScore) + mazeHighScore);
+    mazeEasyScore.setText(getString(R.string.MazeEasyScore) + mazeEasyHighScore);
+    mazeMediumScore.setText(getString(R.string.MazeMediumScore) + mazeMediumHighScore);
+    mazeHardScore.setText(getString(R.string.MazeHardScore) + mazeHardHighScore);
     tileScore.setText(getString(R.string.TileScore) + tilesHighScore);
 
     TextView tapiocaTime = findViewById(R.id.TapiocaTime);

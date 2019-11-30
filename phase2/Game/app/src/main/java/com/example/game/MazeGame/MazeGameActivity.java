@@ -95,7 +95,9 @@ public class MazeGameActivity extends GameActivity implements Observer {
     // Set users high score if applicable when game ends and send it to gameOverActivity
     NewGameState newGameState = (NewGameState) arg;
     if (newGameState.isGameOver()) {
-      UserScores u = new UserScores(username, newGameState.getScore(), "MAZE_GAME", 120);
+      String difficulty = getIntent().getStringExtra("DIFFICULTY");
+      UserScores u =
+          new UserScores(username, newGameState.getScore(), "MAZE_GAME_" + difficulty, 120);
       ur.addUserScore(u);
       //            if (ur.getUserHighScore(username, "MAZE_GAME") < newGameState.getScore()) {
       //              SharedPreferences.Editor editor = sharedPreferences.edit();

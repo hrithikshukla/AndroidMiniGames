@@ -76,4 +76,7 @@ Mais faites vite, vous n’avez qu’un nombre limité de coups!"</string>
     <string name="play_easy">Facile</string>
     <string name="play_hard">Dur</string>
     <string name="play_medium">moyen</string>
+    <string name="MazeEasyScore">Maze (easy) score élevé:</string>
+    <string name="MazeMediumScore">" Maze (moyen) score élevé:"</string>
+    <string name="MazeHardScore">Maze (hard) score élevé :</string>
 </resources>

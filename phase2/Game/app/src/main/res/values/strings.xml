@@ -84,5 +84,8 @@ But be quick as you only have a limited number of shots!"
     <string name="play_hard">Hard</string>
     <string name="play_easy">Easy</string>
     <string name="play_medium">Medium</string>
+    <string name="MazeEasyScore">Maze (Easy) High Score:</string>
+    <string name="MazeMediumScore">Maze (Medium) High Score:</string>
+    <string name="MazeHardScore">Maze (Hard) High Score:</string>
 
 </resources>

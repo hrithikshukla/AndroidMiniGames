@@ -62,24 +62,10 @@
         app:layout_constraintTop_toBottomOf="@+id/TapiocaScore" />
 
     <TextView
-        android:id="@+id/MazeScore"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:text="@string/MazeScore"
-        android:textAllCaps="true"
-        android:textColor="?android:attr/colorPrimaryDark"
-        android:textSize="7pt"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.144"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TapiocaTime" />
-
-    <TextView
         android:id="@+id/MazeTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
         android:text="@string/MazeTime"
         android:textAllCaps="true"
         android:textColor="?android:attr/colorPrimaryDark"
@@ -87,7 +73,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.198"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MazeScore" />
+        app:layout_constraintTop_toBottomOf="@+id/MazeHardScore" />
 
     <TextView
         android:id="@+id/TileScore"
@@ -140,4 +126,37 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/arrow" />
+
+    <TextView
+        android:id="@+id/MazeEasyScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/MazeEasyScore"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.147"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TapiocaTime" />
+
+    <TextView
+        android:id="@+id/MazeMediumScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/MazeMediumScore"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.16"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MazeEasyScore" />
+
+    <TextView
+        android:id="@+id/MazeHardScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/MazeHardScore"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.147"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MazeMediumScore" />
 </androidx.constraintlayout.widget.ConstraintLayout>

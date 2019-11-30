@@ -81,7 +81,7 @@ public class TapiocaGameActivity extends GameActivity implements Observer {
     gameFacade = (GameFacade) arg;
     if (gameFacade.isGameOver()) {
       SharedPreferences sharedPreferences = getSharedPreferences("highScores", MODE_PRIVATE);
-      UserScores u = new UserScores(username, gameFacade.getScore(), "TAPIOCA_GAME2x", 120);
+      UserScores u = new UserScores(username, gameFacade.getScore(), "TAPIOCA_GAME", 120);
       ur.addUserScore(u);
       //            if (usr.getUserData().getTapiocaHighScore() < gameFacade.getScore()) {
       //                SharedPreferences.Editor editor = sharedPreferences.edit();

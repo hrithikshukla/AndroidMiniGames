@@ -76,4 +76,7 @@
     <string name="play_easy">简单</string>
     <string name="play_medium">介质</string>
     <string name="play_hard">硬</string>
+    <string name="MazeEasyScore">"迷宫（简单）高分: "</string>
+    <string name="MazeMediumScore">迷宫（中）高分 :</string>
+    <string name="MazeHardScore">迷宫（难）高分 :</string>
 </resources>

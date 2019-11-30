@@ -77,4 +77,7 @@
     <string name="play_easy">سهل</string>
     <string name="play_hard">الصعب</string>
     <string name="play_medium">متوسط</string>
+    <string name="MazeEasyScore">"المتاهة (سهل) درجة عالية "</string>
+    <string name="MazeMediumScore">"المتاهة (متوسطة) درجة عالية "</string>
+    <string name="MazeHardScore">"المتاهة (الثابت) درجة عالية "</string>
 </resources>
