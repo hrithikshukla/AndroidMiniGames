@@ -138,15 +138,15 @@ public class ShopActivity extends AppCompatActivity {
     // Code from https://gist.github.com/nisrulz/3078eaa6357d6f5c0051
     private void grayOut(ImageView img) {
 //         if not owned grey them out
-        if (!ownedChars.get(img.getId())) {
-            ColorMatrix matrix = new ColorMatrix();
-            matrix.setSaturation(0);
-            ColorMatrixColorFilter filter = new ColorMatrixColorFilter(matrix);
-            img.setColorFilter(filter);
-        } else { // no filter
-            img.setColorFilter(null);
-            img.setTag("");
-        }
+//        if (!ownedChars.get(img.getId())) {
+//            ColorMatrix matrix = new ColorMatrix();
+//            matrix.setSaturation(0);
+//            ColorMatrixColorFilter filter = new ColorMatrixColorFilter(matrix);
+//            img.setColorFilter(filter);
+//        } else { // no filter
+//            img.setColorFilter(null);
+//            img.setTag("");
+//        }
     }
 
     public void setOnBackPressedListener(OnBackPressedListener onBackPressedListener) {

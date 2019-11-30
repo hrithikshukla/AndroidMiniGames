@@ -87,5 +87,6 @@ But be quick as you only have a limited number of shots!"
     <string name="MazeEasyScore">Maze (Easy) High Score:</string>
     <string name="MazeMediumScore">Maze (Medium) High Score:</string>
     <string name="MazeHardScore">Maze (Hard) High Score:</string>
+    <string name="shots">"Shots remaining: "</string>
 
 </resources>

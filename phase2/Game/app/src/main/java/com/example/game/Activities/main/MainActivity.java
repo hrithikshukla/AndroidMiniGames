@@ -110,7 +110,7 @@ public class MainActivity extends Activity {
 
   // Code based on https://www.youtube.com/watch?v=zILw5eV9QBQ. I liked the video so I can use it.
   private void showChangeLanguageDialog() {
-    final String[] languages = {"Français", "中文", "Deutsche", "عربى", "English"};
+      final String[] languages = {"Français", "中文", "English"};
     AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
     mBuilder.setTitle("Choose Language...");
     mBuilder.setSingleChoiceItems(
@@ -142,28 +142,6 @@ public class MainActivity extends Activity {
               finish();
               overridePendingTransition(0, 0);
             } else if (which == 2) {
-              // German
-              setLocale("de");
-              Intent intent = getIntent();
-              putUserName(intent);
-              putSettingsMenu(intent);
-              startActivity(intent);
-              //              usr.getUserData().setPrefs(getSharedPreferences("highScores",
-              // MODE_PRIVATE));
-              finish();
-              overridePendingTransition(0, 0);
-            } else if (which == 3) {
-              // Arabic
-              setLocale("ar");
-              Intent intent = getIntent();
-              putUserName(intent);
-              putSettingsMenu(intent);
-              startActivity(intent);
-              //              usr.getUserData().setPrefs(getSharedPreferences("highScores",
-              // MODE_PRIVATE));
-              finish();
-              overridePendingTransition(0, 0);
-            } else if (which == 4) {
               // English
               setLocale("en");
               Intent intent = getIntent();
