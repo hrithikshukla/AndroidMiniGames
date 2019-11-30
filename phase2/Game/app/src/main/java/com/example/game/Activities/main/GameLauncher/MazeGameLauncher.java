@@ -20,23 +20,43 @@ public class MazeGameLauncher extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     // Set the theme.
-//    usr = (User) getIntent().getSerializableExtra("UserObject");
+    //    usr = (User) getIntent().getSerializableExtra("UserObject");
     username = getIntent().getStringExtra("USERNAME");
     SharedPreferences mSettings = this.getSharedPreferences("Settings", MODE_PRIVATE);
     ThemeManager.setTheme(
-            MazeGameLauncher.this,
-            mSettings.getInt(username + "mode", 0),
-            mSettings.getInt(username + "theme", 0));
+        MazeGameLauncher.this,
+        mSettings.getInt(username + "mode", 0),
+        mSettings.getInt(username + "theme", 0));
 
     super.onCreate(savedInstanceState);
     setContentView(R.layout.maze_game_launch);
-//    usr = (User) getIntent().getSerializableExtra("UserObject");
+    //    usr = (User) getIntent().getSerializableExtra("UserObject");
   }
 
-  /** Called when the user taps the 'PLAY' button */
-  public void startMazeGame(View view) {
+  /** Called when the user taps the 'PLAY EASY' button */
+  public void startMazeGameEasy(View view) {
     Intent intent = new Intent(this, com.example.game.MazeGame.MazeGameActivity.class);
     intent.putExtra("USERNAME", username);
+    intent.putExtra("DIMENSIONS", new int[] {15, 15});
+    intent.putExtra("SCORE", 40);
+    startActivity(intent);
+  }
+
+  /** Called when the user taps the 'PLAY MEDIUM' button */
+  public void startMazeGameMedium(View view) {
+    Intent intent = new Intent(this, com.example.game.MazeGame.MazeGameActivity.class);
+    intent.putExtra("USERNAME", username);
+    intent.putExtra("DIMENSIONS", new int[] {37, 17});
+    intent.putExtra("SCORE", 75);
+    startActivity(intent);
+  }
+
+  /** Called when the user taps the 'PLAY HARD' button */
+  public void startMazeGameHard(View view) {
+    Intent intent = new Intent(this, com.example.game.MazeGame.MazeGameActivity.class);
+    intent.putExtra("USERNAME", username);
+    intent.putExtra("DIMENSIONS", new int[] {41, 21});
+    intent.putExtra("SCORE", 125);
     startActivity(intent);
   }
 

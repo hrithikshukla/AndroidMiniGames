@@ -73,4 +73,7 @@ Les balles blanches vous donneront un coup de pouce!
 
 Mais faites vite, vous n’avez qu’un nombre limité de coups!"</string>
     <string name="play_invert">Inverser</string>
+    <string name="play_easy">Facile</string>
+    <string name="play_hard">Dur</string>
+    <string name="play_medium">moyen</string>
 </resources>

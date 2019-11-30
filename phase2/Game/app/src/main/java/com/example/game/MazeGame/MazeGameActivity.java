@@ -35,13 +35,17 @@ public class MazeGameActivity extends GameActivity implements Observer {
     int maxScreenX = point.x;
     int maxScreenY = point.y;
 
-    int mazeWidth = 41;
-    int mazeHeight = 21;
+    // Maze dimension is dependency injected in.
+    int[] dimensions = getIntent().getIntArrayExtra("DIMENSIONS");
+    int mazeWidth = dimensions[0];
+    int mazeHeight = dimensions[1];
 
     // Player starts at bottom left corner.
     int startX = 1;
     int startY = mazeHeight - 2;
-    int startingScore = 100;
+
+    // Starting score is dependency injected in.
+    int startingScore = getIntent().getIntExtra("SCORE", 0);
 
     // Create MVC components. Complicated objects are assembled using builders.
 
@@ -93,11 +97,11 @@ public class MazeGameActivity extends GameActivity implements Observer {
     if (newGameState.isGameOver()) {
       UserScores u = new UserScores(username, newGameState.getScore(), "MAZE_GAME", 120);
       ur.addUserScore(u);
-//            if (ur.getUserHighScore(username, "MAZE_GAME") < newGameState.getScore()) {
-//              SharedPreferences.Editor editor = sharedPreferences.edit();
-//              editor.putInt(usr.getUsername() + "mazehighscore", newGameState.getScore());
-//              editor.apply();
-//            }
+      //            if (ur.getUserHighScore(username, "MAZE_GAME") < newGameState.getScore()) {
+      //              SharedPreferences.Editor editor = sharedPreferences.edit();
+      //              editor.putInt(usr.getUsername() + "mazehighscore", newGameState.getScore());
+      //              editor.apply();
+      //            }
       switchToGameOverActivity(this);
     }
   }

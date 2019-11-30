@@ -74,4 +74,7 @@
     لكن كن سريعًا حيث لديك فقط عدد محدود من الطلقات!"
     </string>
     <string name="play_invert">عكس</string>
+    <string name="play_easy">سهل</string>
+    <string name="play_hard">الصعب</string>
+    <string name="play_medium">متوسط</string>
 </resources>

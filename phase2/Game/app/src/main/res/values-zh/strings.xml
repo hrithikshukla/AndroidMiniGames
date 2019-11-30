@@ -73,4 +73,7 @@
 
 但是要快，因为您的镜头数量有限！"</string>
     <string name="play_invert">倒置</string>
+    <string name="play_easy">简单</string>
+    <string name="play_medium">介质</string>
+    <string name="play_hard">硬</string>
 </resources>

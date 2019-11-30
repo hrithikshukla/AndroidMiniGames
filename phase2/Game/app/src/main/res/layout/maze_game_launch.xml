@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -34,21 +35,51 @@
         app:layout_constraintTop_toBottomOf="@+id/mazeTiles" />
 
     <Button
-        android:id="@+id/buttonPlayMaze"
+        android:id="@+id/buttonPlayMazeEasy"
         style="?buttonPrimary"
         android:layout_width="130sp"
         android:layout_height="60sp"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="45dp"
         android:fontFamily="monospace"
-        android:onClick="startMazeGame"
-        android:text="@string/buttonPlay"
+        android:onClick="startMazeGameEasy"
+        android:text="@string/play_easy"
         android:textAlignment="center"
         android:textColor="?attr/colorPrimaryDark"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonExitMaze"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/instructionsMaze" />
+
+    <Button
+        android:id="@+id/buttonPlayMazeMedium"
+        style="?buttonPrimary"
+        android:layout_width="130sp"
+        android:layout_height="60sp"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="50dp"
+        android:fontFamily="monospace"
+        android:onClick="startMazeGameMedium"
+        android:text="@string/play_medium"
+        android:textAlignment="center"
+        android:textColor="?attr/colorPrimaryDark"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/instructionsMaze" />
+
+    <Button
+        android:id="@+id/buttonPlayMazeHard"
+        style="?buttonPrimary"
+        android:layout_width="130sp"
+        android:layout_height="60sp"
+        android:layout_marginTop="125dp"
+        android:fontFamily="monospace"
+        android:onClick="startMazeGameHard"
+        android:text="@string/play_hard"
+        android:textAlignment="center"
+        android:textColor="?attr/colorPrimaryDark"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/buttonPlayMazeMedium"
+        app:layout_constraintStart_toStartOf="@+id/buttonPlayMazeEasy"
         app:layout_constraintTop_toBottomOf="@+id/instructionsMaze" />
 
     <Button
@@ -56,6 +87,7 @@
         style="?buttonSecondary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
         android:layout_marginBottom="150dp"
         android:fontFamily="monospace"
         android:onClick="exitMazeGame"
@@ -64,7 +96,9 @@
         android:textColor="?android:attr/colorAccent"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonPlayMaze" />
+        app:layout_constraintEnd_toEndOf="@+id/buttonPlayMazeHard"
+        app:layout_constraintStart_toStartOf="@+id/buttonPlayMazeHard"
+        app:layout_constraintTop_toBottomOf="@+id/buttonPlayMazeHard" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -73,4 +73,7 @@ Weiße Kugeln sorgen für einen Geschwindigkeitsschub!
 
 Aber sei schnell, denn du hast nur eine begrenzte Anzahl von Schüssen!"</string>
     <string name="play_invert">Umkehren</string>
+    <string name="play_easy">Einfach</string>
+    <string name="play_medium">Mittel</string>
+    <string name="play_hard">Hart</string>
 </resources>
