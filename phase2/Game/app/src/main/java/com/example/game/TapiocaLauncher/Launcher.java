@@ -41,19 +41,19 @@ class Launcher {
         this.radius = radius;
     }
 
-    public double getSpeedX() {
+    double getSpeedX() {
         return speedX;
     }
 
-    public void setSpeedX(double speedX) {
+    void setSpeedX(double speedX) {
         this.speedX = speedX;
     }
 
-    public double getSpeedY() {
+    double getSpeedY() {
         return speedY;
     }
 
-    public void setSpeedY(double speedY) {
+    void setSpeedY(double speedY) {
         this.speedY = speedY;
     }
 }

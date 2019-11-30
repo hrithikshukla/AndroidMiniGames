@@ -22,12 +22,12 @@ class VisualView implements Observer {
     private Background background; // background
     private Context context;
 
-    GameFacade gameFacade; // Observes the gameFacade
-    Launcher launcher; // Launcher within the gameFacade
-    List<Ball> balls; // balls within the gameFacade
-    int score, level, shots; // score/level within the gameFacade
-    int turnCounter = 0; // keeps a counter to display the LauncherBall's rotation
-    Resources res;
+    private GameFacade gameFacade; // Observes the gameFacade
+    private Launcher launcher; // Launcher within the gameFacade
+    private List<Ball> balls; // balls within the gameFacade
+    private int score, level, shots; // score/level within the gameFacade
+    private int turnCounter = 0; // keeps a counter to display the LauncherBall's rotation
+    private Resources res;
     private Paint paint; // Paint
     private SurfaceHolder surfaceHolder;
     private int screenX, screenY; // Size of screen

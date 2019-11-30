@@ -79,7 +79,7 @@ package com.example.game.TapiocaLauncher;
     this.hp = hp;
   }
 
-    public String getBallType() {
+    String getBallType() {
         return ballType;
     }
 

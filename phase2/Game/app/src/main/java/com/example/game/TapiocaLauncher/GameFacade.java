@@ -35,11 +35,11 @@ public class GameFacade extends Observable {
         return balls;
     }
 
-    public int getLevel() {
+    int getLevel() {
         return level;
     }
 
-    public void setLevel(int level) {
+    void setLevel(int level) {
         this.level = level;
     }
 
@@ -51,11 +51,11 @@ public class GameFacade extends Observable {
         this.score = score;
     }
 
-    public boolean isGameOver() {
+    boolean isGameOver() {
         return gameOver;
     }
 
-    public void setGameOver(boolean gameOver) {
+    void setGameOver(boolean gameOver) {
         this.gameOver = gameOver;
     }
 
@@ -65,11 +65,11 @@ public class GameFacade extends Observable {
         notifyObservers(this);
     }
 
-    public int getShots() {
+    int getShots() {
         return shots;
     }
 
-    public void setShots(int shots) {
+    void setShots(int shots) {
         this.shots = shots;
     }
 }
