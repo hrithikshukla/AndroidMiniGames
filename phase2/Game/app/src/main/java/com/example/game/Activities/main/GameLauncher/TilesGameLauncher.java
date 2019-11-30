@@ -47,6 +47,14 @@ public class TilesGameLauncher extends AppCompatActivity {
     startActivity(intent);
   }
 
+  /** Called when the user taps the '5 X 5' button */
+  public void startTilesInvert(View view) {
+    Intent intent = new Intent(this, com.example.game.TilesGame.TileGameActivity.class);
+    intent.putExtra("USERNAME", username);
+    intent.putExtra("BoardType", "Invert");
+    startActivity(intent);
+  }
+
   /** Called when the user taps the 'EXIT' button */
   public void exitTilesGame(View view) {
     Intent intent = new Intent(this, MainActivity.class);

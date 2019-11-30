@@ -5,10 +5,10 @@ import android.content.Context;
 import java.util.ArrayList;
 import java.util.Random;
 
-class Board4By4 extends BoardManager {
+class BoardInvert extends BoardManager {
 
-  /** Construct a 4X4 board manager. */
-  Board4By4(Context context) {
+  /** Construct an invert board manager. */
+  BoardInvert(Context context) {
     super(context);
   }
 
@@ -42,6 +42,55 @@ class Board4By4 extends BoardManager {
     ArrayList<Tile> tileRow = tileBoard.get(5);
     for (int j = 0; j < 4; j++) {
       tileRow.add(new DangerTile(j * tileWidth, 3 * tileHeight));
+    }
+  }
+
+  @Override
+  /** Update the items in a board. */
+  void update() {
+    if (gameStart) {
+      // Check if the game will end this turn.
+      if (doesGameEnd()) {
+        gameEnd = true;
+        return;
+      }
+      // Move all the tiles on this board, incrementing the speed by 50 every 15 points.
+      int increment = Math.floorDiv(scoreManager.getScore(), 15);
+      for (ArrayList<Tile> tileRow : tileBoard) {
+        for (Tile tile : tileRow) {
+          tile.move(100 + (increment * 50));
+        }
+      }
+      // Invert the first 4 rows in board randomly.
+      Random rand = new Random(); // Create a random variable.
+      if (rand.nextInt(15) < 1) { // Invert the board (1/15 probability of occurrence).
+        invertBoard();
+      }
+      // Populate top of board with new tiles and remove tiles that have passed bottom of board.
+      populate();
+    }
+  }
+
+  private void invertBoard() {
+    for (int i = 0; i < 4; i++) { // For first three rows in board:
+      ArrayList<Tile> tileRow = tileBoard.get(i); // Get row.
+      for (int j = 0; j < 4; j++) {
+        Tile thisTile = tileRow.get(j);
+        if (!thisTile.isTouch()) { // If tile has not been touched:
+          Tile newTile = invertTile(thisTile);
+          tileRow.set(j, newTile);
+        }
+      }
+    }
+  }
+
+  private Tile invertTile(Tile thisTile) {
+    if (thisTile instanceof KeyTile) { // If thisTile is KeyTile:
+      // Return a new DangerTile at the location of thisTile
+      return new DangerTile(thisTile.getX(), thisTile.getY());
+    } else { // If thisTile is DangerTile:
+      // Return a new KeyTile at the location of thisTile
+      return new KeyTile(thisTile.getX(), thisTile.getY());
     }
   }
 

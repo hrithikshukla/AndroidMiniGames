@@ -26,7 +26,7 @@ public class ThemeManager {
         setThemeDark(activity, theme);
         break;
     }
-//    usr.getUserData().setPrefs(null);
+    //    usr.getUserData().setPrefs(null);
     Intent intent = new Intent(activity, activity.getClass());
     intent.putExtra("USERNAME", username);
     activity.finish();

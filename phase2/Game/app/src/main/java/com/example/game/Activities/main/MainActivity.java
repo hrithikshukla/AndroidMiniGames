@@ -34,10 +34,10 @@ public class MainActivity extends Activity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     // Get the user.
-    //rname();usr = (User)
+    // rname();usr = (User)
     // getIntent().getSerializableExtra("UserObject");
-      String username = getIntent().getStringExtra("USERNAME");
-      // Set the theme.
+    String username = getIntent().getStringExtra("USERNAME");
+    // Set the theme.
     SharedPreferences mSettings = this.getSharedPreferences("Settings", MODE_PRIVATE);
     ThemeManager.setTheme(
         MainActivity.this,
@@ -126,7 +126,8 @@ public class MainActivity extends Activity {
               putUserName(intent);
               putSettingsMenu(intent);
               startActivity(intent);
-//              usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
+              //              usr.getUserData().setPrefs(getSharedPreferences("highScores",
+              // MODE_PRIVATE));
               finish();
               overridePendingTransition(0, 0);
             } else if (which == 1) {
@@ -136,7 +137,8 @@ public class MainActivity extends Activity {
               putUserName(intent);
               putSettingsMenu(intent);
               startActivity(intent);
-//              usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
+              //              usr.getUserData().setPrefs(getSharedPreferences("highScores",
+              // MODE_PRIVATE));
               finish();
               overridePendingTransition(0, 0);
             } else if (which == 2) {
@@ -146,7 +148,8 @@ public class MainActivity extends Activity {
               putUserName(intent);
               putSettingsMenu(intent);
               startActivity(intent);
-//              usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
+              //              usr.getUserData().setPrefs(getSharedPreferences("highScores",
+              // MODE_PRIVATE));
               finish();
               overridePendingTransition(0, 0);
             } else if (which == 3) {
@@ -156,7 +159,8 @@ public class MainActivity extends Activity {
               putUserName(intent);
               putSettingsMenu(intent);
               startActivity(intent);
-//              usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
+              //              usr.getUserData().setPrefs(getSharedPreferences("highScores",
+              // MODE_PRIVATE));
               finish();
               overridePendingTransition(0, 0);
             } else if (which == 4) {
@@ -166,7 +170,8 @@ public class MainActivity extends Activity {
               putUserName(intent);
               putSettingsMenu(intent);
               startActivity(intent);
-//              usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
+              //              usr.getUserData().setPrefs(getSharedPreferences("highScores",
+              // MODE_PRIVATE));
               finish();
               overridePendingTransition(0, 0);
             }
@@ -313,7 +318,7 @@ public class MainActivity extends Activity {
     Intent intent = new Intent(this, MazeGameLauncher.class);
     putUserName(intent);
     startActivity(intent);
-//    usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
+    //    usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
   }
 
   /** Called when the user taps the 'TAPIOCA LAUNCHER' button */
@@ -321,7 +326,7 @@ public class MainActivity extends Activity {
     Intent intent = new Intent(this, TapiocaGameLauncher.class);
     putUserName(intent);
     startActivity(intent);
-//    usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
+    //    usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
   }
 
   /** Called when the user taps the 'TILES' button */
@@ -330,7 +335,7 @@ public class MainActivity extends Activity {
     //    intent.putExtra("UserObject", usr);
     putUserName(intent);
     startActivity(intent);
-//    usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
+    //    usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
   }
 
   /** Called when the user taps the Settings button; makes the settings menu visible. */
@@ -368,10 +373,10 @@ public class MainActivity extends Activity {
     intent.putExtra("UserObject", usr);
   }
 
-    private void putUserName(Intent intent) {
-        String userName = getIntent().getStringExtra("USERNAME");
-        intent.putExtra("USERNAME", userName);
-    }
+  private void putUserName(Intent intent) {
+    String userName = getIntent().getStringExtra("USERNAME");
+    intent.putExtra("USERNAME", userName);
+  }
 
   private void putSettingsMenu(Intent intent) {
     intent.putExtra("SettingsMenu", isSettingsMenu);

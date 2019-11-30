@@ -1,9 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/buttonPlayInvert"
+        style="?buttonPrimary"
+        android:layout_width="110dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="55dp"
+        android:onClick="startTilesInvert"
+        android:text="@string/play_invert"
+        android:textAllCaps="true"
+        android:textColor="?android:attr/colorPrimaryDark"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonExitTiles"
+        app:layout_constraintEnd_toEndOf="@+id/buttonPlay4By4"
+        app:layout_constraintStart_toStartOf="@+id/buttonPlay4By4"
+        app:layout_constraintTop_toBottomOf="@+id/buttonPlay4By4" />
 
     <TextView
         android:id="@+id/titleTiles"
@@ -28,11 +45,13 @@
         android:layout_width="110dp"
         android:layout_height="55dp"
         android:layout_marginTop="35dp"
+        android:layout_marginBottom="25dp"
         android:onClick="startTiles4By4"
         android:text="@string/play_4by4"
         android:textAllCaps="true"
         android:textColor="?android:attr/colorPrimaryDark"
         android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonPlayInvert"
         app:layout_constraintEnd_toStartOf="@+id/buttonPlay5By5"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
