@@ -144,7 +144,7 @@ public class GameController implements Observer {
   }
 
   // Check for collisions between launcher and balls
-  void checkCollision() {
+  private void checkCollision() {
     Launcher launcher = gameFacade.getLauncher();
     List<Ball> balls = gameFacade.getBalls();
     for (int i = 0; i < balls.size(); i++) {

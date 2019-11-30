@@ -13,11 +13,11 @@ class TapiocaFactory {
         return new Ball(x, y, radius, 1, "reg");
     }
 
-    Ball makeRed(int x, int y, int radius) {
+    private Ball makeRed(int x, int y, int radius) {
         return new Ball(x, y, radius, 2, "reg");
     }
 
-    Ball makeWhite(int x, int y, int radius) {
+    private Ball makeWhite(int x, int y, int radius) {
         return new Ball(x, y, radius, 1, "speedboost");
     }
 
