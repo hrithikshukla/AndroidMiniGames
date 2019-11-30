@@ -1,7 +1,6 @@
 package com.example.game.Activities.main;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -9,12 +8,11 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.SparseBooleanArray;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 
 import com.example.game.R;
 
@@ -29,6 +27,7 @@ public class ShopActivity extends AppCompatActivity {
     private List<ImageView> images = new ArrayList<>();
     // Checks if back button is pressed
     protected OnBackPressedListener onBackPressedListener;
+    private SparseBooleanArray ownedChars;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -138,13 +137,13 @@ public class ShopActivity extends AppCompatActivity {
 
     // Code from https://gist.github.com/nisrulz/3078eaa6357d6f5c0051
     private void grayOut(ImageView img) {
-        // if grayed
-        if (img.getTag().equals("grayed")) {
+//         if not owned grey them out
+        if (!ownedChars.get(img.getId())) {
             ColorMatrix matrix = new ColorMatrix();
             matrix.setSaturation(0);
             ColorMatrixColorFilter filter = new ColorMatrixColorFilter(matrix);
             img.setColorFilter(filter);
-        } else {
+        } else { // no filter
             img.setColorFilter(null);
             img.setTag("");
         }
