@@ -80,4 +80,7 @@
     <string name="MazeMediumScore">迷宫（中）高分 :</string>
     <string name="MazeHardScore">迷宫（难）高分 :</string>
     <string name="shots">" 剩下的球："</string>
+    <string name="Tiles4Score">瓷砖（4 X 4）高分：</string>
+    <string name="Tiles5Score">瓷砖 （5 X 5）高分：</string>
+    <string name="TilesInvertScore">瓷砖 （颠倒）高分：</string>
 </resources>

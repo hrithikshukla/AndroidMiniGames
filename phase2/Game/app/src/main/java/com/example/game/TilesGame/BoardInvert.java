@@ -13,7 +13,7 @@ class BoardInvert extends BoardManager {
   }
 
   /** Create the starting items in a board. */
-  void createBoardItems() {
+  public void createBoardItems() {
     // Add a hidden row of tiles above board to appear when game starts.
     tileBoard.add(new ArrayList<Tile>());
 
@@ -47,7 +47,7 @@ class BoardInvert extends BoardManager {
 
   @Override
   /** Update the items in a board. */
-  void update() {
+  public void update() {
     if (gameStart) {
       // Check if the game will end this turn.
       if (doesGameEnd()) {

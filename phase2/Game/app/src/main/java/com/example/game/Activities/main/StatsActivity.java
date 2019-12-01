@@ -23,10 +23,11 @@ public class StatsActivity extends AppCompatActivity {
   @SuppressLint({"ClickableViewAccessibility", "SetTextI18n"})
   @Override
   protected void onCreate(Bundle savedInstanceState) {
-//    this.usr = (User) getIntent().getSerializableExtra("UserObject");
-//    if (usr != null) {
-//      usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
-//    }
+    //    this.usr = (User) getIntent().getSerializableExtra("UserObject");
+    //    if (usr != null) {
+    //      usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
+    //    }
+
     // Set the theme.
     username = getIntent().getStringExtra("USERNAME");
     SharedPreferences mSettings = this.getSharedPreferences("Settings", MODE_PRIVATE);
@@ -40,6 +41,7 @@ public class StatsActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_stats);
 
+    // Swipe to go back to MainActivity
     ImageView arrow = findViewById(R.id.ArrowLeft);
     arrow.setOnTouchListener(
         new OnSwipeTouchListener(StatsActivity.this) {
@@ -47,12 +49,13 @@ public class StatsActivity extends AppCompatActivity {
           public void onSwipeRight() {
             // your actions
             Intent intent = new Intent(StatsActivity.this, MainActivity.class);
-//            usr.getUserData().setPrefs(null);
+            //            usr.getUserData().setPrefs(null);
             intent.putExtra("USERNAME", username);
             startActivity(intent);
           }
         });
 
+    // Button to reset statistics
     Button reset = findViewById(R.id.Reset);
     reset.setOnClickListener(
         new View.OnClickListener() {
@@ -67,24 +70,32 @@ public class StatsActivity extends AppCompatActivity {
           }
         });
 
+    // Retrive all textViews
     TextView tapiocaScore = findViewById(R.id.TapiocaScore);
-//    TextView mazeScore = findViewById(R.id.MazeScore);
     TextView mazeEasyScore = findViewById(R.id.MazeEasyScore);
     TextView mazeMediumScore = findViewById(R.id.MazeMediumScore);
     TextView mazeHardScore = findViewById(R.id.MazeHardScore);
-    TextView tileScore = findViewById(R.id.TileScore);
+    TextView tiles4Score = findViewById(R.id.Tiles4Score);
+    TextView tiles5Score = findViewById(R.id.Tiles5Score);
+    TextView tilesInvertScore = findViewById(R.id.TilesInvertScore);
+
+    // Retrive userScores
     int mazeEasyHighScore = uR.getUserHighScore(username, "MAZE_GAME_EASY");
     int mazeMediumHighScore = uR.getUserHighScore(username, "MAZE_GAME_MEDIUM");
     int mazeHardHighScore = uR.getUserHighScore(username, "MAZE_GAME_HARD");
     int tapiocaHighScore = uR.getUserHighScore(username, "TAPIOCA_GAME");
-    int tilesHighScore = uR.getUserHighScore(username, "TILES_GAME");
-    tapiocaScore.setText(
-        getString(R.string.TapiocaScore) + tapiocaHighScore);
-//    mazeScore.setText(getString(R.string.MazeScore) + mazeHighScore);
+    int tiles4HighScore = uR.getUserHighScore(username, "TILES_GAME_4");
+    int tiles5HighScore = uR.getUserHighScore(username, "TILES_GAME_5");
+    int tilesInvertHighScore = uR.getUserHighScore(username, "TILES_GAME_INVERT");
+
+    // Set textViews to userScores
+    tapiocaScore.setText(getString(R.string.TapiocaScore) + tapiocaHighScore);
     mazeEasyScore.setText(getString(R.string.MazeEasyScore) + mazeEasyHighScore);
     mazeMediumScore.setText(getString(R.string.MazeMediumScore) + mazeMediumHighScore);
     mazeHardScore.setText(getString(R.string.MazeHardScore) + mazeHardHighScore);
-    tileScore.setText(getString(R.string.TileScore) + tilesHighScore);
+    tiles4Score.setText(getString(R.string.Tiles4Score) + tiles4HighScore);
+    tiles5Score.setText(getString(R.string.Tiles5Score) + tiles5HighScore);
+    tilesInvertScore.setText(getString(R.string.TilesInvertScore) + tilesInvertHighScore);
 
     TextView tapiocaTime = findViewById(R.id.TapiocaTime);
     TextView mazeTime = findViewById(R.id.MazeTime);

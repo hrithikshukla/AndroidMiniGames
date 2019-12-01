@@ -88,5 +88,8 @@ But be quick as you only have a limited number of shots!"
     <string name="MazeMediumScore">Maze (Medium) High Score:</string>
     <string name="MazeHardScore">Maze (Hard) High Score:</string>
     <string name="shots">"Shots remaining: "</string>
+    <string name="Tiles4Score">Tiles (4 X 4) High Score:</string>
+    <string name="Tiles5Score">Tiles (5 X 5) High Score:</string>
+    <string name="TilesInvertScore">Tiles (Invert) High Score:</string>
 
 </resources>

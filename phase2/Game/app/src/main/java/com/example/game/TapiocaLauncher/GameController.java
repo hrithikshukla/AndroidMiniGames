@@ -14,7 +14,7 @@ public class GameController implements Observer {
   private boolean isMoving = false; // whether the Launcher is moving or not
   private int count =
           0; // counts 60 frames (1 second) after which the Launcher ball's position is reset
-  private boolean readyToLaunch = false; // Determine if the launcher is ready to fire
+  private boolean readyToLaunch = true; // Determine if the launcher is ready to fire
   private int screenX, screenY; // Size of the screen
   private double gravityX, gravityY; // How much to decreases the Launcher's speed by each tick
   private boolean ballClicked = false; // Indicates if the player has done a down action yet

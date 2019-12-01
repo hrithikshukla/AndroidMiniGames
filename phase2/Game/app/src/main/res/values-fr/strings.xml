@@ -80,4 +80,7 @@ Mais faites vite, vous n’avez qu’un nombre limité de coups!"</string>
     <string name="MazeMediumScore">Labyrinthe (moyen) score élevé:</string>
     <string name="MazeHardScore">Labyrinthe (hard) score élevé :</string>
     <string name="shots">" Nombre de coups restants: "</string>
+    <string name="Tiles4Score">"Carrelage (4 X 4) Score élevé: "</string>
+    <string name="Tiles5Score">"Carrelage (5 X 5) Score élevé: "</string>
+    <string name="TilesInvertScore">"Carrelage (invertir) Score élevé: "</string>
 </resources>
