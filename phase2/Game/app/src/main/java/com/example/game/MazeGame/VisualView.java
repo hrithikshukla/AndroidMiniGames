@@ -77,7 +77,7 @@ public class VisualView implements Observer {
 
       // Draw the background first.
       canvas.drawBitmap(
-          background.getBackground(), 0, 0, backgroundPaint);
+              background.getBackground(), 0, 0, backgroundPaint);
       drawTiles(canvas);
       drawText(canvas);
       drawArrows(canvas);
@@ -138,10 +138,10 @@ public class VisualView implements Observer {
   /** @param o most recent representation of the Maze. */
   @Override
   public void update(Observable observable, Object o) {
-    GameFacade gameFacade = (GameFacade) observable;
-    grid = gameFacade.getMaze().getGridDeepCopy();
-    score = gameFacade.getPlayer().getScore();
-    numSteps = gameFacade.getPlayer().getNumSteps();
+      GameFacade gameFacade = (GameFacade) observable;
+      grid = gameFacade.getMaze().getGridDeepCopy();
+      score = gameFacade.getPlayer().getScore();
+      numSteps = gameFacade.getPlayer().getNumSteps();
   }
 
   Background getBackground() {

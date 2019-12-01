@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="Tiles4Score">"Fliesen (4 X 4) Hohe Punktzahl: "</string>
-    <string name="Tiles5Score">"Fliesen (5 X 5) Hohe Punktzahl: "</string>
-    <string name="TilesInvertScore">"Fliesen (umkehren ) Hohe Punktzahl: "</string>
-</resources>

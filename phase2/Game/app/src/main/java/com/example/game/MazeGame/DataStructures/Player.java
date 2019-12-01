@@ -42,37 +42,39 @@ public class Player extends Observable {
     posY += y;
     incrementStep();
     setChanged();
-    notifyObservers();
+      notifyObservers();
   }
 
-  /** Increments the player's numbers of steps and decrease their score by 1 . */
+    /**
+     * Increments the player's numbers of steps and decrease their score by 1 .
+     */
   private void incrementStep() {
     numSteps += 1;
     score.decrementScore();
   }
 
-  /**
-   * Returns the current position of the player.
-   *
-   * @return - position of the player as a 2D array in the format of [x,y]
+    /**
+     * Returns the current position of the player.
+     *
+     * @return - position of the player as a 2D array in the format of [x,y]
    */
   public int[] getPos() {
     return new int[] {posX, posY};
   }
 
-  /**
-   * Returns the player's current score.
-   *
-   * @return - current score of the player
+    /**
+     * Returns the player's current score.
+     *
+     * @return - current score of the player
    */
   public int getScore() {
     return score.getScore();
   }
 
-  /**
-   * Getter for number of steps.
-   *
-   * @return - current number of steps taken by the player
+    /**
+     * Getter for number of steps.
+     *
+     * @return - current number of steps taken by the player
    */
   public int getNumSteps() {
     return numSteps;

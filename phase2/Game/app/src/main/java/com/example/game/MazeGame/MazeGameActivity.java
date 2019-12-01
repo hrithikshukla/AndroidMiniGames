@@ -92,11 +92,11 @@ public class MazeGameActivity extends GameActivity implements Observer {
   @Override
   public synchronized void update(Observable o, Object arg) {
     // Set users high score if applicable when game ends and send it to gameOverActivity
-    GameFacade gameFacade = (GameFacade) o;
-    if (gameFacade.getMaze().hasEscaped()) {
+      GameFacade gameFacade = (GameFacade) o;
+      if (gameFacade.getMaze().hasEscaped()) {
       String difficulty = getIntent().getStringExtra("DIFFICULTY");
       UserScores u =
-          new UserScores(username, gameFacade.getPlayer().getScore(), "MAZE_GAME_" + difficulty, 120);
+              new UserScores(username, gameFacade.getPlayer().getScore(), "MAZE_GAME_" + difficulty, 120);
       ur.addUserScore(u);
       //            if (ur.getUserHighScore(username, "MAZE_GAME") < newGameState.getScore()) {
       //              SharedPreferences.Editor editor = sharedPreferences.edit();

@@ -7,8 +7,8 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 @Database(
-    entities = {UserAccount.class, UserScores.class, UserCollectibles.class},
-    version = 2, exportSchema = false)
+        entities = {UserAccount.class, UserScores.class, UserCollectibles.class},
+        version = 2, exportSchema = false)
 public abstract class UserDatabase extends RoomDatabase {
 
   // Create singleton; so can't create multiple instances
@@ -19,7 +19,7 @@ public abstract class UserDatabase extends RoomDatabase {
 
   public abstract UserScoresDao userScoresDao();
 
-  public abstract UserCollectiblesDao userCollectiblesDao();
+    public abstract UserCollectiblesDao userCollectiblesDao();
 
   // synchrnoized means only one thread can access this method at a time
   public static synchronized UserDatabase getInstance(Context context) {

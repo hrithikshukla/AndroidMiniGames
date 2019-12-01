@@ -62,7 +62,7 @@ class Tile {
       case PLAYER_AT_EXIT:
         return playerAtExit;
 
-      case COLLECTIBLE:
+        case COLLECTIBLE:
         return collectable;
 
       default:

@@ -44,7 +44,7 @@ public class GameFacade extends Observable {
   // Notify classes that are observing this(InputView, OutputView)
   void update() {
     setChanged();
-    notifyObservers();
+      notifyObservers();
   }
 
   private Cell[][] getCellRepresentation() {
