@@ -1,7 +1,7 @@
 package com.example.game.TilesGame;
 
 /** A dangerous tile. */
-class DangerTile extends Tile {
+class DangerTile extends TileManager {
 
   /**
    * Construct a dangerous tile at location (x, y).

@@ -1,7 +1,7 @@
 package com.example.game.TilesGame;
 
 /** A key tile. */
-class KeyTile extends Tile {
+class KeyTile extends TileManager {
 
   /** A boolean to represent whether this tile has been missed on a board. */
   private boolean missed = false;

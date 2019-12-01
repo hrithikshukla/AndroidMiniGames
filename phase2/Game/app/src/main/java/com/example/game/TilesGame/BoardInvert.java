@@ -12,39 +12,6 @@ class BoardInvert extends BoardManager {
     super(context);
   }
 
-  /** Create the starting items in a board. */
-  public void createBoardItems() {
-    // Add a hidden row of tiles above board to appear when game starts.
-    tileBoard.add(new ArrayList<Tile>());
-
-    // Add five arrays to tileBoard to represent the five onscreen rows of tiles.
-    tileBoard.add(new ArrayList<Tile>());
-    tileBoard.add(new ArrayList<Tile>());
-    tileBoard.add(new ArrayList<Tile>());
-    tileBoard.add(new ArrayList<Tile>());
-    tileBoard.add(new ArrayList<Tile>());
-
-    Random ran = new Random(); // Use a random variable to randomize the key tile in each row.
-
-    // Fill first five rows with both danger tiles and key tiles.
-    for (int i = 0; i < 5; i++) {
-      ArrayList<Tile> tileRow = tileBoard.get(i);
-      Integer keyTileIndex = ran.nextInt(4);
-      for (int j = 0; j < 4; j++) {
-        if (keyTileIndex.equals(j)) {
-          tileRow.add(new KeyTile(j * tileWidth, (i - 2) * tileHeight));
-        } else {
-          tileRow.add(new DangerTile(j * tileWidth, (i - 2) * tileHeight));
-        }
-      }
-    }
-    // Fill last row with danger tiles.
-    ArrayList<Tile> tileRow = tileBoard.get(5);
-    for (int j = 0; j < 4; j++) {
-      tileRow.add(new DangerTile(j * tileWidth, 3 * tileHeight));
-    }
-  }
-
   /** Update the items in a board. */
   @Override
   public void update() {
@@ -87,42 +54,10 @@ class BoardInvert extends BoardManager {
   private Tile invertTile(Tile thisTile) {
     if (thisTile instanceof KeyTile) { // If thisTile is KeyTile:
       // Return a new DangerTile at the location of thisTile
-      return new DangerTile(thisTile.getX(), thisTile.getY());
+      return tileFactory.getDangerTile(thisTile.getX(), thisTile.getY());
     } else { // If thisTile is DangerTile:
       // Return a new KeyTile at the location of thisTile
-      return new KeyTile(thisTile.getX(), thisTile.getY());
-    }
-  }
-
-  /**
-   * Populate top of board with a new row of tiles once the bottom row of tiles has passed the
-   * bottom of the board. *
-   */
-  void populate() {
-    if (tileBoard.get(5).get(0).getY()
-        >= boardHeight) { // If the last row of tiles has passed the bottom.
-      // Move the first five rows of tiles one spot to the right in tileBoard array.
-      for (int i = 5; i > 0; i--) {
-        tileBoard.set(i, tileBoard.get(i - 1));
-      }
-
-      // Add a new row of tiles to the top of the board.
-      ArrayList<Tile> newTileRow = new ArrayList<>();
-      tileBoard.set(0, newTileRow);
-      int newTileY = tileBoard.get(1).get(0).getY() - tileHeight;
-
-      // Use a random variable to randomize the key tile in new row.
-      Random ran = new Random();
-      Integer keyTileIndex = ran.nextInt(4);
-
-      // Fill new row with both danger tiles and key tiles.
-      for (int j = 0; j < 4; j++) {
-        if (keyTileIndex.equals(j)) {
-          newTileRow.add(new KeyTile(j * tileWidth, newTileY));
-        } else {
-          newTileRow.add(new DangerTile(j * tileWidth, newTileY));
-        }
-      }
+      return tileFactory.getKeyTile(thisTile.getX(), thisTile.getY());
     }
   }
 }

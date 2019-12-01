@@ -7,10 +7,10 @@ import java.util.Random;
 class Board5By5 extends BoardManager {
 
   /** The width of a tile. */
-  private int tileWidth = Tile.getWidth5By5();
+  private int tileWidth = TileManager.getWidth5By5();
 
   /** The height of a tile. */
-  private int tileHeight = Tile.getHeight5By5();
+  private int tileHeight = TileManager.getHeight5By5();
 
   /** The width of this board. */
   private int boardWidth = 5 * tileWidth;
@@ -24,6 +24,7 @@ class Board5By5 extends BoardManager {
   }
 
   /** Create the starting items in a board. */
+  @Override
   public void createBoardItems() {
     // Add a hidden row of tiles above board to appear when game starts.
     tileBoard.add(new ArrayList<Tile>());
@@ -44,38 +45,16 @@ class Board5By5 extends BoardManager {
       Integer keyTileIndex = ran.nextInt(5);
       for (int j = 0; j < 5; j++) {
         if (keyTileIndex.equals(j)) {
-          tileRow.add(new KeyTile(j * tileWidth, (i - 2) * tileHeight));
+          tileRow.add(tileFactory.getKeyTile(j * tileWidth, (i - 2) * tileHeight));
         } else {
-          tileRow.add(new DangerTile(j * tileWidth, (i - 2) * tileHeight));
+          tileRow.add(tileFactory.getDangerTile(j * tileWidth, (i - 2) * tileHeight));
         }
       }
     }
     // Fill last row with danger tiles.
     ArrayList<Tile> tileRow = tileBoard.get(6);
     for (int j = 0; j < 5; j++) {
-      tileRow.add(new DangerTile(j * tileWidth, 4 * tileHeight));
-    }
-  }
-
-  /**
-   * Mark the tile at location (x, y) as touched.
-   *
-   * @param x: the x-coordinate of the touched tile.
-   * @param y: the y-coordinate of the touched tile.
-   */
-  @Override
-  public void touchTile(float x, float y) {
-    for (ArrayList<Tile> tileRow : tileBoard) {
-      for (Tile tile : tileRow) {
-        if ((tile.getX() <= x && x <= (tile.getX() + tileWidth))
-            && (tile.getY() <= y && y <= (tile.getY() + tileHeight))) // If this tile was touched
-        if (!tile.isTouch()) { // If tile has not already been touched.
-            tile.setTouch(true);
-            if (tile instanceof KeyTile) {
-              scoreManager.addScore("tiles"); // Increment score by one (only of tile is a KeyTile).
-            }
-          }
-      }
+      tileRow.add(tileFactory.getDangerTile(j * tileWidth, 4 * tileHeight));
     }
   }
 
@@ -83,6 +62,7 @@ class Board5By5 extends BoardManager {
    * Populate top of board with a new row of tiles once the bottom row of tiles has passed the
    * bottom of the board. *
    */
+  @Override
   void populate() {
     if (tileBoard.get(6).get(0).getY()
         >= boardHeight) { // If the last row of tiles has passed the bottom.
@@ -103,9 +83,9 @@ class Board5By5 extends BoardManager {
       // Fill new row with both danger tiles and key tiles.
       for (int j = 0; j < 5; j++) {
         if (keyTileIndex.equals(j)) {
-          newTileRow.add(new KeyTile(j * tileWidth, newTileY));
+          newTileRow.add(tileFactory.getKeyTile(j * tileWidth, newTileY));
         } else {
-          newTileRow.add(new DangerTile(j * tileWidth, newTileY));
+          newTileRow.add(tileFactory.getDangerTile(j * tileWidth, newTileY));
         }
       }
     }

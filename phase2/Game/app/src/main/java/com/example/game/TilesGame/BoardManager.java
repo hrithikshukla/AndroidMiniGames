@@ -9,6 +9,7 @@ import android.graphics.Typeface;
 import com.example.game.Activities.main.ScoreManager;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -19,10 +20,10 @@ import static android.content.Context.MODE_PRIVATE;
 abstract class BoardManager extends ClassLoader implements Board {
 
   /** The width of a tile. (Default is 4X4) */
-  int tileWidth = Tile.getWidth4By4();
+  int tileWidth = TileManager.getWidth4By4();
 
   /** The height of a tile. (Default is 4X4) */
-  int tileHeight = Tile.getHeight4By4();
+  int tileHeight = TileManager.getHeight4By4();
 
   /** The width of this board. (Default is 4X4 board) */
   int boardWidth = 4 * tileWidth;
@@ -39,6 +40,8 @@ abstract class BoardManager extends ClassLoader implements Board {
   /** A boolean representing whether the game has ended. */
   boolean gameEnd = false;
 
+  TileFactory tileFactory;
+
   ScoreManager scoreManager;
 
   private TileDrawer tileDrawer;
@@ -46,6 +49,7 @@ abstract class BoardManager extends ClassLoader implements Board {
   /** Construct a board manager. */
   BoardManager(Context context) {
     scoreManager = new ScoreManager(context.getSharedPreferences("highScores", MODE_PRIVATE));
+    tileFactory = new TileFactory();
     tileDrawer = new TileDrawer(tileWidth, tileHeight);
   }
 
@@ -66,7 +70,37 @@ abstract class BoardManager extends ClassLoader implements Board {
   }
 
   /** Create the starting items in a board. */
-  public abstract void createBoardItems();
+  public void createBoardItems() {
+    // Add a hidden row of tiles above board to appear when game starts.
+    tileBoard.add(new ArrayList<Tile>());
+
+    // Add five arrays to tileBoard to represent the five onscreen rows of tiles.
+    tileBoard.add(new ArrayList<Tile>());
+    tileBoard.add(new ArrayList<Tile>());
+    tileBoard.add(new ArrayList<Tile>());
+    tileBoard.add(new ArrayList<Tile>());
+    tileBoard.add(new ArrayList<Tile>());
+
+    Random ran = new Random(); // Use a random variable to randomize the key tile in each row.
+
+    // Fill first five rows with both danger tiles and key tiles.
+    for (int i = 0; i < 5; i++) {
+      ArrayList<Tile> tileRow = tileBoard.get(i);
+      Integer keyTileIndex = ran.nextInt(4);
+      for (int j = 0; j < 4; j++) {
+        if (keyTileIndex.equals(j)) {
+          tileRow.add(tileFactory.getKeyTile(j * tileWidth, (i - 2) * tileHeight));
+        } else {
+          tileRow.add(tileFactory.getDangerTile(j * tileWidth, (i - 2) * tileHeight));
+        }
+      }
+    }
+    // Fill last row with danger tiles.
+    ArrayList<Tile> tileRow = tileBoard.get(5);
+    for (int j = 0; j < 4; j++) {
+      tileRow.add(tileFactory.getDangerTile(j * tileWidth, 3 * tileHeight));
+    }
+  }
 
   /** Update the items in a board. */
   public void update() {
@@ -119,13 +153,14 @@ abstract class BoardManager extends ClassLoader implements Board {
     for (ArrayList<Tile> tileRow : tileBoard) {
       for (Tile tile : tileRow) {
         if ((tile.getX() <= x && x <= (tile.getX() + tileWidth))
-            && (tile.getY() <= y && y <= (tile.getY() + tileHeight))) // If this tile was touched
-        if (!tile.isTouch()) { // If tile has not already been touched.
+            && (tile.getY() <= y && y <= (tile.getY() + tileHeight))) { // If this tile was touched
+          if (!tile.isTouch()) { // If tile has not already been touched.
             tile.setTouch(true);
-            if (tile instanceof KeyTile) {
-              scoreManager.addScore("tiles"); // Increment score by one (only of tile is a KeyTile).
-            }
           }
+          if (tile instanceof KeyTile) {
+            scoreManager.addScore("tiles"); // Increment score by one (only if tile is a KeyTile).
+          }
+        }
       }
     }
   }
@@ -134,10 +169,11 @@ abstract class BoardManager extends ClassLoader implements Board {
   boolean doesGameEnd() {
     for (ArrayList<Tile> tileRow : tileBoard) {
       for (Tile tile : tileRow) {
-        if (tile instanceof DangerTile && tile.touch) { // Check if a danger tile has been touched.
+        if (tile instanceof DangerTile
+            && tile.isTouch()) { // Check if a danger tile has been touched.
           return true;
         }
-        if (tile instanceof KeyTile && !tile.touch && tile.getY() >= boardHeight - 80) {
+        if (tile instanceof KeyTile && !tile.isTouch() && tile.getY() >= boardHeight - 80) {
           ((KeyTile) tile).setMissed(true);
           return true;
         }
@@ -150,5 +186,31 @@ abstract class BoardManager extends ClassLoader implements Board {
    * Populate top of board with a new row of tiles once the bottom row of tiles has passed the
    * bottom of the board. *
    */
-  abstract void populate();
+  void populate() {
+    if (tileBoard.get(5).get(0).getY()
+        >= boardHeight) { // If the last row of tiles has passed the bottom.
+      // Move the first five rows of tiles one spot to the right in tileBoard array.
+      for (int i = 5; i > 0; i--) {
+        tileBoard.set(i, tileBoard.get(i - 1));
+      }
+
+      // Add a new row of tiles to the top of the board.
+      ArrayList<Tile> newTileRow = new ArrayList<>();
+      tileBoard.set(0, newTileRow);
+      int newTileY = tileBoard.get(1).get(0).getY() - tileHeight;
+
+      // Use a random variable to randomize the key tile in new row.
+      Random ran = new Random();
+      Integer keyTileIndex = ran.nextInt(4);
+
+      // Fill new row with both danger tiles and key tiles.
+      for (int j = 0; j < 4; j++) {
+        if (keyTileIndex.equals(j)) {
+          newTileRow.add(tileFactory.getKeyTile(j * tileWidth, newTileY));
+        } else {
+          newTileRow.add(tileFactory.getDangerTile(j * tileWidth, newTileY));
+        }
+      }
+    }
+  }
 }
