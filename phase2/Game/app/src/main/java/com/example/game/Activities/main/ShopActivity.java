@@ -29,7 +29,7 @@ public class ShopActivity extends AppCompatActivity {
   private List<ImageView> images = new ArrayList<>();
   // Checks if back button is pressed
   protected OnBackPressedListener onBackPressedListener;
-  private List<Integer> ownedChars;
+  private LiveData<List<Integer>> ownedChars;
   private String username;
   TextView userCoins;
 
@@ -48,6 +48,12 @@ public class ShopActivity extends AppCompatActivity {
 
     // Assign list to ownedChars here
     ownedChars = uR.getUserCollectibles();
+    ownedChars.observe(this, new Observer<List<Integer>>() {
+      @Override
+      public void onChanged(List<Integer> integers) {
+        // Put method what happens when what use own changes
+      }
+    });
 
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_shop);
