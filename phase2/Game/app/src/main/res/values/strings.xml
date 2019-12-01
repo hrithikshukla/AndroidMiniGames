@@ -65,6 +65,7 @@
     <string name="text_light">Light</string>
     <string name="text_dark">Dark</string>
     <item type="id" name="id" />
+    <item type="id" name="price" />
 
     <string name="purchase">I want it!</string>
     <string name="cancel">Cancel</string>

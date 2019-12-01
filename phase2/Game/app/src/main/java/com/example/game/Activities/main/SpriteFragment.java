@@ -1,36 +1,29 @@
 package com.example.game.Activities.main;
 
-import android.app.Activity;
-import android.content.Context;
 import android.graphics.Color;
-import android.graphics.ColorMatrix;
-import android.graphics.ColorMatrixColorFilter;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.game.R;
 
 public class SpriteFragment extends DialogFragment {
 
     private int image;
+    private int price;
 
     private ShopActivity activity;
 
-    SpriteFragment(int image) {
+    SpriteFragment(int image, int price) {
         this.image = image;
+        this.price = price;
     }
 
     @Override
@@ -49,7 +42,7 @@ public class SpriteFragment extends DialogFragment {
         // Setup any handles to view objects here
         // EditText etFoo = (EditText) view.findViewById(R.id.etFoo);
         getView().setBackgroundColor(Color.WHITE);
-        ImageView imageView = getView().findViewById(R.id.character);
+        final ImageView imageView = getView().findViewById(R.id.character);
         imageView.setImageResource(image);
 
         Button cancel = getView().findViewById(R.id.cancel);
@@ -61,6 +54,22 @@ public class SpriteFragment extends DialogFragment {
                         activity.getSupportFragmentManager().popBackStack();
                     }
                 });
+
         Button purchase = getView().findViewById(R.id.purchase);
+        purchase.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+//                        if (usr.balance < price) {
+//                            // prirnt error message
+//                        } else {
+//                            usr.balance.subtract(price);
+//                            // add to users owned items
+//                        }
+                    }
+                });
+
+        TextView description = getView().findViewById(R.id.itemDescription);
+        description.setText(description.getText() + "" + price + " coins?");
     }
 }
