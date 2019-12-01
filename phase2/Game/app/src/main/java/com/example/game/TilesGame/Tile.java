@@ -1,35 +1,30 @@
 package com.example.game.TilesGame;
 
 import android.content.res.Resources;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
 
 /** A tile. */
 abstract class Tile {
 
   /** The width of a 4X4 tile. */
-  static int width4By4 = Resources.getSystem().getDisplayMetrics().widthPixels / 4;
+  private static int width4By4 = Resources.getSystem().getDisplayMetrics().widthPixels / 4;
 
   /** The height of a 4X4 tile. */
-  static int height4By4 = Resources.getSystem().getDisplayMetrics().heightPixels / 4;
+  private static int height4By4 = Resources.getSystem().getDisplayMetrics().heightPixels / 4;
 
   /** The width of a 5X5 tile. */
-  static int width5By5 = Resources.getSystem().getDisplayMetrics().widthPixels / 5;
+  private static int width5By5 = Resources.getSystem().getDisplayMetrics().widthPixels / 5;
 
   /** The height of a 4X4 tile. */
-  static int height5By5 = Resources.getSystem().getDisplayMetrics().heightPixels / 5;
+  private static int height5By5 = Resources.getSystem().getDisplayMetrics().heightPixels / 5;
 
   /** The x-coordinate of this tile. */
-  int x;
+  private int x;
 
   /** The y-coordinate of this tile. */
-  int y;
+  private int y;
 
   /** A boolean representing whether this tile has been touched. */
   boolean touch = false;
-
-  Paint paintRect = new Paint();
 
   /**
    * Construct a tile at location (x, y).
@@ -43,19 +38,19 @@ abstract class Tile {
     this.y = y;
   }
 
-  public static int getWidth4By4() {
+  static int getWidth4By4() {
     return width4By4;
   }
 
-  public static int getHeight4By4() {
+  static int getHeight4By4() {
     return height4By4;
   }
 
-  public static int getWidth5By5() {
+  static int getWidth5By5() {
     return width5By5;
   }
 
-  public static int getHeight5By5() {
+  static int getHeight5By5() {
     return height5By5;
   }
 
@@ -75,7 +70,7 @@ abstract class Tile {
     this.y = y;
   }
 
-  public boolean isTouch() {
+  boolean isTouch() {
     return touch;
   }
 
@@ -90,27 +85,5 @@ abstract class Tile {
    */
   void move(int speed) {
     y += speed;
-  }
-
-  abstract void draw4By4(Canvas canvas);
-
-  abstract void draw5By5(Canvas canvas);
-
-  void draw4By4Border(Canvas canvas) {
-    drawBorder(canvas);
-    // Draw a 4X4 tile border.
-    canvas.drawRect(x, y, x + width4By4, y + height4By4, paintRect);
-  }
-
-  void draw5By5Border(Canvas canvas) {
-    drawBorder(canvas);
-    // Draw a 4X4 tile border.
-    canvas.drawRect(x, y, x + width5By5, y + height5By5, paintRect);
-  }
-
-  private void drawBorder(Canvas canvas) {
-    // Set brush for border of tile.
-    paintRect.setStyle(Paint.Style.STROKE);
-    paintRect.setColor(Color.rgb(200, 200, 200)); // LIGHT GRAY
   }
 }

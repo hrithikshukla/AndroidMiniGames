@@ -9,7 +9,6 @@ import android.graphics.Typeface;
 import com.example.game.Activities.main.ScoreManager;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -42,9 +41,12 @@ abstract class BoardManager extends ClassLoader implements Board {
 
   ScoreManager scoreManager;
 
+  private TileDrawer tileDrawer;
+
   /** Construct a board manager. */
   BoardManager(Context context) {
     scoreManager = new ScoreManager(context.getSharedPreferences("highScores", MODE_PRIVATE));
+    tileDrawer = new TileDrawer(tileWidth, tileHeight);
   }
 
   public int getScore() {
@@ -91,7 +93,7 @@ abstract class BoardManager extends ClassLoader implements Board {
     // Draw tiles.
     for (ArrayList<Tile> tileRow : tileBoard) {
       for (Tile tile : tileRow) {
-        tile.draw4By4(canvas);
+        tileDrawer.draw(canvas, tile);
       }
     }
     // Draw score.
@@ -99,7 +101,7 @@ abstract class BoardManager extends ClassLoader implements Board {
   }
 
   /** Draw the score. */
-  void drawScore(Canvas canvas) {
+  private void drawScore(Canvas canvas) {
     Paint paint = new Paint();
     paint.setTypeface(Typeface.DEFAULT_BOLD);
     paint.setTextSize(80);

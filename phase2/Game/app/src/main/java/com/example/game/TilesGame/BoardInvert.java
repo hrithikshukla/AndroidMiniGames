@@ -45,8 +45,8 @@ class BoardInvert extends BoardManager {
     }
   }
 
-  @Override
   /** Update the items in a board. */
+  @Override
   public void update() {
     if (gameStart) {
       // Check if the game will end this turn.
@@ -109,7 +109,7 @@ class BoardInvert extends BoardManager {
       // Add a new row of tiles to the top of the board.
       ArrayList<Tile> newTileRow = new ArrayList<>();
       tileBoard.set(0, newTileRow);
-      int newTileY = tileBoard.get(1).get(0).y - tileHeight;
+      int newTileY = tileBoard.get(1).get(0).getY() - tileHeight;
 
       // Use a random variable to randomize the key tile in new row.
       Random ran = new Random();
