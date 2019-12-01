@@ -74,12 +74,6 @@ public class SpriteFragment extends DialogFragment {
              userRepository.updateUserAmount(-price);
              userRepository.addUserCollectible(image);
             }
-            //                        if (usr.balance < price) {
-            //                            // prirnt error message
-            //                        } else {
-            //                            usr.balance.subtract(price);
-            //                            // add to users owned items
-            //                        }
           }
         });
 

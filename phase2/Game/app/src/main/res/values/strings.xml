@@ -93,5 +93,6 @@ But be quick as you only have a limited number of shots!"
     <string name="TilesInvertScore">Tiles (Invert) High Score:</string>
     <string name="instructions_tiles_dark">Don\'t touch the black tiles! Tap the white tiles to gain points. You lose if you tap a black tile or when an untapped white tile leaves the board.</string>
     <string name="instructions_tiles_light">Don\'t touch the white tiles! Tap the black tiles to gain points. You lose if you tap a white tile or when an untapped black tile leaves the board.</string>
+    <string name="itemDescription">Would you like to purchase this for</string>
 
 </resources>
