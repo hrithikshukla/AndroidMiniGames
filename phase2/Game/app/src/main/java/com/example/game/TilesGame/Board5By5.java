@@ -59,6 +59,29 @@ class Board5By5 extends BoardManager {
   }
 
   /**
+   * Mark the tile at location (x, y) as touched.
+   *
+   * @param x: the x-coordinate of the touched tile.
+   * @param y: the y-coordinate of the touched tile.
+   */
+  @Override
+  public void touchTile(float x, float y) {
+    for (ArrayList<Tile> tileRow : tileBoard) {
+      for (Tile tile : tileRow) {
+        if ((tile.getX() <= x && x <= (tile.getX() + tileWidth))
+            && (tile.getY() <= y && y <= (tile.getY() + tileHeight))) { // If this tile was touched
+          if (!tile.isTouch()) { // If tile has not already been touched.
+            tile.setTouch(true);
+          }
+          if (tile instanceof KeyTile) {
+            scoreManager.addScore("tiles"); // Increment score by one (only if tile is a KeyTile).
+          }
+        }
+      }
+    }
+  }
+
+  /**
    * Populate top of board with a new row of tiles once the bottom row of tiles has passed the
    * bottom of the board. *
    */
@@ -74,7 +97,7 @@ class Board5By5 extends BoardManager {
       // Add a new row of tiles to the top of the board.
       ArrayList<Tile> newTileRow = new ArrayList<>();
       tileBoard.set(0, newTileRow);
-        int newTileY = tileBoard.get(1).get(0).getY() - tileHeight;
+      int newTileY = tileBoard.get(1).get(0).getY() - tileHeight;
 
       // Use a random variable to randomize the key tile in new row.
       Random ran = new Random();

@@ -2,10 +2,15 @@ package com.example.game.TilesGame;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Canvas;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+
+import com.example.game.R;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
@@ -40,6 +45,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
   public void surfaceCreated(SurfaceHolder holder) {
     board = createBoard(); // Instantiate new Board.
     board.createBoardItems();
+    setBoardColors();
 
     thread.setRunning(true);
     thread.start();
@@ -77,6 +83,19 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
   public Board getBoard() {
     return board;
+  }
+
+  void setBoardColors() {
+    // Get the user's theme colours from shared preferences.
+    SharedPreferences mSettings = context.getSharedPreferences("Settings", MODE_PRIVATE);
+    String username = gameActivity.getUsername();
+    int colorDangerTile = mSettings.getInt(username + "colorDangerTile", 0);
+    int colorKeyTile = mSettings.getInt(username + "colorKeyTile", 0);
+    int colorTouch = mSettings.getInt(username + "colorTouch", 0);
+    int colorLose = mSettings.getInt(username + "colorLose", 0);
+
+    // Set the retrieved colours into the tile drawer.
+    board.setColors(colorDangerTile, colorKeyTile, colorTouch, colorLose);
   }
 
   /** Update the board. */

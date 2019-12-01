@@ -18,4 +18,6 @@ interface Board {
   void draw(Canvas canvas);
 
   void touchTile(float x, float y);
+
+  void setColors(int colorDangerTile, int colorKeyTile, int colorTouch, int colorLose);
 }

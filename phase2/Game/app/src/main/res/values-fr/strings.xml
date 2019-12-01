@@ -41,7 +41,6 @@
     <string name="signature_title">Votre signature</string>
     <string name="reply_title">Action de réponse par défaut</string>
     <string name="messages_header">Messages</string>
-    <string name="instructions_tiles">Ne touchez pas les carreaux blancs! Appuyez sur les carreaux noirs pour gagner des points. Vous perdez si vous appuyez sur une tuile blanche ou quand une tuile noire inexploitée quitte le tableau.</string>
     <string name="instructions_maze">Échapper au labyrinthe! Moins vous faites d’étapes, plus votre score est élevé. Déplacez votre personnage en appuyant sur les boutons fléchés.</string>
     <string name="text_game_over">Jeu terminé</string>
     <string name="text_swipe_left">Glissez à gauche!</string>
@@ -83,4 +82,6 @@ Mais faites vite, vous n’avez qu’un nombre limité de coups!"</string>
     <string name="Tiles4Score">"Carrelage (4 X 4) Score élevé: "</string>
     <string name="Tiles5Score">"Carrelage (5 X 5) Score élevé: "</string>
     <string name="TilesInvertScore">"Carrelage (invertir) Score élevé: "</string>
+    <string name="instructions_tiles_dark">Ne touchez pas les carreaux noirs! Appuyez sur les carreaux blancs pour gagner des points. Vous perdez si vous touchez une tuile noire ou quand une tuile blanche inexploitée quitte le tableau.</string>
+    <string name="instructions_tiles_light">Ne touchez pas les carreaux blancs! Appuyez sur les carreaux noirs pour gagner des points. Vous perdez si vous appuyez sur une tuile blanche ou quand une tuile noire inexploitée quitte le tableau.</string>
 </resources>

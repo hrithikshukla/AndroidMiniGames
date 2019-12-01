@@ -41,7 +41,6 @@
     <string name="sync_header">同步</string>
     <string name="sync_title">定期同步电子邮件</string>
     <string name="title_activity_settings">设定值</string>
-    <string name="instructions_tiles">" 请勿触摸白色瓷砖！点击黑色瓷砖以获取积分。如果您敲击白色瓷砖或未开发的黑色瓷砖离开电路板，则您会输。"</string>
     <string name="instructions_maze">逃脱迷宫！ 您采取的步骤越少，得分越高。 通过点击箭头按钮来移动角色。</string>
     <string name="text_game_over">游戏结束</string>
     <string name="text_swipe_left">向左滑动！</string>
@@ -83,4 +82,6 @@
     <string name="Tiles4Score">瓷砖（4 X 4）高分：</string>
     <string name="Tiles5Score">瓷砖 （5 X 5）高分：</string>
     <string name="TilesInvertScore">瓷砖 （颠倒）高分：</string>
+    <string name="instructions_tiles_dark">请勿触摸黑色瓷砖！点击白色瓷砖以获取积分。如果您敲击黑色瓷砖或未开发的白色瓷砖离开电路板，则您会输。</string>
+    <string name="instructions_tiles_light">请勿触摸白色瓷砖！点击黑色瓷砖以获取积分。如果您敲击白色瓷砖或未开发的黑色瓷砖离开电路板，则您会输。</string>
 </resources>

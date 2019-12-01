@@ -48,7 +48,6 @@
     <string name="TileTime">Time Spent Playing Tiles:</string>
     <string name="Reset">uWu Reset Statistics uWu</string>
     <string name="Statistics">Your Statistics</string>
-    <string name="instructions_tiles">Don\'t touch the white tiles! Tap the black tiles to gain points. You lose if you tap a white tile or when an untapped black tile leaves the board.</string>
     <string name="text_game_over">Game Over</string>
     <string name="text_swipe_right">Swipe Right!</string>
     <string name="text_swipe_left">Swipe Left!</string>
@@ -64,8 +63,8 @@
     <string name="button_settings_exit">x</string>
     <string name="text_light">Light</string>
     <string name="text_dark">Dark</string>
-    <item type="id" name="id" />
-    <item type="id" name="price" />
+    <item name="id" type="id" />
+    <item name="price" type="id" />
 
     <string name="purchase">I want it!</string>
     <string name="cancel">Cancel</string>
@@ -92,5 +91,7 @@ But be quick as you only have a limited number of shots!"
     <string name="Tiles4Score">Tiles (4 X 4) High Score:</string>
     <string name="Tiles5Score">Tiles (5 X 5) High Score:</string>
     <string name="TilesInvertScore">Tiles (Invert) High Score:</string>
+    <string name="instructions_tiles_dark">Don\'t touch the black tiles! Tap the white tiles to gain points. You lose if you tap a black tile or when an untapped white tile leaves the board.</string>
+    <string name="instructions_tiles_light">Don\'t touch the white tiles! Tap the black tiles to gain points. You lose if you tap a white tile or when an untapped black tile leaves the board.</string>
 
 </resources>

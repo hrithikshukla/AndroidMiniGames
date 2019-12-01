@@ -19,17 +19,19 @@ import static android.content.Context.MODE_PRIVATE;
  */
 abstract class BoardManager extends ClassLoader implements Board {
 
+  Context context;
+
   /** The width of a tile. (Default is 4X4) */
-  int tileWidth = TileManager.getWidth4By4();
+  private int tileWidth = TileManager.getWidth4By4();
 
   /** The height of a tile. (Default is 4X4) */
-  int tileHeight = TileManager.getHeight4By4();
+  private int tileHeight = TileManager.getHeight4By4();
 
   /** The width of this board. (Default is 4X4 board) */
-  int boardWidth = 4 * tileWidth;
+  private int boardWidth = 4 * tileWidth;
 
   /** The height of this board. (Default is 4X4 board) */
-  int boardHeight = 4 * tileHeight;
+  private int boardHeight = 4 * tileHeight;
 
   /** A list of all tiles on this board. */
   ArrayList<ArrayList<Tile>> tileBoard = new ArrayList<>(); // Index 0 is top of board
@@ -48,6 +50,7 @@ abstract class BoardManager extends ClassLoader implements Board {
 
   /** Construct a board manager. */
   BoardManager(Context context) {
+    this.context = context;
     scoreManager = new ScoreManager(context.getSharedPreferences("highScores", MODE_PRIVATE));
     tileFactory = new TileFactory();
     tileDrawer = new TileDrawer(tileWidth, tileHeight);
@@ -212,5 +215,9 @@ abstract class BoardManager extends ClassLoader implements Board {
         }
       }
     }
+  }
+
+  public void setColors(int colorDangerTile, int colorKeyTile, int colorTouch, int colorLose) {
+    tileDrawer.setColors(colorDangerTile, colorKeyTile, colorTouch, colorLose);
   }
 }

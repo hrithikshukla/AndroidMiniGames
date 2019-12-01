@@ -8,15 +8,18 @@ import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.game.Activities.main.ThemeManager;
 import com.example.game.DataBase.UserRepository;
 import com.example.game.DataBase.UserScores;
+import com.example.game.R;
 import com.example.game.Save.User;
 
 public class TileGameActivity extends AppCompatActivity {
-  String  username;
+
+  private String username;
   private UserRepository ur;
 
-    String boardType;
+  String boardType;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -29,12 +32,17 @@ public class TileGameActivity extends AppCompatActivity {
         .setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
     GameView.setGameActivity(this);
+    setThemeColors();
     setContentView(new GameView(this)); // Instantiates new GameView.
   }
 
-    String getBoardType() {
-        return boardType;
-    }
+  String getBoardType() {
+    return boardType;
+  }
+
+  String getUsername() {
+    return username;
+  }
 
   /** Called when the user loses and the game ends. */
   public void endTilesGame(GameView gameView) {
@@ -51,10 +59,10 @@ public class TileGameActivity extends AppCompatActivity {
       u = new UserScores(username, newScore, "TILES_GAME_4", 120);
     }
     ur.addUserScore(u);
-//    updateHighScore(newScore);
+    //    updateHighScore(newScore);
     String message = newScore.toString();
     intent.putExtra("GAME_SCORE", message);
-//    usr.getUserData().setPrefs(null);
+    //    usr.getUserData().setPrefs(null);
     intent.putExtra("USERNAME", username);
     intent.putExtra("BoardType", boardType);
     startActivity(intent);
@@ -63,20 +71,25 @@ public class TileGameActivity extends AppCompatActivity {
   /** Get the newest game score. */
   private Integer getNewScore(GameView gameView) {
     Integer newScore =
-        gameView.getBoard().getScore();// Get the score of the game in the game board of gameView.
+        gameView.getBoard().getScore(); // Get the score of the game in the game board of gameView.
     return newScore;
   }
 
+  void setThemeColors() {
+    SharedPreferences mSettings = this.getSharedPreferences("Settings", MODE_PRIVATE);
+    ThemeManager.addThemeColors(this, mSettings, username);
+  }
+
   /** Update the high score for Tiles game for usr. */
-//  public void updateHighScore(int newScore) {
-//    SharedPreferences sharedPreferences = getSharedPreferences("highScores", MODE_PRIVATE);
-//    SharedPreferences.Editor editor = sharedPreferences.edit();
-//    int currentHighScore = sharedPreferences.getInt(usr.getUsername() + "tileshighscore", 0);
-//    if (currentHighScore < newScore) {
-//      // Add the high score to SharedPreferences
-//      editor.putInt(usr.getUsername() + "tileshighscore", newScore);
-//      // Apply the save
-//      editor.apply();
-//    }
-//  }
+  //  public void updateHighScore(int newScore) {
+  //    SharedPreferences sharedPreferences = getSharedPreferences("highScores", MODE_PRIVATE);
+  //    SharedPreferences.Editor editor = sharedPreferences.edit();
+  //    int currentHighScore = sharedPreferences.getInt(usr.getUsername() + "tileshighscore", 0);
+  //    if (currentHighScore < newScore) {
+  //      // Add the high score to SharedPreferences
+  //      editor.putInt(usr.getUsername() + "tileshighscore", newScore);
+  //      // Apply the save
+  //      editor.apply();
+  //    }
+  //  }
 }

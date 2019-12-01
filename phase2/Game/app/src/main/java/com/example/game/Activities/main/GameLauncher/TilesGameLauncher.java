@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -29,6 +30,13 @@ public class TilesGameLauncher extends AppCompatActivity {
 
     super.onCreate(savedInstanceState);
     setContentView(R.layout.tiles_game_launch);
+
+    // Capture the layout's TextView that displays the instructions and set the text according to
+    // the user's light/dark mode.
+    TextView textViewInstructions = findViewById(R.id.instructionsTiles);
+    if (mSettings.getInt(username + "mode", 0) == ThemeManager.getDARK()) {
+      textViewInstructions.setText(R.string.instructions_tiles_dark);
+    }
   }
 
   /** Called when the user taps the '4 X 4' button */
