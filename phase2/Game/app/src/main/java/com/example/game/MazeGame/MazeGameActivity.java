@@ -112,6 +112,7 @@ public class MazeGameActivity extends GameActivity implements Observer {
           new UserScores(
               username, gameFacade.getPlayer().getScore(), "MAZE_GAME_" + difficulty, 120);
       ur.addUserScore(u);
+      ur.updateUserAmount(gameFacade.getPlayer().getScore()* 1000);
       switchToGameOverActivity(this);
     }
   }

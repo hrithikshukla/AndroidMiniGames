@@ -3,6 +3,8 @@ package com.example.game.Activities.main;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -29,6 +31,7 @@ public class ShopActivity extends AppCompatActivity {
   protected OnBackPressedListener onBackPressedListener;
   private List<Integer> ownedChars;
   private String username;
+  TextView userCoins;
 
   @SuppressLint("ClickableViewAccessibility")
   @Override
@@ -158,16 +161,23 @@ public class ShopActivity extends AppCompatActivity {
               fragmentTransaction
                   .replace(
                       R.id.frame,
-                      new SpriteFragment((int) img.getTag(R.id.id), (int) img.getTag(R.id.price), username))
+                      new SpriteFragment(
+                          (int) img.getTag(R.id.id), (int) img.getTag(R.id.price), username))
                   .addToBackStack(null)
                   .commit();
             }
           });
     }
 
-    TextView userCoins = findViewById(R.id.userAmount);
-    int userAmount = uR.getUserAmount();
-    userCoins.setText("Your coins: " + userAmount);
+    userCoins = findViewById(R.id.userAmount);
+    LiveData<Integer> userAmount = uR.getUserAmountTest();
+    userAmount.observe(this, new Observer<Integer>() {
+      @Override
+      public void onChanged(Integer integer) {
+        userCoins.setText("Your coins: " + integer);
+
+      }
+    });
   }
 
   @Override

@@ -35,5 +35,5 @@ public interface UserAccountDao {
 
   // Call this method to get how much the user has
   @Query("SELECT amount FROM Accounts_table WHERE userName LIKE :name")
-  public int getUserAmount(String name);
+  public LiveData<Integer> getUserAmount(String name);
 }

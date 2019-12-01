@@ -4,13 +4,15 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import androidx.lifecycle.LiveData;
+
 import java.util.List;
 
 public class UserRepository {
   private UserAccountDao userAccountDao;
   private UserScoresDao userScoresDao;
-    private UserCollectiblesDao userCollectiblesDao;
-    private String username;
+  private UserCollectiblesDao userCollectiblesDao;
+  private String username;
   private String password;
 
   // Used this constructor for login/registration
@@ -70,6 +72,16 @@ public class UserRepository {
     public int getUserAmount() {
         UserAccount ac = getUser();
         return ac.getAmount();
+    }
+
+    public LiveData<Integer> getUserAmountTest(){
+      getUserAmountTestAsyncTask a = new getUserAmountTestAsyncTask(userAccountDao);
+        try {
+            a.execute(username).get();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+      return a.getUserAmount();
     }
 
   // Use this to update User's amount
@@ -329,6 +341,24 @@ public class UserRepository {
         @Override
         protected Void doInBackground(UserCollectibles... userCollectibles) {
             userCollectiblesDao.insert(userCollectibles[0]);
+            return null;
+        }
+    }
+
+    public static class getUserAmountTestAsyncTask extends AsyncTask<String, Void, Void>{
+      private UserAccountDao userAccountDao;
+      private LiveData<Integer> UserAmount;
+        public getUserAmountTestAsyncTask(UserAccountDao userAccountDao) {
+            this.userAccountDao = userAccountDao;
+        }
+
+        public LiveData<Integer> getUserAmount() {
+            return UserAmount;
+        }
+
+        @Override
+        protected Void doInBackground(String... strings) {
+            UserAmount = userAccountDao.getUserAmount(strings[0]);
             return null;
         }
     }

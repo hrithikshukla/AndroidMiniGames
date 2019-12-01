@@ -72,7 +72,7 @@ public class SpriteFragment extends DialogFragment {
               t.show();
             } else {
              userRepository.updateUserAmount(-price);
-              userRepository.addUserCollectible(image);
+             userRepository.addUserCollectible(image);
             }
             //                        if (usr.balance < price) {
             //                            // prirnt error message
