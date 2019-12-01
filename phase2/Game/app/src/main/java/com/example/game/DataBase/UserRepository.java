@@ -148,7 +148,7 @@ public class UserRepository {
         }
     }
 
-    public List<Integer> getUserCollectibles() {
+    public LiveData<List<Integer>> getUserCollectibles() {
         getUserCollectiblesAsyncTask a = new getUserCollectiblesAsyncTask(userCollectiblesDao);
         try {
             a.execute(username).get();
@@ -337,13 +337,13 @@ public class UserRepository {
 
     public static class getUserCollectiblesAsyncTask extends AsyncTask<String, Void, Void> {
         private UserCollectiblesDao userCollectiblesDao;
-        private List<Integer> userCollectibles;
+        private LiveData<List<Integer>> userCollectibles;
 
         getUserCollectiblesAsyncTask(UserCollectiblesDao userCollectiblesDao) {
             this.userCollectiblesDao = userCollectiblesDao;
         }
 
-        public List<Integer> getUserCollectibles() {
+        public LiveData<List<Integer>> getUserCollectibles() {
             return userCollectibles;
         }
 

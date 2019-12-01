@@ -1,5 +1,6 @@
 package com.example.game.DataBase;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -21,7 +22,7 @@ public interface UserCollectiblesDao {
     public void delete(UserCollectibles userCollectibles);
 
     @Query("SELECT character_id FROM Collectibles_table WHERE userName like :username")
-    public List<Integer> getUserCollectibles(String username);
+    public LiveData<List<Integer>> getUserCollectibles(String username);
 
 
 }
