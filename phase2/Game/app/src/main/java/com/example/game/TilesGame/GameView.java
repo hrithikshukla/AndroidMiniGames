@@ -13,7 +13,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
   private static TileGameActivity gameActivity;
 
   /** The tile board contents. */
-  private BoardManager boardManager;
+  private Board board;
 
   /** The part of the program that manages time. */
   private GameThread thread;
@@ -38,14 +38,14 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
   @Override
   public void surfaceCreated(SurfaceHolder holder) {
-    boardManager = createBoardManager(); // Instantiate new BoardManager.
-    boardManager.createBoardItems();
+    board = createBoard(); // Instantiate new Board.
+    board.createBoardItems();
 
     thread.setRunning(true);
     thread.start();
   }
 
-  BoardManager createBoardManager() {
+  Board createBoard() {
     String boardType = gameActivity.getBoardType();
 
     if (boardType.equals("5By5")) {
@@ -75,14 +75,14 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     }
   }
 
-  public BoardManager getBoardManager() {
-    return boardManager;
+  public Board getBoard() {
+    return board;
   }
 
   /** Update the board. */
   public void update() {
-    boardManager.update();
-    if (boardManager.isGameEnd()) {
+    board.update();
+    if (board.isGameEnd()) {
       thread.setRunning(false);
     }
   }
@@ -92,7 +92,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
   public void draw(Canvas canvas) {
     super.draw(canvas);
     if (canvas != null) {
-      boardManager.draw(canvas);
+      board.draw(canvas);
     }
   }
 
@@ -105,10 +105,10 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     float y = event.getY();
 
     if (event.getAction() == MotionEvent.ACTION_DOWN) {
-      boardManager.touchTile(x, y);
+      board.touchTile(x, y);
 
-      if (!boardManager.isGameStart()) {
-        boardManager.setGameStart(true);
+      if (!board.isGameStart()) {
+        board.setGameStart(true);
       }
     }
     return true;

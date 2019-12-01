@@ -13,10 +13,10 @@ import com.example.game.DataBase.UserScores;
 import com.example.game.Save.User;
 
 public class TileGameActivity extends AppCompatActivity {
-  String  username;
+  String username;
   private UserRepository ur;
 
-    String boardType;
+  String boardType;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +32,9 @@ public class TileGameActivity extends AppCompatActivity {
     setContentView(new GameView(this)); // Instantiates new GameView.
   }
 
-    String getBoardType() {
-        return boardType;
-    }
+  String getBoardType() {
+    return boardType;
+  }
 
   /** Called when the user loses and the game ends. */
   public void endTilesGame(GameView gameView) {
@@ -42,12 +42,12 @@ public class TileGameActivity extends AppCompatActivity {
     Integer newScore =
         getNewScore(gameView); // Get the score of the game in the game board of gameView.
     // Send the score of the game to be displayed.
-    UserScores u = new UserScores(username, newScore,"TILES_GAME", 120 );
+    UserScores u = new UserScores(username, newScore, "TILES_GAME", 120);
     ur.addUserScore(u);
-//    updateHighScore(newScore);
+    //    updateHighScore(newScore);
     String message = newScore.toString();
     intent.putExtra("GAME_SCORE", message);
-//    usr.getUserData().setPrefs(null);
+    //    usr.getUserData().setPrefs(null);
     intent.putExtra("USERNAME", username);
     intent.putExtra("BoardType", boardType);
     startActivity(intent);
@@ -56,22 +56,20 @@ public class TileGameActivity extends AppCompatActivity {
   /** Get the newest game score. */
   private Integer getNewScore(GameView gameView) {
     Integer newScore =
-        gameView
-            .getBoardManager()
-            .getScore(); // Get the score of the game in the game board of gameView.
+        gameView.getBoard().getScore(); // Get the score of the game in the game board of gameView.
     return newScore;
   }
 
   /** Update the high score for Tiles game for usr. */
-//  public void updateHighScore(int newScore) {
-//    SharedPreferences sharedPreferences = getSharedPreferences("highScores", MODE_PRIVATE);
-//    SharedPreferences.Editor editor = sharedPreferences.edit();
-//    int currentHighScore = sharedPreferences.getInt(usr.getUsername() + "tileshighscore", 0);
-//    if (currentHighScore < newScore) {
-//      // Add the high score to SharedPreferences
-//      editor.putInt(usr.getUsername() + "tileshighscore", newScore);
-//      // Apply the save
-//      editor.apply();
-//    }
-//  }
+  //  public void updateHighScore(int newScore) {
+  //    SharedPreferences sharedPreferences = getSharedPreferences("highScores", MODE_PRIVATE);
+  //    SharedPreferences.Editor editor = sharedPreferences.edit();
+  //    int currentHighScore = sharedPreferences.getInt(usr.getUsername() + "tileshighscore", 0);
+  //    if (currentHighScore < newScore) {
+  //      // Add the high score to SharedPreferences
+  //      editor.putInt(usr.getUsername() + "tileshighscore", newScore);
+  //      // Apply the save
+  //      editor.apply();
+  //    }
+  //  }
 }

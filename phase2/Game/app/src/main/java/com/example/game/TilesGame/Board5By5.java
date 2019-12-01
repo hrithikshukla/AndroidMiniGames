@@ -8,135 +8,121 @@ import java.util.Random;
 
 class Board5By5 extends BoardManager {
 
-    /**
-     * The width of a tile.
-     */
-    int tileWidth = Tile.getWidth5By5();
+  /** The width of a tile. */
+  int tileWidth = Tile.getWidth5By5();
 
-    /**
-     * The height of a tile.
-     */
-    int tileHeight = Tile.getHeight5By5();
+  /** The height of a tile. */
+  int tileHeight = Tile.getHeight5By5();
 
-    /**
-     * The width of this board.
-     */
-    private int boardWidth = 5 * tileWidth;
+  /** The width of this board. */
+  private int boardWidth = 5 * tileWidth;
 
-    /**
-     * The height of this board.
-     */
-    private int boardHeight = 5 * tileHeight;
+  /** The height of this board. */
+  private int boardHeight = 5 * tileHeight;
 
-    /**
-     * Construct a 5X5 board manager.
-     */
-    Board5By5(Context context) {
-        super(context);
-    }
+  /** Construct a 5X5 board manager. */
+  Board5By5(Context context) {
+    super(context);
+  }
 
-    /**
-     * Create the starting items in a board.
-     */
-    void createBoardItems() {
-        // Add a hidden row of tiles above board to appear when game starts.
-        tileBoard.add(new ArrayList<Tile>());
+  /** Create the starting items in a board. */
+  public void createBoardItems() {
+    // Add a hidden row of tiles above board to appear when game starts.
+    tileBoard.add(new ArrayList<Tile>());
 
-        // Add six arrays to tileBoard to represent the six onscreen rows of tiles.
-        tileBoard.add(new ArrayList<Tile>());
-        tileBoard.add(new ArrayList<Tile>());
-        tileBoard.add(new ArrayList<Tile>());
-        tileBoard.add(new ArrayList<Tile>());
-        tileBoard.add(new ArrayList<Tile>());
-        tileBoard.add(new ArrayList<Tile>());
+    // Add six arrays to tileBoard to represent the six onscreen rows of tiles.
+    tileBoard.add(new ArrayList<Tile>());
+    tileBoard.add(new ArrayList<Tile>());
+    tileBoard.add(new ArrayList<Tile>());
+    tileBoard.add(new ArrayList<Tile>());
+    tileBoard.add(new ArrayList<Tile>());
+    tileBoard.add(new ArrayList<Tile>());
 
-        Random ran = new Random(); // Use a random variable to randomize the key tile in each row.
+    Random ran = new Random(); // Use a random variable to randomize the key tile in each row.
 
-        // Fill first six rows with both danger tiles and key tiles.
-        for (int i = 0; i < 6; i++) {
-            ArrayList<Tile> tileRow = tileBoard.get(i);
-            Integer keyTileIndex = ran.nextInt(5);
-            for (int j = 0; j < 5; j++) {
-                if (keyTileIndex.equals(j)) {
-                    tileRow.add(new KeyTile(j * tileWidth, (i - 2) * tileHeight));
-                } else {
-                    tileRow.add(new DangerTile(j * tileWidth, (i - 2) * tileHeight));
-                }
-            }
+    // Fill first six rows with both danger tiles and key tiles.
+    for (int i = 0; i < 6; i++) {
+      ArrayList<Tile> tileRow = tileBoard.get(i);
+      Integer keyTileIndex = ran.nextInt(5);
+      for (int j = 0; j < 5; j++) {
+        if (keyTileIndex.equals(j)) {
+          tileRow.add(new KeyTile(j * tileWidth, (i - 2) * tileHeight));
+        } else {
+          tileRow.add(new DangerTile(j * tileWidth, (i - 2) * tileHeight));
         }
-        // Fill last row with danger tiles.
-        ArrayList<Tile> tileRow = tileBoard.get(6);
-        for (int j = 0; j < 5; j++) {
-            tileRow.add(new DangerTile(j * tileWidth, 4 * tileHeight));
-        }
+      }
     }
-
-    /**
-     * Draw the items in a board.
-     */
-    @Override
-    void draw(Canvas canvas) {
-        // Draw tiles.
-        for (ArrayList<Tile> tileRow : tileBoard) {
-            for (Tile tile : tileRow) {
-                tile.draw5By5(canvas);
-            }
-        }
-        // Draw score.
-        drawScore(canvas);
+    // Fill last row with danger tiles.
+    ArrayList<Tile> tileRow = tileBoard.get(6);
+    for (int j = 0; j < 5; j++) {
+      tileRow.add(new DangerTile(j * tileWidth, 4 * tileHeight));
     }
+  }
 
-    /**
-     * Mark the tile at location (x, y) as touched.
-     *
-     * @param x: the x-coordinate of the touched tile.
-     * @param y: the y-coordinate of the touched tile.
-     */
-    @Override
-    void touchTile(float x, float y) {
-        for (ArrayList<Tile> tileRow : tileBoard) {
-            for (Tile tile : tileRow) {
-                if ((tile.getX() <= x && x <= (tile.getX() + tileWidth))
-                        && (tile.getY() <= y && y <= (tile.getY() + tileHeight))) // If this tile was touched
-                    if (!tile.isTouch()) { // If tile has not already been touched.
-                        tile.setTouch(true);
-                        if (tile instanceof KeyTile) {
-                            scoreManager.addScore("tiles"); // Increment score by one (only of tile is a KeyTile).
-                        }
-                    }
-            }
-        }
+  /** Draw the items in a board. */
+  @Override
+  public void draw(Canvas canvas) {
+    // Draw tiles.
+    for (ArrayList<Tile> tileRow : tileBoard) {
+      for (Tile tile : tileRow) {
+        tile.draw5By5(canvas);
+      }
     }
+    // Draw score.
+    drawScore(canvas);
+  }
 
-    /**
-     * Populate top of board with a new row of tiles once the bottom row of tiles has passed the
-     * bottom of the board. *
-     */
-    void populate() {
-        if (tileBoard.get(6).get(0).getY()
-                >= boardHeight) { // If the last row of tiles has passed the bottom.
-            // Move the first six rows of tiles one spot to the right in tileBoard array.
-            for (int i = 6; i > 0; i--) {
-                tileBoard.set(i, tileBoard.get(i - 1));
+  /**
+   * Mark the tile at location (x, y) as touched.
+   *
+   * @param x: the x-coordinate of the touched tile.
+   * @param y: the y-coordinate of the touched tile.
+   */
+  @Override
+  public void touchTile(float x, float y) {
+    for (ArrayList<Tile> tileRow : tileBoard) {
+      for (Tile tile : tileRow) {
+        if ((tile.getX() <= x && x <= (tile.getX() + tileWidth))
+            && (tile.getY() <= y && y <= (tile.getY() + tileHeight))) // If this tile was touched
+        if (!tile.isTouch()) { // If tile has not already been touched.
+            tile.setTouch(true);
+            if (tile instanceof KeyTile) {
+              scoreManager.addScore("tiles"); // Increment score by one (only of tile is a KeyTile).
             }
-
-            // Add a new row of tiles to the top of the board.
-            ArrayList<Tile> newTileRow = new ArrayList<>();
-            tileBoard.set(0, newTileRow);
-            int newTileY = tileBoard.get(1).get(0).y - tileHeight;
-
-            // Use a random variable to randomize the key tile in new row.
-            Random ran = new Random();
-            Integer keyTileIndex = ran.nextInt(5);
-
-            // Fill new row with both danger tiles and key tiles.
-            for (int j = 0; j < 5; j++) {
-                if (keyTileIndex.equals(j)) {
-                    newTileRow.add(new KeyTile(j * tileWidth, newTileY));
-                } else {
-                    newTileRow.add(new DangerTile(j * tileWidth, newTileY));
-                }
-            }
-        }
+          }
+      }
     }
+  }
+
+  /**
+   * Populate top of board with a new row of tiles once the bottom row of tiles has passed the
+   * bottom of the board. *
+   */
+  void populate() {
+    if (tileBoard.get(6).get(0).getY()
+        >= boardHeight) { // If the last row of tiles has passed the bottom.
+      // Move the first six rows of tiles one spot to the right in tileBoard array.
+      for (int i = 6; i > 0; i--) {
+        tileBoard.set(i, tileBoard.get(i - 1));
+      }
+
+      // Add a new row of tiles to the top of the board.
+      ArrayList<Tile> newTileRow = new ArrayList<>();
+      tileBoard.set(0, newTileRow);
+      int newTileY = tileBoard.get(1).get(0).y - tileHeight;
+
+      // Use a random variable to randomize the key tile in new row.
+      Random ran = new Random();
+      Integer keyTileIndex = ran.nextInt(5);
+
+      // Fill new row with both danger tiles and key tiles.
+      for (int j = 0; j < 5; j++) {
+        if (keyTileIndex.equals(j)) {
+          newTileRow.add(new KeyTile(j * tileWidth, newTileY));
+        } else {
+          newTileRow.add(new DangerTile(j * tileWidth, newTileY));
+        }
+      }
+    }
+  }
 }

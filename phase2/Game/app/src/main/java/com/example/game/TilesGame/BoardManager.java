@@ -13,8 +13,11 @@ import java.util.Random;
 
 import static android.content.Context.MODE_PRIVATE;
 
-/** An abstract board manager class that should not be instantiated. * */
-abstract class BoardManager extends ClassLoader {
+/**
+ * An abstract board manager class that implements the Board interface and should not be
+ * instantiated. *
+ */
+abstract class BoardManager extends ClassLoader implements Board {
 
   /** The width of a tile. (Default is 4X4) */
   int tileWidth = Tile.getWidth4By4();
@@ -48,23 +51,23 @@ abstract class BoardManager extends ClassLoader {
     return scoreManager.getScore();
   }
 
-  boolean isGameStart() {
+  public boolean isGameStart() {
     return gameStart;
   }
 
-  void setGameStart(boolean gameStart) {
+  public void setGameStart(boolean gameStart) {
     this.gameStart = gameStart;
   }
 
-  boolean isGameEnd() {
+  public boolean isGameEnd() {
     return gameEnd;
   }
 
   /** Create the starting items in a board. */
-  abstract void createBoardItems();
+  public abstract void createBoardItems();
 
   /** Update the items in a board. */
-  void update() {
+  public void update() {
     if (gameStart) {
       // Check if the game will end this turn.
       if (doesGameEnd()) {
@@ -84,7 +87,7 @@ abstract class BoardManager extends ClassLoader {
   }
 
   /** Draw the items in a board. */
-  void draw(Canvas canvas) {
+  public void draw(Canvas canvas) {
     // Draw tiles.
     for (ArrayList<Tile> tileRow : tileBoard) {
       for (Tile tile : tileRow) {
@@ -110,7 +113,7 @@ abstract class BoardManager extends ClassLoader {
    * @param x: the x-coordinate of the touched tile.
    * @param y: the y-coordinate of the touched tile.
    */
-  void touchTile(float x, float y) {
+  public void touchTile(float x, float y) {
     for (ArrayList<Tile> tileRow : tileBoard) {
       for (Tile tile : tileRow) {
         if ((tile.getX() <= x && x <= (tile.getX() + tileWidth))
