@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.game.DataBase.UserRepository;
 import com.example.game.R;
@@ -101,7 +102,7 @@ public class ShopActivity extends AppCompatActivity {
     images.add(bat);
     ImageView king = findViewById(R.id.char_king);
     king.setTag(R.id.id, R.drawable.char_king);
-    bat.setTag(R.id.price, 151);
+    king.setTag(R.id.price, 151);
     images.add(king);
     ImageView summoner = findViewById(R.id.char_summoner);
     summoner.setTag(R.id.id, R.drawable.char_summoner);
@@ -157,12 +158,16 @@ public class ShopActivity extends AppCompatActivity {
               fragmentTransaction
                   .replace(
                       R.id.frame,
-                      new SpriteFragment((int) img.getTag(R.id.id), (int) img.getTag(R.id.price)))
+                      new SpriteFragment((int) img.getTag(R.id.id), (int) img.getTag(R.id.price), username))
                   .addToBackStack(null)
                   .commit();
             }
           });
     }
+
+    TextView userCoins = findViewById(R.id.userAmount);
+    int userAmount = uR.getUserAmount();
+    userCoins.setText("Your coins: " + userAmount);
   }
 
   @Override

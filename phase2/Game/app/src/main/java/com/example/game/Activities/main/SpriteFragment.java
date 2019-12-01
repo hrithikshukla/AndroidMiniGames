@@ -5,13 +5,16 @@ import android.os.Bundle;
 
 import androidx.fragment.app.DialogFragment;
 
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.game.DataBase.UserRepository;
 import com.example.game.R;
 
 public class SpriteFragment extends DialogFragment {
@@ -20,10 +23,13 @@ public class SpriteFragment extends DialogFragment {
     private int price;
 
     private ShopActivity activity;
+    private UserRepository userRepository;
 
-    SpriteFragment(int image, int price) {
+
+    SpriteFragment(int image, int price, String username) {
         this.image = image;
         this.price = price;
+        this.userRepository = new UserRepository(getActivity(), username);
     }
 
     @Override
@@ -56,18 +62,26 @@ public class SpriteFragment extends DialogFragment {
                 });
 
         Button purchase = getView().findViewById(R.id.purchase);
-        purchase.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-//                        if (usr.balance < price) {
-//                            // prirnt error message
-//                        } else {
-//                            usr.balance.subtract(price);
-//                            // add to users owned items
-//                        }
-                    }
-                });
+    purchase.setOnClickListener(
+        new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+            if (userRepository.getUserAmount() < price) {
+              Toast t = Toast.makeText(activity, "LMAO U BROKE", Toast.LENGTH_SHORT);
+              t.setGravity(Gravity.CENTER, 0, 0);
+              t.show();
+            } else {
+             userRepository.updateUserAmount(-price);
+              userRepository.addUserCollectible(image);
+            }
+            //                        if (usr.balance < price) {
+            //                            // prirnt error message
+            //                        } else {
+            //                            usr.balance.subtract(price);
+            //                            // add to users owned items
+            //                        }
+          }
+        });
 
         TextView description = getView().findViewById(R.id.itemDescription);
         description.setText(description.getText() + "" + price + " coins?");
