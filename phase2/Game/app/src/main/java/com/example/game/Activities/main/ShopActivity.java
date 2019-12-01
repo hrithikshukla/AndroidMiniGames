@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
 import android.os.Bundle;
-import android.util.SparseBooleanArray;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -27,11 +26,14 @@ public class ShopActivity extends AppCompatActivity {
     private List<ImageView> images = new ArrayList<>();
     // Checks if back button is pressed
     protected OnBackPressedListener onBackPressedListener;
-    private SparseBooleanArray ownedChars;
+    private List<Integer> ownedChars;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        // Assign list to ownedChars here
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop);
 
@@ -138,15 +140,17 @@ public class ShopActivity extends AppCompatActivity {
     // Code from https://gist.github.com/nisrulz/3078eaa6357d6f5c0051
     private void grayOut(ImageView img) {
 //         if not owned grey them out
-//        if (!ownedChars.get(img.getId())) {
-//            ColorMatrix matrix = new ColorMatrix();
-//            matrix.setSaturation(0);
-//            ColorMatrixColorFilter filter = new ColorMatrixColorFilter(matrix);
-//            img.setColorFilter(filter);
-//        } else { // no filter
-//            img.setColorFilter(null);
-//            img.setTag("");
-//        }
+        // I'm only doing this because I can't think of another way to do it
+        // Don't mind the horrible time complexity
+        if (!ownedChars.contains(img.getId())) {
+            ColorMatrix matrix = new ColorMatrix();
+            matrix.setSaturation(0);
+            ColorMatrixColorFilter filter = new ColorMatrixColorFilter(matrix);
+            img.setColorFilter(filter);
+        } else { // no filter
+            img.setColorFilter(null);
+            img.setTag("");
+        }
     }
 
     public void setOnBackPressedListener(OnBackPressedListener onBackPressedListener) {
