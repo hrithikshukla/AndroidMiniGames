@@ -4,7 +4,6 @@ import android.util.Pair;
 
 import com.example.game.MazeGame.DataStructures.Cell;
 import com.example.game.MazeGame.DataStructures.Maze;
-import com.example.game.MazeGame.DataStructures.NewGameState;
 import com.example.game.MazeGame.DataStructures.Player;
 
 import java.util.Observable;
@@ -45,11 +44,7 @@ public class GameFacade extends Observable {
   // Notify classes that are observing this(InputView, OutputView)
   void update() {
     setChanged();
-    // Need to supply an updated representation of the new Maze and score to be drawn.
-    NewGameState newGameState =
-        new NewGameState(
-            getCellRepresentation(), player.getScore(), player.getNumSteps(), maze.hasEscaped());
-    notifyObservers(newGameState);
+    notifyObservers();
   }
 
   private Cell[][] getCellRepresentation() {

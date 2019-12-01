@@ -8,7 +8,6 @@ import android.view.SurfaceHolder;
 
 import com.example.game.MazeGame.DataStructures.Background;
 import com.example.game.MazeGame.DataStructures.Cell;
-import com.example.game.MazeGame.DataStructures.NewGameState;
 import com.example.game.R;
 
 import java.util.HashMap;
@@ -78,7 +77,7 @@ public class VisualView implements Observer {
 
       // Draw the background first.
       canvas.drawBitmap(
-          background.getBackground(), background.getX(), background.getY(), backgroundPaint);
+          background.getBackground(), 0, 0, backgroundPaint);
       drawTiles(canvas);
       drawText(canvas);
       drawArrows(canvas);
@@ -139,10 +138,10 @@ public class VisualView implements Observer {
   /** @param o most recent representation of the Maze. */
   @Override
   public void update(Observable observable, Object o) {
-    NewGameState newGameState = (NewGameState) o;
-    grid = newGameState.getGrid();
-    score = newGameState.getScore();
-    numSteps = newGameState.getNumSteps();
+    GameFacade gameFacade = (GameFacade) observable;
+    grid = gameFacade.getMaze().getGridDeepCopy();
+    score = gameFacade.getPlayer().getScore();
+    numSteps = gameFacade.getPlayer().getNumSteps();
   }
 
   Background getBackground() {
