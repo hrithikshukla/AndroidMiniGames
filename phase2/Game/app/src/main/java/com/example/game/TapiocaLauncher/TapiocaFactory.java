@@ -21,13 +21,17 @@ class TapiocaFactory {
         return new Ball(x, y, radius, 1, "speedboost");
     }
 
+    private Ball makePurple(int x, int y, int radius) {
+        return new Ball(x, y, radius, 1, "extraShot");
+    }
+
     Ball makeRandom(int x, int y, int radius) {
         int num = rand.nextInt(36);
         switch (num) {
             case 0:
             case 1:
             case 2:
-                return makeWhite(x, y, radius);
+                return makePurple(x, y, radius);
             case 3:
             case 4:
             case 5:

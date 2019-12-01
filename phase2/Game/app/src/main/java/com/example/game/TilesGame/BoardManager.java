@@ -159,9 +159,9 @@ abstract class BoardManager extends ClassLoader implements Board {
             && (tile.getY() <= y && y <= (tile.getY() + tileHeight))) { // If this tile was touched
           if (!tile.isTouch()) { // If tile has not already been touched.
             tile.setTouch(true);
-          }
-          if (tile instanceof KeyTile) {
-            scoreManager.addScore("tiles"); // Increment score by one (only if tile is a KeyTile).
+            if (tile instanceof KeyTile) {
+              scoreManager.addScore("tiles"); // Increment score by one (only if tile is a KeyTile).
+            }
           }
         }
       }

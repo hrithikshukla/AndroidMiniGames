@@ -38,13 +38,13 @@ public class MazeGameActivity extends GameActivity implements Observer {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    username = getIntent().getStringExtra("USERNAME");
-    ur = new UserRepository(this, username);
+    setUsername(getIntent().getStringExtra("USERNAME"));
+    ur = new UserRepository(this, getUsername());
     startime = LocalTime.now();
     // Set fullscreen mode.
     getWindow()
-        .setFlags(
-            WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+            .setFlags(
+                    WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
     // Get maximum x and y coordinate of phone screen and store it in the Point object.
     Point point = new Point();
@@ -69,7 +69,7 @@ public class MazeGameActivity extends GameActivity implements Observer {
 
     // Model of the game.
     GameFacadeBuilder gameFacadeBuilder =
-        new GameFacadeBuilder(startX, startY, startingScore, mazeWidth, mazeHeight);
+            new GameFacadeBuilder(startX, startY, startingScore, mazeWidth, mazeHeight);
     gameFacadeBuilder.build();
     GameFacade gameFacade = gameFacadeBuilder.getGameFacade();
 
@@ -117,10 +117,11 @@ public class MazeGameActivity extends GameActivity implements Observer {
       LocalTime endtime = LocalTime.now();
       int timetaken = (int) startime.until(endtime, SECONDS);
       UserScores u =
-          new UserScores(
-              username, gameFacade.getPlayer().getScore(), "MAZE_GAME_" + difficulty, timetaken);
+              new UserScores(
+                      getUsername(), gameFacade.getPlayer().getScore(), "MAZE_GAME_" + difficulty, timetaken);
       ur.addUserScore(u);
       ur.updateUserAmount(gameFacade.getPlayer().getScore() * 1000);
+      setScore(gameFacade.getPlayer().getScore());
       switchToGameOverActivity(this);
     }
   }

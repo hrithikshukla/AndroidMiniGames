@@ -37,8 +37,8 @@ public class TapiocaGameActivity extends GameActivity implements Observer {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    username = getIntent().getStringExtra("USERNAME"); // Gets the
-    ur = new UserRepository(this, username);
+    setUsername(getIntent().getStringExtra("USERNAME")); // Gets the
+    ur = new UserRepository(this, getUsername());
     startime = LocalTime.now();
 
     getWindow()
@@ -90,7 +90,7 @@ public class TapiocaGameActivity extends GameActivity implements Observer {
       SharedPreferences sharedPreferences = getSharedPreferences("highScores", MODE_PRIVATE);
       LocalTime endtime = LocalTime.now();
       int timetaken = (int) startime.until(endtime, SECONDS);
-      UserScores u = new UserScores(username, gameFacade.getScore(), "TAPIOCA_GAME", timetaken);
+      UserScores u = new UserScores(getUsername(), gameFacade.getScore(), "TAPIOCA_GAME", timetaken);
       ur.addUserScore(u);
       //            if (usr.getUserData().getTapiocaHighScore() < gameFacade.getScore()) {
       //                SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -98,6 +98,7 @@ public class TapiocaGameActivity extends GameActivity implements Observer {
       // gameFacade.getScore());
       //                editor.apply();
       ur.updateUserAmount(gameFacade.getScore() * 1000);
+      setScore(gameFacade.getScore());
       switchToGameOverActivity(this);
     }
   }

@@ -38,7 +38,7 @@ class VisualView implements Observer {
             launcherOrientation2,
             launcherOrientation3,
             launcherOrientation4;
-    private Bitmap tapiocaRed, tapiocaBrown, tapiocaWhite; // Bitmap of the brown, red, white balls
+    private Bitmap tapiocaRed, tapiocaBrown, tapiocaWhite, tapiocaPurple; // Bitmap of the brown, red, white balls
 
     VisualView(
             int screenX, int screenY, Resources res, SurfaceHolder surfaceHolder, Context context) {
@@ -69,6 +69,7 @@ class VisualView implements Observer {
         tapiocaBrown = BitmapFactory.decodeResource(res, R.drawable.brown);
         tapiocaRed = BitmapFactory.decodeResource(res, R.drawable.red);
         tapiocaWhite = BitmapFactory.decodeResource(res, R.drawable.white);
+        tapiocaPurple = BitmapFactory.decodeResource(res, R.drawable.purple);
 
         int width = tapiocaBrown.getWidth() / 2; // 157
         int height = tapiocaBrown.getHeight() / 2; // 136
@@ -81,6 +82,10 @@ class VisualView implements Observer {
         width = tapiocaWhite.getWidth() / 2; // 157
         height = tapiocaWhite.getHeight() / 2; // 136
         tapiocaWhite = Bitmap.createScaledBitmap(tapiocaWhite, width, height, false);
+
+        width = tapiocaPurple.getWidth() / 2; // 157
+        height = tapiocaPurple.getHeight() / 2; // 136
+        tapiocaPurple = Bitmap.createScaledBitmap(tapiocaPurple, width, height, false);
     }
 
     // Creates and stores the Launcher's Bitmaps
@@ -160,8 +165,10 @@ class VisualView implements Observer {
         } else if(ball.getBallType().equals("reg") && ball.getHp() == 2) {
             orientation1 = tapiocaRed;
         }
-        else //if(ball.getBallType() == "speedboost")
+        else if(ball.getBallType() == "speedboost")
             orientation1 = tapiocaWhite;
+        else // if(ball.getBallType() == "image")
+            orientation1 = tapiocaPurple;
 
         canvas.drawBitmap(orientation1, ball.getX(), ball.getY(), paint);
     }
