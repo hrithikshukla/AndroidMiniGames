@@ -1,17 +1,23 @@
 package com.example.game.DataBase;
 
+import android.util.SparseBooleanArray;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 
-@Entity(primaryKeys = {"userName", "characters"})
+import com.example.game.R;
+
+@Entity(primaryKeys = {"userName", "character_id"}, tableName = "Collectibles_table")
 public class UserCollectibles {
 
+    @NonNull
     private String userName;
-    private String characters;
+    private int character_id;
 
-    public UserCollectibles(String userName, String characters) {
+
+    public UserCollectibles(String userName, int character_id) {
         this.userName = userName;
-        this.characters = characters;
+        this.character_id = character_id;
     }
 
     public String getUserName() {
@@ -22,11 +28,11 @@ public class UserCollectibles {
         this.userName = userName;
     }
 
-    public String getCharacters() {
-        return characters;
+    public int getCharacter_id() {
+        return character_id;
     }
 
-    public void setCharacters(String characters) {
-        this.characters = characters;
+    public void setCharacter_id(int character_id) {
+        this.character_id = character_id;
     }
 }

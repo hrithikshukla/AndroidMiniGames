@@ -1,18 +1,16 @@
 package com.example.game.TilesGame;
 
 import android.content.Context;
-import android.graphics.Canvas;
-
 import java.util.ArrayList;
 import java.util.Random;
 
 class Board5By5 extends BoardManager {
 
   /** The width of a tile. */
-  int tileWidth = Tile.getWidth5By5();
+  private int tileWidth = Tile.getWidth5By5();
 
   /** The height of a tile. */
-  int tileHeight = Tile.getHeight5By5();
+  private int tileHeight = Tile.getHeight5By5();
 
   /** The width of this board. */
   private int boardWidth = 5 * tileWidth;
@@ -59,19 +57,6 @@ class Board5By5 extends BoardManager {
     }
   }
 
-  /** Draw the items in a board. */
-  @Override
-  public void draw(Canvas canvas) {
-    // Draw tiles.
-    for (ArrayList<Tile> tileRow : tileBoard) {
-      for (Tile tile : tileRow) {
-        tile.draw5By5(canvas);
-      }
-    }
-    // Draw score.
-    drawScore(canvas);
-  }
-
   /**
    * Mark the tile at location (x, y) as touched.
    *
@@ -109,7 +94,7 @@ class Board5By5 extends BoardManager {
       // Add a new row of tiles to the top of the board.
       ArrayList<Tile> newTileRow = new ArrayList<>();
       tileBoard.set(0, newTileRow);
-      int newTileY = tileBoard.get(1).get(0).y - tileHeight;
+        int newTileY = tileBoard.get(1).get(0).getY() - tileHeight;
 
       // Use a random variable to randomize the key tile in new row.
       Random ran = new Random();

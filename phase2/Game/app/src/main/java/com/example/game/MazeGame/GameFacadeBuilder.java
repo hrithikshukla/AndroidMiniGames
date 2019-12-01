@@ -1,7 +1,7 @@
 package com.example.game.MazeGame;
 
 import com.example.game.MazeGame.DataStructures.Cell;
-import com.example.game.MazeGame.DataStructures.Collectable;
+import com.example.game.MazeGame.DataStructures.Collectible;
 import com.example.game.MazeGame.DataStructures.Maze;
 import com.example.game.MazeGame.DataStructures.Player;
 import com.example.game.MazeGame.DataStructures.Score;
@@ -40,15 +40,15 @@ public class GameFacadeBuilder implements Builder {
     Maze maze = new Maze(mazeWidth, mazeHeight, startX, startY);
     Player player = new Player(startX, startY, score);
 
-    // Build Collectables object and insert collectable item tiles into the maze.
+      // Build Collectables object and insert collectible item tiles into the maze.
     HashMap<String, Integer> collectablesHashMap = buildCollectablesHashMap(maze.getGridDeepCopy());
-    Collectable collectable = new Collectable(collectablesHashMap);
+      Collectible collectible = new Collectible(collectablesHashMap);
     maze.addCollectable(collectablesHashMap.keySet());
 
     // Maze observes player to update the maze when the player moves.
     player.addObserver(maze);
-    player.addObserver(collectable);
-    collectable.addObserver(score);
+      player.addObserver(collectible);
+      collectible.addObserver(score);
 
     gameFacade = new GameFacade(player, maze);
   }

@@ -7,7 +7,6 @@ import android.view.WindowManager;
 import com.example.game.Activities.Game.GameActivity;
 import com.example.game.DataBase.UserRepository;
 import com.example.game.DataBase.UserScores;
-import com.example.game.MazeGame.DataStructures.NewGameState;
 
 import java.util.Observable;
 import java.util.Observer;
@@ -93,11 +92,11 @@ public class MazeGameActivity extends GameActivity implements Observer {
   @Override
   public synchronized void update(Observable o, Object arg) {
     // Set users high score if applicable when game ends and send it to gameOverActivity
-    NewGameState newGameState = (NewGameState) arg;
-    if (newGameState.isGameOver()) {
+      GameFacade gameFacade = (GameFacade) o;
+      if (gameFacade.getMaze().hasEscaped()) {
       String difficulty = getIntent().getStringExtra("DIFFICULTY");
       UserScores u =
-          new UserScores(username, newGameState.getScore(), "MAZE_GAME_" + difficulty, 120);
+              new UserScores(username, gameFacade.getPlayer().getScore(), "MAZE_GAME_" + difficulty, 120);
       ur.addUserScore(u);
       //            if (ur.getUserHighScore(username, "MAZE_GAME") < newGameState.getScore()) {
       //              SharedPreferences.Editor editor = sharedPreferences.edit();

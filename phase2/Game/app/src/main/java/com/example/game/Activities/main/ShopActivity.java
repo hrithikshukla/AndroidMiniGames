@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
+import com.example.game.DataBase.UserRepository;
 import com.example.game.R;
 
 import java.util.ArrayList;
@@ -27,12 +28,17 @@ public class ShopActivity extends AppCompatActivity {
     // Checks if back button is pressed
     protected OnBackPressedListener onBackPressedListener;
     private List<Integer> ownedChars;
+    private String username;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        username = getIntent().getStringExtra("USERNAME");
+        UserRepository uR = new UserRepository(this, username);
+
         // Assign list to ownedChars here
+        ownedChars = uR.getUserCollectibles();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop);
@@ -46,6 +52,7 @@ public class ShopActivity extends AppCompatActivity {
                     public void onSwipeLeft() {
                         // your actions
                         Intent intent = new Intent(ShopActivity.this, MainActivity.class);
+                        intent.putExtra("USERNAME", username);
                         startActivity(intent);
                     }
                 });

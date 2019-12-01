@@ -1,6 +1,8 @@
 package com.example.game.MazeGame.DataStructures;
 
-// Represents the possible movements of a player
+/**
+ * Represents all possible movements for a Player object.
+ */
 public enum Movement {
   LEFT,
   RIGHT,

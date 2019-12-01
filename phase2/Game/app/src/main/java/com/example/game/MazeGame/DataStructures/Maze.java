@@ -257,7 +257,7 @@ public class Maze implements Observer {
       tmp = s.split(",");
       int row = Integer.parseInt(tmp[0]);
       int col = Integer.parseInt(tmp[1]);
-      grid[row][col] = Cell.COLLECTABLE;
+        grid[row][col] = Cell.COLLECTIBLE;
     }
   }
 }

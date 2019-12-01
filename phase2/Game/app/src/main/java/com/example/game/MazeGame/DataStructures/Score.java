@@ -4,39 +4,58 @@ import java.util.Observable;
 import java.util.Observer;
 
 /**
- * Class representing the player's current score. Score is currently calculated based on the number
- * of steps the player has taken.
+ * Represents the player's current score in the Maze Game. Score is calculated based on the number
+ * of steps the player has taken and any collectible items that were picked up. Score observes
+ * Collectible, and is updated whenever a collectible item is acquired by the player.
  */
 public class Score implements Observer {
 
-  // Current score.
+    /**
+     * Current score. Score must be non-negative.
+     */
   private int score;
 
-  public Score(int startingScore) {
-    this.score = startingScore;
-  }
+    /**
+     * Create a Score object with startingScore as the starting score.
+     *
+     * @param startingScore - starting score
+     */
+    public Score(int startingScore) {
+        this.score = startingScore;
+    }
 
-  /** Decrement current score. */
+    /** Decrement current score by 1. */
   void decrementScore() {
-    score = Math.max(0, score - 1);
+      addScore(-1);
   }
 
-  private void addScore(int val) {
-    score += val;
-  }
-
-  /** Getter for score. */
-  public int getScore() {
-    return score;
-  }
-
-  @Override
-  /**
-   * Score is observing a Collectable object, which passes an integer corresponding to the value of
-   * a collectable in the maze when notifying its observers.
+    /**
+     * Getter for score
+     *
+     * @return - the score
    */
-  public void update(Observable observable, Object o) {
-    int val = ((Integer) o);
-    addScore(val);
-  }
+    public int getScore() {
+        return score;
+    }
+
+    /**
+     * Updates the score whenever a collectible item is picked up.
+     *
+     * @param observable - Collectible object
+     * @param o - integer corresponding to the collectible that the player picked up
+     */
+    @Override
+    public void update(Observable observable, Object o) {
+        int val = ((Integer) o);
+        addScore(val);
+    }
+
+    /**
+     * Increases the score by val.
+     *
+     * @param val - value the score is increased by
+     */
+    private void addScore(int val) {
+        score = Math.max(score + val, 0);
+    }
 }
