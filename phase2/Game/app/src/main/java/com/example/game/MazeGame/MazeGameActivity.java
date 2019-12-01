@@ -8,8 +8,11 @@ import com.example.game.Activities.Game.GameActivity;
 import com.example.game.DataBase.UserRepository;
 import com.example.game.DataBase.UserScores;
 
+import java.time.LocalTime;
 import java.util.Observable;
 import java.util.Observer;
+import static java.time.temporal.ChronoUnit.SECONDS;
+
 
 /**
  * Class that initializes all three components of the MVC model. Observes the model GameFacade to
@@ -30,11 +33,14 @@ public class MazeGameActivity extends GameActivity implements Observer {
 
   private UserRepository ur;
 
+  private LocalTime startime;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     username = getIntent().getStringExtra("USERNAME");
     ur = new UserRepository(this, username);
+    startime = LocalTime.now();
     // Set fullscreen mode.
     getWindow()
         .setFlags(
@@ -108,11 +114,13 @@ public class MazeGameActivity extends GameActivity implements Observer {
     GameFacade gameFacade = (GameFacade) o;
     if (gameFacade.getMaze().hasEscaped()) {
       String difficulty = getIntent().getStringExtra("DIFFICULTY");
+      LocalTime endtime = LocalTime.now();
+      int timetaken = (int) startime.until(endtime, SECONDS);
       UserScores u =
           new UserScores(
-              username, gameFacade.getPlayer().getScore(), "MAZE_GAME_" + difficulty, 120);
+              username, gameFacade.getPlayer().getScore(), "MAZE_GAME_" + difficulty, timetaken);
       ur.addUserScore(u);
-      ur.updateUserAmount(gameFacade.getPlayer().getScore()* 1000);
+      ur.updateUserAmount(gameFacade.getPlayer().getScore() * 1000);
       switchToGameOverActivity(this);
     }
   }
