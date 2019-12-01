@@ -249,15 +249,15 @@ public class Maze implements Observer {
    * element of the set: "%d,%d" where the first and second %d's are the row/column number of the
    * maze respectively.
    *
-   * @param collectablesPos - set of tile positions, each formatted as described above
+   * @param collectiblesPos - set of tile positions, each formatted as described above
    */
-  public void addCollectable(Set<String> collectablesPos) {
+  public void addCollectibles(Set<String> collectiblesPos) {
     String[] tmp;
-    for (String s : collectablesPos) {
+    for (String s : collectiblesPos) {
       tmp = s.split(",");
       int row = Integer.parseInt(tmp[0]);
       int col = Integer.parseInt(tmp[1]);
-        grid[row][col] = Cell.COLLECTIBLE;
+      grid[row][col] = Cell.COLLECTIBLE;
     }
   }
 }
