@@ -105,12 +105,16 @@ public class StatsActivity extends AppCompatActivity {
     int minTimeMazeMedium = uR.getUserMinTime("MAZE_GAME_MEDIUM");
     int mazeTimedHighScore = uR.getUserMinTime("MAZE_GAME_HARD");
 
+    int maxTimeTiles4 = uR.getUserMaxTime("TILES_GAME_4");
+    int maxTimeTiles5 = uR.getUserMaxTime("TILES_GAME_5");
+    int maxTimeTilesInvert = uR.getUserMaxTime("TILES_GAME_INVERT");
+
+    int tapiocaoMinTime = uR.getUserMinTime("TAPIOCA_GAME");
 
 
 
-
-    tapiocaTime.setText(getString(R.string.TapiocaTime) + getString(R.string.NotAvailable));
+    tapiocaTime.setText(getString(R.string.TapiocaTime) + tapiocaoMinTime);
     mazeTime.setText(getString(R.string.MazeTime) + minTimeMazeEasy);
-    tileTIme.setText(getString(R.string.TileTime) + getString(R.string.NotAvailable));
+    tileTIme.setText(getString(R.string.TileTime) + maxTimeTiles4);
   }
 }

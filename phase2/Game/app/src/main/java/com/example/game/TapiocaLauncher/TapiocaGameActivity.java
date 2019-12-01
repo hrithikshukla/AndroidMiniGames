@@ -10,9 +10,12 @@ import com.example.game.DataBase.UserRepository;
 import com.example.game.DataBase.UserScores;
 import com.example.game.Save.User;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
+
+import static java.time.temporal.ChronoUnit.SECONDS;
 
 // Creates the MVC design within the TapiocaLauncher
 public class TapiocaGameActivity extends GameActivity implements Observer {
@@ -28,11 +31,15 @@ public class TapiocaGameActivity extends GameActivity implements Observer {
 
   private UserRepository ur;
 
+  private LocalTime startime;
+
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     username = getIntent().getStringExtra("USERNAME"); // Gets the
     ur = new UserRepository(this, username);
+    startime = LocalTime.now();
 
     getWindow()
         .setFlags(
@@ -81,13 +88,16 @@ public class TapiocaGameActivity extends GameActivity implements Observer {
     gameFacade = (GameFacade) arg;
     if (gameFacade.isGameOver()) {
       SharedPreferences sharedPreferences = getSharedPreferences("highScores", MODE_PRIVATE);
-      UserScores u = new UserScores(username, gameFacade.getScore(), "TAPIOCA_GAME", 120);
+      LocalTime endtime = LocalTime.now();
+      int timetaken = (int) startime.until(endtime, SECONDS);
+      UserScores u = new UserScores(username, gameFacade.getScore(), "TAPIOCA_GAME", timetaken);
       ur.addUserScore(u);
       //            if (usr.getUserData().getTapiocaHighScore() < gameFacade.getScore()) {
       //                SharedPreferences.Editor editor = sharedPreferences.edit();
       //                editor.putInt(usr.getUsername() + "tapiocahighscore",
       // gameFacade.getScore());
       //                editor.apply();
+      ur.updateUserAmount(gameFacade.getScore() * 1000);
       switchToGameOverActivity(this);
     }
   }

@@ -14,11 +14,15 @@ import com.example.game.DataBase.UserScores;
 import com.example.game.R;
 import com.example.game.Save.User;
 
+import java.time.LocalTime;
+
+import static java.time.temporal.ChronoUnit.SECONDS;
+
 public class TileGameActivity extends AppCompatActivity {
 
   private String username;
   private UserRepository ur;
-
+  private LocalTime startime;
   String boardType;
 
   @Override
@@ -27,6 +31,7 @@ public class TileGameActivity extends AppCompatActivity {
     username = getIntent().getStringExtra("USERNAME");
     ur = new UserRepository(this, username);
     boardType = (String) getIntent().getSerializableExtra("BoardType");
+    startime = LocalTime.now();
     requestWindowFeature(Window.FEATURE_NO_TITLE);
     getWindow()
         .setFlags(
@@ -50,13 +55,15 @@ public class TileGameActivity extends AppCompatActivity {
     Integer newScore =
         getNewScore(gameView); // Get the score of the game in the game board of gameView.
     // Send the score of the game to be displayed.
+    LocalTime endtime = LocalTime.now();
+    int timetaken = (int) startime.until(endtime, SECONDS);
     UserScores u;
     if (boardType.equals("5By5")) {
-      u = new UserScores(username, newScore, "TILES_GAME_5", 120);
+      u = new UserScores(username, newScore, "TILES_GAME_5", timetaken);
     } else if (boardType.equals("Invert")) {
-      u = new UserScores(username, newScore, "TILES_GAME_INVERT", 120);
+      u = new UserScores(username, newScore, "TILES_GAME_INVERT", timetaken);
     } else {
-      u = new UserScores(username, newScore, "TILES_GAME_4", 120);
+      u = new UserScores(username, newScore, "TILES_GAME_4", timetaken);
     }
     ur.addUserScore(u);
     //    updateHighScore(newScore);
