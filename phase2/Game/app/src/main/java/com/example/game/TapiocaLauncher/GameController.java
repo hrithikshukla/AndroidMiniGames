@@ -165,6 +165,9 @@ public class GameController implements Observer {
           if (currBall.getBallType().equals("speedboost")) {
             speedLauncher();
           }
+          if(currBall.getBallType().equals("extraShot")) {
+            gameFacade.setShots(gameFacade.getShots() + 2);
+          }
           if (currBall.getHp() == 0) {
             balls.remove(i);
             i--;
