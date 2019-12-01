@@ -42,7 +42,14 @@ public class TileGameActivity extends AppCompatActivity {
     Integer newScore =
         getNewScore(gameView); // Get the score of the game in the game board of gameView.
     // Send the score of the game to be displayed.
-    UserScores u = new UserScores(username, newScore,"TILES_GAME", 120 );
+    UserScores u;
+    if (boardType.equals("5By5")) {
+      u = new UserScores(username, newScore, "TILES_GAME_5", 120);
+    } else if (boardType.equals("Invert")) {
+      u = new UserScores(username, newScore, "TILES_GAME_INVERT", 120);
+    } else {
+      u = new UserScores(username, newScore, "TILES_GAME_4", 120);
+    }
     ur.addUserScore(u);
 //    updateHighScore(newScore);
     String message = newScore.toString();

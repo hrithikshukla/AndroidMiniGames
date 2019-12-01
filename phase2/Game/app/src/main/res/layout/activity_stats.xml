@@ -76,24 +76,10 @@
         app:layout_constraintTop_toBottomOf="@+id/MazeHardScore" />
 
     <TextView
-        android:id="@+id/TileScore"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="@string/TileScore"
-        android:textAllCaps="true"
-        android:textColor="?android:attr/colorPrimaryDark"
-        android:textSize="7pt"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.143"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MazeTime" />
-
-    <TextView
         android:id="@+id/TileTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
         android:text="@string/TileTime"
         android:textAllCaps="true"
         android:textColor="?android:attr/colorPrimaryDark"
@@ -101,7 +87,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.196"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TileScore" />
+        app:layout_constraintTop_toBottomOf="@+id/TilesInvertScore" />
 
     <Button
         android:id="@+id/Reset"
@@ -159,4 +145,37 @@
         app:layout_constraintHorizontal_bias="0.147"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/MazeMediumScore" />
+
+    <TextView
+        android:id="@+id/Tiles4Score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/Tiles4Score"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.137"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MazeTime" />
+
+    <TextView
+        android:id="@+id/Tiles5Score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/Tiles5Score"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.137"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Tiles4Score" />
+
+    <TextView
+        android:id="@+id/TilesInvertScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/TilesInvertScore"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.14"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Tiles5Score" />
 </androidx.constraintlayout.widget.ConstraintLayout>
