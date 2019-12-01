@@ -13,7 +13,7 @@ class Board4By4 extends BoardManager {
   }
 
   /** Create the starting items in a board. */
-  void createBoardItems() {
+  public void createBoardItems() {
     // Add a hidden row of tiles above board to appear when game starts.
     tileBoard.add(new ArrayList<Tile>());
 

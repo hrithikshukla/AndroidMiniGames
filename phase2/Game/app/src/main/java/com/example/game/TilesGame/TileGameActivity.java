@@ -63,9 +63,7 @@ public class TileGameActivity extends AppCompatActivity {
   /** Get the newest game score. */
   private Integer getNewScore(GameView gameView) {
     Integer newScore =
-        gameView
-            .getBoardManager()
-            .getScore(); // Get the score of the game in the game board of gameView.
+        gameView.getBoard().getScore();// Get the score of the game in the game board of gameView.
     return newScore;
   }
 
