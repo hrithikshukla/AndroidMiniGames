@@ -48,7 +48,7 @@
     <string name="title_maze">迷宫</string>
     <string name="NotAvailable">還不可用 ：（</string>
     <string name="SwipeToShop">向右滑動即可購物！</string>
-    <string name="coins">"您的硬幣： "</string>
+    <string name="coins">" 硬幣 "</string>
     <string name="characters">" 擁有的角色： "</string>
     <string name="play_4by4">4 x 4</string>
     <string name="text_select_mode">选择你的模式</string>

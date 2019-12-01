@@ -48,7 +48,7 @@
     <string name="title_maze">Labyrinthe</string>
     <string name="NotAvailable">Pas encore disponible :(</string>
     <string name="SwipeToShop">" Balayez à droite pour magasiner"</string>
-    <string name="coins">"Vos pièces de monnaie: "</string>
+    <string name="coins">" Pièces de monnaie "</string>
     <string name="characters">" Caractères possédés: "</string>
     <string name="play_4by4">4 x 4</string>
     <string name="text_select_mode">Sélectionnez votre mode</string>
