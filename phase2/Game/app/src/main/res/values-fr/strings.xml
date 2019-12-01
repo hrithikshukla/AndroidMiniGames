@@ -10,7 +10,7 @@
     <string name="signUp">S\'inscrire</string>
     <string name="changeLang">Langue</string>
     <string name="level">"Niveau: "</string>
-    <string name="score">"Score: "</string>
+    <string name="score">Score</string>
     <string name="highScore">Score élevé</string>
     <string name="create_account">S\'inscrire</string>
     <string name="register_button">S\'inscrire</string>
@@ -22,7 +22,7 @@
     <string name="username2">" Nom d'utilisateur"</string>
     <string name="button_exit">Partir</string>
     <string name="button_retry">Réessayer</string>
-    <string name="steps">"Pas: "</string>
+    <string name="steps">Pas</string>
     <string name="change_theme">Thème</string>
     <string name="TapiocaScore">Lanceur de Tapioca Score élevé</string>
     <string name="MazeScore">"Labyrinthe Score élevé: "</string>

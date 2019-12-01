@@ -11,10 +11,23 @@ import com.example.game.DataBase.UserScores;
 import java.util.Observable;
 import java.util.Observer;
 
-/** * Class that initializes all three components of the MVC model. */
+/**
+ * Class that initializes all three components of the MVC model. Observes the model GameFacade to
+ * determine when the game is over.
+ *
+ * <p>High level overview of what happens when the user presses the screen: InputView notifies
+ * GameController of this movement and the latter processes it. GameController updates the
+ * GameFacade for a valid input. Player's position is updated and it notifies Maze and Collectibles
+ * of its new position Maze updates the player's position in its representation. Collectible checks
+ * if the player has picked up a new collectible and notifies score Score updates with the value of
+ * the picked up collectible GameFacade notifies VisualView to update it with the most recent model
+ * of the game.
+ */
 public class MazeGameActivity extends GameActivity implements Observer {
 
+  /** View of the game. */
   private GameView gameView;
+
   private UserRepository ur;
 
   @Override
@@ -92,17 +105,13 @@ public class MazeGameActivity extends GameActivity implements Observer {
   @Override
   public synchronized void update(Observable o, Object arg) {
     // Set users high score if applicable when game ends and send it to gameOverActivity
-      GameFacade gameFacade = (GameFacade) o;
-      if (gameFacade.getMaze().hasEscaped()) {
+    GameFacade gameFacade = (GameFacade) o;
+    if (gameFacade.getMaze().hasEscaped()) {
       String difficulty = getIntent().getStringExtra("DIFFICULTY");
       UserScores u =
-              new UserScores(username, gameFacade.getPlayer().getScore(), "MAZE_GAME_" + difficulty, 120);
+          new UserScores(
+              username, gameFacade.getPlayer().getScore(), "MAZE_GAME_" + difficulty, 120);
       ur.addUserScore(u);
-      //            if (ur.getUserHighScore(username, "MAZE_GAME") < newGameState.getScore()) {
-      //              SharedPreferences.Editor editor = sharedPreferences.edit();
-      //              editor.putInt(usr.getUsername() + "mazehighscore", newGameState.getScore());
-      //              editor.apply();
-      //            }
       switchToGameOverActivity(this);
     }
   }

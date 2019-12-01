@@ -10,21 +10,33 @@ import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
 
-/** The controller of our game, handles user inputs and handles game logic */
-public class GameController implements Observer {
+/**
+ * The controller of our game, handles user inputs and handles game logic. Observes InputView to
+ * respond to any inputs made by the player to move.
+ */
+class GameController implements Observer {
 
-  // A gameFacade which is the model of our game
+  /** Model of the maze game */
   private GameFacade gameFacade;
 
-  // Hashmap that converts movement enum to a valid x,y vector
+  /** Maps movement enum to a valid x,y vector */
   private Map<Movement, Pair<Integer, Integer>> movementMap = new HashMap<>();
 
+  /**
+   * Initializes a GameController object with the given model of the maze.
+   *
+   * @param gameFacade - model of the maze
+   */
   GameController(GameFacade gameFacade) {
     this.gameFacade = gameFacade;
     buildMovementMap();
   }
 
-  // Only update the model if the game isn't over i.e. the player hasn't escaped.
+  /**
+   * Update the model with the given movement if the player hasn't escaped.
+   *
+   * @param mov - a movement enum
+   */
   private void updateModel(Movement mov) {
     if (!gameFacade.getMaze().hasEscaped()) {
       Pair<Integer, Integer> movement_vector = movementMap.get(mov);
@@ -35,7 +47,12 @@ public class GameController implements Observer {
     }
   }
 
-  // Check if players movement is valid; ie doesn't go off the map or hit a wall
+  /**
+   * Check if player's movement is valid; ie doesn't go off the map or hit a wall.
+   *
+   * @param p - displacement of the player
+   * @return - whether the player's movement is allowed
+   */
   private boolean boundaryCheck(Pair<Integer, Integer> p) {
     // displacement
     int xDisplacement = p.first;
@@ -62,7 +79,7 @@ public class GameController implements Observer {
     return xCoord && yCoord && !is_wall;
   }
 
-  // To convert our movement enums into vectors that we can use to update player
+  /** Convert movement enums into vectors used to update the player's position. */
   private void buildMovementMap() {
     movementMap.put(Movement.AFK, new Pair<>(0, 0));
     movementMap.put(Movement.DOWN, new Pair<>(0, 1));
@@ -71,7 +88,11 @@ public class GameController implements Observer {
     movementMap.put(Movement.RIGHT, new Pair<>(1, 0));
   }
 
-  /** @param o - direction of movement corresponding with the user input. */
+  /**
+   * Updates the player's position in the model given the movement enum.
+   *
+   * @param o - movement enum corresponding with the user input.
+   */
   @Override
   public void update(Observable observable, Object o) {
     updateModel((Movement) o);

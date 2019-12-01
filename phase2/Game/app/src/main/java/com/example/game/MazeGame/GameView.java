@@ -6,16 +6,17 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
 /** View component of the game. Handles the drawing of the screen and user inputs (touches). */
-public class GameView extends SurfaceView implements Runnable {
+class GameView extends SurfaceView implements Runnable {
 
   private Thread thread;
   private boolean isPlaying;
 
-  // inputView and visualView are dependency injected via methods.
-  private InputView inputView; // View subcomponent dealing with user input.
-  private VisualView visualView; // View subcomponent dealing with drawing the screen.
+  /** View subcomponents dealing with user input and drawing the screen. Dependency injected in. */
+  private InputView inputView;
 
-  public GameView(Context context) {
+  private VisualView visualView;
+
+  GameView(Context context) {
     super(context);
   }
 

@@ -7,11 +7,11 @@ import com.example.game.MazeGame.DataStructures.Movement;
 import java.util.Observable;
 
 /** View responsible for handling the inputs to the screen. */
-public class InputView extends Observable {
+class InputView extends Observable {
 
   /**
-   * Rectangles represent regions of the screen where if the touch was registered in moveX Rect, the
-   * player would move in the x direction.
+   * Rectangles represent regions of the screen corresponding to player motion. e.g. if the player
+   * presses in the moveLeft rectangle they would move to the left.
    */
   private Rect moveLeft, moveRight, moveUp, moveDown;
 
@@ -23,7 +23,8 @@ public class InputView extends Observable {
   }
 
   /**
-   * Registers a new touch on the screen.
+   * Registers a new touch on the screen and notifies the game controller of what kind of action it
+   * was.
    *
    * @param x - x position of the touch
    * @param y - y position of the touch

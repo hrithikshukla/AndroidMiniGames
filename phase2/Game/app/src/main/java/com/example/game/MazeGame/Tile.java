@@ -7,69 +7,67 @@ import android.graphics.BitmapFactory;
 import com.example.game.MazeGame.DataStructures.Cell;
 import com.example.game.R;
 
-/** Class representing the tiles of the maze. A tile is a wall, a floor, or a player. */
+import java.util.HashMap;
+
+/**
+ * Represents the bitmaps of the tiles of the maze. A tile is a wall, a floor, a player, or a
+ * collectible.
+ */
 class Tile {
+  /** Tile bitmaps are stored by their cell name. */
+  private HashMap<Cell, Bitmap> tiles;
 
-  private Bitmap wall, floor, collectable, player, playerAtExit;
-
-  // Side length of any Tile bitmap.
+  /** Side length of any tile bitmap. */
   private int sideLength;
 
+  /**
+   * Creates all Tile bitmaps of the maze.
+   *
+   * @param res - resources folder
+   */
   Tile(Resources res) {
 
-    Bitmap tmpWall = BitmapFactory.decodeResource(res, R.drawable.brick_wall);
-    Bitmap tmpfloor = BitmapFactory.decodeResource(res, R.drawable.floor);
-    Bitmap tmpCollectable = BitmapFactory.decodeResource(res, R.drawable.score_modifier);
-    Bitmap tmpPlayer = BitmapFactory.decodeResource(res, R.drawable.character);
-    Bitmap tmpCharacterAtExit = BitmapFactory.decodeResource(res, R.drawable.character_at_exit);
+    // Unscaled bitmaps.
+    Bitmap wall = BitmapFactory.decodeResource(res, R.drawable.brick_wall);
+    Bitmap floor = BitmapFactory.decodeResource(res, R.drawable.floor);
+    Bitmap collectible = BitmapFactory.decodeResource(res, R.drawable.score_modifier);
+    Bitmap player = BitmapFactory.decodeResource(res, R.drawable.character);
+    Bitmap playerAtExit = BitmapFactory.decodeResource(res, R.drawable.character_at_exit);
+    Bitmap exit = BitmapFactory.decodeResource(res, R.drawable.exit);
 
     // Reference tile for the side length of any tile.
-    Bitmap ref = tmpWall;
+    Bitmap ref = wall;
 
-    // Rescale the dimensions of the image by this factor.
+    // Rescale the dimensions of the bitmap by this factor.
     int SCALE_FACTOR = 8;
 
     this.sideLength = ref.getWidth() / SCALE_FACTOR;
 
-    // Rescale the wall and floor bitmaps to fit on the phone screen.
-    this.wall = Bitmap.createScaledBitmap(tmpWall, sideLength, sideLength, false);
-    this.floor = Bitmap.createScaledBitmap(tmpfloor, sideLength, sideLength, false);
-    this.collectable = Bitmap.createScaledBitmap(tmpCollectable, sideLength, sideLength, false);
-    this.player = Bitmap.createScaledBitmap(tmpPlayer, sideLength, sideLength, false);
-    this.playerAtExit =
-        Bitmap.createScaledBitmap(tmpCharacterAtExit, sideLength, sideLength, false);
+    this.tiles = new HashMap<>();
+    tiles.put(Cell.WALL, Bitmap.createScaledBitmap(wall, sideLength, sideLength, false));
+    tiles.put(Cell.FLOOR, Bitmap.createScaledBitmap(floor, sideLength, sideLength, false));
+    tiles.put(
+            Cell.COLLECTIBLE, Bitmap.createScaledBitmap(collectible, sideLength, sideLength, false));
+    tiles.put(Cell.PLAYER, Bitmap.createScaledBitmap(player, sideLength, sideLength, false));
+    tiles.put(
+            Cell.PLAYER_AT_EXIT,
+            Bitmap.createScaledBitmap(playerAtExit, sideLength, sideLength, false));
+    tiles.put(Cell.EXIT, Bitmap.createScaledBitmap(exit, sideLength, sideLength, false));
   }
 
   /**
-   * Exit Tile is represented as a normal floor Tile until the player is at its location.
-   *
-   * @param tile - integer representing the tile to be returned
+   * @param tile - tile name of the bitmap to be returned
+   * @return - a bitmap corresponding to the tile name
    */
   Bitmap getTile(Cell tile) {
-    switch (tile) {
-      case FLOOR:
-        return floor;
-
-      case WALL:
-        return wall;
-
-      case PLAYER:
-        return player;
-
-      case EXIT:
-        return floor;
-
-      case PLAYER_AT_EXIT:
-        return playerAtExit;
-
-        case COLLECTIBLE:
-        return collectable;
-
-      default:
-        return wall;
-    }
+    return tiles.get(tile);
   }
 
+  /**
+   * Getter for the side length of any tile bitmap
+   *
+   * @return side length of a tile bitmap
+   */
   int getSideLength() {
     return sideLength;
   }

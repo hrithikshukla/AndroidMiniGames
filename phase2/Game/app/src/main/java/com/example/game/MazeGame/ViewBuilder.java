@@ -10,24 +10,27 @@ import com.example.game.MazeGame.DataStructures.Background;
 import java.util.HashMap;
 
 /**
- * Class to construct the View objects. All View objects are constructed in the same class because
- * of how GameView is composed with InputView and VisualView. VisualView also depends on the
- * SurfaceHolder object of GameView.
+ * Constructs the View objects of the maze. All view objects are constructed in the same builder
+ * because GameView is composed with InputView and VisualView. VisualView also depends on the
+ * SurfaceHolder object of GameView, and constructing them in the same builder simplifies things.
  */
 class ViewBuilder implements Builder {
 
-    // Results to be returned
+    /** Finished View objects to be returned */
     private GameView gameView;
+
     private InputView inputView;
     private VisualView visualView;
 
+    /** Attributes required for the construction of View objects */
     private MazeGameActivity context;
+
     private int maxScreenX, maxScreenY;
 
     /**
-     * ViewBuilder constructor.
+     * Creates a ViewBuilder object with the given attributes.
      *
-     * @param context    - context of the MazeGameActivity
+     * @param context - context of the MazeGameActivity
      * @param maxScreenX - maximum x position of the screen
      * @param maxScreenY - maximum y position of the screen
      */
@@ -37,17 +40,20 @@ class ViewBuilder implements Builder {
         this.maxScreenY = maxScreenY;
     }
 
+    /** Builds the View objects i.e. GameView, VisualView, and InputView and setting up observers. */
     @Override
     public void build() {
+
         // GameView object must be constructed first to get a SurfaceHolder object for VisualView.
         gameView = new GameView(context);
 
+        // Offset for arrow buttons; calculated from the bottom right corner of the screen
         int xOffSet = 250;
         int yOffSet = 250;
 
         HashMap<String, Rect> arrowKeyRects = buildArrowKeyRects(xOffSet, yOffSet);
 
-        visualView = buildVisualView(gameView.getSurfaceHolder(), arrowKeyRects);
+        buildVisualView(gameView.getSurfaceHolder(), arrowKeyRects);
         inputView =
                 new InputView(
                         arrowKeyRects.get("left"),
@@ -60,16 +66,18 @@ class ViewBuilder implements Builder {
     }
 
     /**
-     * Builds the rectangles corresponding to where the arrow keys are.
+     * Builds the rectangles corresponding to where the arrow keys are drawn in the maze. All arrow
+     * rects are built with reference to the top left corner of where the right arrow rect is
+     * positioned. xOffSet and yOffset are used to determine this top-left corner.
      *
      * @param xOffSet - the x-offset from the max x-position of the screen
      * @param yOffSet - the y-offset from the max y-position of the screen
-     * @return a hashmap of rectangles corresponding to the 4 buttons of the maze
+     * @return a HashMap of rectangles corresponding to the position of the 4 buttons of the maze
      */
     private HashMap<String, Rect> buildArrowKeyRects(int xOffSet, int yOffSet) {
-        // Gets the side length of an arrow bitmap.
         Background tmp = new Background(maxScreenX, maxScreenY, context.getResources());
-        int sideLength = tmp.getArrow("left").getWidth();
+        int sideLength = tmp.getArrow("left").getWidth(); // Gets the side length of an arrow bitmap.
+        // Top left corner of the right arrow button.
         int topLeftCornerX = maxScreenX - xOffSet;
         int topLeftCornerY = maxScreenY - yOffSet;
         HashMap<String, Rect> arrowKeyRects = new HashMap<>();
@@ -105,14 +113,13 @@ class ViewBuilder implements Builder {
     }
 
     /**
-     * Builds the VisualView object
+     * Builds the VisualView object where arrowKeyRects are the rects where the arrow key buttons are
+     * drawn.
      *
-     * @param surfaceHolder the surfaceHolder of a GameView object
-     * @param arrowKeyRects
-     * @return the constructed VisualView object
+     * @param surfaceHolder - the surfaceHolder of a GameView object
+     * @param arrowKeyRects - the rectangles of the arrow keys in the game
      */
-    private VisualView buildVisualView(
-            SurfaceHolder surfaceHolder, HashMap<String, Rect> arrowKeyRects) {
+    private void buildVisualView(SurfaceHolder surfaceHolder, HashMap<String, Rect> arrowKeyRects) {
 
         Tile tile = new Tile(context.getResources());
 
@@ -126,16 +133,17 @@ class ViewBuilder implements Builder {
         textPaint.setColor(Color.GREEN);
         textPaint.setTextSize(32);
 
-        return new VisualView(
-                context,
-                surfaceHolder,
-                tile,
-                background,
-                maxScreenX,
-                maxScreenY,
-                textPaint,
-                backgroundPaint,
-                arrowKeyRects);
+        visualView =
+                new VisualView(
+                        context,
+                        surfaceHolder,
+                        tile,
+                        background,
+                        maxScreenX,
+                        maxScreenY,
+                        textPaint,
+                        backgroundPaint,
+                        arrowKeyRects);
     }
 
     /**

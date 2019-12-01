@@ -10,7 +10,7 @@
     <string name="signUp">註冊</string>
     <string name="changeLang">語言</string>
     <string name="level">" 级: "</string>
-    <string name="score">"得分: "</string>
+    <string name="score">得分</string>
     <string name="highScore">"高分: "</string>
     <string name="username2">" 用戶名"</string>
     <string name="username">" 用戶名"</string>
@@ -22,7 +22,7 @@
     <string name="create_account">註冊</string>
     <string name="button_exit">离开</string>
     <string name="button_retry">再来</string>
-    <string name="steps">" 腳步："</string>
+    <string name="steps">" 腳步"</string>
     <string name="change_theme">颜色</string>
     <string name="TapiocaScore">"木薯粉發射器高分: "</string>
     <string name="MazeScore">"迷宮高分: "</string>
