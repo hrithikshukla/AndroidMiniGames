@@ -67,12 +67,17 @@ public class SpriteFragment extends DialogFragment {
           @Override
           public void onClick(View v) {
             if (userRepository.getUserAmount() < price) {
+                // Change this to add other language support
               Toast t = Toast.makeText(activity, "LMAO U BROKE", Toast.LENGTH_SHORT);
               t.setGravity(Gravity.CENTER, 0, 0);
               t.show();
             } else {
              userRepository.updateUserAmount(-price);
              userRepository.addUserCollectible(image);
+                // Change this to add other language support
+                Toast t = Toast.makeText(activity, "YOUR PURCHASE WAS SUCESSFULL", Toast.LENGTH_SHORT);
+                t.setGravity(Gravity.CENTER, 0, 0);
+                t.show();
             }
             //                        if (usr.balance < price) {
             //                            // prirnt error message

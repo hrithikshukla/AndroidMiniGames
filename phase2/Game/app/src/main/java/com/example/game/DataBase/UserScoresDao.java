@@ -35,6 +35,14 @@ public interface UserScoresDao {
                   + "AND game_type LIKE :game_type LIMIT 1")
   public int getUserMinTime(String name, String game_type);
 
+  // Call these methods to get max time taken of MAZE_GAME, TAPIOCA_GAME, TILES_GAME in seconds
+  @Query(
+          "SELECT max(timeSpent) as max from scores_table WHERE userName LIKE :name "
+                  + "AND game_type LIKE :game_type LIMIT 1")
+  public int getUserMaxTime(String name, String game_type);
+
+
+
   // Call these methods to get the average time spent in each game
   @Query(
           "SELECT avg(timeSpent) as avg from scores_table WHERE userName LIKE :name "
