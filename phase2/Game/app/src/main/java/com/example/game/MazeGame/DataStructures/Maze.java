@@ -11,29 +11,32 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.Set;
 
-// TODO: fix get cell method, code smells looks awkward
-
 /** Represents the maze of the game. */
 public class Maze implements Observer {
-  /**
-   * grid: Cell object representation of our Maze width: The width of the maze height: The height of
-   * the maze; exit: The coordinates of the exit; x coordinate is stored in exit[0], y exit[1]
-   */
+  /** Cell object representation of the maze */
   private Cell[][] grid;
 
+  /** Width of the maze. */
   private int width;
+
+  /** Height of the maze. */
   private int height;
+
+  /** Coordinates of the exit; x coordinate is stored in exit[0], y exit[1]. */
   private int[] exit;
 
   /** X and Y position of the Player. Represented in the Maze as [playerPosY][PlayerPosX]. */
   private int playerPosX, playerPosY;
 
   /**
-   * @param width : width of maze has to be geq 7 has to be odd; number of cells in x direction;
+   * Constructs a Maze object with given height and width. Player is inserted into the maze at
+   * playerStartX and playerStartY.
+   *
+   * @param width - width of maze has to be geq 7 has to be odd; number of cells in x direction;
    *     columns
-   * @param height : height of maze has to be geq 7 has to be odd; number of cells in y direction;
-   * @param playerStartX : the x starting position of the player
-   * @param playerStartY : the y starting position of the player
+   * @param height - height of maze has to be geq 7 has to be odd; number of cells in y direction;
+   * @param playerStartX - the x starting position of the player
+   * @param playerStartY - the y starting position of the player
    */
   public Maze(int width, int height, int playerStartX, int playerStartY) {
     this.width = width;
@@ -46,25 +49,48 @@ public class Maze implements Observer {
         Cell.PLAYER; // Set player's starting position after generating the maze.
   }
 
+  /**
+   * Getter for the width of the maze.
+   *
+   * @return - maze width
+   */
   public int getWidth() {
     return width;
   }
 
+  /**
+   * Getter for the height of the maze.
+   *
+   * @return - maze height
+   */
   public int getHeight() {
     return height;
   }
 
-  // Returns cell at coordinate
+  /**
+   * Returns the cell at the given coordinate.
+   *
+   * @param x - the x coordinate
+   * @param y - the y coordinate
+   * @return - cell at the coordinate in the maze
+   * @throws IndexOutOfBoundsException - if coordinate exceeds the maze's dimensions
+   */
   public Cell getCell(int x, int y) throws IndexOutOfBoundsException {
     return grid[y][x];
   }
 
+  /** Creates the maze. */
   private void generateMaze() {
     initNodes();
     mst();
     generateExit();
   }
 
+  /**
+   * Returns a String representation of the maze.
+   *
+   * @return string representation of the maze.
+   */
   @Override
   @NonNull
   public String toString() {
@@ -83,7 +109,11 @@ public class Maze implements Observer {
     return s.toString();
   }
 
-  /** Returns a deep copy of the grid representing the maze. */
+  /**
+   * Returns a deep copy of the grid representing the maze.
+   *
+   * @return deep copy of the grid representation of the maze
+   */
   public Cell[][] getGridDeepCopy() {
     Cell[][] tmp = new Cell[height][width];
     for (int i = 0; i < height; i++) {
@@ -92,7 +122,7 @@ public class Maze implements Observer {
     return tmp;
   }
 
-  // initialize the floor and wall "nodes" of the maze
+  /** Initialize the floor and wall "nodes" of the maze. */
   private void initNodes() {
     for (int row = 0; row < height; row++) {
       for (int col = 0; col < width; col++) {
@@ -105,7 +135,7 @@ public class Maze implements Observer {
     }
   }
 
-  // prim's algorithm for MST(minimum spanning tree)
+  /** Generates the maze using prim's algorithim for MST (minimum spanning tree). */
   private void mst() {
     // pick a random point on the map that is Cell.FLOOR
     int row = ((((int) (Math.random() * (height - 2))) / 2) * 2) + 1;
@@ -146,7 +176,13 @@ public class Maze implements Observer {
     }
   }
 
-  // Returns the neighbours of a node where it has already been examined by the algorithm
+  /**
+   * Returns the neighbours of a node where it has already been examined by the algorithm
+   *
+   * @param neighbourNode
+   * @param processed
+   * @return
+   */
   private ArrayList<Pair<Integer, Integer>> getPickedNodes(
       Pair<Integer, Integer> neighbourNode, ArrayList<Pair<Integer, Integer>> processed) {
     ArrayList<Pair<Integer, Integer>> neighbours = getValidNeighbours(neighbourNode);
@@ -160,7 +196,13 @@ public class Maze implements Observer {
     return picked;
   }
 
-  // The neighbours of a given node that have not been processed by the algorithm
+  /**
+   * The neighbours of a given node that have not been processed by the algorithm
+   *
+   * @param cellCoordinate
+   * @param neighboursUnprocessed
+   * @param processed
+   */
   private void addNeighbours(
       Pair<Integer, Integer> cellCoordinate,
       ArrayList<Pair<Integer, Integer>> neighboursUnprocessed,
@@ -174,7 +216,12 @@ public class Maze implements Observer {
     }
   }
 
-  // The possible neighbouring nodes of a given cell
+  /**
+   * Returns the possible neighbouring nodes of a given cell.
+   *
+   * @param cellCoordinate
+   * @return
+   */
   private ArrayList<Pair<Integer, Integer>> getValidNeighbours(
       Pair<Integer, Integer> cellCoordinate) {
     int row = cellCoordinate.first;
@@ -225,16 +272,18 @@ public class Maze implements Observer {
     }
   }
 
-  /** Returns whether the player has escaped the maze i.e. if they're at the exit. */
+  /**
+   * Returns whether the player has escaped the maze.
+   * @return - whether player is at the exit
+   */
   public boolean hasEscaped() {
     return (playerPosY == exit[0]) && (playerPosX == exit[1]);
   }
 
-  @Override
   /**
-   * Maze is observing a Player object. Whenever the player moves it notifies its observers of the
-   * player's new position in the maze.
+   * Process the player's new position in the maze and update the model accordingly.
    */
+  @Override
   public void update(Observable observable, Object o) {
     // Remove the player's tile from their previous s position in the maze
     grid[playerPosY][playerPosX] = Cell.FLOOR;
@@ -245,11 +294,11 @@ public class Maze implements Observer {
   }
 
   /**
-   * Insert the tiles of the given set of collectables into the maze representation. Format of an
+   * Insert the items of the given set of collectibles into the maze representation. Format of an
    * element of the set: "%d,%d" where the first and second %d's are the row/column number of the
    * maze respectively.
    *
-   * @param collectiblesPos - set of tile positions, each formatted as described above
+   * @param collectiblesPos - set of collectible positions, each formatted as described above
    */
   public void addCollectibles(Set<String> collectiblesPos) {
     String[] tmp;
