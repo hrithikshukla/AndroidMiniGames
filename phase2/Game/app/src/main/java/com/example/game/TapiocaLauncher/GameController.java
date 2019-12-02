@@ -7,23 +7,34 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
-// Controller of the MVC, handles all the game logic
+/**
+ * Controller of the MVC, handles all the game logic
+  */
 public class GameController implements Observer {
 
-  private GameFacade gameFacade; // stores the model
-  private boolean isMoving = false; // whether the Launcher is moving or not
-  private int count =
-          0; // counts 60 frames (1 second) after which the Launcher ball's position is reset
-  private boolean readyToLaunch = true; // Determine if the launcher is ready to fire
-  private int screenX, screenY; // Size of the screen
-  private double gravityX, gravityY; // How much to decreases the Launcher's speed by each tick
-  private boolean ballClicked = false; // Indicates if the player has done a down action yet
-  private double startX,
-          startY,
-          endX,
-          endY; // stores the start and end values of the player's hand motion
+  /** Stores the model*/
+  private GameFacade gameFacade;
+  /** Whether the Launcher is moving or not */
+  private boolean isMoving = false;
+  /** counts 60 frames (1 second) after which the Launcher ball's position is reset */
+  private int count = 0;
+  /** Determine if the launcher is ready to fire */
+  private boolean readyToLaunch = true;
+  /** Size of the scren */
+  private int screenX, screenY;
+  /** How much to decreases the Launcher's speed by each tick */
+  private double gravityX, gravityY;
+  /** Indicates if the player has clicked the ball yet */
+  private boolean ballClicked = false;
+  /** Stores start and end coordaintes of the player's hand motion */
+  private double startX, startY, endX, endY;
 
-  // Initializes the GameController
+  /**Create a gameController with the given paramaters
+   *
+   * @param gameFacade - gameModel which the controller will update
+   * @param screenX - x-size of the screen
+   * @param screenY - y-size of the screen
+   */
   GameController(GameFacade gameFacade, int screenX, int screenY) {
     this.gameFacade = gameFacade;
     this.screenX = screenX;
@@ -31,12 +42,11 @@ public class GameController implements Observer {
     generateLevel();
   }
 
-  // Update the model of the balls i.e new positions based on timestep, health, remove them if
-  // ball has no health etc.
-
-  // Updates the model by moving the launcher, checking for collision, if the ball is still
-  // it launches counter which counts to 1 second after which the ball is reset to its
-  // original position
+  /**
+   * Updates the model by moving the launcher, checking for collision, if the ball is still
+   it launches counter which counts to 1 second after which the ball is reset to its
+   original position
+   */
   private void updateModel() {
     if (isMoving) {
       moveLauncher();
@@ -48,9 +58,12 @@ public class GameController implements Observer {
     }
   }
 
-  // counts 60 frames(1 second) after the ball stops moving to reset everything for the next launch
+
+  /**
+   * Counts 60 frames(1 second) after the ball stops moving to reset everything for the next launch
+   */
   private void counter() {
-    if (count != 60) { // resets ball after 1 second of non-movement by counting 60 frames
+    if (count != 60) {
       count++;
     }
     if (count == 60) {
@@ -76,14 +89,18 @@ public class GameController implements Observer {
     }
   }
 
-  // updates isMoving by checking the launcher's speed
+  /**
+   * updates isMoving by checking the launcher's speed
+   */
   private void updateIsMoving() {
     if (gameFacade.getLauncher().getSpeedX() == 0 && gameFacade.getLauncher().getSpeedY() == 0) {
       isMoving = false;
     }
   }
 
-  // Moves the launcher according to its speed values and reduces the speed by gravity after
+  /**
+   * Moves the launcher according to its speed values and reduces the speed by the gravity amount after
+   */
   private void moveLauncher() {
 
     Launcher launcher = gameFacade.getLauncher();
@@ -111,15 +128,12 @@ public class GameController implements Observer {
     slowLauncher();
   }
 
-  private void speedLauncher() {
-    Launcher launcher = gameFacade.getLauncher();
-    launcher.setSpeedX(launcher.getSpeedX()*1.3);
-    launcher.setSpeedY(launcher.getSpeedY()*1.3);
-    gameFacade.update();
-    Log.d("", "speedLauncher: " + launcher.getSpeedX() + "" + launcher.getSpeedY());
-  }
 
-  // Decreases launcher by the gravity amount.
+
+
+  /**
+   * Decreases launcher's by the gravity amount in the x and y directoin
+   */
   private void slowLauncher() {
     Launcher launcher = gameFacade.getLauncher();
     launcher.setSpeedX(decrement(launcher.getSpeedX(), gravityX));
@@ -127,7 +141,14 @@ public class GameController implements Observer {
     gameFacade.update();
   }
 
-  private double decrement(double speed, double gravity) { // reduces speed by gravity amount
+  /**
+   * Reduces speed by gravity amount while ensuring it doesn't go past 0
+   *
+   * @param speed - original speed
+   * @param gravity - gravity amount
+   * @return - speed reduced by the gravity
+   */
+  private double decrement(double speed, double gravity) {
     // Log.d("", "decremented " + speed);
     if (speed >= 0) {
       speed -= gravity;
@@ -143,7 +164,19 @@ public class GameController implements Observer {
     return speed;
   }
 
-  // Check for collisions between launcher and balls
+  /** Speeds up the launcher
+   *
+   */
+  private void speedLauncher() {
+    Launcher launcher = gameFacade.getLauncher();
+    launcher.setSpeedX(launcher.getSpeedX()*1.3);
+    launcher.setSpeedY(launcher.getSpeedY()*1.3);
+    gameFacade.update();
+  }
+
+  /**
+   * Checks and handles collisions between the Launcher and Balls
+   */
   private void checkCollision() {
     Launcher launcher = gameFacade.getLauncher();
     List<Ball> balls = gameFacade.getBalls();
@@ -179,10 +212,15 @@ public class GameController implements Observer {
     }
   }
 
-  // Observes the InputView and updates if there is input or a tick
+
+  /** Observes the InputView and updates if there is an input or a tick
+   *
+   * @param o - InputView being observed
+   * @param arg - Object inputview is passing
+   */
   @Override
   public void update(Observable o, Object arg) {
-    if (arg instanceof MotionEvent) {
+    if (arg instanceof MotionEvent) { //Handles input
       MotionEvent event = (MotionEvent) arg;
       Launcher launcher = gameFacade.getLauncher();
       if (readyToLaunch) {
@@ -206,14 +244,20 @@ public class GameController implements Observer {
           }
         }
       }
-    } else if (arg instanceof Boolean) {
+    } else if (arg instanceof Boolean) { //Handles Tick
       updateModel();
       gameFacade.update();
     }
   }
 
-  // moves the ball in the angle of the direction of the starting and end point of the players
-  // motion
+
+  /**
+   * Moves the ball in the angle of the direction of the starting and end point of the player's motion
+   * @param startX - x coordinate of the starting point
+   * @param startY - y coordinate of the starting point
+   * @param endX - x coordinate of the end point
+   * @param endY - y coordinate of the end point
+   */
   private void moveBall(double startX, double startY, double endX, double endY) {
     isMoving = true;
     readyToLaunch = false;
@@ -225,7 +269,9 @@ public class GameController implements Observer {
     gravityY = (Math.abs(launcher.getSpeedY()) / 50);
   }
 
-  // generates the level based on the current level or ends the game if it's the last level
+  /**
+   * generates the level based on the current level or ends the game if it's the last level
+   */
   private void generateLevel() {
     if (gameFacade.getLevel() == 1) {
         gameFacade.setBalls(1);

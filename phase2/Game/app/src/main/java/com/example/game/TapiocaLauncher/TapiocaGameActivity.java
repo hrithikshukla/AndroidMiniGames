@@ -17,23 +17,28 @@ import java.util.Observer;
 
 import static java.time.temporal.ChronoUnit.SECONDS;
 
-// Creates the MVC design within the TapiocaLauncher
+
+/**
+ * Creates the MVC design within the TapiocaLauncher
+ */
 public class TapiocaGameActivity extends GameActivity implements Observer {
 
-  // View
+  /** View */
   private GameView gameView;
 
-  // Model
+  /** Model */
   private GameFacade gameFacade;
 
-  // Controller
+  /** Controller */
   private GameController gameController;
 
   private UserRepository ur;
 
   private LocalTime startime;
 
-
+  /** Creates the game
+   * @param savedInstanceState - Saved State of application
+   */
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -69,21 +74,28 @@ public class TapiocaGameActivity extends GameActivity implements Observer {
     setContentView(gameView);
   }
 
+  /** Pauses the game
+   *
+   */
   @Override
   protected void onPause() {
     super.onPause();
     gameView.pause();
   }
 
+  /**
+   * Resumes the game
+   */
   @Override
   protected void onResume() {
     super.onResume();
     gameView.resume();
   }
 
-  // Observes the GameFacade to see if the game is over, and if so goes to the exit screen and
-  // updates the statistics
   @Override
+  /**Observes the GameFacade to see if the game is over, and if so goes to the exit screen and
+   updates the statistics
+   */
   public synchronized void update(Observable o, Object arg) {
     gameFacade = (GameFacade) arg;
     if (gameFacade.isGameOver()) {

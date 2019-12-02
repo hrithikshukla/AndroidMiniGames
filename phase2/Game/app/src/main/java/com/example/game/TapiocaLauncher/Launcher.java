@@ -1,14 +1,20 @@
 package com.example.game.TapiocaLauncher;
 
-// Tapioca that the user launches to clear the stage
+/** Tapioca that the user launches to clear the stage
+  */
 class Launcher {
 
-    // The top left coordinates of the ball and the radius
+    /** The top left coordinates of the ball and the radius */
     private int x, y, radius;
-    // The speed components of the ball.
+    /** The speed components of the ball. */
     private double speedX, speedY;
 
-    // The Launcher ball that the player launches
+    /** Creates a Launcher object with the provided arguments
+     *
+     * @param x - starting x coordinate
+     * @param y - starting y coordinate
+     * @param radius - radius of the Launcher
+     */
     Launcher(int x, int y, int radius) {
         this.x = x;
         this.y = y;
@@ -17,6 +23,8 @@ class Launcher {
         this.radius = radius;
     }
 
+
+    /** Getters and Setters */
     public int getX() {
         return x;
     }
