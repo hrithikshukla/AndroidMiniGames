@@ -21,8 +21,8 @@ public interface UserCollectiblesDao {
     @Delete
     public void delete(UserCollectibles userCollectibles);
 
-    @Query("SELECT character_id FROM Collectibles_table WHERE userName like :username")
-    public LiveData<List<Integer>> getUserCollectibles(String username);
+    @Query("SELECT * FROM C_table WHERE userName LIKE :username")
+    public List<UserCollectibles> getUserCollectibles(String username);
 
 
 }

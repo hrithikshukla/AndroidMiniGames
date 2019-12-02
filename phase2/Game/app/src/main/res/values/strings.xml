@@ -63,8 +63,9 @@
     <string name="button_settings_exit">x</string>
     <string name="text_light">Light</string>
     <string name="text_dark">Dark</string>
-    <item name="id" type="id" />
+    <item name="num" type="id" />
     <item name="price" type="id" />
+    <item name="id" type="id" />
 
     <string name="purchase">I want it!</string>
     <string name="cancel">Cancel</string>

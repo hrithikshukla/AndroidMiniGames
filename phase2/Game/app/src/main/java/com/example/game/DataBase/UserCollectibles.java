@@ -7,7 +7,7 @@ import androidx.room.Entity;
 
 import com.example.game.R;
 
-@Entity(primaryKeys = {"userName", "character_id"}, tableName = "Collectibles_table")
+@Entity(primaryKeys = {"userName", "character_id"}, tableName = "C_table")
 public class UserCollectibles {
 
     @NonNull
