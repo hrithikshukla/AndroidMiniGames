@@ -24,7 +24,7 @@
     <string name="button_retry">再来</string>
     <string name="steps">" 腳步"</string>
     <string name="change_theme">颜色</string>
-    <string name="TapiocaScore">"木薯粉發射器高分: "</string>
+    <string name="TapiocaScore">" 木薯粉發射器高分："</string>
     <string name="MazeScore">"迷宮高分: "</string>
     <string name="TileScore">"瓷磚高分: "</string>
     <string name="MazeTime">"花時間玩迷宮: "</string>
@@ -68,6 +68,7 @@
 棕球需要1枪才能摧毁！
 红球拍两枪摧毁
 白球会给你提速！
+紫球會給您額外的生命！
 
 但是要快，因为您的镜头数量有限！"</string>
     <string name="play_invert">倒置</string>
@@ -93,5 +94,15 @@
     <string name="successfulPurchase">" 您的購買成功"</string>
     <string name="insufficientFunds">" 您缺少執行此操作所需的資金"</string>
     <string name="Sprite">Sprite</string>
-    <string name="pick_sprite">Pick sprite:</string>
+    <string name="pick_sprite">選擇精靈：</string>
+    <string name="colourDefault">默認</string>
+    <string name="colourGreenPurple">綠色/紫色</string>
+    <string name="colourOrangeTeal">橙色/藍綠色</string>
+    <string name="colourBluePink">" 藍色/粉紅色"</string>
+    <string name="TapiocaAvgTime">木薯粉平均時間：</string>
+    <string name="TapiocaBestTime">" 木薯粉最佳時間："</string>
+    <string name="Tiles4Time">平鋪（4 X 4）最佳時間：</string>
+    <string name="Tiles5Time">" 平鋪（5 X 5）最佳時間："</string>
+    <string name="TilesInvertAvgTime">平鋪（反轉）平均時間：</string>
+    <string name="TilesInvertTime">平鋪（反轉）最佳時間：</string>
 </resources>

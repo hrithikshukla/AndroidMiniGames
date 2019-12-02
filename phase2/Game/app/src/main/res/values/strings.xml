@@ -76,6 +76,7 @@ Click on the black balls and drag it in the direction you want to fire it.
 Brown balls take 1 shot to destroy!
 Red balls take 2 shots to destroy
 White balls will give you a speed boost!
+Purple balls will give you extra lives!
 
 But be quick as you only have a limited number of shots!"
     </string>
@@ -109,4 +110,8 @@ But be quick as you only have a limited number of shots!"
     <string name="coins">"Coins "</string>
     <string name="Sprite">Sprite</string>
     <string name="pick_sprite">Pick sprite:</string>
+    <string name="colourDefault">Default</string>
+    <string name="colourGreenPurple">Green/Purple</string>
+    <string name="colourOrangeTeal">Orange/Teal</string>
+    <string name="colourBluePink">Blue/Pink</string>
 </resources>
