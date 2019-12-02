@@ -12,14 +12,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.DataBase.UserRepository;
 import com.example.game.R;
-import com.example.game.Save.AccountsManager;
 
 public class RegisterActivity extends AppCompatActivity {
 
     EditText username;
     EditText password;
     Button registerButton;
-    AccountsManager accountsManager;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -29,7 +27,6 @@ public class RegisterActivity extends AppCompatActivity {
         username = (EditText) findViewById(R.id.username);
         password = (EditText) findViewById(R.id.password);
         registerButton = (Button) findViewById(R.id.button2);
-        this.accountsManager = (AccountsManager) getIntent().getSerializableExtra("AccountsManager");
     }
 
     public void register(View view) {
@@ -66,15 +63,5 @@ public class RegisterActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "User already exists", Toast.LENGTH_LONG).show();
         }
 
-        //        else if (accountsManager.createUser(usernameString, passwordString)) {
-//            // Informs the user that their account is created.
-//            Toast.makeText(
-//                    getApplicationContext(),
-//                    String.format("New user %s created", usernameString),
-//                    Toast.LENGTH_LONG)
-//                    .show();
-//            Intent loginIntent = new Intent(RegisterActivity.this, LoginActivity.class);
-//            startActivity(loginIntent);
-//        }
     }
 }

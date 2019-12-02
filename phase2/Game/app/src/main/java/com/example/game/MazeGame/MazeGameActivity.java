@@ -10,6 +10,7 @@ import com.example.game.DataBase.UserScores;
 import com.example.game.MazeGame.DataStructures.Sprites;
 
 import java.time.LocalTime;
+import java.util.Objects;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -59,7 +60,7 @@ public class MazeGameActivity extends GameActivity implements Observer {
 
         // Maze dimension is dependency injected in.
         int[] dimensions = getIntent().getIntArrayExtra("DIMENSIONS");
-        int mazeWidth = dimensions[0];
+        int mazeWidth = Objects.requireNonNull(dimensions)[0];
         int mazeHeight = dimensions[1];
 
         // Player starts at bottom left corner.
@@ -128,7 +129,7 @@ public class MazeGameActivity extends GameActivity implements Observer {
                     new UserScores(
                             getUsername(), gameFacade.getPlayer().getScore(), "MAZE_GAME_" + difficulty, timetaken);
             ur.addUserScore(u);
-            ur.updateUserAmount(gameFacade.getPlayer().getScore() * 1000);
+            ur.updateUserAmount((int) Math.ceil(gameFacade.getPlayer().getScore() * 0.2));
             setScore(gameFacade.getPlayer().getScore());
             switchToGameOverActivity(this);
         }

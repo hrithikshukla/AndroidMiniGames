@@ -9,68 +9,78 @@ import androidx.room.PrimaryKey;
 import androidx.room.Relation;
 
 @Entity(tableName = "Scores_table")
+/**
+ * An entity set of user scores include username, score and time spent in game; Uses and user scores
+ * id as a primary key to reduce cost of access
+ */
 public class UserScores {
 
   @PrimaryKey(autoGenerate = true)
-  @NonNull
   private int id;
+
   @ForeignKey(
       entity = UserAccount.class,
-      parentColumns = "userName",
-      childColumns = "userName",
+      parentColumns = "username",
+      childColumns = "username",
       onDelete = ForeignKey.CASCADE)
-  private String userName;
-  private int score;
-    private int timeSpent;
+  private String username;
 
+  private int score;
+  private int timeSpent;
 
   @ColumnInfo(name = "game_type")
   private String gameType;
 
-    public UserScores(String userName, int score, String gameType, int timeSpent) {
-    this.userName = userName;
+  /**
+   * @param username: Username for user score
+   * @param score: Score for the game
+   * @param gameType: specifies which game the score it's for
+   * @param timeSpent: time spent playing the game
+   */
+  public UserScores(String username, int score, String gameType, int timeSpent) {
+    this.username = username;
     this.score = score;
     this.gameType = gameType;
-        this.timeSpent = timeSpent;
+    this.timeSpent = timeSpent;
   }
 
-  public void setId(int id) {
+  void setId(int id) {
     this.id = id;
   }
 
-  public int getId() {
+  int getId() {
     return id;
   }
 
-  public String getUserName() {
-    return userName;
+  public String getUsername() {
+    return username;
   }
 
   public int getScore() {
     return score;
   }
 
-  public String getGameType() {
+  String getGameType() {
     return gameType;
   }
 
-  public void setUserName(String userName) {
-    this.userName = userName;
+  void setUserName(String userName) {
+    this.username = userName;
   }
 
-  public void setScore(int score) {
+  void setScore(int score) {
     this.score = score;
   }
 
-  public void setGameType(String gameType) {
+  void setGameType(String gameType) {
     this.gameType = gameType;
   }
 
-    public int getTimeSpent() {
-        return timeSpent;
-    }
+  int getTimeSpent() {
+    return timeSpent;
+  }
 
-    public void setTimeSpent(int timeSpent) {
-        this.timeSpent = timeSpent;
-    }
+  void setTimeSpent(int timeSpent) {
+    this.timeSpent = timeSpent;
+  }
 }

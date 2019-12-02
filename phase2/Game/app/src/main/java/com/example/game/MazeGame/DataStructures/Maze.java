@@ -190,7 +190,12 @@ public class Maze implements Observer {
     return picked;
   }
 
-  /** The neighbours of a given node that have not been processed by the algorithm */
+  /** The neighbours of a given node that have not been processed by the algorithm
+   * @param cellCoordinate cell coordinate that is being currently processed
+   * @param neighboursUnprocessed Array list to mutate to add in the neighbours that have not been
+   *                              processed
+   * @param processed the neighbours of the cell that have been processed
+   * */
   private void addNeighbours(
       Pair<Integer, Integer> cellCoordinate,
       ArrayList<Pair<Integer, Integer>> neighboursUnprocessed,
@@ -204,7 +209,9 @@ public class Maze implements Observer {
     }
   }
 
-  /** Returns the possible neighbouring nodes of a given cell. */
+  /** Returns the possible neighbouring nodes of a given cell.
+   * @param cellCoordinate the cell coordinate of the cell that is being processed
+   * */
   private ArrayList<Pair<Integer, Integer>> getValidNeighbours(
       Pair<Integer, Integer> cellCoordinate) {
     int row = cellCoordinate.first;
