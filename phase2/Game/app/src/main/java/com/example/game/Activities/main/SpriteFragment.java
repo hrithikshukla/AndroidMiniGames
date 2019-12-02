@@ -105,7 +105,8 @@ public class SpriteFragment extends DialogFragment {
 
     private void exitFragment() {
         activity.findViewById(R.id.frame).setClickable(false);
-        activity.recreate();
-        activity.getSupportFragmentManager().popBackStack();
+        activity.startActivity(activity.getIntent());
+        activity.finish();
+        activity.overridePendingTransition(0, 0);
     }
 }
