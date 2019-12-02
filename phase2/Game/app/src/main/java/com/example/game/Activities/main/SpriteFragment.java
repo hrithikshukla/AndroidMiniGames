@@ -17,6 +17,8 @@ import android.widget.Toast;
 import com.example.game.DataBase.UserRepository;
 import com.example.game.R;
 
+import java.util.List;
+
 public class SpriteFragment extends DialogFragment {
 
     // The numer of the image
@@ -29,6 +31,7 @@ public class SpriteFragment extends DialogFragment {
 
     private ShopActivity activity;
     private UserRepository userRepository;
+    private List<Integer> ownedChars;
 
 
     SpriteFragment(int image, int price, int id, String username) {
@@ -36,6 +39,7 @@ public class SpriteFragment extends DialogFragment {
         this.price = price;
         this.imageId = id;
         this.userRepository = new UserRepository(getActivity(), username);
+        ownedChars = userRepository.getUserCollectibles();
     }
 
     @Override
@@ -71,31 +75,38 @@ public class SpriteFragment extends DialogFragment {
         new View.OnClickListener() {
           @Override
           public void onClick(View v) {
-            if (userRepository.getUserAmount() < price) {
-                // Change this to add other language support
-              Toast t = Toast.makeText(activity, "LMAO U BROKE", Toast.LENGTH_SHORT);
-              t.setGravity(Gravity.CENTER, 0, 0);
-              t.show();
-            } else {
-             userRepository.updateUserAmount(-price);
-                userRepository.addUserCollectible(imageId);
-                // Change this to add other language support
-                Toast t = Toast.makeText(activity, "YOUR PURCHASE WAS SUCCESSFULL", Toast.LENGTH_SHORT);
-                t.setGravity(Gravity.CENTER, 0, 0);
-                t.show();
-            }
-              exitFragment();
+              if (!ownedChars.contains(imageId)) {
+                  if (userRepository.getUserAmount() < price) {
+                      // Change this to add other language support
+                      Toast t = Toast.makeText(activity, R.string.insufficientFunds, Toast.LENGTH_SHORT);
+                      t.setGravity(Gravity.CENTER, 0, 0);
+                      t.show();
+                  } else {
+                      userRepository.updateUserAmount(-price);
+                      userRepository.addUserCollectible(imageId);
+                      // Change this to add other language support
+                      Toast t = Toast.makeText(activity, R.string.successfulPurchase, Toast.LENGTH_SHORT);
+                      t.setGravity(Gravity.CENTER, 0, 0);
+                      t.show();
+                      exitFragment();
+                  }
+
+              } else {
+                  Toast t = Toast.makeText(activity, R.string.alreadyOwn, Toast.LENGTH_SHORT);
+                  t.setGravity(Gravity.CENTER, 0, 0);
+                  t.show();
+              }
           }
         });
 
         TextView description = getView().findViewById(R.id.itemDescription);
-        description.setText(description.getText() + "" + price + R.string.coins + "?");
+        description.setText(description.getText().toString() + price + " " + getString(R.string.coins) + "?");
     }
 
     private void exitFragment() {
         activity.findViewById(R.id.frame).setClickable(false);
-        activity.recreate();
-        activity.getSupportFragmentManager().popBackStack();
-//        activity.overridePendingTransition(0, 0);
+        activity.startActivity(activity.getIntent());
+        activity.finish();
+        activity.overridePendingTransition(0, 0);
     }
 }

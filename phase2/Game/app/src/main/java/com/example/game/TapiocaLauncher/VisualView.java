@@ -22,31 +22,45 @@ import java.util.Observer;
  * whenever gameFacade changes
  */
 class VisualView implements Observer {
-    /** The background image displayed on screen*/
+    /**
+     * The background image displayed on screen
+     */
     private Background background;
     private Context context;
-    /** GameFacade that is being observed */
+    /**
+     * GameFacade that is being observed
+     */
     private GameFacade gameFacade;
-    /** Launcher within the gameFacade */
+    /**
+     * Launcher within the gameFacade
+     */
     private Launcher launcher; //
-    /** balls within the gameFacade */
+    /**
+     * balls within the gameFacade
+     */
     private List<Ball> balls;
-    /** score/level/shots within the gameFacade*/
+    /**
+     * score/level/shots within the gameFacade
+     */
     private int score, level, shots;
-    /** A counter to display the LauncherBall's rotation */
+    /**
+     * A counter to display the LauncherBall's rotation
+     */
     private int turnCounter = 0;
     private Resources res;
     private Paint paint; // Paint
     private SurfaceHolder surfaceHolder;
-    /** Size of the Screen */
+    /**
+     * Size of the Screen
+     */
     private int screenX, screenY;
 
-  /**
-   * stores bitmaps of the Launcher's ball, each rotated a multiple of 90 degreess to give an
-   * illusion of rotation when moving the Launcher ball
-   */
-  private Bitmap launcherOrientation1,
-      launcherOrientation2,
+    /**
+     * stores bitmaps of the Launcher's ball, each rotated a multiple of 90 degreess to give an
+     * illusion of rotation when moving the Launcher ball
+     */
+    private Bitmap launcherOrientation1,
+            launcherOrientation2,
       launcherOrientation3,
       launcherOrientation4;
 
@@ -217,7 +231,7 @@ class VisualView implements Observer {
      * @param canvas - canvas on which the text is drawn
      */
     private void drawText(Canvas canvas) {
-        canvas.drawText(context.getString(R.string.score) + score + "", 5, screenY - 30, paint);
+        canvas.drawText(context.getString(R.string.score) +": "+ score + "", 5, screenY - 30, paint);
         canvas.drawText(context.getString(R.string.level) + (level - 1) + "", 5, screenY - 100, paint);
         canvas.drawText(context.getString(R.string.shots) + shots + "", 5, screenY - 170, paint);
     }

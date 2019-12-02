@@ -6,6 +6,7 @@ import android.graphics.Rect;
 import android.view.SurfaceHolder;
 
 import com.example.game.MazeGame.DataStructures.Background;
+import com.example.game.MazeGame.DataStructures.Sprites;
 
 import java.util.HashMap;
 
@@ -16,31 +17,41 @@ import java.util.HashMap;
  */
 class ViewBuilder implements Builder {
 
-    /** Finished View objects to be returned */
+    /**
+     * Finished View objects to be returned
+     */
     private GameView gameView;
 
     private InputView inputView;
     private VisualView visualView;
 
-    /** Attributes required for the construction of View objects */
+    /**
+     * Attributes required for the construction of View objects
+     */
     private MazeGameActivity context;
 
     private int maxScreenX, maxScreenY;
 
+    private Sprites sprite;
+
     /**
      * Creates a ViewBuilder object with the given attributes.
      *
-     * @param context - context of the MazeGameActivity
+     * @param context    - context of the MazeGameActivity
      * @param maxScreenX - maximum x position of the screen
      * @param maxScreenY - maximum y position of the screen
+     * @param sprite     - sprite the player uses
      */
-    ViewBuilder(MazeGameActivity context, int maxScreenX, int maxScreenY) {
+    ViewBuilder(MazeGameActivity context, int maxScreenX, int maxScreenY, Sprites sprite) {
         this.context = context;
         this.maxScreenX = maxScreenX;
         this.maxScreenY = maxScreenY;
+        this.sprite = sprite;
     }
 
-    /** Builds the View objects i.e. GameView, VisualView, and InputView and setting up observers. */
+    /**
+     * Builds the View objects i.e. GameView, VisualView, and InputView and setting up observers.
+     */
     @Override
     public void build() {
 
@@ -121,7 +132,7 @@ class ViewBuilder implements Builder {
      */
     private void buildVisualView(SurfaceHolder surfaceHolder, HashMap<String, Rect> arrowKeyRects) {
 
-        Tile tile = new Tile(context.getResources());
+        Tile tile = new Tile(context.getResources(), sprite);
 
         Background background = new Background(maxScreenX, maxScreenY, context.getResources());
 
@@ -134,7 +145,8 @@ class ViewBuilder implements Builder {
         textPaint.setTextSize(32);
 
         visualView =
-                new VisualView(
+                new
+                        VisualView(
                         context,
                         surfaceHolder,
                         tile,
@@ -144,6 +156,7 @@ class ViewBuilder implements Builder {
                         textPaint,
                         backgroundPaint,
                         arrowKeyRects);
+
     }
 
     /**

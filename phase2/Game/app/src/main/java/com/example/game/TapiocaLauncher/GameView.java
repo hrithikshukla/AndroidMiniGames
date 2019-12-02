@@ -12,11 +12,17 @@ public class GameView extends SurfaceView implements Runnable {
 
 
     private Thread thread;
-    /** True if the game is currently playing, used to help exit the game */
+    /**
+     * True if the game is currently playing, used to help exit the game
+     */
     private boolean isPlaying;
-    /** Where all visuals are rendered */
+    /**
+     * Where all visuals are rendered
+     */
     private VisualView visualView;
-    /** Where all input is sent to and observed by the GameController */
+    /**
+     * Where all input is sent to and observed by the GameController
+     */
     private InputView inputView;
 
     /**

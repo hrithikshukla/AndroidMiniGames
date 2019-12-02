@@ -9,53 +9,70 @@ import java.util.Observer;
 
 /**
  * Controller of the MVC, handles all the game logic
-  */
+ */
 public class GameController implements Observer {
 
-  /** Stores the model*/
-  private GameFacade gameFacade;
-  /** Whether the Launcher is moving or not */
-  private boolean isMoving = false;
-  /** counts 60 frames (1 second) after which the Launcher ball's position is reset */
-  private int count = 0;
-  /** Determine if the launcher is ready to fire */
-  private boolean readyToLaunch = true;
-  /** Size of the scren */
-  private int screenX, screenY;
-  /** How much to decreases the Launcher's speed by each tick */
-  private double gravityX, gravityY;
-  /** Indicates if the player has clicked the ball yet */
-  private boolean ballClicked = false;
-  /** Stores start and end coordaintes of the player's hand motion */
-  private double startX, startY, endX, endY;
+    /**
+     * Stores the model
+     */
+    private GameFacade gameFacade;
+    /**
+     * Whether the Launcher is moving or not
+     */
+    private boolean isMoving = false;
+    /**
+     * counts 60 frames (1 second) after which the Launcher ball's position is reset
+     */
+    private int count = 0;
+    /**
+     * Determine if the launcher is ready to fire
+     */
+    private boolean readyToLaunch = true;
+    /**
+     * Size of the scren
+     */
+    private int screenX, screenY;
+    /**
+     * How much to decreases the Launcher's speed by each tick
+     */
+    private double gravityX, gravityY;
+    /**
+     * Indicates if the player has clicked the ball yet
+     */
+    private boolean ballClicked = false;
+    /**
+     * Stores start and end coordaintes of the player's hand motion
+     */
+    private double startX, startY, endX, endY;
 
-  /**Create a gameController with the given paramaters
-   *
-   * @param gameFacade - gameModel which the controller will update
-   * @param screenX - x-size of the screen
-   * @param screenY - y-size of the screen
-   */
-  GameController(GameFacade gameFacade, int screenX, int screenY) {
-    this.gameFacade = gameFacade;
-    this.screenX = screenX;
-    this.screenY = screenY;
-    generateLevel();
-  }
+    /**
+     * Create a gameController with the given paramaters
+     *
+     * @param gameFacade - gameModel which the controller will update
+     * @param screenX    - x-size of the screen
+     * @param screenY    - y-size of the screen
+     */
+    GameController(GameFacade gameFacade, int screenX, int screenY) {
+        this.gameFacade = gameFacade;
+        this.screenX = screenX;
+        this.screenY = screenY;
+        generateLevel();
+    }
 
-  /**
-   * Updates the model by moving the launcher, checking for collision, if the ball is still
+    /**
+     * Updates the model by moving the launcher, checking for collision, if the ball is still
    it launches counter which counts to 1 second after which the ball is reset to its
    original position
    */
   private void updateModel() {
     if (isMoving) {
-      moveLauncher();
-      checkCollision();
-      updateIsMoving();
+        moveLauncher();
+        checkCollision();
+        updateIsMoving();
     }
-    if (!isMoving) {
-      counter();
-    }
+      if (!isMoving) {
+          counter();
+      }
   }
 
 
@@ -82,8 +99,8 @@ public class GameController implements Observer {
             balls.get(i).setHit(false);
           }
         }
-        if (balls.isEmpty()) {
-          generateLevel();
+          if (balls.isEmpty()) {
+              generateLevel();
         }
       }
     }
@@ -94,7 +111,7 @@ public class GameController implements Observer {
    */
   private void updateIsMoving() {
     if (gameFacade.getLauncher().getSpeedX() == 0 && gameFacade.getLauncher().getSpeedY() == 0) {
-      isMoving = false;
+        isMoving = false;
     }
   }
 
@@ -121,10 +138,10 @@ public class GameController implements Observer {
       launcher.setSpeedY(-launcher.getSpeedY());
     } else if (launcher.getY() + 2 * launcher.getRadius() > screenY) {
       launcher.setY(screenY - 2 * launcher.getRadius());
-      launcher.setSpeedY(-launcher.getSpeedY());
+        launcher.setSpeedY(-launcher.getSpeedY());
     }
 
-    gameFacade.update();
+      gameFacade.update();
     slowLauncher();
   }
 
@@ -137,15 +154,15 @@ public class GameController implements Observer {
   private void slowLauncher() {
     Launcher launcher = gameFacade.getLauncher();
     launcher.setSpeedX(decrement(launcher.getSpeedX(), gravityX));
-    launcher.setSpeedY(decrement(launcher.getSpeedY(), gravityY));
-    gameFacade.update();
+      launcher.setSpeedY(decrement(launcher.getSpeedY(), gravityY));
+      gameFacade.update();
   }
 
-  /**
-   * Reduces speed by gravity amount while ensuring it doesn't go past 0
-   *
-   * @param speed - original speed
-   * @param gravity - gravity amount
+    /**
+     * Reduces speed by gravity amount while ensuring it doesn't go past 0
+     *
+     * @param speed - original speed
+     * @param gravity - gravity amount
    * @return - speed reduced by the gravity
    */
   private double decrement(double speed, double gravity) {
@@ -156,21 +173,21 @@ public class GameController implements Observer {
         speed = 0;
       }
     } else {
-      speed += gravity;
-      if (speed > 0) {
-        speed = 0;
-      }
+        speed += gravity;
+        if (speed > 0) {
+            speed = 0;
+        }
     }
-    return speed;
+      return speed;
   }
 
-  /** Speeds up the launcher
-   *
-   */
-  private void speedLauncher() {
-    Launcher launcher = gameFacade.getLauncher();
-    launcher.setSpeedX(launcher.getSpeedX()*1.3);
-    launcher.setSpeedY(launcher.getSpeedY()*1.3);
+    /**
+     * Speeds up the launcher
+     */
+    private void speedLauncher() {
+        Launcher launcher = gameFacade.getLauncher();
+        launcher.setSpeedX(launcher.getSpeedX() * 1.3);
+        launcher.setSpeedY(launcher.getSpeedY()*1.3);
     gameFacade.update();
   }
 
@@ -204,19 +221,19 @@ public class GameController implements Observer {
           if (currBall.getHp() == 0) {
             balls.remove(i);
             i--;
-            gameFacade.setScore(gameFacade.getScore() + 1);
+              gameFacade.setScore(gameFacade.getScore() + 1);
           }
-          gameFacade.update();
+            gameFacade.update();
         }
       }
     }
   }
 
 
-  /** Observes the InputView and updates if there is an input or a tick
+    /** Observes the InputView and updates if there is an input or a tick
    *
    * @param o - InputView being observed
-   * @param arg - Object inputview is passing
+     * @param arg - Object inputview is passing
    */
   @Override
   public void update(Observable o, Object arg) {
@@ -239,22 +256,22 @@ public class GameController implements Observer {
             endX = event.getX();
             endY = event.getY();
             moveBall(startX, startY, endX, endY);
-            isMoving = true;
+              isMoving = true;
             ballClicked = false;
           }
         }
       }
     } else if (arg instanceof Boolean) { //Handles Tick
-      updateModel();
-      gameFacade.update();
+        updateModel();
+        gameFacade.update();
     }
   }
 
 
-  /**
-   * Moves the ball in the angle of the direction of the starting and end point of the player's motion
-   * @param startX - x coordinate of the starting point
-   * @param startY - y coordinate of the starting point
+    /**
+     * Moves the ball in the angle of the direction of the starting and end point of the player's motion
+     * @param startX - x coordinate of the starting point
+     * @param startY - y coordinate of the starting point
    * @param endX - x coordinate of the end point
    * @param endY - y coordinate of the end point
    */
@@ -265,8 +282,8 @@ public class GameController implements Observer {
     Launcher launcher = gameFacade.getLauncher();
     launcher.setSpeedX(Math.cos(Math.atan2(endY - startY, endX - startX)) * 300);
     launcher.setSpeedY(Math.sin(Math.atan2(endY - startY, endX - startX)) * 300);
-    gravityX = (Math.abs(launcher.getSpeedX()) / 50);
-    gravityY = (Math.abs(launcher.getSpeedY()) / 50);
+      gravityX = (Math.abs(launcher.getSpeedX()) / 50);
+      gravityY = (Math.abs(launcher.getSpeedY()) / 50);
   }
 
   /**

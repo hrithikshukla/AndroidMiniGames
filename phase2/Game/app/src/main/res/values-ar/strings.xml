@@ -89,4 +89,11 @@
     <string name="MazeMediumTime">المتاهة (متوسطة) أفضل وقت</string>
     <string name="MazeHardTime">المتاهة (الثابت) أفضل وقت</string>
     <string name="MazeHardAvgTime">"متاهة متوسط ​​الوقت "</string>
+    <string name="alreadyOwn">أنت بالفعل تمتلك هذا العنصر</string>
+    <string name="successfulPurchase">تم الشراء بنجاح</string>
+    <string name="insufficientFunds">أنت تفتقر إلى الأموال اللازمة لتنفيذ هذه العملية</string>
+    <string name="coins">"عملات معدنية "</string>
+    <string name="shots">"لقطات: "</string>
+    <string name="Sprite">Sprite</string>
+    <string name="pick_sprite">Pick sprite:</string>
 </resources>
