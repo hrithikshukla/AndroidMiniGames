@@ -5,11 +5,16 @@ import android.content.Intent;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+/** Base class for maze and tapioca game activity */
 public abstract class GameActivity extends AppCompatActivity {
 
   private String username;
   private int score;
 
+  /**
+   * @param context indicates if it's maze or tapioca put username and game score to game over
+   *     activity in an intent
+   */
   protected void switchToGameOverActivity(Context context) {
     Intent intent = new Intent(context, GameOverActivity.class);
     intent.putExtra("USERNAME", username);

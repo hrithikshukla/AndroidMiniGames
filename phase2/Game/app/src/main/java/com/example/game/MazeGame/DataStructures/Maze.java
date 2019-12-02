@@ -46,7 +46,7 @@ public class Maze implements Observer {
     grid = new Cell[height][width];
     generateMaze();
     grid[playerPosY][playerPosX] =
-        Cell.PLAYER; // Set player's starting position after generating the maze.
+            Cell.PLAYER; // Set player's starting position after generating the maze.
   }
 
   /**
@@ -152,10 +152,10 @@ public class Maze implements Observer {
       int randomNeighbourIndex = (int) (Math.random() * (neighboursUnprocessed.size() - 1));
       // Pick a random neighbour that has not been processed
       Pair<Integer, Integer> randomNeighbourUnprocessed =
-          neighboursUnprocessed.get(randomNeighbourIndex);
+              neighboursUnprocessed.get(randomNeighbourIndex);
       // get the neighbours of random neighbour that have been processed
       ArrayList<Pair<Integer, Integer>> pickedNodes =
-          getPickedNodes(randomNeighbourUnprocessed, processed);
+              getPickedNodes(randomNeighbourUnprocessed, processed);
       int randomProcessedNodeIndex = (int) (Math.random() * (pickedNodes.size() - 1));
       // pick a random neighbour that has been processed
       Pair<Integer, Integer> randomProcessedNode = pickedNodes.get(randomProcessedNodeIndex);
@@ -167,7 +167,7 @@ public class Maze implements Observer {
 
       grid[(randomProcessedNodeRow + randomNeighbourUnprocessedRow) / 2][
               (randomProcessedNodeCol + randomNeighbourUnprocessedCol) / 2] =
-          Cell.FLOOR;
+              Cell.FLOOR;
 
       // Add the random neighbour we picked into processed and remove it from neighboursUnprocessed
       processed.add(randomNeighbourUnprocessed);
@@ -178,7 +178,7 @@ public class Maze implements Observer {
 
   /** Returns the neighbours of a node where it has already been examined by the algorithm */
   private ArrayList<Pair<Integer, Integer>> getPickedNodes(
-      Pair<Integer, Integer> neighbourNode, ArrayList<Pair<Integer, Integer>> processed) {
+          Pair<Integer, Integer> neighbourNode, ArrayList<Pair<Integer, Integer>> processed) {
     ArrayList<Pair<Integer, Integer>> neighbours = getValidNeighbours(neighbourNode);
     ArrayList<Pair<Integer, Integer>> picked = new ArrayList<>();
     for (Pair<Integer, Integer> neighbour : neighbours) {
@@ -199,9 +199,9 @@ public class Maze implements Observer {
    * @param processed the neighbours of the cell that have been processed
    */
   private void addNeighbours(
-      Pair<Integer, Integer> cellCoordinate,
-      ArrayList<Pair<Integer, Integer>> neighboursUnprocessed,
-      ArrayList<Pair<Integer, Integer>> processed) {
+          Pair<Integer, Integer> cellCoordinate,
+          ArrayList<Pair<Integer, Integer>> neighboursUnprocessed,
+          ArrayList<Pair<Integer, Integer>> processed) {
     ArrayList<Pair<Integer, Integer>> neighbours = getValidNeighbours(cellCoordinate);
 
     for (Pair<Integer, Integer> neighbour : neighbours) {
@@ -217,13 +217,13 @@ public class Maze implements Observer {
    * @param cellCoordinate the cell coordinate of the cell that is being processed
    */
   private ArrayList<Pair<Integer, Integer>> getValidNeighbours(
-      Pair<Integer, Integer> cellCoordinate) {
+          Pair<Integer, Integer> cellCoordinate) {
     int row = cellCoordinate.first;
     int col = cellCoordinate.second;
     Pair<Integer, Integer> leftCellCoordinate,
-        rightCellCoordinate,
-        topCellCoordinate,
-        bottomCellCoordinate;
+            rightCellCoordinate,
+            topCellCoordinate,
+            bottomCellCoordinate;
     ArrayList<Pair<Integer, Integer>> validNeighbours = new ArrayList<>();
     if (col - 2 > 0) {
       leftCellCoordinate = new Pair<>(row, col - 2);
