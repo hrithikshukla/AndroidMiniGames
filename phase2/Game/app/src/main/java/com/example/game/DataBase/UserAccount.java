@@ -1,34 +1,44 @@
 package com.example.game.DataBase;
 
 import androidx.annotation.NonNull;
-import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "Accounts_table")
+/**
+ * An entity set of user accounts include username and password; keeps track of user credentials and
+ * amount they have
+ */
 public class UserAccount {
-  @PrimaryKey @NonNull private String userName;
+  @PrimaryKey @NonNull private String username;
   private String password;
-    private int amount;
+  private int amount;
 
-  public UserAccount(String userName, String password) {
-    this.userName = userName;
+  /**
+   * A user account entity
+   *
+   * @param username: username of user, primary key
+   * @param password: password of user
+   */
+  UserAccount(@NonNull String username, String password) {
+    this.username = username;
     this.password = password;
   }
 
-  public String getUserName() {
-    return userName;
+  @NonNull
+  String getUsername() {
+    return username;
   }
 
-  public String getPassword() {
+  String getPassword() {
     return password;
   }
 
-    public int getAmount() {
-        return amount;
-    }
+  int getAmount() {
+    return amount;
+  }
 
-    public void setAmount(int amount) {
-        this.amount = amount;
-    }
+  void setAmount(int amount) {
+    this.amount = amount;
+  }
 }

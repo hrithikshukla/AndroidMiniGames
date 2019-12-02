@@ -1,38 +1,39 @@
 package com.example.game.DataBase;
 
-import android.util.SparseBooleanArray;
-
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
 
-import com.example.game.R;
-
-@Entity(primaryKeys = {"userName", "character_id"}, tableName = "C_table")
+@Entity(
+    primaryKeys = {"username", "character_id"},
+    tableName = "C_table")
+/**
+ * An entity set of User Collectibles; contains what the User owns from shop Keeps track of users'
+ * username (super key) and each shop's item unique id
+ */
 public class UserCollectibles {
 
-    @NonNull
-    private String userName;
-    private int character_id;
+  @NonNull private String username;
+  private int character_id;
 
+  UserCollectibles(String username, int character_id) {
+    this.username = username;
+    this.character_id = character_id;
+  }
 
-    public UserCollectibles(String userName, int character_id) {
-        this.userName = userName;
-        this.character_id = character_id;
-    }
+  @NonNull
+  String getUsername() {
+    return username;
+  }
 
-    public String getUserName() {
-        return userName;
-    }
+  void setUsername(String username) {
+    this.username = username;
+  }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
+  int getCharacter_id() {
+    return character_id;
+  }
 
-    public int getCharacter_id() {
-        return character_id;
-    }
-
-    public void setCharacter_id(int character_id) {
-        this.character_id = character_id;
-    }
+  void setCharacter_id(int character_id) {
+    this.character_id = character_id;
+  }
 }
