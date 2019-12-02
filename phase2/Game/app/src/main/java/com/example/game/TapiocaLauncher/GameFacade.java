@@ -15,7 +15,7 @@ public class GameFacade extends Observable {
     /** the current score */
     private int score;
     /** the current level */
-    private int level = 2;
+    private int level = 1;
     /** The current number of shots left */
     private int shots = 10;
     /** If the game is over or not */

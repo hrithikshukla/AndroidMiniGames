@@ -20,7 +20,6 @@ class InputView extends Observable {
     void screenTouched(MotionEvent event) {
         setChanged();
         notifyObservers(event);
-        Log.e("", "Screen touched");
     }
 
     /**

@@ -127,7 +127,6 @@ class VisualView implements Observer {
         launcherOrientation2 = Bitmap.createScaledBitmap(launcherOrientation2, width, height, false);
         launcherOrientation3 = Bitmap.createScaledBitmap(launcherOrientation3, width, height, false);
         launcherOrientation4 = Bitmap.createScaledBitmap(launcherOrientation4, width, height, false);
-        Log.e("", "" + width + " " + height);
     }
 
     /** Redraws the screen
