@@ -27,7 +27,6 @@
     <string name="TapiocaScore">"木薯粉發射器高分: "</string>
     <string name="MazeScore">"迷宮高分: "</string>
     <string name="TileScore">"瓷磚高分: "</string>
-    <string name="TapiocaTime">"花時間玩木薯粉發射器: "</string>
     <string name="MazeTime">"花時間玩迷宮: "</string>
     <string name="TileTime">花時間玩瓷磚:</string>
     <string name="Reset">" 重置統計信息 o3o"</string>
@@ -85,4 +84,8 @@
     <string name="instructions_tiles_dark">请勿触摸黑色瓷砖！点击白色瓷砖以获取积分。如果您敲击黑色瓷砖或未开发的白色瓷砖离开电路板，则您会输。</string>
     <string name="instructions_tiles_light">请勿触摸白色瓷砖！点击黑色瓷砖以获取积分。如果您敲击白色瓷砖或未开发的黑色瓷砖离开电路板，则您会输。</string>
     <string name="itemDescription">" 你想購買這個"</string>
+    <string name="MazeEasyTime">迷宫 （简单）最好时间：</string>
+    <string name="MazeHardTime">迷宫（难）最好时间:</string>
+    <string name="MazeMediumTime">迷宫 （中）最好时间:</string>
+    <string name="MazeHardAvgTime">迷宫（难）平均时间</string>
 </resources>
