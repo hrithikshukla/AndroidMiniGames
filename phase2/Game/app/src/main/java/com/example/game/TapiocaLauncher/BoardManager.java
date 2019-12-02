@@ -13,7 +13,7 @@ class BoardManager {
     private TapiocaFactory tapiocaFactory;
 
     /**
-     * Creates the boardManager and initializes the Tapioaca Factory
+     * Creates the boardManager and initializes the Tapioca Factory
      */
     BoardManager() {
         this.tapiocaFactory = new TapiocaFactory();
@@ -72,12 +72,12 @@ class BoardManager {
         return balls;
     }
 
-    /** Geneates a random layout for level 3
+    /** Generates a random layout for level 3
      *
      * @return list of balls corresponding to level 3
      */
     private List<Ball> generateRandomLevel() {
-        int whiteLimit = 0; //Limits the number of whiite balls
+        int whiteLimit = 0; //Limits the number of white balls
         int purpLimit = 0; //Limits the number of purple balls
         boolean created;
         List<Ball> balls = new ArrayList<>();
@@ -113,7 +113,7 @@ class BoardManager {
     /** Randomly creates a ball type
      *
      * @param x - x coordinate of ball
-     * @param y - y coodrinate of ball
+     * @param y - y coordinate of ball
      * @param radius - radius of ball
      * @return a random Ball
      */
