@@ -10,19 +10,23 @@ import androidx.room.Update;
 import java.util.List;
 
 @Dao
+/**
+ * User Collectibles Data Access interface, contains queries to retrieve information about on User
+ * Collectibles
+ */
 public interface UserCollectiblesDao {
 
     @Insert
-    public void insert(UserCollectibles userCollectibles);
+    void insert(UserCollectibles userCollectibles);
 
     @Update
-    public void update(UserCollectibles userCollectibles);
+    void update(UserCollectibles userCollectibles);
 
     @Delete
-    public void delete(UserCollectibles userCollectibles);
+    void delete(UserCollectibles userCollectibles);
 
-    @Query("SELECT * FROM C_table WHERE userName LIKE :username")
-    public List<UserCollectibles> getUserCollectibles(String username);
+    @Query("SELECT * FROM C_table WHERE username LIKE :username")
+    List<UserCollectibles> getUserCollectibles(String username);
 
 
 }

@@ -11,16 +11,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.game.Activities.main.MainActivity;
 import com.example.game.Activities.main.ThemeManager;
 import com.example.game.R;
-import com.example.game.Save.User;
 
 public class TilesGameLauncher extends AppCompatActivity {
-  User usr;
   String username;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     // Set the theme.
-    //    usr = (User) getIntent().getSerializableExtra("UserObject");
     username = getIntent().getStringExtra("USERNAME");
     SharedPreferences mSettings = this.getSharedPreferences("Settings", MODE_PRIVATE);
     ThemeManager.setTheme(

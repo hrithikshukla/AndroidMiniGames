@@ -12,7 +12,6 @@ public abstract class GameActivity extends AppCompatActivity {
 
   protected void switchToGameOverActivity(Context context) {
     Intent intent = new Intent(context, GameOverActivity.class);
-//    usr.getUserData().setPrefs(null);
     intent.putExtra("USERNAME", username);
     intent.putExtra("GAME_SCORE", score);
     startActivity(intent);
@@ -33,5 +32,4 @@ public abstract class GameActivity extends AppCompatActivity {
   public void setScore(int score) {
     this.score = score;
   }
-
 }

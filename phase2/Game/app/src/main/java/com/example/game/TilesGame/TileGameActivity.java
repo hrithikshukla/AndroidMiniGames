@@ -68,10 +68,13 @@ public class TileGameActivity extends AppCompatActivity {
     UserScores userScores;
     if (boardType.equals("5By5")) {
       userScores = new UserScores(username, newScore, "TILES_GAME_5", timeTaken);
+      userRepository.updateUserAmount((int) Math.ceil(newScore * 0.2));
     } else if (boardType.equals("Invert")) {
       userScores = new UserScores(username, newScore, "TILES_GAME_INVERT", timeTaken);
+      userRepository.updateUserAmount((int) Math.ceil(newScore * 0.3));
     } else {
       userScores = new UserScores(username, newScore, "TILES_GAME_4", timeTaken);
+      userRepository.updateUserAmount((int) Math.ceil(newScore * 0.1));
     }
     userRepository.addUserScore(userScores);
     String message = ((Integer) newScore).toString();

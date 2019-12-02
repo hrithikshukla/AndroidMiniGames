@@ -100,7 +100,7 @@ public class TapiocaGameActivity extends GameActivity implements Observer {
       int timetaken = (int) startime.until(endtime, SECONDS);
       UserScores u = new UserScores(getUsername(), gameFacade.getScore(), "TAPIOCA_GAME", timetaken);
       ur.addUserScore(u);
-      ur.updateUserAmount(gameFacade.getScore() * 1000);
+      ur.updateUserAmount((int) Math.ceil(gameFacade.getScore() * 0.1));
       setScore(gameFacade.getScore());
       switchToGameOverActivity(this);
     }
