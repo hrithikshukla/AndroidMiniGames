@@ -11,13 +11,10 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.DataBase.UserRepository;
-import com.example.game.DataBase.UserScores;
 import com.example.game.R;
-import com.example.game.Save.User;
 import com.example.game.Activities.main.ThemeManager;
 
 public class GameFinish extends AppCompatActivity {
-  User usr;
   String boardType;
   String username;
 
@@ -25,8 +22,6 @@ public class GameFinish extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     // Set the theme.
     username = getIntent().getStringExtra("USERNAME");
-    //    usr = (User) getIntent().getSerializableExtra("UserObject");
-    //    String username = usr.getUsername();
     SharedPreferences mSettings = this.getSharedPreferences("Settings", MODE_PRIVATE);
     ThemeManager.setTheme(
         GameFinish.this,
@@ -52,21 +47,18 @@ public class GameFinish extends AppCompatActivity {
     textViewScore.setText(gameScore);
 
     // Capture the layout's TextView that displays the high score and set the high score from
-    // saved in SharedPreferences as its text.
+    // the user's repository as its text.
     TextView textViewHighScore = findViewById(R.id.highScoreText);
-    SharedPreferences prefs = getSharedPreferences("highScores", MODE_PRIVATE);
 
-    UserRepository ur = new UserRepository(this, username);
+    UserRepository userRepository = new UserRepository(this, username);
     int tilesHighScore;
     if (boardType.equals("5By5")) {
-      tilesHighScore = ur.getUserHighScore(username, "TILES_GAME_5");
+      tilesHighScore = userRepository.getUserHighScore(username, "TILES_GAME_5");
     } else if (boardType.equals("Invert")) {
-      tilesHighScore = ur.getUserHighScore(username, "TILES_GAME_INVERT");
+      tilesHighScore = userRepository.getUserHighScore(username, "TILES_GAME_INVERT");
     } else {
-      tilesHighScore = ur.getUserHighScore(username, "TILES_GAME_4");
+      tilesHighScore = userRepository.getUserHighScore(username, "TILES_GAME_4");
     }
-    //    String highScoreText =
-    //        getString(R.string.highScore) + prefs.getInt(usr.getUsername() + "tileshighscore", 0);
     String highScoreText = getString(R.string.highScore) + tilesHighScore;
     textViewHighScore.setText(highScoreText);
   }
@@ -75,7 +67,6 @@ public class GameFinish extends AppCompatActivity {
   public void exitToMenu(View view) {
     Intent intent =
         new Intent(this, com.example.game.Activities.main.GameLauncher.TilesGameLauncher.class);
-    //    usr.getUserData().setPrefs(null);
     intent.putExtra("USERNAME", username);
     startActivity(intent);
   }
@@ -83,7 +74,6 @@ public class GameFinish extends AppCompatActivity {
   /** Called when the user taps the 'TRY AGAIN' button */
   public void restartTilesGame(View view) {
     Intent intent = new Intent(this, com.example.game.TilesGame.TileGameActivity.class);
-    //    usr.getUserData().setPrefs(null);
     intent.putExtra("USERNAME", username);
     intent.putExtra("BoardType", boardType);
     startActivity(intent);

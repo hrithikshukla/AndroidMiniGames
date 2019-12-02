@@ -16,11 +16,13 @@ class KeyTile extends TileManager {
     super(x, y);
   }
 
-    void setMissed(boolean missed) {
-    this.missed = missed;
+  /** Set this tile to have been missed on a board. */
+  void setMissedTrue() {
+    this.missed = true;
   }
 
-    boolean isMissed() {
-        return this.missed;
+  /** Return whether this tile has been missed on a board. */
+  boolean isMissed() {
+    return this.missed;
   }
 }

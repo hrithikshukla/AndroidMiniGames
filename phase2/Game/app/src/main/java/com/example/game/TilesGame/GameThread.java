@@ -8,15 +8,18 @@ public class GameThread extends Thread {
 
   /** Where the tile board items are drawn. */
   private GameView gameView;
+
   /** The canvas container. */
   private SurfaceHolder surfaceHolder;
+
   /** Whether the thread is running. */
   private boolean isRunning;
+
   /** The canvas on which to draw the tile board. */
   private static Canvas canvas;
 
   /**
-   * Construct the thread.
+   * Construct a game thread.
    *
    * @param surfaceHolder the canvas container.
    * @param view where the tile board items are drawn.
@@ -50,7 +53,7 @@ public class GameThread extends Thread {
       }
 
       try {
-        this.sleep(300);
+        sleep(300);
       } catch (Exception e) {
         e.printStackTrace();
       }
@@ -59,7 +62,8 @@ public class GameThread extends Thread {
     GameView.getGameActivity().endTilesGame(gameView);
   }
 
-  public void setRunning(boolean isRunning) {
+  /** Set this thread to be running. */
+  void setRunning(boolean isRunning) {
     this.isRunning = isRunning;
   }
 }

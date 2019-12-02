@@ -4,31 +4,43 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 
-import com.example.game.R;
-
+/** A tile drawer. */
 class TileDrawer {
 
-  /** The width of a tile to be drawn. */
+  /** The width to draw a tile. */
   private int tileWidth;
 
-  /** The height of a tile to be drawn. */
+  /** The height to draw a tile. */
   private int tileHeight;
 
+  /** The integer representation of the colour of a danger tile. */
   private int colorDangerTile;
+
+  /** The integer representation of the colour of a key tile. */
   private int colorKeyTile;
+
+  /** The integer representation of the colour of a visited key tile. */
   private int colorTouch;
+
+  /** The integer representation of the colour of a tile that ends the game. */
   private int colorLose;
 
+  /** Paint to draw a tile. */
   private Paint paintRect = new Paint();
 
-  /** Construct a tile drawer. */
+  /**
+   * Construct a tile drawer.
+   *
+   * @param tileWidth: the width to draw a tile.
+   * @param tileHeight: the height to draw a tile.
+   */
   TileDrawer(int tileWidth, int tileHeight) {
     this.tileWidth = tileWidth;
     this.tileHeight = tileHeight;
   }
 
   /**
-   * Draw the tile onto canvas.
+   * Draw tile onto canvas.
    *
    * @param canvas: the canvas to draw on.
    * @param tile: the tile to draw.
@@ -41,7 +53,12 @@ class TileDrawer {
     }
   }
 
-  /** A helper method to draw a key tile. */
+  /**
+   * Draw key tile onto canvas.
+   *
+   * @param canvas: the canvas to draw on.
+   * @param tile: the key tile to draw.
+   */
   private void drawKeyTile(Canvas canvas, KeyTile tile) {
     // Set brush for fill of tile.
     paintRect.setStyle(Paint.Style.FILL);
@@ -59,7 +76,12 @@ class TileDrawer {
     drawBorder(canvas, tile);
   }
 
-  /** A helper method to draw a danger tile. */
+  /**
+   * Draw danger tile onto canvas.
+   *
+   * @param canvas: the canvas to draw on.
+   * @param tile: the danger tile to draw.
+   */
   private void drawDangerTile(Canvas canvas, DangerTile tile) {
     // Set brush for fill of tile.
     paintRect.setStyle(Paint.Style.FILL);
@@ -75,7 +97,12 @@ class TileDrawer {
     drawBorder(canvas, tile);
   }
 
-  /** A helper method to draw a tile border. */
+  /**
+   * Draw tile's border onto canvas.
+   *
+   * @param canvas: the canvas to draw on.
+   * @param tile: the tile of the border to draw.
+   */
   private void drawBorder(Canvas canvas, Tile tile) {
     // Set brush for border of tile.
     paintRect.setStyle(Paint.Style.STROKE);
@@ -85,6 +112,14 @@ class TileDrawer {
         tile.getX(), tile.getY(), tile.getX() + tileWidth, tile.getY() + tileHeight, paintRect);
   }
 
+  /**
+   * Set the colors of this tile drawer.
+   *
+   * @param colorDangerTile: the integer representation of the colour of a danger tile.
+   * @param colorKeyTile: the integer representation of the colour of a key tile.
+   * @param colorTouch: the integer representation of the colour of a visited key tile.
+   * @param colorLose: the integer representation of the colour of a tile that ends the game.
+   */
   void setColors(int colorDangerTile, int colorKeyTile, int colorTouch, int colorLose) {
     this.colorDangerTile = colorDangerTile;
     this.colorKeyTile = colorKeyTile;
