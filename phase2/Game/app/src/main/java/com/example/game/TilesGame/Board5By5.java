@@ -23,7 +23,7 @@ class Board5By5 extends BoardManager {
     super(context);
   }
 
-  /** Create the starting items in a board. */
+  /** Create the starting items in this board manager. */
   @Override
   public void createBoardItems() {
     // Add a hidden row of tiles above board to appear when game starts.
@@ -37,7 +37,8 @@ class Board5By5 extends BoardManager {
     tileBoard.add(new ArrayList<Tile>());
     tileBoard.add(new ArrayList<Tile>());
 
-    Random ran = new Random(); // Use a random variable to randomize the key tile in each row.
+    Random ran =
+        new Random(); // Use a random variable to randomize location of the key tile in each row.
 
     // Fill first six rows with both danger tiles and key tiles.
     for (int i = 0; i < 6; i++) {
@@ -69,12 +70,13 @@ class Board5By5 extends BoardManager {
     for (ArrayList<Tile> tileRow : tileBoard) {
       for (Tile tile : tileRow) {
         if ((tile.getX() <= x && x <= (tile.getX() + tileWidth))
-            && (tile.getY() <= y && y <= (tile.getY() + tileHeight))) { // If this tile was touched
+            && (tile.getY() <= y
+                && y <= (tile.getY() + tileHeight))) { // If this tile is the touched tile
           if (!tile.isTouch()) { // If tile has not already been touched.
             tile.setTouch(true);
-          }
-          if (tile instanceof KeyTile) {
-            scoreManager.addScore("tiles"); // Increment score by one (only if tile is a KeyTile).
+            if (tile instanceof KeyTile) {
+              scoreManager.addScore("tiles"); // Increment score by one (only if tile is a KeyTile).
+            }
           }
         }
       }
@@ -99,7 +101,7 @@ class Board5By5 extends BoardManager {
       tileBoard.set(0, newTileRow);
       int newTileY = tileBoard.get(1).get(0).getY() - tileHeight;
 
-      // Use a random variable to randomize the key tile in new row.
+      // Use a random variable to randomize location of the key tile in new row.
       Random ran = new Random();
       Integer keyTileIndex = ran.nextInt(5);
 

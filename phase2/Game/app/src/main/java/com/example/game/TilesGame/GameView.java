@@ -8,23 +8,24 @@ import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
-import com.example.game.R;
-
 import static android.content.Context.MODE_PRIVATE;
 
+/** A game view. */
 public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
-  /** The activity class of the Tiles game. */
+  /** The activity class of Tiles game. */
   private static TileGameActivity gameActivity;
 
-  /** The tile board contents. */
+  /** The Tiles board contents. */
   private Board board;
 
   /** The part of the program that manages time. */
   private GameThread thread;
 
+  /** The context of this game view. */
   private Context context;
 
+  /** Construct a game view. */
   public GameView(Context context) {
     super(context);
     this.context = context;
@@ -33,24 +34,29 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     setFocusable(true);
   }
 
+  /** Get the activity class of Tiles game. */
   public static TileGameActivity getGameActivity() {
     return gameActivity;
   }
 
+  /** Set the activity class of Tiles game. */
   public static void setGameActivity(TileGameActivity gameActivity) {
     GameView.gameActivity = gameActivity;
   }
 
+  /** Create the surface of this game view. */
   @Override
   public void surfaceCreated(SurfaceHolder holder) {
     board = createBoard(); // Instantiate new Board.
     board.createBoardItems();
     setBoardColors();
 
+    // Start the game thread.
     thread.setRunning(true);
     thread.start();
   }
 
+  /** Create a board for this game. */
   Board createBoard() {
     String boardType = gameActivity.getBoardType();
 
@@ -81,10 +87,12 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     }
   }
 
+  /** Get the board of this game view. */
   public Board getBoard() {
     return board;
   }
 
+  /** Set the display colours of this game view's board. */
   void setBoardColors() {
     // Get the user's theme colours from shared preferences.
     SharedPreferences mSettings = context.getSharedPreferences("Settings", MODE_PRIVATE);
@@ -94,7 +102,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     int colorTouch = mSettings.getInt(username + "colorTouch", 0);
     int colorLose = mSettings.getInt(username + "colorLose", 0);
 
-    // Set the retrieved colours into the tile drawer.
+    // Set the retrieved colours into the tile drawer of this game view's board.
     board.setColors(colorDangerTile, colorKeyTile, colorTouch, colorLose);
   }
 
@@ -106,7 +114,11 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     }
   }
 
-  /** Draw the board on canvas. */
+  /**
+   * Draw the board on canvas.
+   *
+   * @param canvas: the canvas to be drawn on.
+   */
   @Override
   public void draw(Canvas canvas) {
     super.draw(canvas);
@@ -115,7 +127,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     }
   }
 
-  /** Register touch input in boardManager. */
+  /** Register touch input in board. */
   @SuppressLint("ClickableViewAccessibility")
   @Override
   public boolean onTouchEvent(MotionEvent event) {
@@ -123,9 +135,11 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     float x = event.getX();
     float y = event.getY();
 
+    // Record touch event at (x, y) on this game view's board.
     if (event.getAction() == MotionEvent.ACTION_DOWN) {
       board.touchTile(x, y);
 
+      // Start game upon first touch event.
       if (!board.isGameStart()) {
         board.setGameStart(true);
       }

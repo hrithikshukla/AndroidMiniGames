@@ -14,12 +14,10 @@ import java.util.Random;
 import static android.content.Context.MODE_PRIVATE;
 
 /**
- * An abstract board manager class that implements the Board interface and should not be
+ * An abstract board manager class that implements the Board interface and that should not be
  * instantiated. *
  */
 abstract class BoardManager extends ClassLoader implements Board {
-
-  Context context;
 
   /** The width of a tile. (Default is 4X4) */
   private int tileWidth = TileManager.getWidth4By4();
@@ -42,39 +40,45 @@ abstract class BoardManager extends ClassLoader implements Board {
   /** A boolean representing whether the game has ended. */
   boolean gameEnd = false;
 
+  /** A tile factory. */
   TileFactory tileFactory;
 
-  ScoreManager scoreManager;
-
+  /** A tile drawer. */
   private TileDrawer tileDrawer;
+
+  /** A score manager. */
+  ScoreManager scoreManager;
 
   /** Construct a board manager. */
   BoardManager(Context context) {
-    this.context = context;
     scoreManager = new ScoreManager(context.getSharedPreferences("highScores", MODE_PRIVATE));
     tileFactory = new TileFactory();
     tileDrawer = new TileDrawer(tileWidth, tileHeight);
   }
 
+  /** Get the score of this board manager. */
   public int getScore() {
     return scoreManager.getScore();
   }
 
+  /** Return whether this board manager has started game. */
   public boolean isGameStart() {
     return gameStart;
   }
 
+  /** Set this board manager to start game. */
   public void setGameStart(boolean gameStart) {
     this.gameStart = gameStart;
   }
 
+  /** Return whether this board manager has ended game. */
   public boolean isGameEnd() {
     return gameEnd;
   }
 
-  /** Create the starting items in a board. */
+  /** Create the starting items in this board manager. */
   public void createBoardItems() {
-    // Add a hidden row of tiles above board to appear when game starts.
+    // Add a hidden row of tiles above the visible board to appear after game starts.
     tileBoard.add(new ArrayList<Tile>());
 
     // Add five arrays to tileBoard to represent the five onscreen rows of tiles.
@@ -84,7 +88,9 @@ abstract class BoardManager extends ClassLoader implements Board {
     tileBoard.add(new ArrayList<Tile>());
     tileBoard.add(new ArrayList<Tile>());
 
-    Random ran = new Random(); // Use a random variable to randomize the key tile in each row.
+    Random ran =
+        new Random(); // Use a random variable to randomize location of the key tile in each
+    // row.
 
     // Fill first five rows with both danger tiles and key tiles.
     for (int i = 0; i < 5; i++) {
@@ -107,11 +113,11 @@ abstract class BoardManager extends ClassLoader implements Board {
 
   /** Update the items in a board. */
   public void update() {
-    if (gameStart) {
+    if (gameStart) { // No changes to items on board will occur if game has not started.
       // Check if the game will end this turn.
       if (doesGameEnd()) {
         gameEnd = true;
-        return;
+        return; // No changes to items on board will occur if game has ended.
       }
       // Move all the tiles on this board, incrementing the speed by 50 every 15 points.
       int increment = Math.floorDiv(scoreManager.getScore(), 15);
@@ -125,7 +131,11 @@ abstract class BoardManager extends ClassLoader implements Board {
     }
   }
 
-  /** Draw the items in a board. */
+  /**
+   * Draw the items of this board manager on canvas.
+   *
+   * @param canvas: the canvas to draw board manager items on.
+   */
   public void draw(Canvas canvas) {
     // Draw tiles.
     for (ArrayList<Tile> tileRow : tileBoard) {
@@ -137,7 +147,11 @@ abstract class BoardManager extends ClassLoader implements Board {
     drawScore(canvas);
   }
 
-  /** Draw the score. */
+  /**
+   * Draw the score of this board manager on canvas.
+   *
+   * @param canvas: the canvas to draw board manager's score on.
+   */
   private void drawScore(Canvas canvas) {
     Paint paint = new Paint();
     paint.setTypeface(Typeface.DEFAULT_BOLD);
@@ -156,8 +170,9 @@ abstract class BoardManager extends ClassLoader implements Board {
     for (ArrayList<Tile> tileRow : tileBoard) {
       for (Tile tile : tileRow) {
         if ((tile.getX() <= x && x <= (tile.getX() + tileWidth))
-            && (tile.getY() <= y && y <= (tile.getY() + tileHeight))) { // If this tile was touched
-          if (!tile.isTouch()) { // If tile has not already been touched.
+            && (tile.getY() <= y
+                && y <= (tile.getY() + tileHeight))) { // If this tile is the touched tile
+          if (!tile.isTouch()) { // If this tile has not already been touched.
             tile.setTouch(true);
             if (tile instanceof KeyTile) {
               scoreManager.addScore("tiles"); // Increment score by one (only if tile is a KeyTile).
@@ -176,8 +191,9 @@ abstract class BoardManager extends ClassLoader implements Board {
             && tile.isTouch()) { // Check if a danger tile has been touched.
           return true;
         }
+        // Check if an untouched key tile has left the board.
         if (tile instanceof KeyTile && !tile.isTouch() && tile.getY() >= boardHeight - 80) {
-          ((KeyTile) tile).setMissed(true);
+          ((KeyTile) tile).setMissedTrue();
           return true;
         }
       }
@@ -202,7 +218,7 @@ abstract class BoardManager extends ClassLoader implements Board {
       tileBoard.set(0, newTileRow);
       int newTileY = tileBoard.get(1).get(0).getY() - tileHeight;
 
-      // Use a random variable to randomize the key tile in new row.
+      // Use a random variable to randomize location of the key tile in new row.
       Random ran = new Random();
       Integer keyTileIndex = ran.nextInt(4);
 
@@ -217,6 +233,14 @@ abstract class BoardManager extends ClassLoader implements Board {
     }
   }
 
+  /**
+   * Set the colors of this board manager.
+   *
+   * @param colorDangerTile: the integer representation of the colour of a danger tile.
+   * @param colorKeyTile: the integer representation of the colour of a key tile.
+   * @param colorTouch: the integer representation of the colour of a visited key tile.
+   * @param colorLose: the integer representation of the colour of a tile that ends the game.
+   */
   public void setColors(int colorDangerTile, int colorKeyTile, int colorTouch, int colorLose) {
     tileDrawer.setColors(colorDangerTile, colorKeyTile, colorTouch, colorLose);
   }
