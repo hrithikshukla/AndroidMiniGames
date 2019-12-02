@@ -91,7 +91,6 @@ Mais faites vite, vous n’avez qu’un nombre limité de coups!"</string>
     <string name="alreadyOwn">" Vous possédez déjà cet article"</string>
     <string name="successfulPurchase">Votre achat a réussi</string>
     <string name="insufficientFunds">" Il vous manque les fonds nécessaires pour exécuter cette opération"</string>
-    <string name="coins">"pièces de monnaie "</string>
     <string name="Sprite">Sprite</string>
     <string name="pick_sprite">Pick sprite:</string>
 </resources>
