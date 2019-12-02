@@ -29,7 +29,7 @@
     <string name="TileScore">"Carrelage Score élevé: "</string>
     <string name="MazeTime">"Temps passé à jouer Labyrinthe: "</string>
     <string name="TileTime">Temps passé à jouer Carrelage:</string>
-    <string name="Reset">" Réinitialiser les statistiques oWo"</string>
+    <string name="Reset">Réinitialiser les statistiques</string>
     <string name="Statistics">" Vos statistiques"</string>
     <string name="attachment_title">Télécharger les pièces jointes entrantes</string>
     <string name="attachment_summary_on">Télécharger automatiquement les pièces jointes pour les emails entrants</string>
@@ -77,7 +77,7 @@ Mais faites vite, vous n’avez qu’un nombre limité de coups!"</string>
     <string name="MazeEasyScore">Labyrinthe (easy) score élevé:</string>
     <string name="MazeMediumScore">Labyrinthe (moyen) score élevé:</string>
     <string name="MazeHardScore">Labyrinthe (hard) score élevé :</string>
-    <string name="shots">" Nombre de coups restants: "</string>
+    <string name="shots">"Coups: "</string>
     <string name="Tiles4Score">"Carrelage (4 X 4) Score élevé: "</string>
     <string name="Tiles5Score">"Carrelage (5 X 5) Score élevé: "</string>
     <string name="TilesInvertScore">"Carrelage (invertir) Score élevé: "</string>
