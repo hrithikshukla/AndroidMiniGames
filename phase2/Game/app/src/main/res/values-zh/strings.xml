@@ -27,10 +27,9 @@
     <string name="TapiocaScore">"木薯粉發射器高分: "</string>
     <string name="MazeScore">"迷宮高分: "</string>
     <string name="TileScore">"瓷磚高分: "</string>
-    <string name="TapiocaTime">"花時間玩木薯粉發射器: "</string>
     <string name="MazeTime">"花時間玩迷宮: "</string>
     <string name="TileTime">花時間玩瓷磚:</string>
-    <string name="Reset">" 重置統計信息"</string>
+    <string name="Reset">" 重置統計信息 o3o"</string>
     <string name="Statistics">" 您的統計數據"</string>
     <string name="attachment_summary_off">仅在手动请求时下载附件</string>
     <string name="attachment_summary_on">自动下载传入电子邮件的附件</string>
@@ -48,6 +47,7 @@
     <string name="title_maze">迷宫</string>
     <string name="NotAvailable">還不可用 ：（</string>
     <string name="SwipeToShop">向右滑動即可購物！</string>
+    <string name="coins">" 硬幣 "</string>
     <string name="characters">" 擁有的角色： "</string>
     <string name="play_4by4">4 x 4</string>
     <string name="text_select_mode">选择你的模式</string>
@@ -77,17 +77,21 @@
     <string name="MazeEasyScore">"迷宫（简单）高分: "</string>
     <string name="MazeMediumScore">迷宫（中）高分 :</string>
     <string name="MazeHardScore">迷宫（难）高分 :</string>
-    <string name="shots">镜头：</string>
+    <string name="shots">" 剩下的球："</string>
     <string name="Tiles4Score">瓷砖（4 X 4）高分：</string>
     <string name="Tiles5Score">瓷砖 （5 X 5）高分：</string>
     <string name="TilesInvertScore">瓷砖 （颠倒）高分：</string>
     <string name="instructions_tiles_dark">请勿触摸黑色瓷砖！点击白色瓷砖以获取积分。如果您敲击黑色瓷砖或未开发的白色瓷砖离开电路板，则您会输。</string>
     <string name="instructions_tiles_light">请勿触摸白色瓷砖！点击黑色瓷砖以获取积分。如果您敲击白色瓷砖或未开发的黑色瓷砖离开电路板，则您会输。</string>
-    <string name="itemDescription">" 你想購買這個 "</string>
+    <string name="itemDescription">" 你想購買這個"</string>
+    <string name="MazeEasyTime">迷宫 （简单）最好时间：</string>
+    <string name="MazeHardTime">迷宫（难）最好时间:</string>
+    <string name="MazeMediumTime">迷宫 （中）最好时间:</string>
+    <string name="MazeHardAvgTime">迷宫（难）平均时间</string>
+
     <string name="alreadyOwn">你已經擁有這個東西了</string>
     <string name="successfulPurchase">" 您的購買成功"</string>
     <string name="insufficientFunds">" 您缺少執行此操作所需的資金"</string>
-    <string name="coins">" 硬币 "</string>
     <string name="Sprite">Sprite</string>
     <string name="pick_sprite">Pick sprite:</string>
 </resources>
