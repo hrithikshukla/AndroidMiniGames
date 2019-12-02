@@ -28,7 +28,7 @@ class Tile {
     /**
      * Creates all Tile bitmaps of the maze.
      *
-     * @param res - resources folder
+     * @param res  - resources folder
      * @param name - Enum of the sprite the player is using
      */
     Tile(Resources res, Sprites name) {

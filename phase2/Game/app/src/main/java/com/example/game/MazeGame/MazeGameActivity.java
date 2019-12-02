@@ -7,6 +7,7 @@ import android.view.WindowManager;
 import com.example.game.Activities.Game.GameActivity;
 import com.example.game.DataBase.UserRepository;
 import com.example.game.DataBase.UserScores;
+import com.example.game.MazeGame.DataStructures.Sprites;
 
 import java.time.LocalTime;
 import java.util.Observable;
@@ -77,7 +78,9 @@ public class MazeGameActivity extends GameActivity implements Observer {
         GameFacade gameFacade = gameFacadeBuilder.getGameFacade();
 
         // View of the game. Displays the UI and registers user input.
-        String sprite = getIntent().getStringExtra("SPRITE"); // Pass in sprite to be used
+
+        // Get Sprite to be used by the player.
+        Sprites sprite = (Sprites) getIntent().getSerializableExtra("SPRITE");
 
         ViewBuilder viewBuilder = new ViewBuilder(this, maxScreenX, maxScreenY, sprite);
         viewBuilder.build();

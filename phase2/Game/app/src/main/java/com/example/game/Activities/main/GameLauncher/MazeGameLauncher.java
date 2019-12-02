@@ -1,7 +1,6 @@
 package com.example.game.Activities.main.GameLauncher;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -20,7 +19,7 @@ public class MazeGameLauncher extends AppCompatActivity {
 
     User usr;
     String username;
-    String sprite = "@"; // Default sprite
+    Sprites sprite = Sprites.AT; // Default sprite
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,16 +99,16 @@ public class MazeGameLauncher extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         switch (which) {
                             case 0:
-                                sprite = sprites[0];
+                                sprite = Sprites.AT;
                                 break;
                             case 1:
-                                sprite = sprites[1];
+                                sprite = Sprites.HASHTAG;
                                 break;
                             case 2:
-                                sprite = sprites[2];
+                                sprite = Sprites.DOLLAR;
                                 break;
                             case 3:
-                                sprite = sprites[3];
+                                sprite = Sprites.PERCENT;
                                 break;
                         }
                         ;

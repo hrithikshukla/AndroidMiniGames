@@ -32,7 +32,7 @@ class ViewBuilder implements Builder {
 
     private int maxScreenX, maxScreenY;
 
-    private Sprites sprite = Sprites.AT;
+    private Sprites sprite;
 
     /**
      * Creates a ViewBuilder object with the given attributes.
@@ -40,29 +40,13 @@ class ViewBuilder implements Builder {
      * @param context    - context of the MazeGameActivity
      * @param maxScreenX - maximum x position of the screen
      * @param maxScreenY - maximum y position of the screen
-     * @param sprite - string corresponding to the sprite the player uses in the game
+     * @param sprite     - sprite the player uses
      */
-    ViewBuilder(MazeGameActivity context, int maxScreenX, int maxScreenY, String sprite) {
+    ViewBuilder(MazeGameActivity context, int maxScreenX, int maxScreenY, Sprites sprite) {
         this.context = context;
         this.maxScreenX = maxScreenX;
         this.maxScreenY = maxScreenY;
-
-        // Convert string to the equivalent enumeration
-        switch (sprite) {
-            case "@":
-                this.sprite = Sprites.AT;
-                break;
-            case "#":
-                this.sprite = Sprites.HASHTAG;
-                break;
-            case "$":
-                this.sprite = Sprites.DOLLAR;
-                break;
-            case "%":
-                this.sprite = Sprites.PERCENT;
-                break;
-        }
-
+        this.sprite = sprite;
     }
 
     /**
