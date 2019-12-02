@@ -176,13 +176,7 @@ public class Maze implements Observer {
     }
   }
 
-  /**
-   * Returns the neighbours of a node where it has already been examined by the algorithm
-   *
-   * @param neighbourNode
-   * @param processed
-   * @return
-   */
+  /** Returns the neighbours of a node where it has already been examined by the algorithm */
   private ArrayList<Pair<Integer, Integer>> getPickedNodes(
       Pair<Integer, Integer> neighbourNode, ArrayList<Pair<Integer, Integer>> processed) {
     ArrayList<Pair<Integer, Integer>> neighbours = getValidNeighbours(neighbourNode);
@@ -196,13 +190,7 @@ public class Maze implements Observer {
     return picked;
   }
 
-  /**
-   * The neighbours of a given node that have not been processed by the algorithm
-   *
-   * @param cellCoordinate
-   * @param neighboursUnprocessed
-   * @param processed
-   */
+  /** The neighbours of a given node that have not been processed by the algorithm */
   private void addNeighbours(
       Pair<Integer, Integer> cellCoordinate,
       ArrayList<Pair<Integer, Integer>> neighboursUnprocessed,
@@ -216,12 +204,7 @@ public class Maze implements Observer {
     }
   }
 
-  /**
-   * Returns the possible neighbouring nodes of a given cell.
-   *
-   * @param cellCoordinate
-   * @return
-   */
+  /** Returns the possible neighbouring nodes of a given cell. */
   private ArrayList<Pair<Integer, Integer>> getValidNeighbours(
       Pair<Integer, Integer> cellCoordinate) {
     int row = cellCoordinate.first;
@@ -274,15 +257,14 @@ public class Maze implements Observer {
 
   /**
    * Returns whether the player has escaped the maze.
+   *
    * @return - whether player is at the exit
    */
   public boolean hasEscaped() {
     return (playerPosY == exit[0]) && (playerPosX == exit[1]);
   }
 
-  /**
-   * Process the player's new position in the maze and update the model accordingly.
-   */
+  /** Process the player's new position in the maze and update the model accordingly. */
   @Override
   public void update(Observable observable, Object o) {
     // Remove the player's tile from their previous s position in the maze
