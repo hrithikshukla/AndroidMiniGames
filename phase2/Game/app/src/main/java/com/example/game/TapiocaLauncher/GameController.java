@@ -149,7 +149,6 @@ public class GameController implements Observer {
    * @return - speed reduced by the gravity
    */
   private double decrement(double speed, double gravity) {
-    // Log.d("", "decremented " + speed);
     if (speed >= 0) {
       speed -= gravity;
       if (speed < 0) {
@@ -197,7 +196,6 @@ public class GameController implements Observer {
           currBall.setHit(true);
           if (currBall.getBallType().equals("speedBoost")) {
             speedLauncher();
-            Log.d("", "MADE BOOST");
 
           }
           if(currBall.getBallType().equals("extraShot")) {
