@@ -1,31 +1,46 @@
 package com.example.game.TapiocaLauncher;
 
-// Taopioca balls to be destroeyd
+
+/**
+ * Tapioca balls that the player destroys
+ */
  class Ball {
 
-  // The top left coordinates of the ball
+    /**
+     * The top left coordinates of the ball
+     */
   private int x, y;
-  // The width, height, radius of the ball
+    /** The width, height, radius of the ball */
   private int width, height, radius;
-  // Whether this ball has been hit this shot or not
+    /** Whether this ball has been hit this shot or not */
   private boolean hit = false;
-  // The number of hits to break this tapioca
+    /** The health of the ball (how many more hits are needed to break it */
   private int hp;
-  private String ballType;
+    /** The type of ball */
+    private String ballType;
 
-  Ball(int x, int y, int radius, int hp, String ballType) {
-    this.x = x;
-    this.y = y;
-    this.radius = radius;
-    this.hp = hp;
-    this.width = 2 * radius;
-    this.height = 2 * radius;
-    this.ballType = ballType;
-  }
+    /** Creates a new ball object with the provided arguments
+     *
+     * @param x - top left x coordinate
+     * @param y - top left y coordinate
+     * @param radius - radius of the ball
+     * @param hp - hp of the ball
+     * @param ballType - type of the ball
+     */
+    Ball(int x, int y, int radius, int hp, String ballType) {
+        this.x = x;
+        this.y = y;
+        this.radius = radius;
+        this.hp = hp;
+        this.width = 2 * radius;
+        this.height = 2 * radius;
+        this.ballType = ballType;
+    }
 
-  public int getX() {
-    return x;
-  }
+    /** Getters And Setters*/
+    public int getX() {
+        return x;
+    }
 
   public void setX(int x) {
     this.x = x;

@@ -7,15 +7,30 @@ import android.view.SurfaceView;
 
 @SuppressWarnings("ClickableViewAccessibility")
 
-// View part of the MVC, broken into 2 parts --VisualView and InputView
+/**View part of the MVC, broken into 2 parts --VisualView and InputView*/
 public class GameView extends SurfaceView implements Runnable {
 
+
     private Thread thread;
+    /**
+     * True if the game is currently playing, used to help exit the game
+     */
     private boolean isPlaying;
+    /**
+     * Where all visuals are rendered
+     */
+    private VisualView visualView;
+    /**
+     * Where all input is sent to and observed by the GameController
+     */
+    private InputView inputView;
 
-    private VisualView visualView; // Where all visuals are rendered
-    private InputView inputView; // Where all input is sent to and observed by the GameController
-
+    /**
+     * Creates the gameview given the paramaters
+     * @param context - Current context
+     * @param screenX - x size of the screen
+     * @param screenY - y size of the screen
+     */
     public GameView(Context context, int screenX, int screenY) {
 
         super(context);
@@ -24,6 +39,9 @@ public class GameView extends SurfaceView implements Runnable {
         inputView = new InputView();
     }
 
+    /**
+     * Runs the game
+     */
     @Override
     public void run() {
 
@@ -34,7 +52,9 @@ public class GameView extends SurfaceView implements Runnable {
         }
     }
 
-    // sleeps 17ms before thread, making the program run 60 times a second
+    /**
+     * sleeps 17ms, making the program run 60 times a second
+     */
     private void sleep() {
         try {
             Thread.sleep(17);
@@ -43,6 +63,7 @@ public class GameView extends SurfaceView implements Runnable {
         }
     }
 
+    /** Resumes the game from a paused state. */
     public void resume() {
 
         isPlaying = true;
@@ -50,6 +71,7 @@ public class GameView extends SurfaceView implements Runnable {
         thread.start();
     }
 
+    /** Pauses the game. */
     public void pause() {
 
         try {
@@ -60,7 +82,12 @@ public class GameView extends SurfaceView implements Runnable {
         }
     }
 
-    // sends input to inputView to deal with
+
+    /**
+     * Sends input to inputView to handle
+     * @param event - the MotionEvent that occurred
+     * @return true if the even was handled
+     */
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN
@@ -70,6 +97,7 @@ public class GameView extends SurfaceView implements Runnable {
         return true;
     }
 
+    /** Getters and Setters. */
     public VisualView getVisualView() {
         return visualView;
     }

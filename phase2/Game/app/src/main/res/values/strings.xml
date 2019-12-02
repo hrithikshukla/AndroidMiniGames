@@ -46,7 +46,7 @@
     <string name="TapiocaTime">Time Spent Playing Tapioca:</string>
     <string name="MazeTime">Time Spent Playing Maze:</string>
     <string name="TileTime">Time Spent Playing Tiles:</string>
-    <string name="Reset">uWu Reset Statistics uWu</string>
+    <string name="Reset">Reset Statistics</string>
     <string name="Statistics">Your Statistics</string>
     <string name="text_game_over">Game Over</string>
     <string name="text_swipe_right">Swipe Right!</string>
@@ -54,7 +54,6 @@
     <string name="instructions_maze">Escape the maze! The fewer steps you take the higher your score. Move your character by tapping the arrow buttons.</string>
     <string name="NotAvailable">Not Available Yet :(</string>
     <string name="SwipeToShop">Swipe Right To Shop!</string>
-    <string name="coins">Your Coins:</string>
     <string name="characters">Characters Owned:</string>
     <string name="play_4by4">4 x 4</string>
     <string name="text_select_mode">Select your mode:</string>
@@ -63,8 +62,9 @@
     <string name="button_settings_exit">x</string>
     <string name="text_light">Light</string>
     <string name="text_dark">Dark</string>
-    <item name="id" type="id" />
+    <item name="num" type="id" />
     <item name="price" type="id" />
+    <item name="id" type="id" />
 
     <string name="purchase">I want it!</string>
     <string name="cancel">Cancel</string>
@@ -87,14 +87,16 @@ But be quick as you only have a limited number of shots!"
     <string name="MazeEasyScore">Maze (Easy) High Score:</string>
     <string name="MazeMediumScore">Maze (Medium) High Score:</string>
     <string name="MazeHardScore">Maze (Hard) High Score:</string>
-    <string name="shots">"Shots remaining: "</string>
+    <string name="shots">"Shots: "</string>
     <string name="Tiles4Score">Tiles (4 X 4) High Score:</string>
     <string name="Tiles5Score">Tiles (5 X 5) High Score:</string>
     <string name="TilesInvertScore">Tiles (Invert) High Score:</string>
     <string name="instructions_tiles_dark">Don\'t touch the black tiles! Tap the white tiles to gain points. You lose if you tap a black tile or when an untapped white tile leaves the board.</string>
     <string name="instructions_tiles_light">Don\'t touch the white tiles! Tap the black tiles to gain points. You lose if you tap a white tile or when an untapped black tile leaves the board.</string>
-    <string name="itemDescription">Would you like to purchase this for</string>
-    <string name="Sprite">Sprite</string>
-    <string name="pick_sprite">Pick a sprite:</string>
+    <string name="itemDescription">"Would you like to purchase this for "</string>
+    <string name="alreadyOwn">You already own this item</string>
+    <string name="successfulPurchase">Your purchase was successful</string>
+    <string name="insufficientFunds">You lack the necessary funds to execute this operation</string>
+    <string name="coins">"Coins "</string>
 
 </resources>

@@ -4,8 +4,8 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import androidx.lifecycle.LiveData;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserRepository {
@@ -74,16 +74,6 @@ public class UserRepository {
         return ac.getAmount();
     }
 
-    public LiveData<Integer> getUserAmountTest(){
-      getUserAmountTestAsyncTask a = new getUserAmountTestAsyncTask(userAccountDao);
-        try {
-            a.execute(username).get();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-      return a.getUserAmount();
-    }
-
   // Use this to update User's amount
   public void updateUserAmount(int differential) {
       UserAccount ac = getUser();
@@ -148,17 +138,21 @@ public class UserRepository {
         }
     }
 
-    public LiveData<List<Integer>> getUserCollectibles() {
+    public List<Integer> getUserCollectibles() {
         getUserCollectiblesAsyncTask a = new getUserCollectiblesAsyncTask(userCollectiblesDao);
         try {
             a.execute(username).get();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return a.getUserCollectibles();
+        List<Integer> b = new ArrayList<>();
+        for (UserCollectibles u : a.getUserCollectibles()) {
+            b.add(u.getCharacter_id());
+        }
+        return b;
     }
 
-    public int getUserMinTime(String gameType){
+    public int getUserMinTime(String gameType) {
         StatsTaskParam s = new StatsTaskParam(username, gameType);
         getUserMinTimeAsyncTask a = new getUserMinTimeAsyncTask(userScoresDao);
         try {
@@ -169,7 +163,7 @@ public class UserRepository {
         return a.getUserMinTime();
     }
 
-    public int getUserMaxTime(String gameType){
+    public int getUserMaxTime(String gameType) {
         StatsTaskParam s = new StatsTaskParam(username, gameType);
         getUserMaxTimeAsyncTask a = new getUserMaxTimeAsyncTask(userScoresDao);
         try {
@@ -179,7 +173,6 @@ public class UserRepository {
         }
         return a.getUserMaxTime();
     }
-
 
   public static class addUserAsyncTask extends AsyncTask<UserAccount, Void, Boolean> {
 
@@ -324,7 +317,7 @@ public class UserRepository {
     public static class removeUserStatisticsAsyncTask extends AsyncTask<String, Void, Void> {
         private UserScoresDao userScoresDao;
 
-        public removeUserStatisticsAsyncTask(UserScoresDao userScoresDao) {
+        removeUserStatisticsAsyncTask(UserScoresDao userScoresDao) {
             this.userScoresDao = userScoresDao;
         }
 
@@ -337,13 +330,13 @@ public class UserRepository {
 
     public static class getUserCollectiblesAsyncTask extends AsyncTask<String, Void, Void> {
         private UserCollectiblesDao userCollectiblesDao;
-        private LiveData<List<Integer>> userCollectibles;
+        private List<UserCollectibles> userCollectibles;
 
         getUserCollectiblesAsyncTask(UserCollectiblesDao userCollectiblesDao) {
             this.userCollectiblesDao = userCollectiblesDao;
         }
 
-        public LiveData<List<Integer>> getUserCollectibles() {
+        List<UserCollectibles> getUserCollectibles() {
             return userCollectibles;
         }
 
@@ -368,33 +361,15 @@ public class UserRepository {
         }
     }
 
-    public static class getUserAmountTestAsyncTask extends AsyncTask<String, Void, Void>{
-      private UserAccountDao userAccountDao;
-      private LiveData<Integer> UserAmount;
-        public getUserAmountTestAsyncTask(UserAccountDao userAccountDao) {
-            this.userAccountDao = userAccountDao;
-        }
+    public static class getUserMinTimeAsyncTask extends AsyncTask<StatsTaskParam, Void, Void> {
+        private UserScoresDao userScoresDao;
+        private int userMinTime;
 
-        public LiveData<Integer> getUserAmount() {
-            return UserAmount;
-        }
-
-        @Override
-        protected Void doInBackground(String... strings) {
-            UserAmount = userAccountDao.getUserAmount(strings[0]);
-            return null;
-        }
-    }
-
-    public static class getUserMinTimeAsyncTask extends AsyncTask<StatsTaskParam, Void, Void>{
-      private UserScoresDao userScoresDao;
-      private int userMinTime;
-
-        public getUserMinTimeAsyncTask(UserScoresDao userScoresDao) {
+        getUserMinTimeAsyncTask(UserScoresDao userScoresDao) {
             this.userScoresDao = userScoresDao;
         }
 
-        public int getUserMinTime() {
+        int getUserMinTime() {
             return userMinTime;
         }
 
@@ -407,15 +382,15 @@ public class UserRepository {
         }
     }
 
-    public static class getUserMaxTimeAsyncTask extends AsyncTask<StatsTaskParam, Void, Void>{
+    public static class getUserMaxTimeAsyncTask extends AsyncTask<StatsTaskParam, Void, Void> {
         private UserScoresDao userScoresDao;
         private int userMaxTime;
 
-        public getUserMaxTimeAsyncTask(UserScoresDao userScoresDao) {
+        getUserMaxTimeAsyncTask(UserScoresDao userScoresDao) {
             this.userScoresDao = userScoresDao;
         }
 
-        public int getUserMaxTime() {
+        int getUserMaxTime() {
             return userMaxTime;
         }
 
@@ -428,7 +403,6 @@ public class UserRepository {
         }
     }
 
-
     private class StatsTaskParam {
         String userName;
         String gameType;
@@ -438,11 +412,11 @@ public class UserRepository {
             this.gameType = gameType;
         }
 
-        public String getUserName() {
+        String getUserName() {
             return userName;
         }
 
-        public String getGameType() {
+        String getGameType() {
             return gameType;
         }
     }
