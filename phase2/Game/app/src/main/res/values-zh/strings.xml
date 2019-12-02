@@ -85,4 +85,6 @@
     <string name="instructions_tiles_dark">请勿触摸黑色瓷砖！点击白色瓷砖以获取积分。如果您敲击黑色瓷砖或未开发的白色瓷砖离开电路板，则您会输。</string>
     <string name="instructions_tiles_light">请勿触摸白色瓷砖！点击黑色瓷砖以获取积分。如果您敲击白色瓷砖或未开发的黑色瓷砖离开电路板，则您会输。</string>
     <string name="itemDescription">" 你想購買這個"</string>
+    <string name="pick_sprite">選擇一個精靈:</string>
+    <string name="Sprite">雪碧</string>
 </resources>

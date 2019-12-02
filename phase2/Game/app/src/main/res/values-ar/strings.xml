@@ -86,4 +86,6 @@
     <string name="Tiles5Score">البلاط (5 × 5) درجة عالية:</string>
     <string name="TilesInvertScore">البلاط (عكس) درجة عالية:</string>
     <string name="shots">الطلقات المتبقية:</string>
+    <string name="pick_sprite">اختيار العفريت:</string>
+    <string name="Sprite">شبح</string>
 </resources>
