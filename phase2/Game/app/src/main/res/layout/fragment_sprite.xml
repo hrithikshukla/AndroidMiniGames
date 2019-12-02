@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?android:attr/colorBackground"
     tools:context=".Activities.main.SpriteFragment">
 
 
@@ -19,6 +20,7 @@
         android:layout_marginEnd="70dp"
         android:layout_marginBottom="28dp"
         android:text="@string/purchase"
+        android:textColor="?android:attr/colorAccent"
         android:textSize="24sp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -63,6 +65,7 @@
         android:layout_marginTop="105dp"
         android:layout_marginEnd="80dp"
         android:text="@string/cancel"
+        android:textColor="?android:attr/colorPrimaryDark"
         android:textSize="30sp" />
 
 
