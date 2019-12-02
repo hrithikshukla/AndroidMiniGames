@@ -1,48 +1,58 @@
 package com.example.game.TapiocaLauncher;
 
-import java.util.Random;
-
+/** Implements Factory Design to make the creation of Tapioca simpler
+ *
+ */
 class TapiocaFactory {
-    private Random rand;
 
+    /** Initializes the factory
+     *
+     */
     TapiocaFactory() {
-        rand = new Random();
     }
 
+    /**
+     * Makes a brown Ball
+     * @param x - x-coordinate of ball
+     * @param y - y-coordinate of ball
+     * @param radius - radius of ball
+     * @return Brown Ball
+     */
     Ball makeBrown(int x, int y, int radius) {
         return new Ball(x, y, radius, 1, "reg");
     }
 
-    private Ball makeRed(int x, int y, int radius) {
+    /**
+     * Makes a Red Ball
+     * @param x - x-coordinate of ball
+     * @param y - y-coordinate of ball
+     * @param radius - radius of ball
+     * @return Red Ball
+     */
+    Ball makeRed(int x, int y, int radius) {
         return new Ball(x, y, radius, 2, "reg");
     }
 
-    private Ball makeWhite(int x, int y, int radius) {
-        return new Ball(x, y, radius, 1, "speedboost");
+    /**
+     * Makes a White Ball
+     * @param x - x-coordinate of ball
+     * @param y - y-coordinate of ball
+     * @param radius - radius of ball
+     * @return White Ball
+     */
+    Ball makeWhite(int x, int y, int radius) {
+        return new Ball(x, y, radius, 1, "speedBoost");
     }
 
-    private Ball makePurple(int x, int y, int radius) {
+    /**
+     * Makes a Purple Ball
+     * @param x - x-coordinate of ball
+     * @param y - y-coordinate of ball
+     * @param radius - radius of ball
+     * @return Purple Ball
+     */
+    Ball makePurple(int x, int y, int radius) {
         return new Ball(x, y, radius, 1, "extraShot");
     }
 
-    Ball makeRandom(int x, int y, int radius) {
-        int num = rand.nextInt(36);
-        switch (num) {
-            case 0:
-            case 1:
-            case 2:
-                return makePurple(x, y, radius);
-            case 3:
-            case 4:
-            case 5:
-            case 6:
-            case 7:
-            case 8:
-            case 9:
-            case 10:
-                return makeRed(x, y, radius);
-            default:
-                return makeBrown(x, y, radius);
-        }
-    }
 }

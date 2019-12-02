@@ -42,7 +42,7 @@ class VisualView implements Observer {
     private int screenX, screenY;
 
   /**
-   * stores bitmaps of the Launcher's ball, each rotated a multiple of 90 degreess to give an
+   * stores bitmaps of the Launcher's ball, each rotated a multiple of 90 degrees to give an
    * illusion of rotation when moving the Launcher ball
    */
   private Bitmap launcherOrientation1,
@@ -57,7 +57,7 @@ class VisualView implements Observer {
      * @param screenX - x-size of screen
      * @param screenY - y-size of screen
      * @param res - resources being used
-     * @param surfaceHolder - the surfaceHoloder from a GameView object
+     * @param surfaceHolder - the surfaceHolder from a GameView object
      * @param context - the context from a GameView object
      */
     VisualView(
@@ -113,7 +113,7 @@ class VisualView implements Observer {
     }
 
     /**
-     * Creates and stores the Launche's Bitmaps
+     * Creates and stores the Launcher's Bitmaps
      */
     private void createLauncherBitmaps() {
         launcherOrientation1 = BitmapFactory.decodeResource(res, R.drawable.tapioca1);
@@ -130,7 +130,7 @@ class VisualView implements Observer {
         Log.e("", "" + width + " " + height);
     }
 
-    /** Redrwards the screen
+    /** Redraws the screen
      *
      */
     void draw() {
@@ -203,11 +203,12 @@ class VisualView implements Observer {
             orientation1 = tapiocaBrown;
         } else if(ball.getBallType().equals("reg") && ball.getHp() == 2) {
             orientation1 = tapiocaRed;
-        }
-        else if(ball.getBallType().equals("speedboost"))
-            orientation1 = tapiocaWhite;
-        else // if(ball.getBallType() == "image")
-            orientation1 = tapiocaPurple;
+    } else if (ball.getBallType().equals("speedBoost")) {
+      orientation1 = tapiocaWhite;
+    } else { // if(ball.getBallType() == "image") {
+      orientation1 = tapiocaPurple;
+            }
+
 
         canvas.drawBitmap(orientation1, ball.getX(), ball.getY(), paint);
     }
@@ -223,7 +224,7 @@ class VisualView implements Observer {
     }
 
     /**
-     *  Observed if gameFacade has changed and stores its values for renddering
+     *  Observed if gameFacade has changed and stores its values for rendering
      * @param o - gameFacade being observed
      * @param arg - object gameFacade returns
      */

@@ -5,11 +5,12 @@ import android.content.SharedPreferences;
 import android.view.MotionEvent;
 import android.view.SurfaceView;
 
+
+/**
+ * View part of the MVC, broken into 2 parts --VisualView and InputView
+ */
 @SuppressWarnings("ClickableViewAccessibility")
-
-/**View part of the MVC, broken into 2 parts --VisualView and InputView*/
 public class GameView extends SurfaceView implements Runnable {
-
 
     private Thread thread;
     /** True if the game is currently playing, used to help exit the game */
@@ -20,7 +21,7 @@ public class GameView extends SurfaceView implements Runnable {
     private InputView inputView;
 
     /**
-     * Creates the gameview given the paramaters
+     * Creates the gameView given the parameters
      * @param context - Current context
      * @param screenX - x size of the screen
      * @param screenY - y size of the screen

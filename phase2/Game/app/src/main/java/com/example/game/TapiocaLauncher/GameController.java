@@ -20,16 +20,16 @@ public class GameController implements Observer {
   private int count = 0;
   /** Determine if the launcher is ready to fire */
   private boolean readyToLaunch = true;
-  /** Size of the scren */
+  /** Size of the screen */
   private int screenX, screenY;
   /** How much to decreases the Launcher's speed by each tick */
   private double gravityX, gravityY;
   /** Indicates if the player has clicked the ball yet */
   private boolean ballClicked = false;
-  /** Stores start and end coordaintes of the player's hand motion */
+  /** Stores start and end coordinates of the player's hand motion */
   private double startX, startY, endX, endY;
 
-  /**Create a gameController with the given paramaters
+  /**Create a gameController with the given parameters
    *
    * @param gameFacade - gameModel which the controller will update
    * @param screenX - x-size of the screen
@@ -132,7 +132,7 @@ public class GameController implements Observer {
 
 
   /**
-   * Decreases launcher's by the gravity amount in the x and y directoin
+   * Decreases launcher's by the gravity amount in the x and y direction
    */
   private void slowLauncher() {
     Launcher launcher = gameFacade.getLauncher();
@@ -195,8 +195,10 @@ public class GameController implements Observer {
           Ball currBall = balls.get(i);
           currBall.setHp(currBall.getHp() - 1);
           currBall.setHit(true);
-          if (currBall.getBallType().equals("speedboost")) {
+          if (currBall.getBallType().equals("speedBoost")) {
             speedLauncher();
+            Log.d("", "MADE BOOST");
+
           }
           if(currBall.getBallType().equals("extraShot")) {
             gameFacade.setShots(gameFacade.getShots() + 2);
@@ -216,7 +218,7 @@ public class GameController implements Observer {
   /** Observes the InputView and updates if there is an input or a tick
    *
    * @param o - InputView being observed
-   * @param arg - Object inputview is passing
+   * @param arg - Object inputView is passing
    */
   @Override
   public void update(Observable o, Object arg) {

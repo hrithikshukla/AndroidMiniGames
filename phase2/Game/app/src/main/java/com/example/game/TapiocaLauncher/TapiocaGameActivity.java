@@ -1,6 +1,5 @@
 package com.example.game.TapiocaLauncher;
 
-import android.content.SharedPreferences;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.view.WindowManager;
@@ -8,7 +7,6 @@ import android.view.WindowManager;
 import com.example.game.Activities.Game.GameActivity;
 import com.example.game.DataBase.UserRepository;
 import com.example.game.DataBase.UserScores;
-import com.example.game.Save.User;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -57,8 +55,8 @@ public class TapiocaGameActivity extends GameActivity implements Observer {
     setContentView(gameView);
 
     int launcherRadius = 136 / 2; // Radius of the launcher
-    int launcherX = point.x / 2 - launcherRadius; // Launchers inital x
-    int launcherY = point.y - 3 * launcherRadius; // Launchers inital y
+    int launcherX = point.x / 2 - launcherRadius; // Launchers initial x
+    int launcherY = point.y - 3 * launcherRadius; // Launchers initial y
 
     // Create MVC components.
     this.gameFacade =
@@ -91,24 +89,17 @@ public class TapiocaGameActivity extends GameActivity implements Observer {
     super.onResume();
     gameView.resume();
   }
-
-  @Override
   /**Observes the GameFacade to see if the game is over, and if so goes to the exit screen and
    updates the statistics
    */
+  @Override
   public synchronized void update(Observable o, Object arg) {
     gameFacade = (GameFacade) arg;
     if (gameFacade.isGameOver()) {
-      SharedPreferences sharedPreferences = getSharedPreferences("highScores", MODE_PRIVATE);
       LocalTime endtime = LocalTime.now();
       int timetaken = (int) startime.until(endtime, SECONDS);
       UserScores u = new UserScores(getUsername(), gameFacade.getScore(), "TAPIOCA_GAME", timetaken);
       ur.addUserScore(u);
-      //            if (usr.getUserData().getTapiocaHighScore() < gameFacade.getScore()) {
-      //                SharedPreferences.Editor editor = sharedPreferences.edit();
-      //                editor.putInt(usr.getUsername() + "tapiocahighscore",
-      // gameFacade.getScore());
-      //                editor.apply();
       ur.updateUserAmount(gameFacade.getScore() * 1000);
       setScore(gameFacade.getScore());
       switchToGameOverActivity(this);
