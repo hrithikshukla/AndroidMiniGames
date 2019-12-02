@@ -1,5 +1,6 @@
 package com.example.game.Activities.main.GameLauncher;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -11,54 +12,54 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.Activities.main.MainActivity;
 import com.example.game.Activities.main.ThemeManager;
+import com.example.game.DataBase.UserRepository;
 import com.example.game.R;
 import com.example.game.Save.User;
-// TODO: LINE 53 not displaying true high score, needs to fix
 public class TapiocaGameLauncher extends AppCompatActivity {
   User usr;
   String username;
-  @Override
-  protected void onCreate(Bundle savedInstanceState) {
-    // Set the theme.
+    UserRepository uR;
+
+    @SuppressLint("SetTextI18n")
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        // Set the theme.
 //    usr = (User) getIntent().getSerializableExtra("UserObject");
-    username = getIntent().getStringExtra("USERNAME");
-    SharedPreferences mSettings = this.getSharedPreferences("Settings", MODE_PRIVATE);
-      ThemeManager.setTheme(
-              TapiocaGameLauncher.this,
-              mSettings.getInt(username + "mode", 0),
-              mSettings.getInt(username + "theme", 0));
+        username = getIntent().getStringExtra("USERNAME");
+        uR = new UserRepository(this, username);
 
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.tapioca_game_launch);
+        SharedPreferences mSettings = this.getSharedPreferences("Settings", MODE_PRIVATE);
+        ThemeManager.setTheme(
+                TapiocaGameLauncher.this,
+                mSettings.getInt(username + "mode", 0),
+                mSettings.getInt(username + "theme", 0));
 
-
-    findViewById(R.id.play)
-        .setOnClickListener(
-            new View.OnClickListener() {
-              @Override
-              public void onClick(View view) {
-                Intent intent =
-                    new Intent(
-                        TapiocaGameLauncher.this,
-                        com.example.game.TapiocaLauncher.TapiocaGameActivity.class);
-                intent.putExtra("USERNAME", username);
-                startActivity(intent);
-              }
-            });
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.tapioca_game_launch);
 
 
-    TextView highScoretxt = findViewById(R.id.highScoreText);
+        findViewById(R.id.play)
+                .setOnClickListener(
+                        new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Intent intent =
+                                        new Intent(
+                                                TapiocaGameLauncher.this,
+                                                com.example.game.TapiocaLauncher.TapiocaGameActivity.class);
+                                intent.putExtra("USERNAME", username);
+                                startActivity(intent);
+                            }
+                        });
 
-//    SharedPreferences prefs = getSharedPreferences("highScores", MODE_PRIVATE);
-//    highScoretxt.setText(
-//        getString(R.string.highScore) + prefs.getInt(usr.getUsername() + "tapiocahighscore", 0));
-    // temporary solution needs to fix
-    highScoretxt.setText(getString(R.string.highScore)
-    );
-  }
+
+        TextView highScoretxt = findViewById(R.id.highScoreText);
+
+        highScoretxt.setText(getString(R.string.highScore) + uR.getUserHighScore(username, "TAPIOCA_GAME"));
+    }
   /*
    */
-  /** Called when the user taps the 'PLAY' button */
+    /* Called when the user taps the 'PLAY' button */
   /*
   public void startTapiocaLauncher(View view) {
       Intent intent = new Intent(this, com.example.game.TapiocaLauncher.GameActivity.class);
