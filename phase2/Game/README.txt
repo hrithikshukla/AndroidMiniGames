@@ -51,6 +51,7 @@ Click on the black balls and drag it in the direction you want to fire it.
 Brown balls take 1 shot to destroy!
 Red balls take 2 shots to destroy
 White balls will give you a speed boost!
+Purple balls will give you extra lives!
 
 But be careful as you only have a limited number of shots!
 
