@@ -8,29 +8,17 @@ import java.util.Observable;
  * other stats related to the game
  */
 public class GameFacade extends Observable {
-    /**
-     * The launcher ball the player launches
-     */
+    /** The launcher ball the player launches */
     private Launcher launcher;
-    /**
-     * A list of balls that the user wants to destroy
-     */
+    /** A list of balls that the user wants to destroy */
     private List<Ball> balls;
-    /**
-     * the current score
-     */
+    /** the current score */
     private int score;
-    /**
-     * the current level
-     */
+    /** the current level */
     private int level = 1;
-    /**
-     * The current number of shots left
-     */
+    /** The current number of shots left */
     private int shots = 10;
-    /**
-     * If the game is over or not
-     */
+    /** If the game is over or not */
     private boolean gameOver = false;
     /** Generates the board design */
     private BoardManager boardManager;
@@ -48,8 +36,8 @@ public class GameFacade extends Observable {
         boardManager = new BoardManager();
     }
 
-    /**
-     * Class is observed by VisualView and GameActivity which get notified if this class changes
+    /** Class is observed by VisualView and GameActivity which get notified if this class changes
+     *
      */
     void update() {
         setChanged();

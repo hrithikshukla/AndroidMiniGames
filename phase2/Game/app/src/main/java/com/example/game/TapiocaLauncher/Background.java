@@ -19,7 +19,7 @@ class Background {
     /** The bitmap image of the background */
     private Bitmap background;
 
-    /** Creates the background image based on the arugments
+    /** Creates the background image based on the arguments
      *
      * @param screenX - x-size of screen
      * @param screenY - y-size of screen

@@ -22,45 +22,31 @@ import java.util.Observer;
  * whenever gameFacade changes
  */
 class VisualView implements Observer {
-    /**
-     * The background image displayed on screen
-     */
+    /** The background image displayed on screen*/
     private Background background;
     private Context context;
-    /**
-     * GameFacade that is being observed
-     */
+    /** GameFacade that is being observed */
     private GameFacade gameFacade;
-    /**
-     * Launcher within the gameFacade
-     */
+    /** Launcher within the gameFacade */
     private Launcher launcher; //
-    /**
-     * balls within the gameFacade
-     */
+    /** balls within the gameFacade */
     private List<Ball> balls;
-    /**
-     * score/level/shots within the gameFacade
-     */
+    /** score/level/shots within the gameFacade*/
     private int score, level, shots;
-    /**
-     * A counter to display the LauncherBall's rotation
-     */
+    /** A counter to display the LauncherBall's rotation */
     private int turnCounter = 0;
     private Resources res;
     private Paint paint; // Paint
     private SurfaceHolder surfaceHolder;
-    /**
-     * Size of the Screen
-     */
+    /** Size of the Screen */
     private int screenX, screenY;
 
-    /**
-     * stores bitmaps of the Launcher's ball, each rotated a multiple of 90 degreess to give an
-     * illusion of rotation when moving the Launcher ball
-     */
-    private Bitmap launcherOrientation1,
-            launcherOrientation2,
+  /**
+   * stores bitmaps of the Launcher's ball, each rotated a multiple of 90 degrees to give an
+   * illusion of rotation when moving the Launcher ball
+   */
+  private Bitmap launcherOrientation1,
+      launcherOrientation2,
       launcherOrientation3,
       launcherOrientation4;
 
@@ -71,7 +57,7 @@ class VisualView implements Observer {
      * @param screenX - x-size of screen
      * @param screenY - y-size of screen
      * @param res - resources being used
-     * @param surfaceHolder - the surfaceHoloder from a GameView object
+     * @param surfaceHolder - the surfaceHolder from a GameView object
      * @param context - the context from a GameView object
      */
     VisualView(
@@ -127,7 +113,7 @@ class VisualView implements Observer {
     }
 
     /**
-     * Creates and stores the Launche's Bitmaps
+     * Creates and stores the Launcher's Bitmaps
      */
     private void createLauncherBitmaps() {
         launcherOrientation1 = BitmapFactory.decodeResource(res, R.drawable.tapioca1);
@@ -141,10 +127,9 @@ class VisualView implements Observer {
         launcherOrientation2 = Bitmap.createScaledBitmap(launcherOrientation2, width, height, false);
         launcherOrientation3 = Bitmap.createScaledBitmap(launcherOrientation3, width, height, false);
         launcherOrientation4 = Bitmap.createScaledBitmap(launcherOrientation4, width, height, false);
-        Log.e("", "" + width + " " + height);
     }
 
-    /** Redrwards the screen
+    /** Redraws the screen
      *
      */
     void draw() {
@@ -217,11 +202,12 @@ class VisualView implements Observer {
             orientation1 = tapiocaBrown;
         } else if(ball.getBallType().equals("reg") && ball.getHp() == 2) {
             orientation1 = tapiocaRed;
-        }
-        else if(ball.getBallType().equals("speedboost"))
-            orientation1 = tapiocaWhite;
-        else // if(ball.getBallType() == "image")
-            orientation1 = tapiocaPurple;
+    } else if (ball.getBallType().equals("speedBoost")) {
+      orientation1 = tapiocaWhite;
+    } else { // if(ball.getBallType() == "image") {
+      orientation1 = tapiocaPurple;
+            }
+
 
         canvas.drawBitmap(orientation1, ball.getX(), ball.getY(), paint);
     }
@@ -237,7 +223,7 @@ class VisualView implements Observer {
     }
 
     /**
-     *  Observed if gameFacade has changed and stores its values for renddering
+     *  Observed if gameFacade has changed and stores its values for rendering
      * @param o - gameFacade being observed
      * @param arg - object gameFacade returns
      */

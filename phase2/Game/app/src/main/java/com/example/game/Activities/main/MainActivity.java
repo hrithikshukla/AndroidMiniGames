@@ -202,7 +202,10 @@ public class MainActivity extends Activity {
     final SharedPreferences.Editor editor = mSettings.edit();
     final String username = getIntent().getStringExtra("USERNAME");
 
-    final String[] themes = {"Default", "Green/Purple", "Orange/Teal", "Blue/Pink"};
+    final String[] themes = {getString(R.string.colourDefault),
+            getString(R.string.colourGreenPurple),
+            getString(R.string.colourOrangeTeal),
+            getString(R.string.colourBluePink)};
     AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
     mBuilder.setTitle("Choose Theme...");
     mBuilder.setSingleChoiceItems(

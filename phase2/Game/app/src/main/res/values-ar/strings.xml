@@ -3,7 +3,7 @@
     <string name="app_name">لعبه</string>
     <string name="MazeScore">المتاهة درجة عالية:</string>
     <string name="MazeTime">الوقت الذي يقضيه لعب المتاهة:</string>
-    <string name="Reset">أربعة وعشرون وستون:</string>
+    <string name="Reset">اعادة تعيين الاحصائيات</string>
     <string name="Statistics">إحصائياتك</string>
     <string name="button_tapioca_launcher">قاذفة التابيوكا</string>
     <string name="TapiocaScore">"تابيوكا قاذفة درجة عالية: "</string>
@@ -68,6 +68,7 @@
 كرات براون تأخذ 1 طلقة لتدمير!
 الكرات الحمراء تأخذ 2 طلقات لتدمير
 سوف كرات بيضاء تعطيك زيادة السرعة!
+سوف الكرات الأرجواني تعطيك حياة اضافية!
 
     لكن كن سريعًا حيث لديك فقط عدد محدود من الطلقات!"
     </string>
@@ -84,7 +85,7 @@
     <string name="Tiles4Score">البلاط (4 × 4) درجة عالية:</string>
     <string name="Tiles5Score">البلاط (5 × 5) درجة عالية:</string>
     <string name="TilesInvertScore">البلاط (عكس) درجة عالية:</string>
-    <string name="shots">الطلقات المتبقية:</string>
+    <string name="shots">"لقطات: "</string>
     <string name="MazeEasyTime">"المتاهة (سهل) أفضل وقت: "</string>
     <string name="MazeMediumTime">المتاهة (متوسطة) أفضل وقت</string>
     <string name="MazeHardTime">المتاهة (الثابت) أفضل وقت</string>
@@ -93,5 +94,15 @@
     <string name="successfulPurchase">تم الشراء بنجاح</string>
     <string name="insufficientFunds">أنت تفتقر إلى الأموال اللازمة لتنفيذ هذه العملية</string>
     <string name="Sprite">Sprite</string>
-    <string name="pick_sprite">Pick sprite:</string>
+    <string name="pick_sprite">اختيار العفريت:</string>
+    <string name="colourDefault">افتراضي</string>
+    <string name="colourGreenPurple">الأخضر / الأرجواني</string>
+    <string name="colourOrangeTeal">برتقالي / أخضر فاتح</string>
+    <string name="colourBluePink">الأزرق والزهري</string>
+    <string name="TapiocaAvgTime">التابيوكا متوسط ​​الوقت:</string>
+    <string name="TapiocaBestTime">التابيوكا أفضل وقت:</string>
+    <string name="Tiles4Time">البلاط (4 × 4) أفضل وقت:</string>
+    <string name="Tiles5Time">البلاط (5 × 5) أفضل وقت:</string>
+    <string name="TilesInvertAvgTime">البلاط (عكس) متوسط ​​الوقت:</string>
+    <string name="TilesInvertTime">البلاط (عكس) أفضل وقت:</string>
 </resources>
