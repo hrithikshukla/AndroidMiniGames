@@ -84,9 +84,9 @@
     <string name="Tiles4Score">البلاط (4 × 4) درجة عالية:</string>
     <string name="Tiles5Score">البلاط (5 × 5) درجة عالية:</string>
     <string name="TilesInvertScore">البلاط (عكس) درجة عالية:</string>
-    <string name="shots">الطلقات المتبقية:</string>
     <string name="alreadyOwn">أنت بالفعل تمتلك هذا العنصر</string>
     <string name="successfulPurchase">تم الشراء بنجاح</string>
     <string name="insufficientFunds">أنت تفتقر إلى الأموال اللازمة لتنفيذ هذه العملية</string>
     <string name="coins">"عملات معدنية "</string>
+    <string name="shots">"لقطات: "</string>
 </resources>

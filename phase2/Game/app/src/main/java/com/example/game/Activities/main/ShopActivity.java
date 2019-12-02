@@ -3,8 +3,6 @@ package com.example.game.Activities.main;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.Observer;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -184,7 +182,8 @@ public class ShopActivity extends AppCompatActivity {
               FragmentTransaction fragmentTransaction = fm.beginTransaction();
               fragmentTransaction
                   .replace(
-                          R.id.frame, new SpriteFragment(
+                          R.id.frame,
+                          new SpriteFragment(
                                   (int) img.getTag(R.id.num),
                                   (int) img.getTag(R.id.price),
                                   (int) img.getTag(R.id.id),
@@ -195,16 +194,10 @@ public class ShopActivity extends AppCompatActivity {
           });
     }
 
-    // number of coins the user has
-    final TextView userCoins = findViewById(R.id.userAmount);
-    LiveData<Integer> userAmount = uR.getUserAmountTest();
-    userAmount.observe(this, new Observer<Integer>() {
-      @Override
-      public void onChanged(Integer integer) {
-        userCoins.setText(userCoins.getText().toString() + ": " + integer);
+      TextView userCoins = findViewById(R.id.userAmount);
+      int userAmount = uR.getUserAmount();
 
-      }
-    });
+      userCoins.setText(userCoins.getText() + ": " + userAmount);
 
     // Number of characters the user owns
     TextView numChars = findViewById(R.id.numChars);
@@ -228,10 +221,9 @@ public class ShopActivity extends AppCompatActivity {
           ColorMatrixColorFilter filter = new ColorMatrixColorFilter(matrix);
           img.setColorFilter(filter);
 
-      } else { // no filter
-          img.setColorFilter(null);
-
-      }
+    } else { // no filter
+        img.setColorFilter(null);
+    }
   }
 
   public void setOnBackPressedListener(OnBackPressedListener onBackPressedListener) {

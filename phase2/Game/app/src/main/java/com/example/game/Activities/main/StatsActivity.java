@@ -88,7 +88,8 @@ public class StatsActivity extends AppCompatActivity {
     int tiles5HighScore = uR.getUserHighScore(username, "TILES_GAME_5");
     int tilesInvertHighScore = uR.getUserHighScore(username, "TILES_GAME_INVERT");
 
-    // Set textViews to userScores
+
+      // Set textViews to userScores
     tapiocaScore.setText(getString(R.string.TapiocaScore) + tapiocaHighScore);
     mazeEasyScore.setText(getString(R.string.MazeEasyScore) + mazeEasyHighScore);
     mazeMediumScore.setText(getString(R.string.MazeMediumScore) + mazeMediumHighScore);

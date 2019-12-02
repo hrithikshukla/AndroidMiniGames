@@ -16,30 +16,64 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
-// View part of the MVC, displays all the visuals
+
+/**
+ * View part of the MVC, displays all the visuals by observing gameFacade and updating
+ * whenever gameFacade changes
+ */
 class VisualView implements Observer {
-
-    private Background background; // background
+    /**
+     * The background image displayed on screen
+     */
+    private Background background;
     private Context context;
-
-    private GameFacade gameFacade; // Observes the gameFacade
-    private Launcher launcher; // Launcher within the gameFacade
-    private List<Ball> balls; // balls within the gameFacade
-    private int score, level, shots; // score/level within the gameFacade
-    private int turnCounter = 0; // keeps a counter to display the LauncherBall's rotation
+    /**
+     * GameFacade that is being observed
+     */
+    private GameFacade gameFacade;
+    /**
+     * Launcher within the gameFacade
+     */
+    private Launcher launcher; //
+    /**
+     * balls within the gameFacade
+     */
+    private List<Ball> balls;
+    /**
+     * score/level/shots within the gameFacade
+     */
+    private int score, level, shots;
+    /**
+     * A counter to display the LauncherBall's rotation
+     */
+    private int turnCounter = 0;
     private Resources res;
     private Paint paint; // Paint
     private SurfaceHolder surfaceHolder;
-    private int screenX, screenY; // Size of screen
+    /**
+     * Size of the Screen
+     */
+    private int screenX, screenY;
 
-    // stores bitmaps of the Launcher's ball, each rotated a multiple of 90 degreess to give an
-    // illusion of rotation when moving the Launcher ball
+    /**
+     * stores bitmaps of the Launcher's ball, each rotated a multiple of 90 degreess to give an
+     * illusion of rotation when moving the Launcher ball
+     */
     private Bitmap launcherOrientation1,
             launcherOrientation2,
-            launcherOrientation3,
-            launcherOrientation4;
+      launcherOrientation3,
+      launcherOrientation4;
+
     private Bitmap tapiocaRed, tapiocaBrown, tapiocaWhite, tapiocaPurple; // Bitmap of the brown, red, white balls
 
+    /**
+     * Initializes a VisualView object with the given parameters.
+     * @param screenX - x-size of screen
+     * @param screenY - y-size of screen
+     * @param res - resources being used
+     * @param surfaceHolder - the surfaceHoloder from a GameView object
+     * @param context - the context from a GameView object
+     */
     VisualView(
             int screenX, int screenY, Resources res, SurfaceHolder surfaceHolder, Context context) {
         this.screenX = screenX;
@@ -58,13 +92,17 @@ class VisualView implements Observer {
         createBitmaps();
     }
 
-    // Creates and stores the bitmaps for faster rendering
+    /**
+     * Creates and stores bitmaps at the start for efficiency
+     */
     private void createBitmaps() {
         createLauncherBitmaps();
         createTapiocaBitmaps();
     }
 
-    // Creates and stores the Ball's Bitmaps
+    /**
+     * Creates and stores the Ball's bitmaps
+     */
     private void createTapiocaBitmaps() {
         tapiocaBrown = BitmapFactory.decodeResource(res, R.drawable.brown);
         tapiocaRed = BitmapFactory.decodeResource(res, R.drawable.red);
@@ -88,7 +126,9 @@ class VisualView implements Observer {
         tapiocaPurple = Bitmap.createScaledBitmap(tapiocaPurple, width, height, false);
     }
 
-    // Creates and stores the Launcher's Bitmaps
+    /**
+     * Creates and stores the Launche's Bitmaps
+     */
     private void createLauncherBitmaps() {
         launcherOrientation1 = BitmapFactory.decodeResource(res, R.drawable.tapioca1);
         launcherOrientation2 = BitmapFactory.decodeResource(res, R.drawable.tapioca2);
@@ -104,7 +144,9 @@ class VisualView implements Observer {
         Log.e("", "" + width + " " + height);
     }
 
-    // Redraws the screen
+    /** Redrwards the screen
+     *
+     */
     void draw() {
 
         if (surfaceHolder.getSurface().isValid()) {
@@ -119,13 +161,17 @@ class VisualView implements Observer {
         }
     }
 
-    // Draws the launcher
+    /**
+     * Draws the Launcher
+     * @param canvas - canvas on which the launcher is drawn
+     */
     private void drawLauncher(Canvas canvas) {
         canvas.drawBitmap(getLauncherOrientation(), launcher.getX(), launcher.getY(), paint);
     }
 
-    // Gets the launcher's orientation which changes by 90 degrees every call to give an illusion of
-    // rotation
+    /** Gets the launcher's orientation which changes by 90 degrees every call to give an illusion of
+     rotation
+     */
     private Bitmap getLauncherOrientation() {
         if (launcher.getSpeedX() != 0 && launcher.getSpeedY() != 0) {
             switch (turnCounter) {
@@ -150,14 +196,21 @@ class VisualView implements Observer {
         }
     }
 
-    // draw all the balls
+    /**
+     * Draws all the balls
+     * @param canvas - canvas on which the balls are drawn
+     */
     private void drawBalls(Canvas canvas) {
         for (Ball ball : balls) {
             drawBall(ball, canvas);
         }
     }
 
-    // draws a ball
+    /** Draws a ball
+     *
+     * @param ball - the ball being drawn
+     * @param canvas - canvas on which the ball is drawn
+     */
     private void drawBall(Ball ball, Canvas canvas) {
         Bitmap orientation1;
         if(ball.getBallType().equals("reg") && ball.getHp() == 1) {
@@ -165,7 +218,7 @@ class VisualView implements Observer {
         } else if(ball.getBallType().equals("reg") && ball.getHp() == 2) {
             orientation1 = tapiocaRed;
         }
-        else if(ball.getBallType() == "speedboost")
+        else if(ball.getBallType().equals("speedboost"))
             orientation1 = tapiocaWhite;
         else // if(ball.getBallType() == "image")
             orientation1 = tapiocaPurple;
@@ -173,14 +226,21 @@ class VisualView implements Observer {
         canvas.drawBitmap(orientation1, ball.getX(), ball.getY(), paint);
     }
 
-    // draws the text on the screen
+    /** Draws text on the screen
+     *
+     * @param canvas - canvas on which the text is drawn
+     */
     private void drawText(Canvas canvas) {
-        canvas.drawText(context.getString(R.string.score) + score + "", 5, screenY - 30, paint);
+        canvas.drawText(context.getString(R.string.score) +": "+ score + "", 5, screenY - 30, paint);
         canvas.drawText(context.getString(R.string.level) + (level - 1) + "", 5, screenY - 100, paint);
         canvas.drawText(context.getString(R.string.shots) + shots + "", 5, screenY - 170, paint);
     }
 
-    // observes if gameFacade is changed, and stores its values for rendering
+    /**
+     *  Observed if gameFacade has changed and stores its values for renddering
+     * @param o - gameFacade being observed
+     * @param arg - object gameFacade returns
+     */
     @Override
     public void update(Observable o, Object arg) {
         gameFacade = (GameFacade) arg;
