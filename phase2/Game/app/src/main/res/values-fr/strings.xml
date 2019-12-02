@@ -27,7 +27,6 @@
     <string name="TapiocaScore">Lanceur de Tapioca Score élevé</string>
     <string name="MazeScore">"Labyrinthe Score élevé: "</string>
     <string name="TileScore">"Carrelage Score élevé: "</string>
-    <string name="TapiocaTime">Temps passé à jouer Lanceur de Tapioca:</string>
     <string name="MazeTime">"Temps passé à jouer Labyrinthe: "</string>
     <string name="TileTime">Temps passé à jouer Carrelage:</string>
     <string name="Reset">" Réinitialiser les statistiques oWo"</string>
@@ -85,4 +84,14 @@ Mais faites vite, vous n’avez qu’un nombre limité de coups!"</string>
     <string name="instructions_tiles_dark">Ne touchez pas les carreaux noirs! Appuyez sur les carreaux blancs pour gagner des points. Vous perdez si vous touchez une tuile noire ou quand une tuile blanche inexploitée quitte le tableau.</string>
     <string name="instructions_tiles_light">Ne touchez pas les carreaux blancs! Appuyez sur les carreaux noirs pour gagner des points. Vous perdez si vous appuyez sur une tuile blanche ou quand une tuile noire inexploitée quitte le tableau.</string>
     <string name="itemDescription">Voulez-vous acheter ceci pour</string>
+    <string name="MazeEasyTime">Labyrinthe (easy) Meilleur temps :</string>
+    <string name="MazeHardTime">Labyrinthe (hard) Meilleur temps  :</string>
+    <string name="MazeMediumTime">Labyrinthe (moyen) Meilleur temps:</string>
+    <string name="MazeHardAvgTime">"Labyrinthe (hard) temps moyen: "</string>
+    <string name="alreadyOwn">" Vous possédez déjà cet article"</string>
+    <string name="successfulPurchase">Votre achat a réussi</string>
+    <string name="insufficientFunds">" Il vous manque les fonds nécessaires pour exécuter cette opération"</string>
+    <string name="coins">"pièces de monnaie "</string>
+    <string name="Sprite">Sprite</string>
+    <string name="pick_sprite">Pick sprite:</string>
 </resources>

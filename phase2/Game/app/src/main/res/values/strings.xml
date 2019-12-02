@@ -43,7 +43,6 @@
     <string name="TapiocaScore">Tapioca Launcher High Score:</string>
     <string name="MazeScore">Maze High Score:</string>
     <string name="TileScore">Tiles High Score:</string>
-    <string name="TapiocaTime">Time Spent Playing Tapioca:</string>
     <string name="MazeTime">Time Spent Playing Maze:</string>
     <string name="TileTime">Time Spent Playing Tiles:</string>
     <string name="Reset">uWu Reset Statistics uWu</string>
@@ -95,5 +94,21 @@ But be quick as you only have a limited number of shots!"
     <string name="instructions_tiles_dark">Don\'t touch the black tiles! Tap the white tiles to gain points. You lose if you tap a black tile or when an untapped white tile leaves the board.</string>
     <string name="instructions_tiles_light">Don\'t touch the white tiles! Tap the black tiles to gain points. You lose if you tap a white tile or when an untapped black tile leaves the board.</string>
     <string name="itemDescription">Would you like to purchase this for</string>
-
+    <string name="MazeEasyTime">Maze (Easy) Best Time:</string>
+    <string name="MazeMediumTime">Maze (Medium) Best Time:</string>
+    <string name="MazeHardTime">Maze (Hard) Best Time:</string>
+    <string name="MazeHardAvgTime">Maze (Hard) Average Time:</string>
+    <string name="Tiles4Time">Tiles (4 X 4) Best Time:</string>
+    <string name="Tiles5Time">Tiles (5 X 5) Best Time:</string>
+    <string name="TilesInvertTime">Tiles (Invert) Best Time:</string>
+    <string name="TilesInvertAvgTime">Tiles (Invert) Average Time:</string>
+    <string name="TapiocaAvgTime">Tapioca Average Time:</string>
+    <string name="TapiocaBestTime">Tapioca Best Time:</string>
+    <string name="itemDescription">"Would you like to purchase this for "</string>
+    <string name="alreadyOwn">You already own this item</string>
+    <string name="successfulPurchase">Your purchase was successful</string>
+    <string name="insufficientFunds">You lack the necessary funds to execute this operation</string>
+    <string name="coins">"Coins "</string>
+    <string name="Sprite">Sprite</string>
+    <string name="pick_sprite">Pick sprite:</string>
 </resources>

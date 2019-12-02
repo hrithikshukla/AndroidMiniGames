@@ -7,7 +7,6 @@
     <string name="Statistics">إحصائياتك</string>
     <string name="button_tapioca_launcher">قاذفة التابيوكا</string>
     <string name="TapiocaScore">"تابيوكا قاذفة درجة عالية: "</string>
-    <string name="TapiocaTime">الوقت المستغرق في لعب التابيوكا:</string>
     <string name="TileScore">البلاط درجة عالية:</string>
     <string name="TileTime">الوقت الذي قضيته في بلاط اللعب:</string>
     <string name="attachment_summary_off">قم بتنزيل المرفقات فقط عند الطلب يدويًا</string>
@@ -86,4 +85,15 @@
     <string name="Tiles5Score">البلاط (5 × 5) درجة عالية:</string>
     <string name="TilesInvertScore">البلاط (عكس) درجة عالية:</string>
     <string name="shots">الطلقات المتبقية:</string>
+    <string name="MazeEasyTime">"المتاهة (سهل) أفضل وقت: "</string>
+    <string name="MazeMediumTime">المتاهة (متوسطة) أفضل وقت</string>
+    <string name="MazeHardTime">المتاهة (الثابت) أفضل وقت</string>
+    <string name="MazeHardAvgTime">"متاهة متوسط ​​الوقت "</string>
+    <string name="alreadyOwn">أنت بالفعل تمتلك هذا العنصر</string>
+    <string name="successfulPurchase">تم الشراء بنجاح</string>
+    <string name="insufficientFunds">أنت تفتقر إلى الأموال اللازمة لتنفيذ هذه العملية</string>
+    <string name="coins">"عملات معدنية "</string>
+    <string name="shots">"لقطات: "</string>
+    <string name="Sprite">Sprite</string>
+    <string name="pick_sprite">Pick sprite:</string>
 </resources>

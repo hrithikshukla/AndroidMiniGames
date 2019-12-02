@@ -15,6 +15,7 @@ class InputView extends Observable {
 
     /**
      * Sends motion event to GameController to deal with
+     *
      * @param event - the motionEvent that occured
      */
     void screenTouched(MotionEvent event) {

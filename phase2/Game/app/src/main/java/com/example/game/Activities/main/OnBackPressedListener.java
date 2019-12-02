@@ -1,5 +1,6 @@
 package com.example.game.Activities.main;
 
 public interface OnBackPressedListener {
-    public void doBack();
+    // Back press listener class to change what happens when the android back button is pressed
+    void doBack();
 }
