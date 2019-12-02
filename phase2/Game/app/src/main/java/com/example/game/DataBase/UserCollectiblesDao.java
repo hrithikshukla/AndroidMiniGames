@@ -1,6 +1,5 @@
 package com.example.game.DataBase;
 
-import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -16,17 +15,15 @@ import java.util.List;
  */
 public interface UserCollectiblesDao {
 
-    @Insert
-    void insert(UserCollectibles userCollectibles);
+  @Insert
+  void insert(UserCollectibles userCollectibles);
 
-    @Update
-    void update(UserCollectibles userCollectibles);
+  @Update
+  void update(UserCollectibles userCollectibles);
 
-    @Delete
-    void delete(UserCollectibles userCollectibles);
+  @Delete
+  void delete(UserCollectibles userCollectibles);
 
-    @Query("SELECT * FROM C_table WHERE username LIKE :username")
-    List<UserCollectibles> getUserCollectibles(String username);
-
-
+  @Query("SELECT * FROM C_table WHERE username LIKE :username")
+  List<UserCollectibles> getUserCollectibles(String username);
 }

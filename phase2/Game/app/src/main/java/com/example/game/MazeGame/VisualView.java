@@ -54,15 +54,15 @@ public class VisualView implements Observer {
    * @param arrowKeyRects - Rectangles corresponding to the arrow keys of the maze
    */
   VisualView(
-          Context context,
-          SurfaceHolder surfaceHolder,
-          Tile tile,
-          Background background,
-          int maxScreenX,
-          int maxScreenY,
-          Paint textPaint,
-          Paint backgroundPaint,
-          HashMap<String, Rect> arrowKeyRects) {
+      Context context,
+      SurfaceHolder surfaceHolder,
+      Tile tile,
+      Background background,
+      int maxScreenX,
+      int maxScreenY,
+      Paint textPaint,
+      Paint backgroundPaint,
+      HashMap<String, Rect> arrowKeyRects) {
 
     this.context = context;
     this.surfaceHolder = surfaceHolder;
@@ -100,12 +100,12 @@ public class VisualView implements Observer {
   /** Draws the text of the Maze. */
   private void drawText(Canvas canvas) {
     canvas.drawText(
-            String.format("%s: %d", context.getString(R.string.score), score),
-            maxScreenX - 250,
-            50,
-            textPaint);
+        String.format("%s: %d", context.getString(R.string.score), score),
+        maxScreenX - 250,
+        50,
+        textPaint);
     canvas.drawText(
-            String.format("%s: %d", context.getString(R.string.steps), numSteps), 115, 50, textPaint);
+        String.format("%s: %d", context.getString(R.string.steps), numSteps), 115, 50, textPaint);
   }
 
   /** Draws the Tiles of the Maze. Maze is drawn so that it is centered on the screen. */
@@ -120,10 +120,10 @@ public class VisualView implements Observer {
     for (int i = 0; i < grid.length; i++) {
       for (int j = 0; j < grid[i].length; j++) {
         canvas.drawBitmap(
-                tile.getTile(grid[i][j]),
-                topLeftTileX + (j * tile.getSideLength()),
-                topLeftTileY + (i * tile.getSideLength()),
-                backgroundPaint);
+            tile.getTile(grid[i][j]),
+            topLeftTileX + (j * tile.getSideLength()),
+            topLeftTileY + (i * tile.getSideLength()),
+            backgroundPaint);
       }
     }
   }
@@ -143,10 +143,10 @@ public class VisualView implements Observer {
    */
   private void drawArrow(Canvas canvas, String arrow) {
     canvas.drawBitmap(
-            background.getArrow(arrow),
-            arrowKeyRects.get(arrow).left,
-            arrowKeyRects.get(arrow).top,
-            backgroundPaint);
+        background.getArrow(arrow),
+        arrowKeyRects.get(arrow).left,
+        arrowKeyRects.get(arrow).top,
+        backgroundPaint);
   }
 
   /**

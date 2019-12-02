@@ -35,5 +35,4 @@ public interface UserAccountDao {
   // Call this method to get all users
   @Query("SELECT * FROM Accounts_table")
   List<UserAccount> getAllUsers();
-
 }

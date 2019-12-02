@@ -16,13 +16,6 @@ public abstract class UserDatabase extends RoomDatabase {
   // Create singleton; so can't create multiple instances
   private static UserDatabase instance;
 
-  // Call these methods to retrieve our DAO (Data access objects)
-  public abstract UserAccountDao userAccountDao();
-
-  public abstract UserScoresDao userScoresDao();
-
-  public abstract UserCollectiblesDao userCollectiblesDao();
-
   /**
    * Use this method to retrieve our database, method body builds it and static makes it a singleton
    * so we have a single copy of database everywhere; data remains consistent
@@ -36,4 +29,11 @@ public abstract class UserDatabase extends RoomDatabase {
     }
     return instance;
   }
+
+  // Call these methods to retrieve our DAO (Data access objects)
+  public abstract UserAccountDao userAccountDao();
+
+  public abstract UserScoresDao userScoresDao();
+
+  public abstract UserCollectiblesDao userCollectiblesDao();
 }

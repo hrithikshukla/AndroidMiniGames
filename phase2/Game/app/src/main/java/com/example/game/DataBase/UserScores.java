@@ -1,12 +1,9 @@
 package com.example.game.DataBase;
 
-import androidx.annotation.ColorLong;
-import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
-import androidx.room.Relation;
 
 @Entity(tableName = "Scores_table")
 /**
@@ -44,12 +41,12 @@ public class UserScores {
     this.timeSpent = timeSpent;
   }
 
-  void setId(int id) {
-    this.id = id;
-  }
-
   int getId() {
     return id;
+  }
+
+  void setId(int id) {
+    this.id = id;
   }
 
   public String getUsername() {
@@ -60,20 +57,20 @@ public class UserScores {
     return score;
   }
 
-  String getGameType() {
-    return gameType;
-  }
-
-  void setUserName(String userName) {
-    this.username = userName;
-  }
-
   void setScore(int score) {
     this.score = score;
   }
 
+  String getGameType() {
+    return gameType;
+  }
+
   void setGameType(String gameType) {
     this.gameType = gameType;
+  }
+
+  void setUserName(String userName) {
+    this.username = userName;
   }
 
   int getTimeSpent() {

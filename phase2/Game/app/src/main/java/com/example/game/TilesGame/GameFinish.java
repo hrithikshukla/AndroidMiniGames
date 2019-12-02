@@ -10,9 +10,9 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.game.Activities.main.ThemeManager;
 import com.example.game.DataBase.UserRepository;
 import com.example.game.R;
-import com.example.game.Activities.main.ThemeManager;
 
 public class GameFinish extends AppCompatActivity {
   String boardType;

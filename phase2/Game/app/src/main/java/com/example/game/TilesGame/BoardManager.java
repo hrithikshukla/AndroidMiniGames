@@ -17,35 +17,26 @@ import static android.content.Context.MODE_PRIVATE;
  */
 abstract class BoardManager extends ClassLoader implements Board {
 
-  /** The width of a tile. (Default is 4X4) */
-  private int tileWidth = TileManager.getWidth4By4();
-
-  /** The height of a tile. (Default is 4X4) */
-  private int tileHeight = TileManager.getHeight4By4();
-
-  /** The width of this board. (Default is 4X4 board) */
-  private int boardWidth = 4 * tileWidth;
-
-  /** The height of this board. (Default is 4X4 board) */
-  private int boardHeight = 4 * tileHeight;
-
   /** A list of all tiles on this board. */
   ArrayList<ArrayList<Tile>> tileBoard = new ArrayList<>(); // Index 0 is top of board
-
   /** A boolean representing whether the game has started. */
   boolean gameStart = false;
-
   /** A boolean representing whether the game has ended. */
   boolean gameEnd = false;
-
   /** A tile factory. */
   TileFactory tileFactory;
-
-  /** A tile drawer. */
-  private TileDrawer tileDrawer;
-
   /** A score manager. */
   ScoreManager scoreManager;
+  /** The width of a tile. (Default is 4X4) */
+  private int tileWidth = TileManager.getWidth4By4();
+  /** The height of a tile. (Default is 4X4) */
+  private int tileHeight = TileManager.getHeight4By4();
+  /** The width of this board. (Default is 4X4 board) */
+  private int boardWidth = 4 * tileWidth;
+  /** The height of this board. (Default is 4X4 board) */
+  private int boardHeight = 4 * tileHeight;
+  /** A tile drawer. */
+  private TileDrawer tileDrawer;
 
   /** Construct a board manager. */
   BoardManager(Context context) {

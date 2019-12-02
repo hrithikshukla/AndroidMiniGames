@@ -1,11 +1,7 @@
 package com.example.game.Activities.main;
 
 import android.annotation.SuppressLint;
-import android.graphics.Color;
 import android.os.Bundle;
-
-import androidx.fragment.app.DialogFragment;
-
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,13 +11,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.fragment.app.DialogFragment;
+
 import com.example.game.DataBase.UserRepository;
 import com.example.game.R;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
-import java.util.Objects;
 
 // A fragment where the user can purchase a character sprite
 public class SpriteFragment extends DialogFragment {

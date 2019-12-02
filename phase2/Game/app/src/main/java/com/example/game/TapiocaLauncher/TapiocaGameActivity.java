@@ -15,10 +15,7 @@ import java.util.Observer;
 
 import static java.time.temporal.ChronoUnit.SECONDS;
 
-
-/**
- * Creates the MVC design within the TapiocaLauncher
- */
+/** Creates the MVC design within the TapiocaLauncher */
 public class TapiocaGameActivity extends GameActivity implements Observer {
 
   /** View */
@@ -34,7 +31,9 @@ public class TapiocaGameActivity extends GameActivity implements Observer {
 
   private LocalTime startime;
 
-  /** Creates the game
+  /**
+   * Creates the game
+   *
    * @param savedInstanceState - Saved State of application
    */
   @Override
@@ -72,25 +71,22 @@ public class TapiocaGameActivity extends GameActivity implements Observer {
     setContentView(gameView);
   }
 
-  /** Pauses the game
-   *
-   */
+  /** Pauses the game */
   @Override
   protected void onPause() {
     super.onPause();
     gameView.pause();
   }
 
-  /**
-   * Resumes the game
-   */
+  /** Resumes the game */
   @Override
   protected void onResume() {
     super.onResume();
     gameView.resume();
   }
-  /**Observes the GameFacade to see if the game is over, and if so goes to the exit screen and
-   updates the statistics
+  /**
+   * Observes the GameFacade to see if the game is over, and if so goes to the exit screen and
+   * updates the statistics
    */
   @Override
   public synchronized void update(Observable o, Object arg) {
@@ -98,7 +94,8 @@ public class TapiocaGameActivity extends GameActivity implements Observer {
     if (gameFacade.isGameOver()) {
       LocalTime endtime = LocalTime.now();
       int timetaken = (int) startime.until(endtime, SECONDS);
-      UserScores u = new UserScores(getUsername(), gameFacade.getScore(), "TAPIOCA_GAME", timetaken);
+      UserScores u =
+          new UserScores(getUsername(), gameFacade.getScore(), "TAPIOCA_GAME", timetaken);
       ur.addUserScore(u);
       ur.updateUserAmount((int) Math.ceil(gameFacade.getScore() * 0.1));
       setScore(gameFacade.getScore());

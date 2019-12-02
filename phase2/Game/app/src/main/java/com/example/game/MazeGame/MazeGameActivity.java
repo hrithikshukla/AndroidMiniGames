@@ -16,7 +16,6 @@ import java.util.Observer;
 
 import static java.time.temporal.ChronoUnit.SECONDS;
 
-
 /**
  * Class that initializes all three components of the MVC model. Observes the model GameFacade to
  * determine when the game is over.
@@ -31,107 +30,108 @@ import static java.time.temporal.ChronoUnit.SECONDS;
  */
 public class MazeGameActivity extends GameActivity implements Observer {
 
-    /**
-     * View of the game.
-     */
-    private GameView gameView;
+  /** View of the game. */
+  private GameView gameView;
 
-    private UserRepository ur;
+  private UserRepository ur;
 
-    private LocalTime startime;
+  private LocalTime startime;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setUsername(getIntent().getStringExtra("USERNAME"));
-        ur = new UserRepository(this, getUsername());
-        startime = LocalTime.now();
-        // Set fullscreen mode.
-        getWindow()
-                .setFlags(
-                        WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setUsername(getIntent().getStringExtra("USERNAME"));
+    ur = new UserRepository(this, getUsername());
+    startime = LocalTime.now();
+    // Set fullscreen mode.
+    getWindow()
+        .setFlags(
+            WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        // Get maximum x and y coordinate of phone screen and store it in the Point object.
-        Point point = new Point();
-        getWindowManager().getDefaultDisplay().getSize(point);
+    // Get maximum x and y coordinate of phone screen and store it in the Point object.
+    Point point = new Point();
+    getWindowManager().getDefaultDisplay().getSize(point);
 
-        int maxScreenX = point.x;
-        int maxScreenY = point.y;
+    int maxScreenX = point.x;
+    int maxScreenY = point.y;
 
-        // Maze dimension is dependency injected in.
-        int[] dimensions = getIntent().getIntArrayExtra("DIMENSIONS");
-        int mazeWidth = Objects.requireNonNull(dimensions)[0];
-        int mazeHeight = dimensions[1];
+    // Maze dimension is dependency injected in.
+    int[] dimensions = getIntent().getIntArrayExtra("DIMENSIONS");
+    int mazeWidth = Objects.requireNonNull(dimensions)[0];
+    int mazeHeight = dimensions[1];
 
-        // Player starts at bottom left corner.
-        int startX = 1;
-        int startY = mazeHeight - 2;
+    // Player starts at bottom left corner.
+    int startX = 1;
+    int startY = mazeHeight - 2;
 
-        // Starting score is dependency injected in.
-        int startingScore = getIntent().getIntExtra("SCORE", 0);
+    // Starting score is dependency injected in.
+    int startingScore = getIntent().getIntExtra("SCORE", 0);
 
-        // Create MVC components. Complicated objects are assembled using builders.
+    // Create MVC components. Complicated objects are assembled using builders.
 
-        // Model of the game.
-        GameFacadeBuilder gameFacadeBuilder =
-                new GameFacadeBuilder(startX, startY, startingScore, mazeWidth, mazeHeight);
-        gameFacadeBuilder.build();
-        GameFacade gameFacade = gameFacadeBuilder.getGameFacade();
+    // Model of the game.
+    GameFacadeBuilder gameFacadeBuilder =
+        new GameFacadeBuilder(startX, startY, startingScore, mazeWidth, mazeHeight);
+    gameFacadeBuilder.build();
+    GameFacade gameFacade = gameFacadeBuilder.getGameFacade();
 
-        // View of the game. Displays the UI and registers user input.
+    // View of the game. Displays the UI and registers user input.
 
-        // Get Sprite to be used by the player.
-        Sprites sprite = (Sprites) getIntent().getSerializableExtra("SPRITE");
+    // Get Sprite to be used by the player.
+    Sprites sprite = (Sprites) getIntent().getSerializableExtra("SPRITE");
 
-        ViewBuilder viewBuilder = new ViewBuilder(this, maxScreenX, maxScreenY, sprite);
-        viewBuilder.build();
-        InputView inputView = viewBuilder.getInputView();
-        VisualView visualView = viewBuilder.getVisualView();
-        this.gameView = viewBuilder.getGameView();
+    ViewBuilder viewBuilder = new ViewBuilder(this, maxScreenX, maxScreenY, sprite);
+    viewBuilder.build();
+    InputView inputView = viewBuilder.getInputView();
+    VisualView visualView = viewBuilder.getVisualView();
+    this.gameView = viewBuilder.getGameView();
 
-        // Controller of the game. Processes user input using game state logic to possibly change the
-        // model.
-        GameController gameController = new GameController(gameFacade);
+    // Controller of the game. Processes user input using game state logic to possibly change the
+    // model.
+    GameController gameController = new GameController(gameFacade);
 
-        // Add observers to our MVC components.
-        inputView.addObserver(gameController);
-        gameFacade.addObserver(visualView);
-        gameFacade.addObserver(this);
+    // Add observers to our MVC components.
+    inputView.addObserver(gameController);
+    gameFacade.addObserver(visualView);
+    gameFacade.addObserver(this);
 
-        // The view components observing gameFacade must be updated at least once to display the
-        // initial board.
-        gameFacade.update();
+    // The view components observing gameFacade must be updated at least once to display the
+    // initial board.
+    gameFacade.update();
 
-        setContentView(gameView);
+    setContentView(gameView);
+  }
+
+  @Override
+  protected void onPause() {
+    super.onPause();
+    gameView.pause();
+  }
+
+  @Override
+  protected void onResume() {
+    super.onResume();
+    gameView.resume();
+  }
+
+  @Override
+  public synchronized void update(Observable o, Object arg) {
+    // Set users high score if applicable when game ends and send it to gameOverActivity
+    GameFacade gameFacade = (GameFacade) o;
+    if (gameFacade.getMaze().hasEscaped()) {
+      String difficulty = getIntent().getStringExtra("DIFFICULTY");
+      LocalTime endtime = LocalTime.now();
+      int timetaken = (int) startime.until(endtime, SECONDS);
+      UserScores u =
+          new UserScores(
+              getUsername(),
+              gameFacade.getPlayer().getScore(),
+              "MAZE_GAME_" + difficulty,
+              timetaken);
+      ur.addUserScore(u);
+      ur.updateUserAmount((int) Math.ceil(gameFacade.getPlayer().getScore() * 0.2));
+      setScore(gameFacade.getPlayer().getScore());
+      switchToGameOverActivity(this);
     }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        gameView.pause();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        gameView.resume();
-    }
-
-    @Override
-    public synchronized void update(Observable o, Object arg) {
-        // Set users high score if applicable when game ends and send it to gameOverActivity
-        GameFacade gameFacade = (GameFacade) o;
-        if (gameFacade.getMaze().hasEscaped()) {
-            String difficulty = getIntent().getStringExtra("DIFFICULTY");
-            LocalTime endtime = LocalTime.now();
-            int timetaken = (int) startime.until(endtime, SECONDS);
-            UserScores u =
-                    new UserScores(
-                            getUsername(), gameFacade.getPlayer().getScore(), "MAZE_GAME_" + difficulty, timetaken);
-            ur.addUserScore(u);
-            ur.updateUserAmount((int) Math.ceil(gameFacade.getPlayer().getScore() * 0.2));
-            setScore(gameFacade.getPlayer().getScore());
-            switchToGameOverActivity(this);
-        }
-    }
+  }
 }

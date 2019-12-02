@@ -25,9 +25,8 @@ public class LoginActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_login);
 
-    loginButton = (Button) findViewById(R.id.loginButton);
-    registerButton = (Button) findViewById(R.id.registerButton);
-
+    loginButton = findViewById(R.id.loginButton);
+    registerButton = findViewById(R.id.registerButton);
   }
 
   public void goToRegisterActivity(View view) {
@@ -49,5 +48,4 @@ public class LoginActivity extends AppCompatActivity {
       Toast.makeText(getApplicationContext(), "Invalid Login", Toast.LENGTH_LONG).show();
     }
   }
-
 }

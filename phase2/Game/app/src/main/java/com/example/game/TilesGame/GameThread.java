@@ -6,17 +6,14 @@ import android.view.SurfaceHolder;
 /** Use to manage threading and updates. */
 public class GameThread extends Thread {
 
-  /** Where the tile board items are drawn. */
-  private GameView gameView;
-
-  /** The canvas container. */
-  private SurfaceHolder surfaceHolder;
-
-  /** Whether the thread is running. */
-  private boolean isRunning;
-
   /** The canvas on which to draw the tile board. */
   private static Canvas canvas;
+  /** Where the tile board items are drawn. */
+  private GameView gameView;
+  /** The canvas container. */
+  private SurfaceHolder surfaceHolder;
+  /** Whether the thread is running. */
+  private boolean isRunning;
 
   /**
    * Construct a game thread.

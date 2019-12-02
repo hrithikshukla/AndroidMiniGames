@@ -19,17 +19,14 @@ import static java.time.temporal.ChronoUnit.SECONDS;
 /** An activity class of the Tiles game. */
 public class TileGameActivity extends AppCompatActivity {
 
-  /** The user's username. */
-  private String username;
-
-  /** A user repository. */
-  private UserRepository userRepository;
-
-  /** The start time of this game. */
-  private LocalTime startTime;
-
   /** The type of board in this game. */
   String boardType;
+  /** The user's username. */
+  private String username;
+  /** A user repository. */
+  private UserRepository userRepository;
+  /** The start time of this game. */
+  private LocalTime startTime;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {

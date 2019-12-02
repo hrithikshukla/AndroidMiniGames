@@ -1,18 +1,15 @@
 package com.example.game.TapiocaLauncher;
 
-import android.util.Log;
 import android.view.MotionEvent;
 
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
-/**
- * Controller of the MVC, handles all the game logic
-  */
+/** Controller of the MVC, handles all the game logic */
 public class GameController implements Observer {
 
-  /** Stores the model*/
+  /** Stores the model */
   private GameFacade gameFacade;
   /** Whether the Launcher is moving or not */
   private boolean isMoving = false;
@@ -29,7 +26,8 @@ public class GameController implements Observer {
   /** Stores start and end coordinates of the player's hand motion */
   private double startX, startY, endX, endY;
 
-  /**Create a gameController with the given parameters
+  /**
+   * Create a gameController with the given parameters
    *
    * @param gameFacade - gameModel which the controller will update
    * @param screenX - x-size of the screen
@@ -43,9 +41,9 @@ public class GameController implements Observer {
   }
 
   /**
-   * Updates the model by moving the launcher, checking for collision, if the ball is still
-   it launches counter which counts to 1 second after which the ball is reset to its
-   original position
+   * Updates the model by moving the launcher, checking for collision, if the ball is still it
+   * launches counter which counts to 1 second after which the ball is reset to its original
+   * position
    */
   private void updateModel() {
     if (isMoving) {
@@ -58,7 +56,6 @@ public class GameController implements Observer {
     }
   }
 
-
   /**
    * Counts 60 frames(1 second) after the ball stops moving to reset everything for the next launch
    */
@@ -67,10 +64,9 @@ public class GameController implements Observer {
       count++;
     }
     if (count == 60) {
-      if(gameFacade.getShots() == 0) {
+      if (gameFacade.getShots() == 0) {
         gameFacade.setGameOver(true);
-      }
-      else {
+      } else {
         Launcher launcher = gameFacade.getLauncher();
         List<Ball> balls = gameFacade.getBalls();
         count = 0;
@@ -89,9 +85,7 @@ public class GameController implements Observer {
     }
   }
 
-  /**
-   * updates isMoving by checking the launcher's speed
-   */
+  /** updates isMoving by checking the launcher's speed */
   private void updateIsMoving() {
     if (gameFacade.getLauncher().getSpeedX() == 0 && gameFacade.getLauncher().getSpeedY() == 0) {
       isMoving = false;
@@ -99,7 +93,8 @@ public class GameController implements Observer {
   }
 
   /**
-   * Moves the launcher according to its speed values and reduces the speed by the gravity amount after
+   * Moves the launcher according to its speed values and reduces the speed by the gravity amount
+   * after
    */
   private void moveLauncher() {
 
@@ -128,12 +123,7 @@ public class GameController implements Observer {
     slowLauncher();
   }
 
-
-
-
-  /**
-   * Decreases launcher's by the gravity amount in the x and y direction
-   */
+  /** Decreases launcher's by the gravity amount in the x and y direction */
   private void slowLauncher() {
     Launcher launcher = gameFacade.getLauncher();
     launcher.setSpeedX(decrement(launcher.getSpeedX(), gravityX));
@@ -163,42 +153,37 @@ public class GameController implements Observer {
     return speed;
   }
 
-  /** Speeds up the launcher
-   *
-   */
+  /** Speeds up the launcher */
   private void speedLauncher() {
     Launcher launcher = gameFacade.getLauncher();
-    launcher.setSpeedX(launcher.getSpeedX()*1.3);
-    launcher.setSpeedY(launcher.getSpeedY()*1.3);
+    launcher.setSpeedX(launcher.getSpeedX() * 1.3);
+    launcher.setSpeedY(launcher.getSpeedY() * 1.3);
     gameFacade.update();
   }
 
-  /**
-   * Checks and handles collisions between the Launcher and Balls
-   */
+  /** Checks and handles collisions between the Launcher and Balls */
   private void checkCollision() {
     Launcher launcher = gameFacade.getLauncher();
     List<Ball> balls = gameFacade.getBalls();
     for (int i = 0; i < balls.size(); i++) {
       if (Math.hypot(
               launcher.getX()
-                      + launcher.getRadius()
-                      - balls.get(i).getX()
-                      - balls.get(i).getRadius(),
+                  + launcher.getRadius()
+                  - balls.get(i).getX()
+                  - balls.get(i).getRadius(),
               launcher.getY()
-                      + launcher.getRadius()
-                      - balls.get(i).getY()
-                      - balls.get(i).getRadius())
-              <= 2 * launcher.getRadius()) {
+                  + launcher.getRadius()
+                  - balls.get(i).getY()
+                  - balls.get(i).getRadius())
+          <= 2 * launcher.getRadius()) {
         if (!balls.get(i).isHit()) {
           Ball currBall = balls.get(i);
           currBall.setHp(currBall.getHp() - 1);
           currBall.setHit(true);
           if (currBall.getBallType().equals("speedBoost")) {
             speedLauncher();
-
           }
-          if(currBall.getBallType().equals("extraShot")) {
+          if (currBall.getBallType().equals("extraShot")) {
             gameFacade.setShots(gameFacade.getShots() + 2);
           }
           if (currBall.getHp() == 0) {
@@ -212,22 +197,22 @@ public class GameController implements Observer {
     }
   }
 
-
-  /** Observes the InputView and updates if there is an input or a tick
+  /**
+   * Observes the InputView and updates if there is an input or a tick
    *
    * @param o - InputView being observed
    * @param arg - Object inputView is passing
    */
   @Override
   public void update(Observable o, Object arg) {
-    if (arg instanceof MotionEvent) { //Handles input
+    if (arg instanceof MotionEvent) { // Handles input
       MotionEvent event = (MotionEvent) arg;
       Launcher launcher = gameFacade.getLauncher();
       if (readyToLaunch) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
           if ((event.getX() >= launcher.getX()
                   && event.getX() <= (launcher.getX() + 2 * launcher.getRadius()))
-                  && (event.getY() >= launcher.getY()
+              && (event.getY() >= launcher.getY()
                   && event.getY() <= (launcher.getY() + 2 * launcher.getRadius()))) {
             startX = event.getX();
             startY = event.getY();
@@ -244,15 +229,16 @@ public class GameController implements Observer {
           }
         }
       }
-    } else if (arg instanceof Boolean) { //Handles Tick
+    } else if (arg instanceof Boolean) { // Handles Tick
       updateModel();
       gameFacade.update();
     }
   }
 
-
   /**
-   * Moves the ball in the angle of the direction of the starting and end point of the player's motion
+   * Moves the ball in the angle of the direction of the starting and end point of the player's
+   * motion
+   *
    * @param startX - x coordinate of the starting point
    * @param startY - y coordinate of the starting point
    * @param endX - x coordinate of the end point
@@ -261,7 +247,7 @@ public class GameController implements Observer {
   private void moveBall(double startX, double startY, double endX, double endY) {
     isMoving = true;
     readyToLaunch = false;
-    gameFacade.setShots(gameFacade.getShots()-1);
+    gameFacade.setShots(gameFacade.getShots() - 1);
     Launcher launcher = gameFacade.getLauncher();
     launcher.setSpeedX(Math.cos(Math.atan2(endY - startY, endX - startX)) * 300);
     launcher.setSpeedY(Math.sin(Math.atan2(endY - startY, endX - startX)) * 300);
@@ -269,22 +255,20 @@ public class GameController implements Observer {
     gravityY = (Math.abs(launcher.getSpeedY()) / 50);
   }
 
-  /**
-   * generates the level based on the current level or ends the game if it's the last level
-   */
+  /** generates the level based on the current level or ends the game if it's the last level */
   private void generateLevel() {
     if (gameFacade.getLevel() == 1) {
-        gameFacade.setBalls(1);
+      gameFacade.setBalls(1);
       gameFacade.setLevel(2);
     } else if (gameFacade.getLevel() == 2) {
-        gameFacade.setBalls(2);
+      gameFacade.setBalls(2);
       gameFacade.setLevel(3);
     } else if (gameFacade.getLevel() == 3) {
-        gameFacade.setBalls(3);
-        gameFacade.setLevel(4);
+      gameFacade.setBalls(3);
+      gameFacade.setLevel(4);
     } else if (gameFacade.getLevel() == 4) {
-        gameFacade.setGameOver(true);
-        gameFacade.update();
+      gameFacade.setGameOver(true);
+      gameFacade.update();
     }
   }
 }

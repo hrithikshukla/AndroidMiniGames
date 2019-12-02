@@ -1,8 +1,8 @@
 package com.example.game.MazeGame.DataStructures;
 
 public enum Sprites {
-    AT,
-    DOLLAR,
-    HASHTAG,
-    PERCENT
+  AT,
+  DOLLAR,
+  HASHTAG,
+  PERCENT
 }
