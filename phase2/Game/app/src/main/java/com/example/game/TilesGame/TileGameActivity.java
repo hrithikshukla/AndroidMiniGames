@@ -11,40 +11,48 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.game.Activities.main.ThemeManager;
 import com.example.game.DataBase.UserRepository;
 import com.example.game.DataBase.UserScores;
-import com.example.game.R;
-import com.example.game.Save.User;
 
 import java.time.LocalTime;
 
 import static java.time.temporal.ChronoUnit.SECONDS;
 
+/** An activity class of the Tiles game. */
 public class TileGameActivity extends AppCompatActivity {
 
+  /** The user's username. */
   private String username;
-  private UserRepository ur;
-  private LocalTime startime;
+
+  /** A user repository. */
+  private UserRepository userRepository;
+
+  /** The start time of this game. */
+  private LocalTime startTime;
+
+  /** The type of board in this game. */
   String boardType;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     username = getIntent().getStringExtra("USERNAME");
-    ur = new UserRepository(this, username);
+    userRepository = new UserRepository(this, username);
     boardType = (String) getIntent().getSerializableExtra("BoardType");
-    startime = LocalTime.now();
+    startTime = LocalTime.now();
     requestWindowFeature(Window.FEATURE_NO_TITLE);
     getWindow()
         .setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
     GameView.setGameActivity(this);
     setThemeColors();
-    setContentView(new GameView(this)); // Instantiates new GameView.
+    setContentView(new GameView(this)); // Instantiate new GameView.
   }
 
+  /** Get the type of tiles board in this game. */
   String getBoardType() {
     return boardType;
   }
 
+  /** Get user's username. */
   String getUsername() {
     return username;
   }
@@ -52,24 +60,22 @@ public class TileGameActivity extends AppCompatActivity {
   /** Called when the user loses and the game ends. */
   public void endTilesGame(GameView gameView) {
     Intent intent = new Intent(this, GameFinish.class);
-    Integer newScore =
+    int newScore =
         getNewScore(gameView); // Get the score of the game in the game board of gameView.
     // Send the score of the game to be displayed.
-    LocalTime endtime = LocalTime.now();
-    int timetaken = (int) startime.until(endtime, SECONDS);
-    UserScores u;
+    LocalTime endTime = LocalTime.now();
+    int timeTaken = (int) startTime.until(endTime, SECONDS);
+    UserScores userScores;
     if (boardType.equals("5By5")) {
-      u = new UserScores(username, newScore, "TILES_GAME_5", timetaken);
+      userScores = new UserScores(username, newScore, "TILES_GAME_5", timeTaken);
     } else if (boardType.equals("Invert")) {
-      u = new UserScores(username, newScore, "TILES_GAME_INVERT", timetaken);
+      userScores = new UserScores(username, newScore, "TILES_GAME_INVERT", timeTaken);
     } else {
-      u = new UserScores(username, newScore, "TILES_GAME_4", timetaken);
+      userScores = new UserScores(username, newScore, "TILES_GAME_4", timeTaken);
     }
-    ur.addUserScore(u);
-    //    updateHighScore(newScore);
-    String message = newScore.toString();
+    userRepository.addUserScore(userScores);
+    String message = ((Integer) newScore).toString();
     intent.putExtra("GAME_SCORE", message);
-    //    usr.getUserData().setPrefs(null);
     intent.putExtra("USERNAME", username);
     intent.putExtra("BoardType", boardType);
     startActivity(intent);
@@ -77,26 +83,14 @@ public class TileGameActivity extends AppCompatActivity {
 
   /** Get the newest game score. */
   private Integer getNewScore(GameView gameView) {
-    Integer newScore =
-        gameView.getBoard().getScore(); // Get the score of the game in the game board of gameView.
-    return newScore;
+    return gameView
+        .getBoard()
+        .getScore(); // Get the score of the game in the game board of gameView.
   }
 
+  /** Set the user's theme colours into shared preferences to be retrieved and applied in game. */
   void setThemeColors() {
     SharedPreferences mSettings = this.getSharedPreferences("Settings", MODE_PRIVATE);
     ThemeManager.addThemeColors(this, mSettings, username);
   }
-
-  /** Update the high score for Tiles game for usr. */
-  //  public void updateHighScore(int newScore) {
-  //    SharedPreferences sharedPreferences = getSharedPreferences("highScores", MODE_PRIVATE);
-  //    SharedPreferences.Editor editor = sharedPreferences.edit();
-  //    int currentHighScore = sharedPreferences.getInt(usr.getUsername() + "tileshighscore", 0);
-  //    if (currentHighScore < newScore) {
-  //      // Add the high score to SharedPreferences
-  //      editor.putInt(usr.getUsername() + "tileshighscore", newScore);
-  //      // Apply the save
-  //      editor.apply();
-  //    }
-  //  }
 }

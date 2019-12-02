@@ -1,7 +1,8 @@
 package com.example.game.TapiocaLauncher;
 
-/** Tapioca that the user launches to clear the stage
-  */
+/**
+ * Tapioca that the user launches to clear the stage
+ */
 class Launcher {
 
     /** The top left coordinates of the ball and the radius */

@@ -174,7 +174,19 @@ public class UserRepository {
     return a.getUserMaxTime();
   }
 
-  public static class addUserAsyncTask extends AsyncTask<UserAccount, Void, Boolean> {
+    public int getUserAvgTime(String gameType) {
+        StatsTaskParam s = new StatsTaskParam(username, gameType);
+        getUserAvgTimeAsyncTask a = new getUserAvgTimeAsyncTask(userScoresDao);
+        try {
+            a.execute(s).get();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return a.getUserAvgTime();
+    }
+
+
+    public static class addUserAsyncTask extends AsyncTask<UserAccount, Void, Boolean> {
 
     private UserAccountDao userAccountDao;
     private boolean success;
@@ -383,25 +395,46 @@ public class UserRepository {
   }
 
   public static class getUserMaxTimeAsyncTask extends AsyncTask<StatsTaskParam, Void, Void> {
-    private UserScoresDao userScoresDao;
-    private int userMaxTime;
+        private UserScoresDao userScoresDao;
+        private int userMaxTime;
 
-    getUserMaxTimeAsyncTask(UserScoresDao userScoresDao) {
-      this.userScoresDao = userScoresDao;
+        getUserMaxTimeAsyncTask(UserScoresDao userScoresDao) {
+            this.userScoresDao = userScoresDao;
+        }
+
+        int getUserMaxTime() {
+            return userMaxTime;
+        }
+
+        @Override
+        protected Void doInBackground(StatsTaskParam... statsTaskParams) {
+            String userName = statsTaskParams[0].getUserName();
+            String gameType = statsTaskParams[0].getGameType();
+            userMaxTime = userScoresDao.getUserMaxTime(userName, gameType);
+            return null;
+        }
     }
 
-    int getUserMaxTime() {
-      return userMaxTime;
-    }
+    public static class getUserAvgTimeAsyncTask extends AsyncTask<StatsTaskParam, Void, Void> {
+        private UserScoresDao userScoresDao;
+        private int userAvgTime;
 
-    @Override
-    protected Void doInBackground(StatsTaskParam... statsTaskParams) {
-      String userName = statsTaskParams[0].getUserName();
-      String gameType = statsTaskParams[0].getGameType();
-      userMaxTime = userScoresDao.getUserMaxTime(userName, gameType);
-      return null;
+        getUserAvgTimeAsyncTask(UserScoresDao userScoresDao) {
+            this.userScoresDao = userScoresDao;
+        }
+
+        int getUserAvgTime() {
+            return userAvgTime;
+        }
+
+        @Override
+        protected Void doInBackground(StatsTaskParam... statsTaskParams) {
+            String userName = statsTaskParams[0].getUserName();
+            String gameType = statsTaskParams[0].getGameType();
+            userAvgTime = userScoresDao.getUserAvgTime(userName, gameType);
+            return null;
+        }
     }
-  }
 
   private class StatsTaskParam {
     String userName;

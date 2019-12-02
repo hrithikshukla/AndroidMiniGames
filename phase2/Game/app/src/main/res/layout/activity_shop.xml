@@ -12,13 +12,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
-        android:layout_marginEnd="120dp"
+        android:layout_marginEnd="125dp"
         android:text="@string/text_swipe_left"
         android:textColor="?android:attr/colorSecondary"
         android:textSize="7pt"
         app:layout_constraintBottom_toTopOf="@+id/toMain"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -36,15 +37,18 @@
         android:id="@+id/toMain"
         android:layout_width="188dp"
         android:layout_height="59dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.963"
-        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/numChars"
+        app:layout_constraintTop_toBottomOf="@+id/char_summoner"
         app:srcCompat="@drawable/arrow2" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/numChars"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"

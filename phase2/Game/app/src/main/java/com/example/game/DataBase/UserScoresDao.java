@@ -42,7 +42,6 @@ public interface UserScoresDao {
   public int getUserMaxTime(String name, String game_type);
 
 
-
   // Call these methods to get the average time spent in each game
   @Query(
           "SELECT avg(timeSpent) as avg from scores_table WHERE userName LIKE :name "

@@ -88,7 +88,6 @@ public class StatsActivity extends AppCompatActivity {
     int tiles5HighScore = uR.getUserHighScore(username, "TILES_GAME_5");
     int tilesInvertHighScore = uR.getUserHighScore(username, "TILES_GAME_INVERT");
 
-
     // Set textViews to userScores
     tapiocaScore.setText(getString(R.string.TapiocaScore) + tapiocaHighScore);
     mazeEasyScore.setText(getString(R.string.MazeEasyScore) + mazeEasyHighScore);
@@ -99,23 +98,43 @@ public class StatsActivity extends AppCompatActivity {
     tilesInvertScore.setText(getString(R.string.TilesInvertScore) + tilesInvertHighScore);
 
     TextView tapiocaTime = findViewById(R.id.TapiocaTime);
-    TextView mazeTime = findViewById(R.id.MazeTime);
-    TextView tileTIme = findViewById(R.id.TileTime);
+    TextView tapiocaAvgTime = findViewById(R.id.TapiocaAvgTime);
+    TextView mazeEasyTime = findViewById(R.id.MazeEasyTime);
+    TextView mazeMediumTime = findViewById(R.id.MazeMediumTime);
+    TextView mazeHardTime = findViewById(R.id.MazeHardTime);
+    TextView mazeHardAvgTime = findViewById(R.id.MazeHardAvgTime);
+    TextView tiles4Time = findViewById(R.id.Tiles4Time);
+    TextView tile5Time = findViewById(R.id.Tiles5Time);
+    TextView tilesInverTime = findViewById(R.id.TilesInvertTime);
+    TextView tilesInvertAvgTime = findViewById(R.id.TilesInvertAvgTime);
 
     int minTimeMazeEasy = uR.getUserMinTime("MAZE_GAME_EASY");
     int minTimeMazeMedium = uR.getUserMinTime("MAZE_GAME_MEDIUM");
-    int mazeTimedHighScore = uR.getUserMinTime("MAZE_GAME_HARD");
+    int minTimeMazeHard = uR.getUserMinTime("MAZE_GAME_HARD");
+
+    int avgTimeMazeHard = uR.getUserAvgTime("MAZE_GAME_HARD");
+
 
     int maxTimeTiles4 = uR.getUserMaxTime("TILES_GAME_4");
     int maxTimeTiles5 = uR.getUserMaxTime("TILES_GAME_5");
     int maxTimeTilesInvert = uR.getUserMaxTime("TILES_GAME_INVERT");
 
-    int tapiocaoMinTime = uR.getUserMinTime("TAPIOCA_GAME");
+    int avgTimeTilesInvert = uR.getUserAvgTime("TILES_GAME_INVERT");
+
+    int tapiocaMinTime = uR.getUserMinTime("TAPIOCA_GAME");
+    int avgTimeTapioca = uR.getUserAvgTime("TAPIOCA_GAME");
+
+    tapiocaTime.setText(getString(R.string.TapiocaBestTime) + tapiocaMinTime);
+    tapiocaAvgTime.setText(getString(R.string.TapiocaAvgTime) + avgTimeTapioca);
+    mazeEasyTime.setText(getString(R.string.MazeEasyTime) + minTimeMazeEasy);
+    mazeMediumTime.setText(getString(R.string.MazeMediumTime) + minTimeMazeMedium);
+    mazeHardTime.setText(getString(R.string.MazeHardTime) + minTimeMazeHard);
+    mazeHardAvgTime.setText(getString(R.string.MazeHardAvgTime) + avgTimeMazeHard);
+    tiles4Time.setText(getString(R.string.Tiles4Time) + maxTimeTiles4);
+    tile5Time.setText(getString(R.string.Tiles5Time) + maxTimeTiles5);
+    tilesInverTime.setText(getString(R.string.TilesInvertTime) + maxTimeTilesInvert);
+    tilesInvertAvgTime.setText(getString(R.string.TilesInvertAvgTime) + avgTimeTilesInvert);
 
 
-
-    tapiocaTime.setText(getString(R.string.TapiocaTime) + tapiocaoMinTime);
-    mazeTime.setText(getString(R.string.MazeTime) + minTimeMazeEasy);
-    tileTIme.setText(getString(R.string.TileTime) + maxTimeTiles4);
   }
 }

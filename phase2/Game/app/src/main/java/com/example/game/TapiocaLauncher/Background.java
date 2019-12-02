@@ -6,12 +6,14 @@ import android.graphics.BitmapFactory;
 
 import com.example.game.R;
 
-/** Background image of the Tapioca game
- *
+/**
+ * Background image of the Tapioca game
  */
 class Background {
 
-    /** Coordinates to represent the top left of the background */
+    /**
+     * Coordinates to represent the top left of the background
+     */
     private int x, y;
 
     /** The bitmap image of the background */
