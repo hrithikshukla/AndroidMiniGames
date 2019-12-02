@@ -15,6 +15,7 @@ public class BaseBackPressedListener implements OnBackPressedListener {
     @Override
     public void doBack() {
         activity.findViewById(R.id.frame).setClickable(false);
+        activity.recreate();
         activity.getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
     }
 }
