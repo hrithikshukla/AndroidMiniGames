@@ -3,7 +3,7 @@
     <string name="app_name">لعبه</string>
     <string name="MazeScore">المتاهة درجة عالية:</string>
     <string name="MazeTime">الوقت الذي يقضيه لعب المتاهة:</string>
-    <string name="Reset">أربعة وعشرون وستون:</string>
+    <string name="Reset">اعادة تعيين الاحصائيات</string>
     <string name="Statistics">إحصائياتك</string>
     <string name="button_tapioca_launcher">قاذفة التابيوكا</string>
     <string name="TapiocaScore">"تابيوكا قاذفة درجة عالية: "</string>
@@ -85,7 +85,7 @@
     <string name="Tiles4Score">البلاط (4 × 4) درجة عالية:</string>
     <string name="Tiles5Score">البلاط (5 × 5) درجة عالية:</string>
     <string name="TilesInvertScore">البلاط (عكس) درجة عالية:</string>
-    <string name="shots">الطلقات المتبقية:</string>
+    <string name="shots">"لقطات: "</string>
     <string name="MazeEasyTime">"المتاهة (سهل) أفضل وقت: "</string>
     <string name="MazeMediumTime">المتاهة (متوسطة) أفضل وقت</string>
     <string name="MazeHardTime">المتاهة (الثابت) أفضل وقت</string>

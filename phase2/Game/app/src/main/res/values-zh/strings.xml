@@ -29,7 +29,7 @@
     <string name="TileScore">"瓷磚高分: "</string>
     <string name="MazeTime">"花時間玩迷宮: "</string>
     <string name="TileTime">花時間玩瓷磚:</string>
-    <string name="Reset">" 重置統計信息 o3o"</string>
+    <string name="Reset">重置统计信息</string>
     <string name="Statistics">" 您的統計數據"</string>
     <string name="attachment_summary_off">仅在手动请求时下载附件</string>
     <string name="attachment_summary_on">自动下载传入电子邮件的附件</string>
@@ -78,7 +78,7 @@
     <string name="MazeEasyScore">"迷宫（简单）高分: "</string>
     <string name="MazeMediumScore">迷宫（中）高分 :</string>
     <string name="MazeHardScore">迷宫（难）高分 :</string>
-    <string name="shots">" 剩下的球："</string>
+    <string name="shots">镜头：</string>
     <string name="Tiles4Score">瓷砖（4 X 4）高分：</string>
     <string name="Tiles5Score">瓷砖 （5 X 5）高分：</string>
     <string name="TilesInvertScore">瓷砖 （颠倒）高分：</string>
