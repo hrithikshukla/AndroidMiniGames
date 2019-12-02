@@ -91,8 +91,8 @@ But be quick as you only have a limited number of shots!"
     <string name="Tiles4Score">Tiles (4 X 4) High Score:</string>
     <string name="Tiles5Score">Tiles (5 X 5) High Score:</string>
     <string name="TilesInvertScore">Tiles (Invert) High Score:</string>
-    <string name="instructions_tiles_dark">Don\'t touch the black tiles! Tap the white tiles to gain points. You lose if you tap a black tile or when an untapped white tile leaves the board.</string>
-    <string name="instructions_tiles_light">Don\'t touch the white tiles! Tap the black tiles to gain points. You lose if you tap a white tile or when an untapped black tile leaves the board.</string>
+    <string name="instructions_tiles_dark">Don\'t touch the black tiles! Tap the white tiles to gain points. You lose if you tap a black tile or when an untapped white tile leaves the board.\n \n Choose between a 4X4 or 5X5 board to play regularly, and for a challenge, choose the invert mode! In the invert mode, white tiles and black tiles will randomly invert to the respective other. You still want to tap all the white tiles and avoid the black tiles so be careful!</string>
+    <string name="instructions_tiles_light">Don\'t touch the white tiles! Tap the black tiles to gain points. You lose if you tap a white tile or when an untapped black tile leaves the board.\n \n Choose between a 4X4 or 5X5 board to play regularly, and for a challenge, choose the invert mode! In the invert mode, black tiles and white tiles will randomly invert to the respective other. You still want to tap all the black tiles and avoid the white tiles so be careful!</string>
     <string name="MazeEasyTime">Maze (Easy) Best Time:</string>
     <string name="MazeMediumTime">Maze (Medium) Best Time:</string>
     <string name="MazeHardTime">Maze (Hard) Best Time:</string>

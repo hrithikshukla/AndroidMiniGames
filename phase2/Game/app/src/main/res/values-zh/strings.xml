@@ -82,8 +82,7 @@
     <string name="Tiles4Score">瓷砖（4 X 4）高分：</string>
     <string name="Tiles5Score">瓷砖 （5 X 5）高分：</string>
     <string name="TilesInvertScore">瓷砖 （颠倒）高分：</string>
-    <string name="instructions_tiles_dark">请勿触摸黑色瓷砖！点击白色瓷砖以获取积分。如果您敲击黑色瓷砖或未开发的白色瓷砖离开电路板，则您会输。</string>
-    <string name="instructions_tiles_light">请勿触摸白色瓷砖！点击黑色瓷砖以获取积分。如果您敲击白色瓷砖或未开发的黑色瓷砖离开电路板，则您会输。</string>
+    <string name="instructions_tiles_dark">请勿触摸黑色瓷砖！ 点击白色瓷砖以获取积分。 如果您敲击黑色瓷砖或未挖掘的白色瓷砖离开电路板，则您会输。  在4X4或5X5电路板之间进行选择以定期播放，对于挑战，请选择反转模式！ 在反转模式下，白色图块和黑色图块将随机地相互反转。 您仍然想轻拍所有白色瓷砖，避免黑色瓷砖，所以要小心！</string>
     <string name="itemDescription">" 你想購買這個"</string>
     <string name="MazeEasyTime">迷宫 （简单）最好时间：</string>
     <string name="MazeHardTime">迷宫（难）最好时间:</string>
@@ -92,7 +91,7 @@
 
     <string name="alreadyOwn">你已經擁有這個東西了</string>
     <string name="successfulPurchase">" 您的購買成功"</string>
-    <string name="insufficientFunds">" 您缺少執行此操作所需的資金"</string>
+    <string name="insufficientFunds">在4X4或5X5电路板之间进行选择以定期播放，对于挑战，请选择反转模式！ 在反转模式下，白色图块和黑色图块将随机地相互反转。 您仍然想轻拍所有白色瓷砖，避免黑色瓷砖，所以要小心！</string>
     <string name="Sprite">Sprite</string>
     <string name="pick_sprite">選擇精靈：</string>
     <string name="colourDefault">默認</string>

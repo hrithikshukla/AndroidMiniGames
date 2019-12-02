@@ -56,7 +56,15 @@ Purple balls will give you extra lives!
 But be careful as you only have a limited number of shots!
 
 ----- TILES -----
-Don't touch the black tiles! Tap the white tiles to gain points.
-You lose if you tap a black tile or when an untapped white tile leaves the board.
+Don't touch the white tiles! Tap the black tiles to gain points.
+You lose if you tap a white tile or when an untapped black tile leaves the board.
+
+This game has 3 modes: choose between a 4 by 4 or 5 by 5 board to play regularly, and for a
+challenge, choose the invert mode! In the invert mode, black tiles and white tiles will randomly
+invert to the respective other. You still want to tap all the black tiles and avoid the white tiles
+so be careful!
+
+While the user's theme is in dark mode, the tile colours will be inverted; you will have to
+tap the white tiles and avoid the black tiles!
 
 
