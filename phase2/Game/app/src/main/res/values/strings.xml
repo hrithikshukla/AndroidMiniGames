@@ -98,5 +98,7 @@ But be quick as you only have a limited number of shots!"
     <string name="successfulPurchase">Your purchase was successful</string>
     <string name="insufficientFunds">You lack the necessary funds to execute this operation</string>
     <string name="coins">"Coins "</string>
+    <string name="Sprite">Sprite</string>
+    <string name="pick_sprite">Pick sprite:</string>
 
 </resources>

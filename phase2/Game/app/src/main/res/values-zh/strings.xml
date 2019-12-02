@@ -88,4 +88,6 @@
     <string name="successfulPurchase">" 您的購買成功"</string>
     <string name="insufficientFunds">" 您缺少執行此操作所需的資金"</string>
     <string name="coins">" 硬币 "</string>
+    <string name="Sprite">Sprite</string>
+    <string name="pick_sprite">Pick sprite:</string>
 </resources>
