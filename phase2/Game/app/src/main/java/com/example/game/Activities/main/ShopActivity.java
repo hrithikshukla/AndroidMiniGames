@@ -33,9 +33,11 @@ public class ShopActivity extends AppCompatActivity {
   protected OnBackPressedListener onBackPressedListener;
     private List<Integer> ownedChars;
   private String username;
-  TextView userCoins;
 
-  @SuppressLint("ClickableViewAccessibility")
+  // Number of coins the user has
+
+
+  @SuppressLint({"ClickableViewAccessibility", "SetTextI18n"})
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     username = getIntent().getStringExtra("USERNAME");
@@ -95,14 +97,14 @@ public class ShopActivity extends AppCompatActivity {
       tree.setTag(R.id.id, R.id.char_tree);
     images.add(tree);
     ImageView astro = findViewById(R.id.char_astro);
-      astro.setTag(R.id.num, R.drawable.char_astro);
+    astro.setTag(R.id.num, R.drawable.char_astro);
     astro.setTag(R.id.price, 80);
-      astro.setTag(R.id.id, R.id.char_astro);
+    astro.setTag(R.id.id, R.id.char_astro);
     images.add(astro);
     ImageView alien = findViewById(R.id.char_alien);
       alien.setTag(R.id.num, R.drawable.char_alien_dark);
     alien.setTag(R.id.price, 90);
-      alien.setTag(R.id.id, R.id.char_astro);
+    alien.setTag(R.id.id, R.id.char_alien);
     images.add(alien);
     ImageView monster = findViewById(R.id.char_monster);
       monster.setTag(R.id.num, R.drawable.char_monster_red);
@@ -165,12 +167,10 @@ public class ShopActivity extends AppCompatActivity {
       shogun.setTag(R.id.id, R.id.char_shogun);
     images.add(shogun);
 
-//    System.out.println(ownedChars.getValue() == null);
 
     // Grey out the characters that are not owned and add click viewers for characters
     for (final ImageView img : images) {
       grayOut(img);
-        System.out.println(img.getId());
       img.setOnClickListener(
           new View.OnClickListener() {
             @Override
@@ -195,15 +195,21 @@ public class ShopActivity extends AppCompatActivity {
           });
     }
 
-    userCoins = findViewById(R.id.userAmount);
+    // number of coins the user has
+    final TextView userCoins = findViewById(R.id.userAmount);
     LiveData<Integer> userAmount = uR.getUserAmountTest();
     userAmount.observe(this, new Observer<Integer>() {
       @Override
       public void onChanged(Integer integer) {
-          userCoins.setText(userCoins.getText() + ": " + integer);
+        userCoins.setText(userCoins.getText().toString() + ": " + integer);
 
       }
     });
+
+    // Number of characters the user owns
+    TextView numChars = findViewById(R.id.numChars);
+    numChars.setText(numChars.getText().toString() + ownedChars.size());
+
   }
 
   @Override
@@ -216,14 +222,7 @@ public class ShopActivity extends AppCompatActivity {
   private void grayOut(ImageView img) {
 //     if not owned grey them out
 //     Don't mind the horrible time complexity
-      if (ownedChars == null) {
-          ColorMatrix matrix = new ColorMatrix();
-          matrix.setSaturation(0);
-          ColorMatrixColorFilter filter = new ColorMatrixColorFilter(matrix);
-          img.setColorFilter(filter);
-
-
-      } else if (!ownedChars.contains(img.getTag(R.id.id))) {
+    if (ownedChars == null || !ownedChars.contains(img.getTag(R.id.id))) {
           ColorMatrix matrix = new ColorMatrix();
           matrix.setSaturation(0);
           ColorMatrixColorFilter filter = new ColorMatrixColorFilter(matrix);

@@ -48,7 +48,6 @@
     <string name="username2">أدخل اسم المستخدم الخاص بك</string>
     <string name="NotAvailable">غير متوفر حتى الآن :(</string>
     <string name="SwipeToShop">انتقد اليمين للتسوق!</string>
-    <string name="coins">"عملات معدنية "</string>
     <string name="characters">"الشخصيات المملوكة: "</string>
     <string name="play_4by4">4 x 4</string>
     <string name="text_select_mode">حدد وضعك</string>
@@ -79,11 +78,15 @@
     <string name="MazeEasyScore">"المتاهة (سهل) درجة عالية "</string>
     <string name="MazeMediumScore">"المتاهة (متوسطة) درجة عالية "</string>
     <string name="MazeHardScore">"المتاهة (الثابت) درجة عالية "</string>
-    <string name="itemDescription">هل ترغب في شراء هذا ل</string>
+    <string name="itemDescription">"هل ترغب في شراء هذا ل "</string>
     <string name="instructions_tiles_dark">لا تلمس البلاط الأسود! اضغط على البلاط الأبيض لكسب النقاط. ستفقد إذا قمت بالنقر فوق بلاطة سوداء أو عندما يترك بلاطة بيضاء غير مستغلة اللوحة.</string>
     <string name="instructions_tiles_light">لا تلمس البلاط الأبيض! اضغط على البلاط الأسود لكسب النقاط. ستفقد إذا قمت بالنقر فوق بلاطة بيضاء أو عندما يترك بلاطة سوداء غير مستغلة اللوحة.</string>
     <string name="Tiles4Score">البلاط (4 × 4) درجة عالية:</string>
     <string name="Tiles5Score">البلاط (5 × 5) درجة عالية:</string>
     <string name="TilesInvertScore">البلاط (عكس) درجة عالية:</string>
     <string name="shots">الطلقات المتبقية:</string>
+    <string name="alreadyOwn">أنت بالفعل تمتلك هذا العنصر</string>
+    <string name="successfulPurchase">تم الشراء بنجاح</string>
+    <string name="insufficientFunds">أنت تفتقر إلى الأموال اللازمة لتنفيذ هذه العملية</string>
+    <string name="coins">"عملات معدنية "</string>
 </resources>
