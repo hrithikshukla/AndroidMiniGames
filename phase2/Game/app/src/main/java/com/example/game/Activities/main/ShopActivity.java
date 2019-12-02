@@ -21,19 +21,26 @@ import com.example.game.R;
 import java.util.List;
 
 // https://opengameart.org/content/2d-complete-characters credit for sprites
-
+// The shop activity that displays all the charactes owned and not owned by the character, as well
+// As the user's coins
 @SuppressWarnings("SuspiciousMethodCalls")
 public class ShopActivity extends AppCompatActivity {
 
     // Checks if back button is pressed
     protected OnBackPressedListener onBackPressedListener;
+    // Characters owned by the user sorted by imageId
     private List<Integer> ownedChars;
+    // Username of the user
     private String username;
 
+    /**
+     * @param savedInstanceState the save state of the application
+     */
     @SuppressLint({"ClickableViewAccessibility", "SetTextI18n"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        // get the username from the previous activity
         username = getIntent().getStringExtra("USERNAME");
         UserRepository uR = new UserRepository(this, username);
 
@@ -50,8 +57,8 @@ public class ShopActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop);
 
+        // Set swipe listener for arrows
         ImageView arrow = findViewById(R.id.toMain);
-
         // Code based on https://stackoverflow.com/a/24256106/10322608
         arrow.setOnTouchListener( // Swipe back to main screen
                 new OnSwipeTouchListener(ShopActivity.this) {
@@ -64,8 +71,8 @@ public class ShopActivity extends AppCompatActivity {
                     }
                 });
 
+        // Retieve list of images to display
         ImageListCreator imageListCreator = new ImageListCreator(this);
-        // List of images to display
         List<ImageView> images = imageListCreator.setImageList().getImageList();
 
         // Grey out the characters that are not owned and add click viewers for characters
@@ -96,12 +103,9 @@ public class ShopActivity extends AppCompatActivity {
                     });
         }
 
+        // Set user coins and user character textViews
         TextView userCoins = findViewById(R.id.userAmount);
-        int userAmount = uR.getUserAmount();
-
-        userCoins.setText(userCoins.getText() + ": " + userAmount);
-
-        // Number of characters the user owns
+        userCoins.setText(userCoins.getText() + ": " + uR.getUserAmount());
         TextView numChars = findViewById(R.id.numChars);
         numChars.setText(numChars.getText().toString() + ownedChars.size());
     }
@@ -112,6 +116,9 @@ public class ShopActivity extends AppCompatActivity {
         else super.onBackPressed();
     }
 
+    /**
+     * @param img the image to be grayed out
+     */
     // Code from https://gist.github.com/nisrulz/3078eaa6357d6f5c0051
     private void grayOut(ImageView img) {
         //     if not owned grey them out
@@ -122,11 +129,14 @@ public class ShopActivity extends AppCompatActivity {
             ColorMatrixColorFilter filter = new ColorMatrixColorFilter(matrix);
             img.setColorFilter(filter);
 
-        } else { // no filter
+        } else {
             img.setColorFilter(null);
         }
     }
 
+    /**
+     * @param onBackPressedListener the new onBackPressedListener object
+     */
     public void setOnBackPressedListener(OnBackPressedListener onBackPressedListener) {
         this.onBackPressedListener = onBackPressedListener;
     }

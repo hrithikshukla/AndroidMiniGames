@@ -8,14 +8,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 class ImageListCreator {
+    // List of images to display
     private List<ImageView> images;
+    // The activity that this class gets images from, needed in order to execute findViewById()
     private ShopActivity activity;
 
+    /**
+     * @param activity the activity that created this imageListCreator
+     */
     ImageListCreator(ShopActivity activity) {
         this.activity = activity;
         images = new ArrayList<>();
     }
 
+    /**
+     * @return returns this builder object
+     */
     ImageListCreator setImageList() {
 
         // Find and add images to images list and set ID tags and set character prices
@@ -24,6 +32,8 @@ class ImageListCreator {
         worm.setTag(R.id.price, 21);
         worm.setTag(R.id.id, R.id.char_worm);
         images.add(worm);
+
+        // Rest of the code is the same as above but for different images
         ImageView bird = activity.findViewById(R.id.char_bird);
         bird.setTag(R.id.num, R.drawable.char_bird_blue);
         bird.setTag(R.id.price, 42);
@@ -117,6 +127,9 @@ class ImageListCreator {
         return this;
     }
 
+    /**
+     * @return returns a list of images to display
+     */
     List<ImageView> getImageList() {
         return images;
     }
