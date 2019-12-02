@@ -54,7 +54,7 @@
     <string name="instructions_maze">Escape the maze! The fewer steps you take the higher your score. Move your character by tapping the arrow buttons.</string>
     <string name="NotAvailable">Not Available Yet :(</string>
     <string name="SwipeToShop">Swipe Right To Shop!</string>
-    <string name="coins">Your Coins:</string>
+    <string name="coins">"Coins "</string>
     <string name="characters">Characters Owned:</string>
     <string name="play_4by4">4 x 4</string>
     <string name="text_select_mode">Select your mode:</string>
@@ -63,8 +63,9 @@
     <string name="button_settings_exit">x</string>
     <string name="text_light">Light</string>
     <string name="text_dark">Dark</string>
-    <item name="id" type="id" />
+    <item name="num" type="id" />
     <item name="price" type="id" />
+    <item name="id" type="id" />
 
     <string name="purchase">I want it!</string>
     <string name="cancel">Cancel</string>

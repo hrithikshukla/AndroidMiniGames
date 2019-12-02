@@ -6,6 +6,7 @@ import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserRepository {
@@ -148,14 +149,18 @@ public class UserRepository {
         }
     }
 
-    public LiveData<List<Integer>> getUserCollectibles() {
+    public List<Integer> getUserCollectibles() {
         getUserCollectiblesAsyncTask a = new getUserCollectiblesAsyncTask(userCollectiblesDao);
         try {
             a.execute(username).get();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return a.getUserCollectibles();
+        List<Integer> b = new ArrayList<>();
+        for (UserCollectibles u : a.getUserCollectibles()) {
+            b.add(u.getCharacter_id());
+        }
+        return b;
     }
 
     public int getUserMinTime(String gameType){
@@ -337,13 +342,13 @@ public class UserRepository {
 
     public static class getUserCollectiblesAsyncTask extends AsyncTask<String, Void, Void> {
         private UserCollectiblesDao userCollectiblesDao;
-        private LiveData<List<Integer>> userCollectibles;
+        private List<UserCollectibles> userCollectibles;
 
         getUserCollectiblesAsyncTask(UserCollectiblesDao userCollectiblesDao) {
             this.userCollectiblesDao = userCollectiblesDao;
         }
 
-        public LiveData<List<Integer>> getUserCollectibles() {
+        public List<UserCollectibles> getUserCollectibles() {
             return userCollectibles;
         }
 
