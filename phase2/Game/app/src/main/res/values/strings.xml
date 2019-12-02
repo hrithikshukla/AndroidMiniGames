@@ -46,7 +46,7 @@
     <string name="TapiocaTime">Time Spent Playing Tapioca:</string>
     <string name="MazeTime">Time Spent Playing Maze:</string>
     <string name="TileTime">Time Spent Playing Tiles:</string>
-    <string name="Reset">uWu Reset Statistics uWu</string>
+    <string name="Reset">Reset Statistics</string>
     <string name="Statistics">Your Statistics</string>
     <string name="text_game_over">Game Over</string>
     <string name="text_swipe_right">Swipe Right!</string>
@@ -88,7 +88,7 @@ But be quick as you only have a limited number of shots!"
     <string name="MazeEasyScore">Maze (Easy) High Score:</string>
     <string name="MazeMediumScore">Maze (Medium) High Score:</string>
     <string name="MazeHardScore">Maze (Hard) High Score:</string>
-    <string name="shots">"Shots remaining: "</string>
+    <string name="shots">"Shots: "</string>
     <string name="Tiles4Score">Tiles (4 X 4) High Score:</string>
     <string name="Tiles5Score">Tiles (5 X 5) High Score:</string>
     <string name="TilesInvertScore">Tiles (Invert) High Score:</string>

@@ -217,7 +217,7 @@ class VisualView implements Observer {
      * @param canvas - canvas on which the text is drawn
      */
     private void drawText(Canvas canvas) {
-        canvas.drawText(context.getString(R.string.score) + score + "", 5, screenY - 30, paint);
+        canvas.drawText(context.getString(R.string.score) +": "+ score + "", 5, screenY - 30, paint);
         canvas.drawText(context.getString(R.string.level) + (level - 1) + "", 5, screenY - 100, paint);
         canvas.drawText(context.getString(R.string.shots) + shots + "", 5, screenY - 170, paint);
     }
