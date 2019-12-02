@@ -18,7 +18,6 @@ import com.example.game.Activities.main.GameLauncher.MazeGameLauncher;
 import com.example.game.Activities.main.GameLauncher.TapiocaGameLauncher;
 import com.example.game.Activities.main.GameLauncher.TilesGameLauncher;
 import com.example.game.R;
-import com.example.game.Save.User;
 
 import java.util.Locale;
 

@@ -13,20 +13,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.DataBase.UserRepository;
 import com.example.game.R;
-import com.example.game.Save.User;
 
 public class StatsActivity extends AppCompatActivity {
-  User usr;
   String username;
   UserRepository uR;
 
   @SuppressLint({"ClickableViewAccessibility", "SetTextI18n"})
   @Override
   protected void onCreate(Bundle savedInstanceState) {
-    //    this.usr = (User) getIntent().getSerializableExtra("UserObject");
-    //    if (usr != null) {
-    //      usr.getUserData().setPrefs(getSharedPreferences("highScores", MODE_PRIVATE));
-    //    }
 
     // Set the theme.
     username = getIntent().getStringExtra("USERNAME");

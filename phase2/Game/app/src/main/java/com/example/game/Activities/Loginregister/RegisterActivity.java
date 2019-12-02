@@ -12,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.DataBase.UserRepository;
 import com.example.game.R;
-import com.example.game.Save.AccountsManager;
 
 public class RegisterActivity extends AppCompatActivity {
 

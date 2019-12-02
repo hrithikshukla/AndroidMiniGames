@@ -11,14 +11,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.Activities.main.MainActivity;
-import com.example.game.DataBase.UserAccount;
 import com.example.game.DataBase.UserRepository;
 import com.example.game.R;
-import com.example.game.Save.AccountsManager;
-import com.example.game.Save.JSONData;
-import com.example.game.Save.User;
-
-import java.io.File;
 
 public class LoginActivity extends AppCompatActivity {
   EditText username;
