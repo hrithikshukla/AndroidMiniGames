@@ -1,0 +1,32 @@
+Dear group_0596
+
+This semester, we talked about MVP, the Model-View-Presenter architecture. It has many advantages, particularly when working with Android. As you can see from your project, your activity classes have methods that are specific to Android. If you encapsulate the rest of your code sufficiently, it is possible to port it to another platform simply by creating a new UI (for example, a website).
+
+Encapsulation can take on many forms. You can package your View classes together. You can ensure that your dependencies go one-way, towards the inner more abstract layers. You can incorporate SOLID principles as much as possible and design patterns where they make sense.
+Here is feedback that is specific to your project:
+
+You made good use of…
++ Good job with adding observers into the structure. Really well thought out
++ Using Factory for creating the tapioca balls
++ Utilizing enum instead of hard-coded values
++ Clean and well-formatted code: Indentation is consistent and most naming follows the Java conventions and makes sense; thorough Javadoc and in-line comments in most files.
++ Use of packages: classes are organized in a meaningful way
++ Good algorithm for generating the maze
+
+The user sees…
++ Tapioca game is a lot of fun
++ User preferences is passed into the tile game but not the other levels
++ “Swipe left” (needs work) for a button vs. “Swipe right to do X” (good). Basically the text should be a specific statement and not a general command.
+
+A good next step would be to...
++ Game views can be made less complex. For example, the simple view used for the maze game with the help of a controller is a good benchmark for how ‘thin’ the view classes should be
++ Remove code smells! For example, the Launcher in the maze game has several methods to launch a class with only a very small modification to the dimensions. Also reconsider the number of arguments required by your builder constructor.
++ Also, you can get rid of the excessive attributes of tile width and height in different game layout (4x4 or 5x5), by getting the screen width and height in the controller and passing the calculated tile dimensions into the Tilemanager class constructor.
++ Try passing the user theme inside the games. The user preference is passed to the tile game well. We should be able to pass to other two games as well.
++ Improve encapsulation: I have seen several instance variables that are not private. What about making it private and implement public getter and setter methods?
+
+We hope that you enjoyed working on this project and found it a useful learning experience.
+
+Cheers,
+The CSC207 Instructional Team
+
